@@ -1,0 +1,36 @@
+body {
+  background-color: green;
+}
+
+.container {
+  position: relative;
+  width: 100%;  
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+ }
+
+.login-form {
+    margin-top: 10%;
+    align-items: center;
+    display: flex;
+    border: 2px solid white;
+    border-radius: 17px;
+    flex-direction: column;
+    padding: 2em;
+    padding-bottom: 3em;
+    box-shadow: 0 10px 40px -14px rgba(0, 0, 0, 0.25);
+    background: #fff;
+    justify-content: center;
+}
+
+.login-container {
+  display: grid;
+  margin-bottom: 4%;
+  
+}
+
+.button-container {
+  margin-top: 5%;
+  display: grid;
+}
