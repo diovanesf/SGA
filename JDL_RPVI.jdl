@@ -1,0 +1,60 @@
+entity Proprietario {
+	nome String
+    telefone String
+    email String
+}
+
+entity Propriedade {
+	tipo String
+    numeroAnimais Integer
+    acometidos String
+    observacoes String
+    principalSuspeita String
+}
+
+entity Endereco{
+	endereco String
+    cep String
+    cidade String
+    estado String
+    coodernadasGps String
+}
+
+entity Amostra{
+	protocolo String
+    formaEnvio String
+    numeroAmostras Integer
+    especie String
+    materialRecebido String
+    acondicionamento String
+    condicaoMaterial String
+    status String
+}
+
+entity Exame{
+	nome String
+    tipo String
+    resultado String
+}
+
+entity Midia{
+	descricao String
+    file String
+}
+
+relationship OneToOne {
+	Proprietario{endereco(endereco)} to Endereco
+    Propriedade{endereco(endereco)} to Endereco
+    Proprietario{propriedade(tipo)} to Propriedade
+	Amostra{proprietario(nome)} to Proprietario
+}
+
+relationship ManyToOne {
+	Amostra{usuario(nome)} to Usuario
+}
+
+relationship OneToMany {
+	Amostra{exame(nome)} to Exame
+    Amostra{usuario(nome)} to Usuario
+    Amostra{midia(descricao)} to Midia
+}
