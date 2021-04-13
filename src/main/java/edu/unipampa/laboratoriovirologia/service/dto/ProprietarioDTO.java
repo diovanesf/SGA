@@ -16,6 +16,10 @@ public class ProprietarioDTO implements Serializable {
 
     private String email;
 
+    private EnderecoDTO endereco;
+
+    private PropriedadeDTO propriedade;
+
     public Long getId() {
         return id;
     }
@@ -48,6 +52,22 @@ public class ProprietarioDTO implements Serializable {
         this.email = email;
     }
 
+    public EnderecoDTO getEndereco() {
+        return endereco;
+    }
+
+    public void setEndereco(EnderecoDTO endereco) {
+        this.endereco = endereco;
+    }
+
+    public PropriedadeDTO getPropriedade() {
+        return propriedade;
+    }
+
+    public void setPropriedade(PropriedadeDTO propriedade) {
+        this.propriedade = propriedade;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) {
@@ -77,6 +97,8 @@ public class ProprietarioDTO implements Serializable {
             ", nome='" + getNome() + "'" +
             ", telefone='" + getTelefone() + "'" +
             ", email='" + getEmail() + "'" +
+            ", endereco=" + getEndereco() +
+            ", propriedade=" + getPropriedade() +
             "}";
     }
 }

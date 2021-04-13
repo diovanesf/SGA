@@ -1,5 +1,11 @@
 import { Component, Vue, Inject } from 'vue-property-decorator';
 
+import EnderecoService from '@/entities/endereco/endereco.service';
+import { IEndereco } from '@/shared/model/endereco.model';
+
+import PropriedadeService from '@/entities/propriedade/propriedade.service';
+import { IPropriedade } from '@/shared/model/propriedade.model';
+
 import { IProprietario, Proprietario } from '@/shared/model/proprietario.model';
 import ProprietarioService from './proprietario.service';
 
@@ -17,6 +23,14 @@ const validations: any = {
 export default class ProprietarioUpdate extends Vue {
   @Inject('proprietarioService') private proprietarioService: () => ProprietarioService;
   public proprietario: IProprietario = new Proprietario();
+
+  @Inject('enderecoService') private enderecoService: () => EnderecoService;
+
+  public enderecos: IEndereco[] = [];
+
+  @Inject('propriedadeService') private propriedadeService: () => PropriedadeService;
+
+  public propriedades: IPropriedade[] = [];
   public isSaving = false;
   public currentLanguage = '';
 
@@ -25,6 +39,7 @@ export default class ProprietarioUpdate extends Vue {
       if (to.params.proprietarioId) {
         vm.retrieveProprietario(to.params.proprietarioId);
       }
+      vm.initRelationships();
     });
   }
 
@@ -85,5 +100,16 @@ export default class ProprietarioUpdate extends Vue {
     this.$router.go(-1);
   }
 
-  public initRelationships(): void {}
+  public initRelationships(): void {
+    this.enderecoService()
+      .retrieve()
+      .then(res => {
+        this.enderecos = res.data;
+      });
+    this.propriedadeService()
+      .retrieve()
+      .then(res => {
+        this.propriedades = res.data;
+      });
+  }
 }

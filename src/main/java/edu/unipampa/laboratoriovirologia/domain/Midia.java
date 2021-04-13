@@ -1,5 +1,6 @@
 package edu.unipampa.laboratoriovirologia.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import java.io.Serializable;
 import javax.persistence.*;
 
@@ -29,6 +30,10 @@ public class Midia implements Serializable {
 
     @Column(name = "file_content_type")
     private String fileContentType;
+
+    @ManyToOne
+    @JsonIgnoreProperties(value = { "users", "midias", "exames", "proprietario" }, allowSetters = true)
+    private Amostra amostra;
 
     // jhipster-needle-entity-add-field - JHipster will add fields here
     public Long getId() {
@@ -94,6 +99,19 @@ public class Midia implements Serializable {
 
     public void setFileContentType(String fileContentType) {
         this.fileContentType = fileContentType;
+    }
+
+    public Amostra getAmostra() {
+        return this.amostra;
+    }
+
+    public Midia amostra(Amostra amostra) {
+        this.setAmostra(amostra);
+        return this;
+    }
+
+    public void setAmostra(Amostra amostra) {
+        this.amostra = amostra;
     }
 
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here

@@ -25,6 +25,16 @@
               {{ midia.fileContentType }}, {{ byteSize(midia.file) }}
             </div>
           </dd>
+          <dt>
+            <span>Amostra</span>
+          </dt>
+          <dd>
+            <div v-if="midia.amostra">
+              <router-link :to="{ name: 'AmostraView', params: { amostraId: midia.amostra.id } }">{{
+                midia.amostra.protocolo
+              }}</router-link>
+            </div>
+          </dd>
         </dl>
         <button type="submit" v-on:click.prevent="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
           <font-awesome-icon icon="arrow-left"></font-awesome-icon>&nbsp;<span> Back</span>

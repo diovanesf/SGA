@@ -32,6 +32,10 @@ public class Propriedade implements Serializable {
     @Column(name = "pricipal_suspeita")
     private String pricipalSuspeita;
 
+    @OneToOne
+    @JoinColumn(unique = true)
+    private Endereco endereco;
+
     // jhipster-needle-entity-add-field - JHipster will add fields here
     public Long getId() {
         return id;
@@ -109,6 +113,19 @@ public class Propriedade implements Serializable {
 
     public void setPricipalSuspeita(String pricipalSuspeita) {
         this.pricipalSuspeita = pricipalSuspeita;
+    }
+
+    public Endereco getEndereco() {
+        return this.endereco;
+    }
+
+    public Propriedade endereco(Endereco endereco) {
+        this.setEndereco(endereco);
+        return this;
+    }
+
+    public void setEndereco(Endereco endereco) {
+        this.endereco = endereco;
     }
 
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here

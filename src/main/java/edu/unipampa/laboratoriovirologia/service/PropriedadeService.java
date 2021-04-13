@@ -1,48 +1,100 @@
 package edu.unipampa.laboratoriovirologia.service;
 
+import edu.unipampa.laboratoriovirologia.domain.Propriedade;
+import edu.unipampa.laboratoriovirologia.repository.PropriedadeRepository;
 import edu.unipampa.laboratoriovirologia.service.dto.PropriedadeDTO;
+import edu.unipampa.laboratoriovirologia.service.mapper.PropriedadeMapper;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 /**
- * Service Interface for managing {@link edu.unipampa.laboratoriovirologia.domain.Propriedade}.
+ * Service Implementation for managing {@link Propriedade}.
  */
-public interface PropriedadeService {
+@Service
+@Transactional
+public class PropriedadeService {
+
+    private final Logger log = LoggerFactory.getLogger(PropriedadeService.class);
+
+    private final PropriedadeRepository propriedadeRepository;
+
+    private final PropriedadeMapper propriedadeMapper;
+
+    public PropriedadeService(PropriedadeRepository propriedadeRepository, PropriedadeMapper propriedadeMapper) {
+        this.propriedadeRepository = propriedadeRepository;
+        this.propriedadeMapper = propriedadeMapper;
+    }
+
     /**
      * Save a propriedade.
      *
      * @param propriedadeDTO the entity to save.
      * @return the persisted entity.
      */
-    PropriedadeDTO save(PropriedadeDTO propriedadeDTO);
+    public PropriedadeDTO save(PropriedadeDTO propriedadeDTO) {
+        log.debug("Request to save Propriedade : {}", propriedadeDTO);
+        Propriedade propriedade = propriedadeMapper.toEntity(propriedadeDTO);
+        propriedade = propriedadeRepository.save(propriedade);
+        return propriedadeMapper.toDto(propriedade);
+    }
 
     /**
-     * Partially updates a propriedade.
+     * Partially update a propriedade.
      *
      * @param propriedadeDTO the entity to update partially.
      * @return the persisted entity.
      */
-    Optional<PropriedadeDTO> partialUpdate(PropriedadeDTO propriedadeDTO);
+    public Optional<PropriedadeDTO> partialUpdate(PropriedadeDTO propriedadeDTO) {
+        log.debug("Request to partially update Propriedade : {}", propriedadeDTO);
+
+        return propriedadeRepository
+            .findById(propriedadeDTO.getId())
+            .map(
+                existingPropriedade -> {
+                    propriedadeMapper.partialUpdate(existingPropriedade, propriedadeDTO);
+                    return existingPropriedade;
+                }
+            )
+            .map(propriedadeRepository::save)
+            .map(propriedadeMapper::toDto);
+    }
 
     /**
      * Get all the propriedades.
      *
      * @return the list of entities.
      */
-    List<PropriedadeDTO> findAll();
+    @Transactional(readOnly = true)
+    public List<PropriedadeDTO> findAll() {
+        log.debug("Request to get all Propriedades");
+        return propriedadeRepository.findAll().stream().map(propriedadeMapper::toDto).collect(Collectors.toCollection(LinkedList::new));
+    }
 
     /**
-     * Get the "id" propriedade.
+     * Get one propriedade by id.
      *
      * @param id the id of the entity.
      * @return the entity.
      */
-    Optional<PropriedadeDTO> findOne(Long id);
+    @Transactional(readOnly = true)
+    public Optional<PropriedadeDTO> findOne(Long id) {
+        log.debug("Request to get Propriedade : {}", id);
+        return propriedadeRepository.findById(id).map(propriedadeMapper::toDto);
+    }
 
     /**
-     * Delete the "id" propriedade.
+     * Delete the propriedade by id.
      *
      * @param id the id of the entity.
      */
-    void delete(Long id);
+    public void delete(Long id) {
+        log.debug("Request to delete Propriedade : {}", id);
+        propriedadeRepository.deleteById(id);
+    }
 }

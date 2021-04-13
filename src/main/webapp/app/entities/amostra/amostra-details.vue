@@ -52,6 +52,25 @@
           <dd>
             <span>{{ amostra.status }}</span>
           </dd>
+          <dt>
+            <span>User</span>
+          </dt>
+          <dd>
+            <span v-for="(user, i) in amostra.users" :key="user.id"
+              >{{ i > 0 ? ', ' : '' }}
+              {{ user.login }}
+            </span>
+          </dd>
+          <dt>
+            <span>Proprietario</span>
+          </dt>
+          <dd>
+            <div v-if="amostra.proprietario">
+              <router-link :to="{ name: 'ProprietarioView', params: { proprietarioId: amostra.proprietario.id } }">{{
+                amostra.proprietario.nome
+              }}</router-link>
+            </div>
+          </dd>
         </dl>
         <button type="submit" v-on:click.prevent="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
           <font-awesome-icon icon="arrow-left"></font-awesome-icon>&nbsp;<span> Back</span>

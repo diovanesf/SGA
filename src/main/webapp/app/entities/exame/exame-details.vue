@@ -22,6 +22,16 @@
           <dd>
             <span>{{ exame.resultado }}</span>
           </dd>
+          <dt>
+            <span>Amostra</span>
+          </dt>
+          <dd>
+            <div v-if="exame.amostra">
+              <router-link :to="{ name: 'AmostraView', params: { amostraId: exame.amostra.id } }">{{
+                exame.amostra.protocolo
+              }}</router-link>
+            </div>
+          </dd>
         </dl>
         <button type="submit" v-on:click.prevent="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
           <font-awesome-icon icon="arrow-left"></font-awesome-icon>&nbsp;<span> Back</span>

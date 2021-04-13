@@ -44,6 +44,19 @@
               v-model="$v.exame.resultado.$model"
             />
           </div>
+          <div class="form-group">
+            <label class="form-control-label" for="exame-amostra">Amostra</label>
+            <select class="form-control" id="exame-amostra" data-cy="amostra" name="amostra" v-model="exame.amostra">
+              <option v-bind:value="null"></option>
+              <option
+                v-bind:value="exame.amostra && amostraOption.id === exame.amostra.id ? exame.amostra : amostraOption"
+                v-for="amostraOption in amostras"
+                :key="amostraOption.id"
+              >
+                {{ amostraOption.protocolo }}
+              </option>
+            </select>
+          </div>
         </div>
         <div>
           <button type="button" id="cancel-save" class="btn btn-secondary" v-on:click="previousState()">

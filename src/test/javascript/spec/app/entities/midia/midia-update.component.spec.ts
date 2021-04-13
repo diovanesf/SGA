@@ -8,6 +8,8 @@ import MidiaUpdateComponent from '@/entities/midia/midia-update.vue';
 import MidiaClass from '@/entities/midia/midia-update.component';
 import MidiaService from '@/entities/midia/midia.service';
 
+import AmostraService from '@/entities/amostra/amostra.service';
+
 const localVue = createLocalVue();
 
 config.initVueApp(localVue);
@@ -35,6 +37,8 @@ describe('Component Tests', () => {
         router,
         provide: {
           midiaService: () => midiaServiceStub,
+
+          amostraService: () => new AmostraService(),
         },
       });
       comp = wrapper.vm;

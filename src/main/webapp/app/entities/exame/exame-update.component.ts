@@ -1,5 +1,8 @@
 import { Component, Vue, Inject } from 'vue-property-decorator';
 
+import AmostraService from '@/entities/amostra/amostra.service';
+import { IAmostra } from '@/shared/model/amostra.model';
+
 import { IExame, Exame } from '@/shared/model/exame.model';
 import ExameService from './exame.service';
 
@@ -17,6 +20,10 @@ const validations: any = {
 export default class ExameUpdate extends Vue {
   @Inject('exameService') private exameService: () => ExameService;
   public exame: IExame = new Exame();
+
+  @Inject('amostraService') private amostraService: () => AmostraService;
+
+  public amostras: IAmostra[] = [];
   public isSaving = false;
   public currentLanguage = '';
 
@@ -25,6 +32,7 @@ export default class ExameUpdate extends Vue {
       if (to.params.exameId) {
         vm.retrieveExame(to.params.exameId);
       }
+      vm.initRelationships();
     });
   }
 
@@ -85,5 +93,11 @@ export default class ExameUpdate extends Vue {
     this.$router.go(-1);
   }
 
-  public initRelationships(): void {}
+  public initRelationships(): void {
+    this.amostraService()
+      .retrieve()
+      .then(res => {
+        this.amostras = res.data;
+      });
+  }
 }

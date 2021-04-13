@@ -33,8 +33,37 @@
       "fieldType": "String"
     }
   ],
-  "relationships": [],
-  "service": "serviceImpl",
+  "relationships": [
+    {
+      "relationshipName": "user",
+      "otherEntityName": "user",
+      "relationshipType": "many-to-many",
+      "otherEntityField": "login",
+      "ownerSide": true,
+      "otherEntityRelationshipName": "amostra"
+    },
+    {
+      "relationshipType": "one-to-many",
+      "otherEntityName": "midia",
+      "otherEntityRelationshipName": "amostra",
+      "relationshipName": "midia",
+      "otherEntityField": "nome"
+    },
+    {
+      "relationshipType": "one-to-many",
+      "otherEntityName": "exame",
+      "otherEntityRelationshipName": "amostra",
+      "relationshipName": "exame",
+      "otherEntityField": "nome"
+    },
+    {
+      "relationshipName": "proprietario",
+      "otherEntityName": "proprietario",
+      "relationshipType": "many-to-one",
+      "otherEntityField": "nome"
+    }
+  ],
+  "service": "serviceClass",
   "dto": "mapstruct",
   "jpaMetamodelFiltering": false,
   "readOnly": false,

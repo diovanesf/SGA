@@ -38,8 +38,25 @@
             <column name="status" type="varchar(255)">
                 <constraints nullable="true" />
             </column>
+            <column name="proprietario_id" type="bigint">
+                <constraints nullable="true" />
+            </column>
             <!-- jhipster-needle-liquibase-add-column - JHipster will add columns here -->
         </createTable>
+    </changeSet>
+
+    <changeSet id="20210413052456-1-relations" author="jhipster">
+
+        <createTable tableName="rel_amostra__user">
+            <column name="user_id" type="bigint">
+                <constraints nullable="false"/>
+            </column>
+            <column name="amostra_id" type="bigint">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+
+        <addPrimaryKey columnNames="amostra_id, user_id" tableName="rel_amostra__user"/>
     </changeSet>
 
     <!-- jhipster-needle-liquibase-add-changeset - JHipster will add changesets here -->

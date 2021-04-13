@@ -19,6 +19,7 @@ public class MidiaDTO implements Serializable {
     private byte[] file;
 
     private String fileContentType;
+    private AmostraDTO amostra;
 
     public Long getId() {
         return id;
@@ -60,6 +61,14 @@ public class MidiaDTO implements Serializable {
         this.fileContentType = fileContentType;
     }
 
+    public AmostraDTO getAmostra() {
+        return amostra;
+    }
+
+    public void setAmostra(AmostraDTO amostra) {
+        this.amostra = amostra;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) {
@@ -89,6 +98,7 @@ public class MidiaDTO implements Serializable {
             ", nome='" + getNome() + "'" +
             ", descricao='" + getDescricao() + "'" +
             ", file='" + getFile() + "'" +
+            ", amostra=" + getAmostra() +
             "}";
     }
 }

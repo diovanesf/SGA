@@ -1,3 +1,5 @@
+import { IEndereco } from '@/shared/model/endereco.model';
+
 export interface IPropriedade {
   id?: number;
   tipo?: string | null;
@@ -5,6 +7,7 @@ export interface IPropriedade {
   acometidos?: string | null;
   observacoes?: string | null;
   pricipalSuspeita?: string | null;
+  endereco?: IEndereco | null;
 }
 
 export class Propriedade implements IPropriedade {
@@ -14,6 +17,7 @@ export class Propriedade implements IPropriedade {
     public numeroAnimais?: number | null,
     public acometidos?: string | null,
     public observacoes?: string | null,
-    public pricipalSuspeita?: string | null
+    public pricipalSuspeita?: string | null,
+    public endereco?: IEndereco | null
   ) {}
 }

@@ -16,6 +16,8 @@ public class ExameDTO implements Serializable {
 
     private String resultado;
 
+    private AmostraDTO amostra;
+
     public Long getId() {
         return id;
     }
@@ -48,6 +50,14 @@ public class ExameDTO implements Serializable {
         this.resultado = resultado;
     }
 
+    public AmostraDTO getAmostra() {
+        return amostra;
+    }
+
+    public void setAmostra(AmostraDTO amostra) {
+        this.amostra = amostra;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) {
@@ -77,6 +87,7 @@ public class ExameDTO implements Serializable {
             ", nome='" + getNome() + "'" +
             ", tipo='" + getTipo() + "'" +
             ", resultado='" + getResultado() + "'" +
+            ", amostra=" + getAmostra() +
             "}";
     }
 }

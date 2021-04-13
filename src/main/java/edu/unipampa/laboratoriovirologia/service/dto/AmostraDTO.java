@@ -1,7 +1,9 @@
 package edu.unipampa.laboratoriovirologia.service.dto;
 
 import java.io.Serializable;
+import java.util.HashSet;
 import java.util.Objects;
+import java.util.Set;
 
 /**
  * A DTO for the {@link edu.unipampa.laboratoriovirologia.domain.Amostra} entity.
@@ -25,6 +27,10 @@ public class AmostraDTO implements Serializable {
     private String condicaoMaterial;
 
     private String status;
+
+    private Set<UserDTO> users = new HashSet<>();
+
+    private ProprietarioDTO proprietario;
 
     public Long getId() {
         return id;
@@ -98,6 +104,22 @@ public class AmostraDTO implements Serializable {
         this.status = status;
     }
 
+    public Set<UserDTO> getUsers() {
+        return users;
+    }
+
+    public void setUsers(Set<UserDTO> users) {
+        this.users = users;
+    }
+
+    public ProprietarioDTO getProprietario() {
+        return proprietario;
+    }
+
+    public void setProprietario(ProprietarioDTO proprietario) {
+        this.proprietario = proprietario;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) {
@@ -132,6 +154,8 @@ public class AmostraDTO implements Serializable {
             ", acondicionamento='" + getAcondicionamento() + "'" +
             ", condicaoMaterial='" + getCondicaoMaterial() + "'" +
             ", status='" + getStatus() + "'" +
+            ", users=" + getUsers() +
+            ", proprietario=" + getProprietario() +
             "}";
     }
 }

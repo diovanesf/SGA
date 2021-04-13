@@ -3,6 +3,9 @@ import { Component, Inject } from 'vue-property-decorator';
 import { mixins } from 'vue-class-component';
 import JhiDataUtils from '@/shared/data/data-utils.service';
 
+import AmostraService from '@/entities/amostra/amostra.service';
+import { IAmostra } from '@/shared/model/amostra.model';
+
 import { IMidia, Midia } from '@/shared/model/midia.model';
 import MidiaService from './midia.service';
 
@@ -20,6 +23,10 @@ const validations: any = {
 export default class MidiaUpdate extends mixins(JhiDataUtils) {
   @Inject('midiaService') private midiaService: () => MidiaService;
   public midia: IMidia = new Midia();
+
+  @Inject('amostraService') private amostraService: () => AmostraService;
+
+  public amostras: IAmostra[] = [];
   public isSaving = false;
   public currentLanguage = '';
 
@@ -28,6 +35,7 @@ export default class MidiaUpdate extends mixins(JhiDataUtils) {
       if (to.params.midiaId) {
         vm.retrieveMidia(to.params.midiaId);
       }
+      vm.initRelationships();
     });
   }
 
@@ -88,5 +96,11 @@ export default class MidiaUpdate extends mixins(JhiDataUtils) {
     this.$router.go(-1);
   }
 
-  public initRelationships(): void {}
+  public initRelationships(): void {
+    this.amostraService()
+      .retrieve()
+      .then(res => {
+        this.amostras = res.data;
+      });
+  }
 }

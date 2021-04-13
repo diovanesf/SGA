@@ -62,6 +62,19 @@
             />
             <input type="hidden" class="form-control" name="fileContentType" id="midia-fileContentType" v-model="midia.fileContentType" />
           </div>
+          <div class="form-group">
+            <label class="form-control-label" for="midia-amostra">Amostra</label>
+            <select class="form-control" id="midia-amostra" data-cy="amostra" name="amostra" v-model="midia.amostra">
+              <option v-bind:value="null"></option>
+              <option
+                v-bind:value="midia.amostra && amostraOption.id === midia.amostra.id ? midia.amostra : amostraOption"
+                v-for="amostraOption in amostras"
+                :key="amostraOption.id"
+              >
+                {{ amostraOption.protocolo }}
+              </option>
+            </select>
+          </div>
         </div>
         <div>
           <button type="button" id="cancel-save" class="btn btn-secondary" v-on:click="previousState()">

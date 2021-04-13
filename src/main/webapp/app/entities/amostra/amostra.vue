@@ -36,6 +36,8 @@
             <th scope="row"><span>Acondicionamento</span></th>
             <th scope="row"><span>Condicao Material</span></th>
             <th scope="row"><span>Status</span></th>
+            <th scope="row"><span>User</span></th>
+            <th scope="row"><span>Proprietario</span></th>
             <th scope="row"></th>
           </tr>
         </thead>
@@ -52,6 +54,19 @@
             <td>{{ amostra.acondicionamento }}</td>
             <td>{{ amostra.condicaoMaterial }}</td>
             <td>{{ amostra.status }}</td>
+            <td>
+              <span v-for="(user, i) in amostra.users" :key="user.id"
+                >{{ i > 0 ? ', ' : '' }}
+                {{ user.login }}
+              </span>
+            </td>
+            <td>
+              <div v-if="amostra.proprietario">
+                <router-link :to="{ name: 'ProprietarioView', params: { proprietarioId: amostra.proprietario.id } }">{{
+                  amostra.proprietario.nome
+                }}</router-link>
+              </div>
+            </td>
             <td class="text-right">
               <div class="btn-group">
                 <router-link :to="{ name: 'AmostraView', params: { amostraId: amostra.id } }" custom v-slot="{ navigate }">

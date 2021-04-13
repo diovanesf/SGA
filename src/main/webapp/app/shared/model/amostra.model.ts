@@ -1,3 +1,8 @@
+import { IUser } from '@/shared/model/user.model';
+import { IMidia } from '@/shared/model/midia.model';
+import { IExame } from '@/shared/model/exame.model';
+import { IProprietario } from '@/shared/model/proprietario.model';
+
 export interface IAmostra {
   id?: number;
   protocolo?: string | null;
@@ -8,6 +13,10 @@ export interface IAmostra {
   acondicionamento?: string | null;
   condicaoMaterial?: string | null;
   status?: string | null;
+  users?: IUser[] | null;
+  midias?: IMidia[] | null;
+  exames?: IExame[] | null;
+  proprietario?: IProprietario | null;
 }
 
 export class Amostra implements IAmostra {
@@ -20,6 +29,10 @@ export class Amostra implements IAmostra {
     public materialRecebido?: string | null,
     public acondicionamento?: string | null,
     public condicaoMaterial?: string | null,
-    public status?: string | null
+    public status?: string | null,
+    public users?: IUser[] | null,
+    public midias?: IMidia[] | null,
+    public exames?: IExame[] | null,
+    public proprietario?: IProprietario | null
   ) {}
 }

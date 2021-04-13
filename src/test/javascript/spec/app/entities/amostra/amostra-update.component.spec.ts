@@ -8,6 +8,14 @@ import AmostraUpdateComponent from '@/entities/amostra/amostra-update.vue';
 import AmostraClass from '@/entities/amostra/amostra-update.component';
 import AmostraService from '@/entities/amostra/amostra.service';
 
+import UserService from '@/admin/user-management/user-management.service';
+
+import MidiaService from '@/entities/midia/midia.service';
+
+import ExameService from '@/entities/exame/exame.service';
+
+import ProprietarioService from '@/entities/proprietario/proprietario.service';
+
 const localVue = createLocalVue();
 
 config.initVueApp(localVue);
@@ -35,6 +43,14 @@ describe('Component Tests', () => {
         router,
         provide: {
           amostraService: () => amostraServiceStub,
+
+          userService: () => new UserService(),
+
+          midiaService: () => new MidiaService(),
+
+          exameService: () => new ExameService(),
+
+          proprietarioService: () => new ProprietarioService(),
         },
       });
       comp = wrapper.vm;

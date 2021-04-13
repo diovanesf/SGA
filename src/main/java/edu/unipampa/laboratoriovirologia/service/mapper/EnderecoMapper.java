@@ -8,4 +8,10 @@ import org.mapstruct.*;
  * Mapper for the entity {@link Endereco} and its DTO {@link EnderecoDTO}.
  */
 @Mapper(componentModel = "spring", uses = {})
-public interface EnderecoMapper extends EntityMapper<EnderecoDTO, Endereco> {}
+public interface EnderecoMapper extends EntityMapper<EnderecoDTO, Endereco> {
+    @Named("endereco")
+    @BeanMapping(ignoreByDefault = true)
+    @Mapping(target = "id", source = "id")
+    @Mapping(target = "endereco", source = "endereco")
+    EnderecoDTO toDtoEndereco(Endereco endereco);
+}

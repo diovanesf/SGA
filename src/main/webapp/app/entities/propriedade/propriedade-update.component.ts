@@ -1,5 +1,8 @@
 import { Component, Vue, Inject } from 'vue-property-decorator';
 
+import EnderecoService from '@/entities/endereco/endereco.service';
+import { IEndereco } from '@/shared/model/endereco.model';
+
 import { IPropriedade, Propriedade } from '@/shared/model/propriedade.model';
 import PropriedadeService from './propriedade.service';
 
@@ -19,6 +22,10 @@ const validations: any = {
 export default class PropriedadeUpdate extends Vue {
   @Inject('propriedadeService') private propriedadeService: () => PropriedadeService;
   public propriedade: IPropriedade = new Propriedade();
+
+  @Inject('enderecoService') private enderecoService: () => EnderecoService;
+
+  public enderecos: IEndereco[] = [];
   public isSaving = false;
   public currentLanguage = '';
 
@@ -27,6 +34,7 @@ export default class PropriedadeUpdate extends Vue {
       if (to.params.propriedadeId) {
         vm.retrievePropriedade(to.params.propriedadeId);
       }
+      vm.initRelationships();
     });
   }
 
@@ -87,5 +95,11 @@ export default class PropriedadeUpdate extends Vue {
     this.$router.go(-1);
   }
 
-  public initRelationships(): void {}
+  public initRelationships(): void {
+    this.enderecoService()
+      .retrieve()
+      .then(res => {
+        this.enderecos = res.data;
+      });
+  }
 }

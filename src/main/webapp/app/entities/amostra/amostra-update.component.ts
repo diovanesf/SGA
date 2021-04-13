@@ -1,5 +1,16 @@
 import { Component, Vue, Inject } from 'vue-property-decorator';
 
+import UserService from '@/admin/user-management/user-management.service';
+
+import MidiaService from '@/entities/midia/midia.service';
+import { IMidia } from '@/shared/model/midia.model';
+
+import ExameService from '@/entities/exame/exame.service';
+import { IExame } from '@/shared/model/exame.model';
+
+import ProprietarioService from '@/entities/proprietario/proprietario.service';
+import { IProprietario } from '@/shared/model/proprietario.model';
+
 import { IAmostra, Amostra } from '@/shared/model/amostra.model';
 import AmostraService from './amostra.service';
 
@@ -22,6 +33,22 @@ const validations: any = {
 export default class AmostraUpdate extends Vue {
   @Inject('amostraService') private amostraService: () => AmostraService;
   public amostra: IAmostra = new Amostra();
+
+  @Inject('userService') private userService: () => UserService;
+
+  public users: Array<any> = [];
+
+  @Inject('midiaService') private midiaService: () => MidiaService;
+
+  public midias: IMidia[] = [];
+
+  @Inject('exameService') private exameService: () => ExameService;
+
+  public exames: IExame[] = [];
+
+  @Inject('proprietarioService') private proprietarioService: () => ProprietarioService;
+
+  public proprietarios: IProprietario[] = [];
   public isSaving = false;
   public currentLanguage = '';
 
@@ -30,6 +57,7 @@ export default class AmostraUpdate extends Vue {
       if (to.params.amostraId) {
         vm.retrieveAmostra(to.params.amostraId);
       }
+      vm.initRelationships();
     });
   }
 
@@ -41,6 +69,7 @@ export default class AmostraUpdate extends Vue {
         this.currentLanguage = this.$store.getters.currentLanguage;
       }
     );
+    this.amostra.users = [];
   }
 
   public save(): void {
@@ -90,5 +119,37 @@ export default class AmostraUpdate extends Vue {
     this.$router.go(-1);
   }
 
-  public initRelationships(): void {}
+  public initRelationships(): void {
+    this.userService()
+      .retrieve()
+      .then(res => {
+        this.users = res.data;
+      });
+    this.midiaService()
+      .retrieve()
+      .then(res => {
+        this.midias = res.data;
+      });
+    this.exameService()
+      .retrieve()
+      .then(res => {
+        this.exames = res.data;
+      });
+    this.proprietarioService()
+      .retrieve()
+      .then(res => {
+        this.proprietarios = res.data;
+      });
+  }
+
+  public getSelected(selectedVals, option): any {
+    if (selectedVals) {
+      for (let i = 0; i < selectedVals.length; i++) {
+        if (option.id === selectedVals[i].id) {
+          return selectedVals[i];
+        }
+      }
+    }
+    return option;
+  }
 }

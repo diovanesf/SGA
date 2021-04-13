@@ -13,8 +13,27 @@
       "fieldType": "String"
     }
   ],
-  "relationships": [],
-  "service": "serviceImpl",
+  "relationships": [
+    {
+      "relationshipName": "endereco",
+      "otherEntityName": "endereco",
+      "relationshipType": "one-to-one",
+      "otherEntityField": "endereco",
+      "ownerSide": true,
+      "id": false,
+      "otherEntityRelationshipName": "proprietario"
+    },
+    {
+      "relationshipName": "propriedade",
+      "otherEntityName": "propriedade",
+      "relationshipType": "one-to-one",
+      "otherEntityField": "tipo",
+      "ownerSide": true,
+      "id": false,
+      "otherEntityRelationshipName": "proprietario"
+    }
+  ],
+  "service": "serviceClass",
   "dto": "mapstruct",
   "jpaMetamodelFiltering": false,
   "readOnly": false,

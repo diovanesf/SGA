@@ -8,6 +8,8 @@ import PropriedadeUpdateComponent from '@/entities/propriedade/propriedade-updat
 import PropriedadeClass from '@/entities/propriedade/propriedade-update.component';
 import PropriedadeService from '@/entities/propriedade/propriedade.service';
 
+import EnderecoService from '@/entities/endereco/endereco.service';
+
 const localVue = createLocalVue();
 
 config.initVueApp(localVue);
@@ -35,6 +37,8 @@ describe('Component Tests', () => {
         router,
         provide: {
           propriedadeService: () => propriedadeServiceStub,
+
+          enderecoService: () => new EnderecoService(),
         },
       });
       comp = wrapper.vm;

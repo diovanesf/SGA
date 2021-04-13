@@ -33,6 +33,7 @@
             <th scope="row"><span>Acometidos</span></th>
             <th scope="row"><span>Observacoes</span></th>
             <th scope="row"><span>Pricipal Suspeita</span></th>
+            <th scope="row"><span>Endereco</span></th>
             <th scope="row"></th>
           </tr>
         </thead>
@@ -46,6 +47,13 @@
             <td>{{ propriedade.acometidos }}</td>
             <td>{{ propriedade.observacoes }}</td>
             <td>{{ propriedade.pricipalSuspeita }}</td>
+            <td>
+              <div v-if="propriedade.endereco">
+                <router-link :to="{ name: 'EnderecoView', params: { enderecoId: propriedade.endereco.id } }">{{
+                  propriedade.endereco.endereco
+                }}</router-link>
+              </div>
+            </td>
             <td class="text-right">
               <div class="btn-group">
                 <router-link :to="{ name: 'PropriedadeView', params: { propriedadeId: propriedade.id } }" custom v-slot="{ navigate }">

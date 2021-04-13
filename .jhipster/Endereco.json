@@ -22,7 +22,7 @@
     }
   ],
   "relationships": [],
-  "service": "serviceImpl",
+  "service": "serviceClass",
   "dto": "mapstruct",
   "jpaMetamodelFiltering": false,
   "readOnly": false,

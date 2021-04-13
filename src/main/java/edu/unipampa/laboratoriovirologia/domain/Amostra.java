@@ -1,6 +1,9 @@
 package edu.unipampa.laboratoriovirologia.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import java.io.Serializable;
+import java.util.HashSet;
+import java.util.Set;
 import javax.persistence.*;
 
 /**
@@ -40,6 +43,26 @@ public class Amostra implements Serializable {
 
     @Column(name = "status")
     private String status;
+
+    @ManyToMany
+    @JoinTable(
+        name = "rel_amostra__user",
+        joinColumns = @JoinColumn(name = "amostra_id"),
+        inverseJoinColumns = @JoinColumn(name = "user_id")
+    )
+    private Set<User> users = new HashSet<>();
+
+    @OneToMany(mappedBy = "amostra")
+    @JsonIgnoreProperties(value = { "amostra" }, allowSetters = true)
+    private Set<Midia> midias = new HashSet<>();
+
+    @OneToMany(mappedBy = "amostra")
+    @JsonIgnoreProperties(value = { "amostra" }, allowSetters = true)
+    private Set<Exame> exames = new HashSet<>();
+
+    @ManyToOne
+    @JsonIgnoreProperties(value = { "endereco", "propriedade" }, allowSetters = true)
+    private Proprietario proprietario;
 
     // jhipster-needle-entity-add-field - JHipster will add fields here
     public Long getId() {
@@ -157,6 +180,104 @@ public class Amostra implements Serializable {
 
     public void setStatus(String status) {
         this.status = status;
+    }
+
+    public Set<User> getUsers() {
+        return this.users;
+    }
+
+    public Amostra users(Set<User> users) {
+        this.setUsers(users);
+        return this;
+    }
+
+    public Amostra addUser(User user) {
+        this.users.add(user);
+        return this;
+    }
+
+    public Amostra removeUser(User user) {
+        this.users.remove(user);
+        return this;
+    }
+
+    public void setUsers(Set<User> users) {
+        this.users = users;
+    }
+
+    public Set<Midia> getMidias() {
+        return this.midias;
+    }
+
+    public Amostra midias(Set<Midia> midias) {
+        this.setMidias(midias);
+        return this;
+    }
+
+    public Amostra addMidia(Midia midia) {
+        this.midias.add(midia);
+        midia.setAmostra(this);
+        return this;
+    }
+
+    public Amostra removeMidia(Midia midia) {
+        this.midias.remove(midia);
+        midia.setAmostra(null);
+        return this;
+    }
+
+    public void setMidias(Set<Midia> midias) {
+        if (this.midias != null) {
+            this.midias.forEach(i -> i.setAmostra(null));
+        }
+        if (midias != null) {
+            midias.forEach(i -> i.setAmostra(this));
+        }
+        this.midias = midias;
+    }
+
+    public Set<Exame> getExames() {
+        return this.exames;
+    }
+
+    public Amostra exames(Set<Exame> exames) {
+        this.setExames(exames);
+        return this;
+    }
+
+    public Amostra addExame(Exame exame) {
+        this.exames.add(exame);
+        exame.setAmostra(this);
+        return this;
+    }
+
+    public Amostra removeExame(Exame exame) {
+        this.exames.remove(exame);
+        exame.setAmostra(null);
+        return this;
+    }
+
+    public void setExames(Set<Exame> exames) {
+        if (this.exames != null) {
+            this.exames.forEach(i -> i.setAmostra(null));
+        }
+        if (exames != null) {
+            exames.forEach(i -> i.setAmostra(this));
+        }
+        this.exames = exames;
+    }
+
+    public Proprietario getProprietario() {
+        return this.proprietario;
+    }
+
+    public Amostra proprietario(Proprietario proprietario) {
+        this.setProprietario(proprietario);
+        return this;
+    }
+
+    public void setProprietario(Proprietario proprietario) {
+        this.proprietario = proprietario;
     }
 
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here

@@ -1,48 +1,100 @@
 package edu.unipampa.laboratoriovirologia.service;
 
+import edu.unipampa.laboratoriovirologia.domain.Endereco;
+import edu.unipampa.laboratoriovirologia.repository.EnderecoRepository;
 import edu.unipampa.laboratoriovirologia.service.dto.EnderecoDTO;
+import edu.unipampa.laboratoriovirologia.service.mapper.EnderecoMapper;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 /**
- * Service Interface for managing {@link edu.unipampa.laboratoriovirologia.domain.Endereco}.
+ * Service Implementation for managing {@link Endereco}.
  */
-public interface EnderecoService {
+@Service
+@Transactional
+public class EnderecoService {
+
+    private final Logger log = LoggerFactory.getLogger(EnderecoService.class);
+
+    private final EnderecoRepository enderecoRepository;
+
+    private final EnderecoMapper enderecoMapper;
+
+    public EnderecoService(EnderecoRepository enderecoRepository, EnderecoMapper enderecoMapper) {
+        this.enderecoRepository = enderecoRepository;
+        this.enderecoMapper = enderecoMapper;
+    }
+
     /**
      * Save a endereco.
      *
      * @param enderecoDTO the entity to save.
      * @return the persisted entity.
      */
-    EnderecoDTO save(EnderecoDTO enderecoDTO);
+    public EnderecoDTO save(EnderecoDTO enderecoDTO) {
+        log.debug("Request to save Endereco : {}", enderecoDTO);
+        Endereco endereco = enderecoMapper.toEntity(enderecoDTO);
+        endereco = enderecoRepository.save(endereco);
+        return enderecoMapper.toDto(endereco);
+    }
 
     /**
-     * Partially updates a endereco.
+     * Partially update a endereco.
      *
      * @param enderecoDTO the entity to update partially.
      * @return the persisted entity.
      */
-    Optional<EnderecoDTO> partialUpdate(EnderecoDTO enderecoDTO);
+    public Optional<EnderecoDTO> partialUpdate(EnderecoDTO enderecoDTO) {
+        log.debug("Request to partially update Endereco : {}", enderecoDTO);
+
+        return enderecoRepository
+            .findById(enderecoDTO.getId())
+            .map(
+                existingEndereco -> {
+                    enderecoMapper.partialUpdate(existingEndereco, enderecoDTO);
+                    return existingEndereco;
+                }
+            )
+            .map(enderecoRepository::save)
+            .map(enderecoMapper::toDto);
+    }
 
     /**
      * Get all the enderecos.
      *
      * @return the list of entities.
      */
-    List<EnderecoDTO> findAll();
+    @Transactional(readOnly = true)
+    public List<EnderecoDTO> findAll() {
+        log.debug("Request to get all Enderecos");
+        return enderecoRepository.findAll().stream().map(enderecoMapper::toDto).collect(Collectors.toCollection(LinkedList::new));
+    }
 
     /**
-     * Get the "id" endereco.
+     * Get one endereco by id.
      *
      * @param id the id of the entity.
      * @return the entity.
      */
-    Optional<EnderecoDTO> findOne(Long id);
+    @Transactional(readOnly = true)
+    public Optional<EnderecoDTO> findOne(Long id) {
+        log.debug("Request to get Endereco : {}", id);
+        return enderecoRepository.findById(id).map(enderecoMapper::toDto);
+    }
 
     /**
-     * Delete the "id" endereco.
+     * Delete the endereco by id.
      *
      * @param id the id of the entity.
      */
-    void delete(Long id);
+    public void delete(Long id) {
+        log.debug("Request to delete Endereco : {}", id);
+        enderecoRepository.deleteById(id);
+    }
 }

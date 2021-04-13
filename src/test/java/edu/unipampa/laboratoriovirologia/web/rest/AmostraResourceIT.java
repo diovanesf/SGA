@@ -2,22 +2,30 @@ package edu.unipampa.laboratoriovirologia.web.rest;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.hamcrest.Matchers.hasItem;
+import static org.mockito.Mockito.*;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
 import edu.unipampa.laboratoriovirologia.IntegrationTest;
 import edu.unipampa.laboratoriovirologia.domain.Amostra;
 import edu.unipampa.laboratoriovirologia.repository.AmostraRepository;
+import edu.unipampa.laboratoriovirologia.service.AmostraService;
 import edu.unipampa.laboratoriovirologia.service.dto.AmostraDTO;
 import edu.unipampa.laboratoriovirologia.service.mapper.AmostraMapper;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 import java.util.concurrent.atomic.AtomicLong;
 import javax.persistence.EntityManager;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.Mock;
+import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
+import org.springframework.data.domain.PageImpl;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.http.MediaType;
 import org.springframework.security.test.context.support.WithMockUser;
 import org.springframework.test.web.servlet.MockMvc;
@@ -27,6 +35,7 @@ import org.springframework.transaction.annotation.Transactional;
  * Integration tests for the {@link AmostraResource} REST controller.
  */
 @IntegrationTest
+@ExtendWith(MockitoExtension.class)
 @AutoConfigureMockMvc
 @WithMockUser
 class AmostraResourceIT {
@@ -64,8 +73,14 @@ class AmostraResourceIT {
     @Autowired
     private AmostraRepository amostraRepository;
 
+    @Mock
+    private AmostraRepository amostraRepositoryMock;
+
     @Autowired
     private AmostraMapper amostraMapper;
+
+    @Mock
+    private AmostraService amostraServiceMock;
 
     @Autowired
     private EntityManager em;
@@ -181,6 +196,24 @@ class AmostraResourceIT {
             .andExpect(jsonPath("$.[*].acondicionamento").value(hasItem(DEFAULT_ACONDICIONAMENTO)))
             .andExpect(jsonPath("$.[*].condicaoMaterial").value(hasItem(DEFAULT_CONDICAO_MATERIAL)))
             .andExpect(jsonPath("$.[*].status").value(hasItem(DEFAULT_STATUS)));
+    }
+
+    @SuppressWarnings({ "unchecked" })
+    void getAllAmostrasWithEagerRelationshipsIsEnabled() throws Exception {
+        when(amostraServiceMock.findAllWithEagerRelationships(any())).thenReturn(new PageImpl(new ArrayList<>()));
+
+        restAmostraMockMvc.perform(get(ENTITY_API_URL + "?eagerload=true")).andExpect(status().isOk());
+
+        verify(amostraServiceMock, times(1)).findAllWithEagerRelationships(any());
+    }
+
+    @SuppressWarnings({ "unchecked" })
+    void getAllAmostrasWithEagerRelationshipsIsNotEnabled() throws Exception {
+        when(amostraServiceMock.findAllWithEagerRelationships(any())).thenReturn(new PageImpl(new ArrayList<>()));
+
+        restAmostraMockMvc.perform(get(ENTITY_API_URL + "?eagerload=true")).andExpect(status().isOk());
+
+        verify(amostraServiceMock, times(1)).findAllWithEagerRelationships(any());
     }
 
     @Test

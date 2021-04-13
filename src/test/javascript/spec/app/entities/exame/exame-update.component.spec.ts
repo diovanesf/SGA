@@ -8,6 +8,8 @@ import ExameUpdateComponent from '@/entities/exame/exame-update.vue';
 import ExameClass from '@/entities/exame/exame-update.component';
 import ExameService from '@/entities/exame/exame.service';
 
+import AmostraService from '@/entities/amostra/amostra.service';
+
 const localVue = createLocalVue();
 
 config.initVueApp(localVue);
@@ -35,6 +37,8 @@ describe('Component Tests', () => {
         router,
         provide: {
           exameService: () => exameServiceStub,
+
+          amostraService: () => new AmostraService(),
         },
       });
       comp = wrapper.vm;

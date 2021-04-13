@@ -31,6 +31,7 @@
             <th scope="row"><span>Nome</span></th>
             <th scope="row"><span>Descricao</span></th>
             <th scope="row"><span>File</span></th>
+            <th scope="row"><span>Amostra</span></th>
             <th scope="row"></th>
           </tr>
         </thead>
@@ -44,6 +45,13 @@
             <td>
               <a v-if="midia.file" v-on:click="openFile(midia.fileContentType, midia.file)">open</a>
               <span v-if="midia.file">{{ midia.fileContentType }}, {{ byteSize(midia.file) }}</span>
+            </td>
+            <td>
+              <div v-if="midia.amostra">
+                <router-link :to="{ name: 'AmostraView', params: { amostraId: midia.amostra.id } }">{{
+                  midia.amostra.protocolo
+                }}</router-link>
+              </div>
             </td>
             <td class="text-right">
               <div class="btn-group">

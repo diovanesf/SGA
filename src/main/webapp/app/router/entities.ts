@@ -3,6 +3,12 @@ import { Authority } from '@/shared/security/authority';
 // prettier-ignore
 
 // prettier-ignore
+const Amostra = () => import('@/entities/amostra/amostra.vue');
+// prettier-ignore
+const AmostraUpdate = () => import('@/entities/amostra/amostra-update.vue');
+// prettier-ignore
+const AmostraDetails = () => import('@/entities/amostra/amostra-details.vue');
+// prettier-ignore
 const Proprietario = () => import('@/entities/proprietario/proprietario.vue');
 // prettier-ignore
 const ProprietarioUpdate = () => import('@/entities/proprietario/proprietario-update.vue');
@@ -27,12 +33,6 @@ const ExameUpdate = () => import('@/entities/exame/exame-update.vue');
 // prettier-ignore
 const ExameDetails = () => import('@/entities/exame/exame-details.vue');
 // prettier-ignore
-const Amostra = () => import('@/entities/amostra/amostra.vue');
-// prettier-ignore
-const AmostraUpdate = () => import('@/entities/amostra/amostra-update.vue');
-// prettier-ignore
-const AmostraDetails = () => import('@/entities/amostra/amostra-details.vue');
-// prettier-ignore
 const Midia = () => import('@/entities/midia/midia.vue');
 // prettier-ignore
 const MidiaUpdate = () => import('@/entities/midia/midia-update.vue');
@@ -41,6 +41,30 @@ const MidiaDetails = () => import('@/entities/midia/midia-details.vue');
 // jhipster-needle-add-entity-to-router-import - JHipster will import entities to the router here
 
 export default [
+  {
+    path: '/amostra',
+    name: 'Amostra',
+    component: Amostra,
+    meta: { authorities: [Authority.USER] },
+  },
+  {
+    path: '/amostra/new',
+    name: 'AmostraCreate',
+    component: AmostraUpdate,
+    meta: { authorities: [Authority.USER] },
+  },
+  {
+    path: '/amostra/:amostraId/edit',
+    name: 'AmostraEdit',
+    component: AmostraUpdate,
+    meta: { authorities: [Authority.USER] },
+  },
+  {
+    path: '/amostra/:amostraId/view',
+    name: 'AmostraView',
+    component: AmostraDetails,
+    meta: { authorities: [Authority.USER] },
+  },
   {
     path: '/proprietario',
     name: 'Proprietario',
@@ -135,30 +159,6 @@ export default [
     path: '/exame/:exameId/view',
     name: 'ExameView',
     component: ExameDetails,
-    meta: { authorities: [Authority.USER] },
-  },
-  {
-    path: '/amostra',
-    name: 'Amostra',
-    component: Amostra,
-    meta: { authorities: [Authority.USER] },
-  },
-  {
-    path: '/amostra/new',
-    name: 'AmostraCreate',
-    component: AmostraUpdate,
-    meta: { authorities: [Authority.USER] },
-  },
-  {
-    path: '/amostra/:amostraId/edit',
-    name: 'AmostraEdit',
-    component: AmostraUpdate,
-    meta: { authorities: [Authority.USER] },
-  },
-  {
-    path: '/amostra/:amostraId/view',
-    name: 'AmostraView',
-    component: AmostraDetails,
     meta: { authorities: [Authority.USER] },
   },
   {

@@ -1,5 +1,6 @@
 package edu.unipampa.laboratoriovirologia.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import java.io.Serializable;
 import javax.persistence.*;
 
@@ -25,6 +26,10 @@ public class Exame implements Serializable {
 
     @Column(name = "resultado")
     private String resultado;
+
+    @ManyToOne
+    @JsonIgnoreProperties(value = { "users", "midias", "exames", "proprietario" }, allowSetters = true)
+    private Amostra amostra;
 
     // jhipster-needle-entity-add-field - JHipster will add fields here
     public Long getId() {
@@ -77,6 +82,19 @@ public class Exame implements Serializable {
 
     public void setResultado(String resultado) {
         this.resultado = resultado;
+    }
+
+    public Amostra getAmostra() {
+        return this.amostra;
+    }
+
+    public Exame amostra(Amostra amostra) {
+        this.setAmostra(amostra);
+        return this;
+    }
+
+    public void setAmostra(Amostra amostra) {
+        this.amostra = amostra;
     }
 
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here

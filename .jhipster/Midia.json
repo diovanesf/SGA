@@ -14,8 +14,15 @@
       "fieldTypeBlobContent": "any"
     }
   ],
-  "relationships": [],
-  "service": "serviceImpl",
+  "relationships": [
+    {
+      "relationshipName": "amostra",
+      "otherEntityName": "amostra",
+      "relationshipType": "many-to-one",
+      "otherEntityField": "protocolo"
+    }
+  ],
+  "service": "serviceClass",
   "dto": "mapstruct",
   "jpaMetamodelFiltering": false,
   "readOnly": false,

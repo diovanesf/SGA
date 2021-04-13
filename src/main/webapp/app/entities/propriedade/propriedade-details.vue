@@ -34,6 +34,16 @@
           <dd>
             <span>{{ propriedade.pricipalSuspeita }}</span>
           </dd>
+          <dt>
+            <span>Endereco</span>
+          </dt>
+          <dd>
+            <div v-if="propriedade.endereco">
+              <router-link :to="{ name: 'EnderecoView', params: { enderecoId: propriedade.endereco.id } }">{{
+                propriedade.endereco.endereco
+              }}</router-link>
+            </div>
+          </dd>
         </dl>
         <button type="submit" v-on:click.prevent="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
           <font-awesome-icon icon="arrow-left"></font-awesome-icon>&nbsp;<span> Back</span>

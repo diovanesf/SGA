@@ -15,7 +15,7 @@
     "dtoSuffix": "DTO",
     "testFrameworks": [],
     "pages": [],
-    "creationTimestamp": 1618289812730,
+    "creationTimestamp": 1618295922366,
     "serviceDiscoveryType": false,
     "reactive": false,
     "authenticationType": "jwt",
@@ -39,10 +39,9 @@
     "enableTranslation": false,
     "nativeLanguage": "pt-br",
     "packageFolder": "edu/unipampa/laboratoriovirologia",
-    "jwtSecretKey": "M2E3NTk2ZTc1MGJjZTYzMmU1OWYyNWQ3N2M0MjliZmFkNmU2NjMzYmMxYTQwMDc1YzA4YTgzNDIzNTkyNjg1NzgwMTE2NzM4YmQxOWNjYjE3ZTE0YWE0NjFmMTIyMmVlMzQzYjUyYTQ2OGY1MTlkNjAzYmY4YTBmMmZjYzdiOGM=",
+    "jwtSecretKey": "MGZhNzUxYjUyZThkODZlZDE4YjAzNDJmZjg1ZDliY2NmMzI2NjFlODFiOTZmMzkwMjdmMmM4NjA1ZTRkMDZhODE1MzFkZDhmYzYyZjMxMDE0M2Q0Njg3MjVlNDZmODA3NWQzMGU3NTdkOGQwOTgyMDg2MGUzN2VhMWQ3M2FlYjU=",
     "clientPackageManager": "npm",
     "languages": ["en", "fr"],
-    "lastLiquibaseTimestamp": 1618291591000,
-    "entities": ["Proprietario", "Propriedade", "Endereco", "Exame", "Amostra", "Midia"]
+    "entities": ["Amostra", "Proprietario", "Propriedade", "Endereco", "Exame", "Midia"]
   }
 }

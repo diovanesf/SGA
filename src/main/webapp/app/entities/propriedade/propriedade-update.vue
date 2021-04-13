@@ -68,6 +68,19 @@
               v-model="$v.propriedade.pricipalSuspeita.$model"
             />
           </div>
+          <div class="form-group">
+            <label class="form-control-label" for="propriedade-endereco">Endereco</label>
+            <select class="form-control" id="propriedade-endereco" data-cy="endereco" name="endereco" v-model="propriedade.endereco">
+              <option v-bind:value="null"></option>
+              <option
+                v-bind:value="propriedade.endereco && enderecoOption.id === propriedade.endereco.id ? propriedade.endereco : enderecoOption"
+                v-for="enderecoOption in enderecos"
+                :key="enderecoOption.id"
+              >
+                {{ enderecoOption.endereco }}
+              </option>
+            </select>
+          </div>
         </div>
         <div>
           <button type="button" id="cancel-save" class="btn btn-secondary" v-on:click="previousState()">

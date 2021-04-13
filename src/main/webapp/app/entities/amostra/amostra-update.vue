@@ -104,6 +104,43 @@
               v-model="$v.amostra.status.$model"
             />
           </div>
+          <div class="form-group">
+            <label for="amostra-user">User</label>
+            <select
+              class="form-control"
+              id="amostra-user"
+              data-cy="user"
+              multiple
+              name="user"
+              v-if="amostra.users !== undefined"
+              v-model="amostra.users"
+            >
+              <option v-bind:value="getSelected(amostra.users, userOption)" v-for="userOption in users" :key="userOption.id">
+                {{ userOption.login }}
+              </option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label class="form-control-label" for="amostra-proprietario">Proprietario</label>
+            <select
+              class="form-control"
+              id="amostra-proprietario"
+              data-cy="proprietario"
+              name="proprietario"
+              v-model="amostra.proprietario"
+            >
+              <option v-bind:value="null"></option>
+              <option
+                v-bind:value="
+                  amostra.proprietario && proprietarioOption.id === amostra.proprietario.id ? amostra.proprietario : proprietarioOption
+                "
+                v-for="proprietarioOption in proprietarios"
+                :key="proprietarioOption.id"
+              >
+                {{ proprietarioOption.nome }}
+              </option>
+            </select>
+          </div>
         </div>
         <div>
           <button type="button" id="cancel-save" class="btn btn-secondary" v-on:click="previousState()">
