@@ -1,5 +1,5 @@
 <template>
-  <b-navbar data-cy="navbar" toggleable="md" type="dark" class="bg-primary">
+  <b-navbar data-cy="navbar" toggleable="md" type="dark" class="header_style b-nav-bar">
     <b-navbar-brand class="logo" b-link to="/">
       <span class="logo-img"></span>
       <span class="navbar-title">RP6</span> <span class="navbar-version">{{ version }}</span>
