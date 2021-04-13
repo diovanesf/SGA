@@ -69,6 +69,50 @@
             <font-awesome-icon icon="asterisk" />
             <span>Endereco</span>
           </b-dropdown-item>
+          <b-dropdown-item to="/amostra">
+            <font-awesome-icon icon="asterisk" />
+            <span>Amostra</span>
+          </b-dropdown-item>
+          <b-dropdown-item to="/proprietario">
+            <font-awesome-icon icon="asterisk" />
+            <span>Proprietario</span>
+          </b-dropdown-item>
+          <b-dropdown-item to="/propriedade">
+            <font-awesome-icon icon="asterisk" />
+            <span>Propriedade</span>
+          </b-dropdown-item>
+          <b-dropdown-item to="/endereco">
+            <font-awesome-icon icon="asterisk" />
+            <span>Endereco</span>
+          </b-dropdown-item>
+          <b-dropdown-item to="/exame">
+            <font-awesome-icon icon="asterisk" />
+            <span>Exame</span>
+          </b-dropdown-item>
+          <b-dropdown-item to="/midia">
+            <font-awesome-icon icon="asterisk" />
+            <span>Midia</span>
+          </b-dropdown-item>
+          <b-dropdown-item to="/proprietario">
+            <font-awesome-icon icon="asterisk" />
+            <span>Proprietario</span>
+          </b-dropdown-item>
+          <b-dropdown-item to="/propriedade">
+            <font-awesome-icon icon="asterisk" />
+            <span>Propriedade</span>
+          </b-dropdown-item>
+          <b-dropdown-item to="/endereco">
+            <font-awesome-icon icon="asterisk" />
+            <span>Endereco</span>
+          </b-dropdown-item>
+          <b-dropdown-item to="/exame">
+            <font-awesome-icon icon="asterisk" />
+            <span>Exame</span>
+          </b-dropdown-item>
+          <b-dropdown-item to="/amostra">
+            <font-awesome-icon icon="asterisk" />
+            <span>Amostra</span>
+          </b-dropdown-item>
           <!-- jhipster-needle-add-entity-to-menu - JHipster will add entities to the menu here -->
         </b-nav-item-dropdown>
         <b-nav-item-dropdown

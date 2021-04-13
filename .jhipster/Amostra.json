@@ -1,0 +1,44 @@
+{
+  "fields": [
+    {
+      "fieldName": "protocolo",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "formaEnvio",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "numeroAmostras",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "especie",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "materialRecebido",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "acondicionamento",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "condicaoMaterial",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "status",
+      "fieldType": "String"
+    }
+  ],
+  "relationships": [],
+  "service": "serviceImpl",
+  "dto": "mapstruct",
+  "jpaMetamodelFiltering": false,
+  "readOnly": false,
+  "pagination": "no",
+  "name": "Amostra",
+  "changelogDate": "20210413052456"
+}

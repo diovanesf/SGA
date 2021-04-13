@@ -26,6 +26,18 @@ const Exame = () => import('@/entities/exame/exame.vue');
 const ExameUpdate = () => import('@/entities/exame/exame-update.vue');
 // prettier-ignore
 const ExameDetails = () => import('@/entities/exame/exame-details.vue');
+// prettier-ignore
+const Amostra = () => import('@/entities/amostra/amostra.vue');
+// prettier-ignore
+const AmostraUpdate = () => import('@/entities/amostra/amostra-update.vue');
+// prettier-ignore
+const AmostraDetails = () => import('@/entities/amostra/amostra-details.vue');
+// prettier-ignore
+const Midia = () => import('@/entities/midia/midia.vue');
+// prettier-ignore
+const MidiaUpdate = () => import('@/entities/midia/midia-update.vue');
+// prettier-ignore
+const MidiaDetails = () => import('@/entities/midia/midia-details.vue');
 // jhipster-needle-add-entity-to-router-import - JHipster will import entities to the router here
 
 export default [
@@ -123,6 +135,54 @@ export default [
     path: '/exame/:exameId/view',
     name: 'ExameView',
     component: ExameDetails,
+    meta: { authorities: [Authority.USER] },
+  },
+  {
+    path: '/amostra',
+    name: 'Amostra',
+    component: Amostra,
+    meta: { authorities: [Authority.USER] },
+  },
+  {
+    path: '/amostra/new',
+    name: 'AmostraCreate',
+    component: AmostraUpdate,
+    meta: { authorities: [Authority.USER] },
+  },
+  {
+    path: '/amostra/:amostraId/edit',
+    name: 'AmostraEdit',
+    component: AmostraUpdate,
+    meta: { authorities: [Authority.USER] },
+  },
+  {
+    path: '/amostra/:amostraId/view',
+    name: 'AmostraView',
+    component: AmostraDetails,
+    meta: { authorities: [Authority.USER] },
+  },
+  {
+    path: '/midia',
+    name: 'Midia',
+    component: Midia,
+    meta: { authorities: [Authority.USER] },
+  },
+  {
+    path: '/midia/new',
+    name: 'MidiaCreate',
+    component: MidiaUpdate,
+    meta: { authorities: [Authority.USER] },
+  },
+  {
+    path: '/midia/:midiaId/edit',
+    name: 'MidiaEdit',
+    component: MidiaUpdate,
+    meta: { authorities: [Authority.USER] },
+  },
+  {
+    path: '/midia/:midiaId/view',
+    name: 'MidiaView',
+    component: MidiaDetails,
     meta: { authorities: [Authority.USER] },
   },
   // jhipster-needle-add-entity-to-router - JHipster will add entities to the router here
