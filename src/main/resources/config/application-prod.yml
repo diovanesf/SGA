@@ -17,7 +17,7 @@ logging:
   level:
     ROOT: INFO
     tech.jhipster: INFO
-    br.edu.unipampa.laboratoriovirologia: INFO
+    edu.unipampa.laboratoriovirologia: INFO
 
 management:
   metrics:
@@ -101,7 +101,7 @@ jhipster:
         # - In the JHipster Registry (which includes a Spring Cloud Config server)
         # - In a separate `application-prod.yml` file, in the same folder as your executable JAR file
         # - In the `JHIPSTER_SECURITY_AUTHENTICATION_JWT_BASE64_SECRET` environment variable
-        base64-secret: ZDA1ZjhlNjQ1NTJlZjc4YTg4MWI0NGQ2NjQxNWM2YmQwZTZkNzJlMDcyYzYwNThjMjUzYTcyODMyZjEzYjMyZmEyNWE0NTczNThjMTZkYTAxZDNjZGQ2NGM4YjVhNDZkNzU2ODk5ZjY4OWFkMDg5OWI0NDM2NThiYzY2YmM1MTY=
+        base64-secret: M2E3NTk2ZTc1MGJjZTYzMmU1OWYyNWQ3N2M0MjliZmFkNmU2NjMzYmMxYTQwMDc1YzA4YTgzNDIzNTkyNjg1NzgwMTE2NzM4YmQxOWNjYjE3ZTE0YWE0NjFmMTIyMmVlMzQzYjUyYTQ2OGY1MTlkNjAzYmY4YTBmMmZjYzdiOGM=
         # Token is valid 24 hours
         token-validity-in-seconds: 86400
         token-validity-in-seconds-for-remember-me: 2592000

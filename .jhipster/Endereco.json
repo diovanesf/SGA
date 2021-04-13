@@ -1,0 +1,32 @@
+{
+  "fields": [
+    {
+      "fieldName": "endereco",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "cep",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "cidade",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "estado",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "coordenadasGps",
+      "fieldType": "String"
+    }
+  ],
+  "relationships": [],
+  "service": "serviceImpl",
+  "dto": "mapstruct",
+  "jpaMetamodelFiltering": false,
+  "readOnly": false,
+  "pagination": "no",
+  "name": "Endereco",
+  "changelogDate": "20210413051448"
+}

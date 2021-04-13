@@ -1,0 +1,32 @@
+{
+  "fields": [
+    {
+      "fieldName": "tipo",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "numeroAnimais",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "acometidos",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "observacoes",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "pricipalSuspeita",
+      "fieldType": "String"
+    }
+  ],
+  "relationships": [],
+  "service": "serviceImpl",
+  "dto": "mapstruct",
+  "jpaMetamodelFiltering": false,
+  "readOnly": false,
+  "pagination": "no",
+  "name": "Propriedade",
+  "changelogDate": "20210413050900"
+}

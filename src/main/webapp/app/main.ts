@@ -26,6 +26,10 @@ import '../content/scss/vendor.scss';
 import UserOAuth2Service from '@/entities/user/user.oauth2.service';
 /* tslint:disable */
 
+import ProprietarioService from '@/entities/proprietario/proprietario.service';
+import PropriedadeService from '@/entities/propriedade/propriedade.service';
+import EnderecoService from '@/entities/endereco/endereco.service';
+import ExameService from '@/entities/exame/exame.service';
 // jhipster-needle-add-entity-service-to-main-import - JHipster will import entities services here
 
 /* tslint:enable */
@@ -81,6 +85,10 @@ new Vue({
     metricsService: () => new MetricsService(),
 
     userOAuth2Service: () => new UserOAuth2Service(),
+    proprietarioService: () => new ProprietarioService(),
+    propriedadeService: () => new PropriedadeService(),
+    enderecoService: () => new EnderecoService(),
+    exameService: () => new ExameService(),
     // jhipster-needle-add-entity-service-to-main - JHipster will import entities services here
     accountService: () => accountService,
   },
