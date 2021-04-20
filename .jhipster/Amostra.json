@@ -98,9 +98,9 @@
   ],
   "service": "serviceClass",
   "dto": "mapstruct",
-  "jpaMetamodelFiltering": false,
+  "jpaMetamodelFiltering": true,
   "readOnly": false,
-  "pagination": "no",
+  "pagination": "pagination",
   "name": "Amostra",
   "changelogDate": "20210413052456"
 }
