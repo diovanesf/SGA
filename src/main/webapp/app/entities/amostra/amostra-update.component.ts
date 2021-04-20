@@ -8,8 +8,11 @@ import { IMidia } from '@/shared/model/midia.model';
 import ExameService from '@/entities/exame/exame.service';
 import { IExame } from '@/shared/model/exame.model';
 
-import ProprietarioService from '@/entities/proprietario/proprietario.service';
-import { IProprietario } from '@/shared/model/proprietario.model';
+import PropriedadeService from '@/entities/propriedade/propriedade.service';
+import { IPropriedade } from '@/shared/model/propriedade.model';
+
+import MedicoveterinarioService from '@/entities/medicoveterinario/medicoveterinario.service';
+import { IMedicoveterinario } from '@/shared/model/medicoveterinario.model';
 
 import { IAmostra, Amostra } from '@/shared/model/amostra.model';
 import AmostraService from './amostra.service';
@@ -20,10 +23,16 @@ const validations: any = {
     formaEnvio: {},
     numeroAmostras: {},
     especie: {},
+    dataInicial: {},
+    dataFinal: {},
     materialRecebido: {},
     acondicionamento: {},
     condicaoMaterial: {},
     status: {},
+    tipoMedVet: {},
+    valorTotal: {},
+    tipoPagamento: {},
+    situacao: {},
   },
 };
 
@@ -46,9 +55,13 @@ export default class AmostraUpdate extends Vue {
 
   public exames: IExame[] = [];
 
-  @Inject('proprietarioService') private proprietarioService: () => ProprietarioService;
+  @Inject('propriedadeService') private propriedadeService: () => PropriedadeService;
 
-  public proprietarios: IProprietario[] = [];
+  public propriedades: IPropriedade[] = [];
+
+  @Inject('medicoveterinarioService') private medicoveterinarioService: () => MedicoveterinarioService;
+
+  public medicoveterinarios: IMedicoveterinario[] = [];
   public isSaving = false;
   public currentLanguage = '';
 
@@ -135,10 +148,15 @@ export default class AmostraUpdate extends Vue {
       .then(res => {
         this.exames = res.data;
       });
-    this.proprietarioService()
+    this.propriedadeService()
       .retrieve()
       .then(res => {
-        this.proprietarios = res.data;
+        this.propriedades = res.data;
+      });
+    this.medicoveterinarioService()
+      .retrieve()
+      .then(res => {
+        this.medicoveterinarios = res.data;
       });
   }
 

@@ -32,7 +32,7 @@ public class Midia implements Serializable {
     private String fileContentType;
 
     @ManyToOne
-    @JsonIgnoreProperties(value = { "users", "midias", "exames", "proprietario" }, allowSetters = true)
+    @JsonIgnoreProperties(value = { "users", "midias", "exames", "propriedade", "medicoveterinario" }, allowSetters = true)
     private Amostra amostra;
 
     // jhipster-needle-entity-add-field - JHipster will add fields here

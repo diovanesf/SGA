@@ -22,6 +22,7 @@ import org.springframework.http.MediaType;
 import org.springframework.security.test.context.support.WithMockUser;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.util.Base64Utils;
 
 /**
  * Integration tests for the {@link PropriedadeResource} REST controller.
@@ -31,8 +32,11 @@ import org.springframework.transaction.annotation.Transactional;
 @WithMockUser
 class PropriedadeResourceIT {
 
-    private static final String DEFAULT_TIPO = "AAAAAAAAAA";
-    private static final String UPDATED_TIPO = "BBBBBBBBBB";
+    private static final String DEFAULT_TIPO_PROPRIEDADE = "AAAAAAAAAA";
+    private static final String UPDATED_TIPO_PROPRIEDADE = "BBBBBBBBBB";
+
+    private static final String DEFAULT_TIPO_CRIACAO = "AAAAAAAAAA";
+    private static final String UPDATED_TIPO_CRIACAO = "BBBBBBBBBB";
 
     private static final Integer DEFAULT_NUMERO_ANIMAIS = 1;
     private static final Integer UPDATED_NUMERO_ANIMAIS = 2;
@@ -74,7 +78,8 @@ class PropriedadeResourceIT {
      */
     public static Propriedade createEntity(EntityManager em) {
         Propriedade propriedade = new Propriedade()
-            .tipo(DEFAULT_TIPO)
+            .tipoPropriedade(DEFAULT_TIPO_PROPRIEDADE)
+            .tipoCriação(DEFAULT_TIPO_CRIACAO)
             .numeroAnimais(DEFAULT_NUMERO_ANIMAIS)
             .acometidos(DEFAULT_ACOMETIDOS)
             .observacoes(DEFAULT_OBSERVACOES)
@@ -90,7 +95,8 @@ class PropriedadeResourceIT {
      */
     public static Propriedade createUpdatedEntity(EntityManager em) {
         Propriedade propriedade = new Propriedade()
-            .tipo(UPDATED_TIPO)
+            .tipoPropriedade(UPDATED_TIPO_PROPRIEDADE)
+            .tipoCriação(UPDATED_TIPO_CRIACAO)
             .numeroAnimais(UPDATED_NUMERO_ANIMAIS)
             .acometidos(UPDATED_ACOMETIDOS)
             .observacoes(UPDATED_OBSERVACOES)
@@ -119,7 +125,8 @@ class PropriedadeResourceIT {
         List<Propriedade> propriedadeList = propriedadeRepository.findAll();
         assertThat(propriedadeList).hasSize(databaseSizeBeforeCreate + 1);
         Propriedade testPropriedade = propriedadeList.get(propriedadeList.size() - 1);
-        assertThat(testPropriedade.getTipo()).isEqualTo(DEFAULT_TIPO);
+        assertThat(testPropriedade.getTipoPropriedade()).isEqualTo(DEFAULT_TIPO_PROPRIEDADE);
+        assertThat(testPropriedade.getTipoCriação()).isEqualTo(DEFAULT_TIPO_CRIACAO);
         assertThat(testPropriedade.getNumeroAnimais()).isEqualTo(DEFAULT_NUMERO_ANIMAIS);
         assertThat(testPropriedade.getAcometidos()).isEqualTo(DEFAULT_ACOMETIDOS);
         assertThat(testPropriedade.getObservacoes()).isEqualTo(DEFAULT_OBSERVACOES);
@@ -159,10 +166,11 @@ class PropriedadeResourceIT {
             .andExpect(status().isOk())
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_VALUE))
             .andExpect(jsonPath("$.[*].id").value(hasItem(propriedade.getId().intValue())))
-            .andExpect(jsonPath("$.[*].tipo").value(hasItem(DEFAULT_TIPO)))
+            .andExpect(jsonPath("$.[*].tipoPropriedade").value(hasItem(DEFAULT_TIPO_PROPRIEDADE)))
+            .andExpect(jsonPath("$.[*].tipoCriação").value(hasItem(DEFAULT_TIPO_CRIACAO)))
             .andExpect(jsonPath("$.[*].numeroAnimais").value(hasItem(DEFAULT_NUMERO_ANIMAIS)))
             .andExpect(jsonPath("$.[*].acometidos").value(hasItem(DEFAULT_ACOMETIDOS)))
-            .andExpect(jsonPath("$.[*].observacoes").value(hasItem(DEFAULT_OBSERVACOES)))
+            .andExpect(jsonPath("$.[*].observacoes").value(hasItem(DEFAULT_OBSERVACOES.toString())))
             .andExpect(jsonPath("$.[*].pricipalSuspeita").value(hasItem(DEFAULT_PRICIPAL_SUSPEITA)));
     }
 
@@ -178,10 +186,11 @@ class PropriedadeResourceIT {
             .andExpect(status().isOk())
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_VALUE))
             .andExpect(jsonPath("$.id").value(propriedade.getId().intValue()))
-            .andExpect(jsonPath("$.tipo").value(DEFAULT_TIPO))
+            .andExpect(jsonPath("$.tipoPropriedade").value(DEFAULT_TIPO_PROPRIEDADE))
+            .andExpect(jsonPath("$.tipoCriação").value(DEFAULT_TIPO_CRIACAO))
             .andExpect(jsonPath("$.numeroAnimais").value(DEFAULT_NUMERO_ANIMAIS))
             .andExpect(jsonPath("$.acometidos").value(DEFAULT_ACOMETIDOS))
-            .andExpect(jsonPath("$.observacoes").value(DEFAULT_OBSERVACOES))
+            .andExpect(jsonPath("$.observacoes").value(DEFAULT_OBSERVACOES.toString()))
             .andExpect(jsonPath("$.pricipalSuspeita").value(DEFAULT_PRICIPAL_SUSPEITA));
     }
 
@@ -205,7 +214,8 @@ class PropriedadeResourceIT {
         // Disconnect from session so that the updates on updatedPropriedade are not directly saved in db
         em.detach(updatedPropriedade);
         updatedPropriedade
-            .tipo(UPDATED_TIPO)
+            .tipoPropriedade(UPDATED_TIPO_PROPRIEDADE)
+            .tipoCriação(UPDATED_TIPO_CRIACAO)
             .numeroAnimais(UPDATED_NUMERO_ANIMAIS)
             .acometidos(UPDATED_ACOMETIDOS)
             .observacoes(UPDATED_OBSERVACOES)
@@ -224,7 +234,8 @@ class PropriedadeResourceIT {
         List<Propriedade> propriedadeList = propriedadeRepository.findAll();
         assertThat(propriedadeList).hasSize(databaseSizeBeforeUpdate);
         Propriedade testPropriedade = propriedadeList.get(propriedadeList.size() - 1);
-        assertThat(testPropriedade.getTipo()).isEqualTo(UPDATED_TIPO);
+        assertThat(testPropriedade.getTipoPropriedade()).isEqualTo(UPDATED_TIPO_PROPRIEDADE);
+        assertThat(testPropriedade.getTipoCriação()).isEqualTo(UPDATED_TIPO_CRIACAO);
         assertThat(testPropriedade.getNumeroAnimais()).isEqualTo(UPDATED_NUMERO_ANIMAIS);
         assertThat(testPropriedade.getAcometidos()).isEqualTo(UPDATED_ACOMETIDOS);
         assertThat(testPropriedade.getObservacoes()).isEqualTo(UPDATED_OBSERVACOES);
@@ -309,7 +320,8 @@ class PropriedadeResourceIT {
         partialUpdatedPropriedade.setId(propriedade.getId());
 
         partialUpdatedPropriedade
-            .tipo(UPDATED_TIPO)
+            .tipoPropriedade(UPDATED_TIPO_PROPRIEDADE)
+            .tipoCriação(UPDATED_TIPO_CRIACAO)
             .numeroAnimais(UPDATED_NUMERO_ANIMAIS)
             .acometidos(UPDATED_ACOMETIDOS)
             .observacoes(UPDATED_OBSERVACOES)
@@ -327,7 +339,8 @@ class PropriedadeResourceIT {
         List<Propriedade> propriedadeList = propriedadeRepository.findAll();
         assertThat(propriedadeList).hasSize(databaseSizeBeforeUpdate);
         Propriedade testPropriedade = propriedadeList.get(propriedadeList.size() - 1);
-        assertThat(testPropriedade.getTipo()).isEqualTo(UPDATED_TIPO);
+        assertThat(testPropriedade.getTipoPropriedade()).isEqualTo(UPDATED_TIPO_PROPRIEDADE);
+        assertThat(testPropriedade.getTipoCriação()).isEqualTo(UPDATED_TIPO_CRIACAO);
         assertThat(testPropriedade.getNumeroAnimais()).isEqualTo(UPDATED_NUMERO_ANIMAIS);
         assertThat(testPropriedade.getAcometidos()).isEqualTo(UPDATED_ACOMETIDOS);
         assertThat(testPropriedade.getObservacoes()).isEqualTo(UPDATED_OBSERVACOES);
@@ -347,7 +360,8 @@ class PropriedadeResourceIT {
         partialUpdatedPropriedade.setId(propriedade.getId());
 
         partialUpdatedPropriedade
-            .tipo(UPDATED_TIPO)
+            .tipoPropriedade(UPDATED_TIPO_PROPRIEDADE)
+            .tipoCriação(UPDATED_TIPO_CRIACAO)
             .numeroAnimais(UPDATED_NUMERO_ANIMAIS)
             .acometidos(UPDATED_ACOMETIDOS)
             .observacoes(UPDATED_OBSERVACOES)
@@ -365,7 +379,8 @@ class PropriedadeResourceIT {
         List<Propriedade> propriedadeList = propriedadeRepository.findAll();
         assertThat(propriedadeList).hasSize(databaseSizeBeforeUpdate);
         Propriedade testPropriedade = propriedadeList.get(propriedadeList.size() - 1);
-        assertThat(testPropriedade.getTipo()).isEqualTo(UPDATED_TIPO);
+        assertThat(testPropriedade.getTipoPropriedade()).isEqualTo(UPDATED_TIPO_PROPRIEDADE);
+        assertThat(testPropriedade.getTipoCriação()).isEqualTo(UPDATED_TIPO_CRIACAO);
         assertThat(testPropriedade.getNumeroAnimais()).isEqualTo(UPDATED_NUMERO_ANIMAIS);
         assertThat(testPropriedade.getAcometidos()).isEqualTo(UPDATED_ACOMETIDOS);
         assertThat(testPropriedade.getObservacoes()).isEqualTo(UPDATED_OBSERVACOES);

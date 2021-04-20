@@ -4,12 +4,14 @@ import { Component, Vue, Inject } from 'vue-property-decorator';
 import Vue2Filters from 'vue2-filters';
 import { IPropriedade } from '@/shared/model/propriedade.model';
 
+import JhiDataUtils from '@/shared/data/data-utils.service';
+
 import PropriedadeService from './propriedade.service';
 
 @Component({
   mixins: [Vue2Filters.mixin],
 })
-export default class Propriedade extends Vue {
+export default class Propriedade extends mixins(JhiDataUtils) {
   @Inject('propriedadeService') private propriedadeService: () => PropriedadeService;
   private removeId: number = null;
 

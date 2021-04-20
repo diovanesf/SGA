@@ -11,6 +11,10 @@
     {
       "fieldName": "email",
       "fieldType": "String"
+    },
+    {
+      "fieldName": "enviarLaudo",
+      "fieldType": "Boolean"
     }
   ],
   "relationships": [
@@ -27,7 +31,7 @@
       "relationshipName": "propriedade",
       "otherEntityName": "propriedade",
       "relationshipType": "one-to-one",
-      "otherEntityField": "tipo",
+      "otherEntityField": "tipoPropriedade",
       "ownerSide": true,
       "id": false,
       "otherEntityRelationshipName": "proprietario"

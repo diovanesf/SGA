@@ -23,6 +23,21 @@
             <column name="resultado" type="varchar(255)">
                 <constraints nullable="true" />
             </column>
+            <column name="data_teste" type="date">
+                <constraints nullable="true" />
+            </column>
+            <column name="data_leitura" type="date">
+                <constraints nullable="true" />
+            </column>
+            <column name="preenchimento_espelho" type="${clobType}">
+                <constraints nullable="true" />
+            </column>
+            <column name="observacoes" type="${clobType}">
+                <constraints nullable="true" />
+            </column>
+            <column name="valor" type="decimal(21,2)">
+                <constraints nullable="true" />
+            </column>
             <column name="amostra_id" type="bigint">
                 <constraints nullable="true" />
             </column>
@@ -49,6 +64,11 @@
             <column name="nome" type="string"/>
             <column name="tipo" type="string"/>
             <column name="resultado" type="string"/>
+            <column name="data_teste" type="date"/>
+            <column name="data_leitura" type="date"/>
+            <column name="preenchimento_espelho" type="clob"/>
+            <column name="observacoes" type="clob"/>
+            <column name="valor" type="numeric"/>
             <!-- jhipster-needle-liquibase-add-loadcolumn - JHipster (and/or extensions) can add load columns here -->
         </loadData>
     </changeSet>

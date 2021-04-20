@@ -16,6 +16,8 @@ public class ProprietarioDTO implements Serializable {
 
     private String email;
 
+    private Boolean enviarLaudo;
+
     private EnderecoDTO endereco;
 
     private PropriedadeDTO propriedade;
@@ -50,6 +52,14 @@ public class ProprietarioDTO implements Serializable {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public Boolean getEnviarLaudo() {
+        return enviarLaudo;
+    }
+
+    public void setEnviarLaudo(Boolean enviarLaudo) {
+        this.enviarLaudo = enviarLaudo;
     }
 
     public EnderecoDTO getEndereco() {
@@ -97,6 +107,7 @@ public class ProprietarioDTO implements Serializable {
             ", nome='" + getNome() + "'" +
             ", telefone='" + getTelefone() + "'" +
             ", email='" + getEmail() + "'" +
+            ", enviarLaudo='" + getEnviarLaudo() + "'" +
             ", endereco=" + getEndereco() +
             ", propriedade=" + getPropriedade() +
             "}";

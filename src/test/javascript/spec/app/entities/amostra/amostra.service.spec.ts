@@ -1,7 +1,9 @@
 /* tslint:disable max-line-length */
 import axios from 'axios';
 import sinon from 'sinon';
+import dayjs from 'dayjs';
 
+import { DATE_FORMAT } from '@/shared/date/filters';
 import AmostraService from '@/entities/amostra/amostra.service';
 import { Amostra } from '@/shared/model/amostra.model';
 
@@ -26,15 +28,39 @@ describe('Service Tests', () => {
   describe('Amostra Service', () => {
     let service: AmostraService;
     let elemDefault;
+    let currentDate: Date;
 
     beforeEach(() => {
       service = new AmostraService();
-      elemDefault = new Amostra(0, 'AAAAAAA', 'AAAAAAA', 0, 'AAAAAAA', 'AAAAAAA', 'AAAAAAA', 'AAAAAAA', 'AAAAAAA');
+      currentDate = new Date();
+      elemDefault = new Amostra(
+        0,
+        'AAAAAAA',
+        'AAAAAAA',
+        0,
+        'AAAAAAA',
+        currentDate,
+        currentDate,
+        'AAAAAAA',
+        'AAAAAAA',
+        'AAAAAAA',
+        'AAAAAAA',
+        'AAAAAAA',
+        0,
+        'AAAAAAA',
+        'AAAAAAA'
+      );
     });
 
     describe('Service methods', () => {
       it('should find an element', async () => {
-        const returnedFromService = Object.assign({}, elemDefault);
+        const returnedFromService = Object.assign(
+          {
+            dataInicial: dayjs(currentDate).format(DATE_FORMAT),
+            dataFinal: dayjs(currentDate).format(DATE_FORMAT),
+          },
+          elemDefault
+        );
         axiosStub.get.resolves({ data: returnedFromService });
 
         return service.find(123).then(res => {
@@ -56,10 +82,18 @@ describe('Service Tests', () => {
         const returnedFromService = Object.assign(
           {
             id: 0,
+            dataInicial: dayjs(currentDate).format(DATE_FORMAT),
+            dataFinal: dayjs(currentDate).format(DATE_FORMAT),
           },
           elemDefault
         );
-        const expected = Object.assign({}, returnedFromService);
+        const expected = Object.assign(
+          {
+            dataInicial: currentDate,
+            dataFinal: currentDate,
+          },
+          returnedFromService
+        );
 
         axiosStub.post.resolves({ data: returnedFromService });
         return service.create({}).then(res => {
@@ -85,15 +119,27 @@ describe('Service Tests', () => {
             formaEnvio: 'BBBBBB',
             numeroAmostras: 1,
             especie: 'BBBBBB',
+            dataInicial: dayjs(currentDate).format(DATE_FORMAT),
+            dataFinal: dayjs(currentDate).format(DATE_FORMAT),
             materialRecebido: 'BBBBBB',
             acondicionamento: 'BBBBBB',
             condicaoMaterial: 'BBBBBB',
             status: 'BBBBBB',
+            tipoMedVet: 'BBBBBB',
+            valorTotal: 1,
+            tipoPagamento: 'BBBBBB',
+            situacao: 'BBBBBB',
           },
           elemDefault
         );
 
-        const expected = Object.assign({}, returnedFromService);
+        const expected = Object.assign(
+          {
+            dataInicial: currentDate,
+            dataFinal: currentDate,
+          },
+          returnedFromService
+        );
         axiosStub.put.resolves({ data: returnedFromService });
 
         return service.update(expected).then(res => {
@@ -124,7 +170,13 @@ describe('Service Tests', () => {
         );
         const returnedFromService = Object.assign(patchObject, elemDefault);
 
-        const expected = Object.assign({}, returnedFromService);
+        const expected = Object.assign(
+          {
+            dataInicial: currentDate,
+            dataFinal: currentDate,
+          },
+          returnedFromService
+        );
         axiosStub.patch.resolves({ data: returnedFromService });
 
         return service.partialUpdate(patchObject).then(res => {
@@ -150,14 +202,26 @@ describe('Service Tests', () => {
             formaEnvio: 'BBBBBB',
             numeroAmostras: 1,
             especie: 'BBBBBB',
+            dataInicial: dayjs(currentDate).format(DATE_FORMAT),
+            dataFinal: dayjs(currentDate).format(DATE_FORMAT),
             materialRecebido: 'BBBBBB',
             acondicionamento: 'BBBBBB',
             condicaoMaterial: 'BBBBBB',
             status: 'BBBBBB',
+            tipoMedVet: 'BBBBBB',
+            valorTotal: 1,
+            tipoPagamento: 'BBBBBB',
+            situacao: 'BBBBBB',
           },
           elemDefault
         );
-        const expected = Object.assign({}, returnedFromService);
+        const expected = Object.assign(
+          {
+            dataInicial: currentDate,
+            dataFinal: currentDate,
+          },
+          returnedFromService
+        );
         axiosStub.get.resolves([returnedFromService]);
         return service.retrieve().then(res => {
           expect(res).toContainEqual(expected);

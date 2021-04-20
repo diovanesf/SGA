@@ -20,10 +20,16 @@
                                  referencedColumnNames="id"
                                  referencedTableName="jhi_user"/>
 
-        <addForeignKeyConstraint baseColumnNames="proprietario_id"
+        <addForeignKeyConstraint baseColumnNames="propriedade_id"
                                  baseTableName="amostra"
-                                 constraintName="fk_amostra__proprietario_id"
+                                 constraintName="fk_amostra__propriedade_id"
                                  referencedColumnNames="id"
-                                 referencedTableName="proprietario"/>
+                                 referencedTableName="propriedade"/>
+
+        <addForeignKeyConstraint baseColumnNames="medicoveterinario_id"
+                                 baseTableName="amostra"
+                                 constraintName="fk_amostra__medicoveterinario_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="medicoveterinario"/>
     </changeSet>
 </databaseChangeLog>

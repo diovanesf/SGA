@@ -32,12 +32,19 @@
             <th scope="row"><span>Forma Envio</span></th>
             <th scope="row"><span>Numero Amostras</span></th>
             <th scope="row"><span>Especie</span></th>
+            <th scope="row"><span>Data Inicial</span></th>
+            <th scope="row"><span>Data Final</span></th>
             <th scope="row"><span>Material Recebido</span></th>
             <th scope="row"><span>Acondicionamento</span></th>
             <th scope="row"><span>Condicao Material</span></th>
             <th scope="row"><span>Status</span></th>
+            <th scope="row"><span>Tipo Med Vet</span></th>
+            <th scope="row"><span>Valor Total</span></th>
+            <th scope="row"><span>Tipo Pagamento</span></th>
+            <th scope="row"><span>Situacao</span></th>
             <th scope="row"><span>User</span></th>
-            <th scope="row"><span>Proprietario</span></th>
+            <th scope="row"><span>Propriedade</span></th>
+            <th scope="row"><span>Medicoveterinario</span></th>
             <th scope="row"></th>
           </tr>
         </thead>
@@ -50,10 +57,16 @@
             <td>{{ amostra.formaEnvio }}</td>
             <td>{{ amostra.numeroAmostras }}</td>
             <td>{{ amostra.especie }}</td>
+            <td>{{ amostra.dataInicial }}</td>
+            <td>{{ amostra.dataFinal }}</td>
             <td>{{ amostra.materialRecebido }}</td>
             <td>{{ amostra.acondicionamento }}</td>
             <td>{{ amostra.condicaoMaterial }}</td>
             <td>{{ amostra.status }}</td>
+            <td>{{ amostra.tipoMedVet }}</td>
+            <td>{{ amostra.valorTotal }}</td>
+            <td>{{ amostra.tipoPagamento }}</td>
+            <td>{{ amostra.situacao }}</td>
             <td>
               <span v-for="(user, i) in amostra.users" :key="user.id"
                 >{{ i > 0 ? ', ' : '' }}
@@ -61,9 +74,16 @@
               </span>
             </td>
             <td>
-              <div v-if="amostra.proprietario">
-                <router-link :to="{ name: 'ProprietarioView', params: { proprietarioId: amostra.proprietario.id } }">{{
-                  amostra.proprietario.nome
+              <div v-if="amostra.propriedade">
+                <router-link :to="{ name: 'PropriedadeView', params: { propriedadeId: amostra.propriedade.id } }">{{
+                  amostra.propriedade.tipoPropriedade
+                }}</router-link>
+              </div>
+            </td>
+            <td>
+              <div v-if="amostra.medicoveterinario">
+                <router-link :to="{ name: 'MedicoveterinarioView', params: { medicoveterinarioId: amostra.medicoveterinario.id } }">{{
+                  amostra.medicoveterinario.nome
                 }}</router-link>
               </div>
             </td>

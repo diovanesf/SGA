@@ -1,6 +1,8 @@
 package edu.unipampa.laboratoriovirologia.service.dto;
 
 import java.io.Serializable;
+import java.math.BigDecimal;
+import java.time.LocalDate;
 import java.util.HashSet;
 import java.util.Objects;
 import java.util.Set;
@@ -20,6 +22,10 @@ public class AmostraDTO implements Serializable {
 
     private String especie;
 
+    private LocalDate dataInicial;
+
+    private LocalDate dataFinal;
+
     private String materialRecebido;
 
     private String acondicionamento;
@@ -28,9 +34,19 @@ public class AmostraDTO implements Serializable {
 
     private String status;
 
+    private String tipoMedVet;
+
+    private BigDecimal valorTotal;
+
+    private String tipoPagamento;
+
+    private String situacao;
+
     private Set<UserDTO> users = new HashSet<>();
 
-    private ProprietarioDTO proprietario;
+    private PropriedadeDTO propriedade;
+
+    private MedicoveterinarioDTO medicoveterinario;
 
     public Long getId() {
         return id;
@@ -72,6 +88,22 @@ public class AmostraDTO implements Serializable {
         this.especie = especie;
     }
 
+    public LocalDate getDataInicial() {
+        return dataInicial;
+    }
+
+    public void setDataInicial(LocalDate dataInicial) {
+        this.dataInicial = dataInicial;
+    }
+
+    public LocalDate getDataFinal() {
+        return dataFinal;
+    }
+
+    public void setDataFinal(LocalDate dataFinal) {
+        this.dataFinal = dataFinal;
+    }
+
     public String getMaterialRecebido() {
         return materialRecebido;
     }
@@ -104,6 +136,38 @@ public class AmostraDTO implements Serializable {
         this.status = status;
     }
 
+    public String getTipoMedVet() {
+        return tipoMedVet;
+    }
+
+    public void setTipoMedVet(String tipoMedVet) {
+        this.tipoMedVet = tipoMedVet;
+    }
+
+    public BigDecimal getValorTotal() {
+        return valorTotal;
+    }
+
+    public void setValorTotal(BigDecimal valorTotal) {
+        this.valorTotal = valorTotal;
+    }
+
+    public String getTipoPagamento() {
+        return tipoPagamento;
+    }
+
+    public void setTipoPagamento(String tipoPagamento) {
+        this.tipoPagamento = tipoPagamento;
+    }
+
+    public String getSituacao() {
+        return situacao;
+    }
+
+    public void setSituacao(String situacao) {
+        this.situacao = situacao;
+    }
+
     public Set<UserDTO> getUsers() {
         return users;
     }
@@ -112,12 +176,20 @@ public class AmostraDTO implements Serializable {
         this.users = users;
     }
 
-    public ProprietarioDTO getProprietario() {
-        return proprietario;
+    public PropriedadeDTO getPropriedade() {
+        return propriedade;
     }
 
-    public void setProprietario(ProprietarioDTO proprietario) {
-        this.proprietario = proprietario;
+    public void setPropriedade(PropriedadeDTO propriedade) {
+        this.propriedade = propriedade;
+    }
+
+    public MedicoveterinarioDTO getMedicoveterinario() {
+        return medicoveterinario;
+    }
+
+    public void setMedicoveterinario(MedicoveterinarioDTO medicoveterinario) {
+        this.medicoveterinario = medicoveterinario;
     }
 
     @Override
@@ -150,12 +222,19 @@ public class AmostraDTO implements Serializable {
             ", formaEnvio='" + getFormaEnvio() + "'" +
             ", numeroAmostras=" + getNumeroAmostras() +
             ", especie='" + getEspecie() + "'" +
+            ", dataInicial='" + getDataInicial() + "'" +
+            ", dataFinal='" + getDataFinal() + "'" +
             ", materialRecebido='" + getMaterialRecebido() + "'" +
             ", acondicionamento='" + getAcondicionamento() + "'" +
             ", condicaoMaterial='" + getCondicaoMaterial() + "'" +
             ", status='" + getStatus() + "'" +
+            ", tipoMedVet='" + getTipoMedVet() + "'" +
+            ", valorTotal=" + getValorTotal() +
+            ", tipoPagamento='" + getTipoPagamento() + "'" +
+            ", situacao='" + getSituacao() + "'" +
             ", users=" + getUsers() +
-            ", proprietario=" + getProprietario() +
+            ", propriedade=" + getPropriedade() +
+            ", medicoveterinario=" + getMedicoveterinario() +
             "}";
     }
 }

@@ -11,6 +11,28 @@
     {
       "fieldName": "resultado",
       "fieldType": "String"
+    },
+    {
+      "fieldName": "dataTeste",
+      "fieldType": "LocalDate"
+    },
+    {
+      "fieldName": "dataLeitura",
+      "fieldType": "LocalDate"
+    },
+    {
+      "fieldName": "preenchimentoEspelho",
+      "fieldType": "byte[]",
+      "fieldTypeBlobContent": "text"
+    },
+    {
+      "fieldName": "observacoes",
+      "fieldType": "byte[]",
+      "fieldTypeBlobContent": "text"
+    },
+    {
+      "fieldName": "valor",
+      "fieldType": "BigDecimal"
     }
   ],
   "relationships": [

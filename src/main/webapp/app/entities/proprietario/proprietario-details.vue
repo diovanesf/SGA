@@ -23,6 +23,12 @@
             <span>{{ proprietario.email }}</span>
           </dd>
           <dt>
+            <span>Enviar Laudo</span>
+          </dt>
+          <dd>
+            <span>{{ proprietario.enviarLaudo }}</span>
+          </dd>
+          <dt>
             <span>Endereco</span>
           </dt>
           <dd>
@@ -38,7 +44,7 @@
           <dd>
             <div v-if="proprietario.propriedade">
               <router-link :to="{ name: 'PropriedadeView', params: { propriedadeId: proprietario.propriedade.id } }">{{
-                proprietario.propriedade.tipo
+                proprietario.propriedade.tipoPropriedade
               }}</router-link>
             </div>
           </dd>

@@ -32,6 +32,7 @@ import PropriedadeService from '@/entities/propriedade/propriedade.service';
 import EnderecoService from '@/entities/endereco/endereco.service';
 import ExameService from '@/entities/exame/exame.service';
 import MidiaService from '@/entities/midia/midia.service';
+import MedicoveterinarioService from '@/entities/medicoveterinario/medicoveterinario.service';
 // jhipster-needle-add-entity-service-to-main-import - JHipster will import entities services here
 
 /* tslint:enable */
@@ -93,6 +94,7 @@ new Vue({
     enderecoService: () => new EnderecoService(),
     exameService: () => new ExameService(),
     midiaService: () => new MidiaService(),
+    medicoveterinarioService: () => new MedicoveterinarioService(),
     // jhipster-needle-add-entity-service-to-main - JHipster will import entities services here
     accountService: () => accountService,
   },

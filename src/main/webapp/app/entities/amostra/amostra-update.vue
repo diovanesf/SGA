@@ -57,6 +57,62 @@
             />
           </div>
           <div class="form-group">
+            <label class="form-control-label" for="amostra-dataInicial">Data Inicial</label>
+            <b-input-group class="mb-3">
+              <b-input-group-prepend>
+                <b-form-datepicker
+                  aria-controls="amostra-dataInicial"
+                  v-model="$v.amostra.dataInicial.$model"
+                  name="dataInicial"
+                  class="form-control"
+                  :locale="currentLanguage"
+                  button-only
+                  today-button
+                  reset-button
+                  close-button
+                >
+                </b-form-datepicker>
+              </b-input-group-prepend>
+              <b-form-input
+                id="amostra-dataInicial"
+                data-cy="dataInicial"
+                type="text"
+                class="form-control"
+                name="dataInicial"
+                :class="{ valid: !$v.amostra.dataInicial.$invalid, invalid: $v.amostra.dataInicial.$invalid }"
+                v-model="$v.amostra.dataInicial.$model"
+              />
+            </b-input-group>
+          </div>
+          <div class="form-group">
+            <label class="form-control-label" for="amostra-dataFinal">Data Final</label>
+            <b-input-group class="mb-3">
+              <b-input-group-prepend>
+                <b-form-datepicker
+                  aria-controls="amostra-dataFinal"
+                  v-model="$v.amostra.dataFinal.$model"
+                  name="dataFinal"
+                  class="form-control"
+                  :locale="currentLanguage"
+                  button-only
+                  today-button
+                  reset-button
+                  close-button
+                >
+                </b-form-datepicker>
+              </b-input-group-prepend>
+              <b-form-input
+                id="amostra-dataFinal"
+                data-cy="dataFinal"
+                type="text"
+                class="form-control"
+                name="dataFinal"
+                :class="{ valid: !$v.amostra.dataFinal.$invalid, invalid: $v.amostra.dataFinal.$invalid }"
+                v-model="$v.amostra.dataFinal.$model"
+              />
+            </b-input-group>
+          </div>
+          <div class="form-group">
             <label class="form-control-label" for="amostra-materialRecebido">Material Recebido</label>
             <input
               type="text"
@@ -105,6 +161,54 @@
             />
           </div>
           <div class="form-group">
+            <label class="form-control-label" for="amostra-tipoMedVet">Tipo Med Vet</label>
+            <input
+              type="text"
+              class="form-control"
+              name="tipoMedVet"
+              id="amostra-tipoMedVet"
+              data-cy="tipoMedVet"
+              :class="{ valid: !$v.amostra.tipoMedVet.$invalid, invalid: $v.amostra.tipoMedVet.$invalid }"
+              v-model="$v.amostra.tipoMedVet.$model"
+            />
+          </div>
+          <div class="form-group">
+            <label class="form-control-label" for="amostra-valorTotal">Valor Total</label>
+            <input
+              type="number"
+              class="form-control"
+              name="valorTotal"
+              id="amostra-valorTotal"
+              data-cy="valorTotal"
+              :class="{ valid: !$v.amostra.valorTotal.$invalid, invalid: $v.amostra.valorTotal.$invalid }"
+              v-model.number="$v.amostra.valorTotal.$model"
+            />
+          </div>
+          <div class="form-group">
+            <label class="form-control-label" for="amostra-tipoPagamento">Tipo Pagamento</label>
+            <input
+              type="text"
+              class="form-control"
+              name="tipoPagamento"
+              id="amostra-tipoPagamento"
+              data-cy="tipoPagamento"
+              :class="{ valid: !$v.amostra.tipoPagamento.$invalid, invalid: $v.amostra.tipoPagamento.$invalid }"
+              v-model="$v.amostra.tipoPagamento.$model"
+            />
+          </div>
+          <div class="form-group">
+            <label class="form-control-label" for="amostra-situacao">Situacao</label>
+            <input
+              type="text"
+              class="form-control"
+              name="situacao"
+              id="amostra-situacao"
+              data-cy="situacao"
+              :class="{ valid: !$v.amostra.situacao.$invalid, invalid: $v.amostra.situacao.$invalid }"
+              v-model="$v.amostra.situacao.$model"
+            />
+          </div>
+          <div class="form-group">
             <label for="amostra-user">User</label>
             <select
               class="form-control"
@@ -121,23 +225,40 @@
             </select>
           </div>
           <div class="form-group">
-            <label class="form-control-label" for="amostra-proprietario">Proprietario</label>
+            <label class="form-control-label" for="amostra-propriedade">Propriedade</label>
+            <select class="form-control" id="amostra-propriedade" data-cy="propriedade" name="propriedade" v-model="amostra.propriedade">
+              <option v-bind:value="null"></option>
+              <option
+                v-bind:value="
+                  amostra.propriedade && propriedadeOption.id === amostra.propriedade.id ? amostra.propriedade : propriedadeOption
+                "
+                v-for="propriedadeOption in propriedades"
+                :key="propriedadeOption.id"
+              >
+                {{ propriedadeOption.tipoPropriedade }}
+              </option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label class="form-control-label" for="amostra-medicoveterinario">Medicoveterinario</label>
             <select
               class="form-control"
-              id="amostra-proprietario"
-              data-cy="proprietario"
-              name="proprietario"
-              v-model="amostra.proprietario"
+              id="amostra-medicoveterinario"
+              data-cy="medicoveterinario"
+              name="medicoveterinario"
+              v-model="amostra.medicoveterinario"
             >
               <option v-bind:value="null"></option>
               <option
                 v-bind:value="
-                  amostra.proprietario && proprietarioOption.id === amostra.proprietario.id ? amostra.proprietario : proprietarioOption
+                  amostra.medicoveterinario && medicoveterinarioOption.id === amostra.medicoveterinario.id
+                    ? amostra.medicoveterinario
+                    : medicoveterinarioOption
                 "
-                v-for="proprietarioOption in proprietarios"
-                :key="proprietarioOption.id"
+                v-for="medicoveterinarioOption in medicoveterinarios"
+                :key="medicoveterinarioOption.id"
               >
-                {{ proprietarioOption.nome }}
+                {{ medicoveterinarioOption.nome }}
               </option>
             </select>
           </div>

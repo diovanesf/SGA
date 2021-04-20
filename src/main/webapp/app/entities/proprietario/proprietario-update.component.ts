@@ -14,6 +14,7 @@ const validations: any = {
     nome: {},
     telefone: {},
     email: {},
+    enviarLaudo: {},
   },
 };
 

@@ -9,15 +9,27 @@
             <input type="text" class="form-control" id="id" name="id" v-model="propriedade.id" readonly />
           </div>
           <div class="form-group">
-            <label class="form-control-label" for="propriedade-tipo">Tipo</label>
+            <label class="form-control-label" for="propriedade-tipoPropriedade">Tipo Propriedade</label>
             <input
               type="text"
               class="form-control"
-              name="tipo"
-              id="propriedade-tipo"
-              data-cy="tipo"
-              :class="{ valid: !$v.propriedade.tipo.$invalid, invalid: $v.propriedade.tipo.$invalid }"
-              v-model="$v.propriedade.tipo.$model"
+              name="tipoPropriedade"
+              id="propriedade-tipoPropriedade"
+              data-cy="tipoPropriedade"
+              :class="{ valid: !$v.propriedade.tipoPropriedade.$invalid, invalid: $v.propriedade.tipoPropriedade.$invalid }"
+              v-model="$v.propriedade.tipoPropriedade.$model"
+            />
+          </div>
+          <div class="form-group">
+            <label class="form-control-label" for="propriedade-tipoCriação">Tipo Criacao</label>
+            <input
+              type="text"
+              class="form-control"
+              name="tipoCriação"
+              id="propriedade-tipoCriação"
+              data-cy="tipoCriação"
+              :class="{ valid: !$v.propriedade.tipoCriação.$invalid, invalid: $v.propriedade.tipoCriação.$invalid }"
+              v-model="$v.propriedade.tipoCriação.$model"
             />
           </div>
           <div class="form-group">
@@ -46,15 +58,14 @@
           </div>
           <div class="form-group">
             <label class="form-control-label" for="propriedade-observacoes">Observacoes</label>
-            <input
-              type="text"
+            <textarea
               class="form-control"
               name="observacoes"
               id="propriedade-observacoes"
               data-cy="observacoes"
               :class="{ valid: !$v.propriedade.observacoes.$invalid, invalid: $v.propriedade.observacoes.$invalid }"
               v-model="$v.propriedade.observacoes.$model"
-            />
+            ></textarea>
           </div>
           <div class="form-group">
             <label class="form-control-label" for="propriedade-pricipalSuspeita">Pricipal Suspeita</label>

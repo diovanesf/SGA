@@ -45,6 +45,18 @@
             />
           </div>
           <div class="form-group">
+            <label class="form-control-label" for="proprietario-enviarLaudo">Enviar Laudo</label>
+            <input
+              type="checkbox"
+              class="form-check"
+              name="enviarLaudo"
+              id="proprietario-enviarLaudo"
+              data-cy="enviarLaudo"
+              :class="{ valid: !$v.proprietario.enviarLaudo.$invalid, invalid: $v.proprietario.enviarLaudo.$invalid }"
+              v-model="$v.proprietario.enviarLaudo.$model"
+            />
+          </div>
+          <div class="form-group">
             <label class="form-control-label" for="proprietario-endereco">Endereco</label>
             <select class="form-control" id="proprietario-endereco" data-cy="endereco" name="endereco" v-model="proprietario.endereco">
               <option v-bind:value="null"></option>
@@ -78,7 +90,7 @@
                 v-for="propriedadeOption in propriedades"
                 :key="propriedadeOption.id"
               >
-                {{ propriedadeOption.tipo }}
+                {{ propriedadeOption.tipoPropriedade }}
               </option>
             </select>
           </div>

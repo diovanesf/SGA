@@ -45,6 +45,96 @@
             />
           </div>
           <div class="form-group">
+            <label class="form-control-label" for="exame-dataTeste">Data Teste</label>
+            <b-input-group class="mb-3">
+              <b-input-group-prepend>
+                <b-form-datepicker
+                  aria-controls="exame-dataTeste"
+                  v-model="$v.exame.dataTeste.$model"
+                  name="dataTeste"
+                  class="form-control"
+                  :locale="currentLanguage"
+                  button-only
+                  today-button
+                  reset-button
+                  close-button
+                >
+                </b-form-datepicker>
+              </b-input-group-prepend>
+              <b-form-input
+                id="exame-dataTeste"
+                data-cy="dataTeste"
+                type="text"
+                class="form-control"
+                name="dataTeste"
+                :class="{ valid: !$v.exame.dataTeste.$invalid, invalid: $v.exame.dataTeste.$invalid }"
+                v-model="$v.exame.dataTeste.$model"
+              />
+            </b-input-group>
+          </div>
+          <div class="form-group">
+            <label class="form-control-label" for="exame-dataLeitura">Data Leitura</label>
+            <b-input-group class="mb-3">
+              <b-input-group-prepend>
+                <b-form-datepicker
+                  aria-controls="exame-dataLeitura"
+                  v-model="$v.exame.dataLeitura.$model"
+                  name="dataLeitura"
+                  class="form-control"
+                  :locale="currentLanguage"
+                  button-only
+                  today-button
+                  reset-button
+                  close-button
+                >
+                </b-form-datepicker>
+              </b-input-group-prepend>
+              <b-form-input
+                id="exame-dataLeitura"
+                data-cy="dataLeitura"
+                type="text"
+                class="form-control"
+                name="dataLeitura"
+                :class="{ valid: !$v.exame.dataLeitura.$invalid, invalid: $v.exame.dataLeitura.$invalid }"
+                v-model="$v.exame.dataLeitura.$model"
+              />
+            </b-input-group>
+          </div>
+          <div class="form-group">
+            <label class="form-control-label" for="exame-preenchimentoEspelho">Preenchimento Espelho</label>
+            <textarea
+              class="form-control"
+              name="preenchimentoEspelho"
+              id="exame-preenchimentoEspelho"
+              data-cy="preenchimentoEspelho"
+              :class="{ valid: !$v.exame.preenchimentoEspelho.$invalid, invalid: $v.exame.preenchimentoEspelho.$invalid }"
+              v-model="$v.exame.preenchimentoEspelho.$model"
+            ></textarea>
+          </div>
+          <div class="form-group">
+            <label class="form-control-label" for="exame-observacoes">Observacoes</label>
+            <textarea
+              class="form-control"
+              name="observacoes"
+              id="exame-observacoes"
+              data-cy="observacoes"
+              :class="{ valid: !$v.exame.observacoes.$invalid, invalid: $v.exame.observacoes.$invalid }"
+              v-model="$v.exame.observacoes.$model"
+            ></textarea>
+          </div>
+          <div class="form-group">
+            <label class="form-control-label" for="exame-valor">Valor</label>
+            <input
+              type="number"
+              class="form-control"
+              name="valor"
+              id="exame-valor"
+              data-cy="valor"
+              :class="{ valid: !$v.exame.valor.$invalid, invalid: $v.exame.valor.$invalid }"
+              v-model.number="$v.exame.valor.$model"
+            />
+          </div>
+          <div class="form-group">
             <label class="form-control-label" for="exame-amostra">Amostra</label>
             <select class="form-control" id="exame-amostra" data-cy="amostra" name="amostra" v-model="exame.amostra">
               <option v-bind:value="null"></option>

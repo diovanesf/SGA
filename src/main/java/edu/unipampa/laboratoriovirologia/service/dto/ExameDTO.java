@@ -1,7 +1,10 @@
 package edu.unipampa.laboratoriovirologia.service.dto;
 
 import java.io.Serializable;
+import java.math.BigDecimal;
+import java.time.LocalDate;
 import java.util.Objects;
+import javax.persistence.Lob;
 
 /**
  * A DTO for the {@link edu.unipampa.laboratoriovirologia.domain.Exame} entity.
@@ -15,6 +18,18 @@ public class ExameDTO implements Serializable {
     private String tipo;
 
     private String resultado;
+
+    private LocalDate dataTeste;
+
+    private LocalDate dataLeitura;
+
+    @Lob
+    private String preenchimentoEspelho;
+
+    @Lob
+    private String observacoes;
+
+    private BigDecimal valor;
 
     private AmostraDTO amostra;
 
@@ -48,6 +63,46 @@ public class ExameDTO implements Serializable {
 
     public void setResultado(String resultado) {
         this.resultado = resultado;
+    }
+
+    public LocalDate getDataTeste() {
+        return dataTeste;
+    }
+
+    public void setDataTeste(LocalDate dataTeste) {
+        this.dataTeste = dataTeste;
+    }
+
+    public LocalDate getDataLeitura() {
+        return dataLeitura;
+    }
+
+    public void setDataLeitura(LocalDate dataLeitura) {
+        this.dataLeitura = dataLeitura;
+    }
+
+    public String getPreenchimentoEspelho() {
+        return preenchimentoEspelho;
+    }
+
+    public void setPreenchimentoEspelho(String preenchimentoEspelho) {
+        this.preenchimentoEspelho = preenchimentoEspelho;
+    }
+
+    public String getObservacoes() {
+        return observacoes;
+    }
+
+    public void setObservacoes(String observacoes) {
+        this.observacoes = observacoes;
+    }
+
+    public BigDecimal getValor() {
+        return valor;
+    }
+
+    public void setValor(BigDecimal valor) {
+        this.valor = valor;
     }
 
     public AmostraDTO getAmostra() {
@@ -87,6 +142,11 @@ public class ExameDTO implements Serializable {
             ", nome='" + getNome() + "'" +
             ", tipo='" + getTipo() + "'" +
             ", resultado='" + getResultado() + "'" +
+            ", dataTeste='" + getDataTeste() + "'" +
+            ", dataLeitura='" + getDataLeitura() + "'" +
+            ", preenchimentoEspelho='" + getPreenchimentoEspelho() + "'" +
+            ", observacoes='" + getObservacoes() + "'" +
+            ", valor=" + getValor() +
             ", amostra=" + getAmostra() +
             "}";
     }

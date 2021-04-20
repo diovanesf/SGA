@@ -2,6 +2,7 @@ package edu.unipampa.laboratoriovirologia.domain;
 
 import java.io.Serializable;
 import javax.persistence.*;
+import org.hibernate.annotations.Type;
 
 /**
  * A Propriedade.
@@ -17,8 +18,11 @@ public class Propriedade implements Serializable {
     @SequenceGenerator(name = "sequenceGenerator")
     private Long id;
 
-    @Column(name = "tipo")
-    private String tipo;
+    @Column(name = "tipo_propriedade")
+    private String tipoPropriedade;
+
+    @Column(name = "tipo_criacao")
+    private String tipoCriação;
 
     @Column(name = "numero_animais")
     private Integer numeroAnimais;
@@ -26,6 +30,8 @@ public class Propriedade implements Serializable {
     @Column(name = "acometidos")
     private String acometidos;
 
+    @Lob
+    @Type(type = "org.hibernate.type.TextType")
     @Column(name = "observacoes")
     private String observacoes;
 
@@ -50,17 +56,30 @@ public class Propriedade implements Serializable {
         return this;
     }
 
-    public String getTipo() {
-        return this.tipo;
+    public String getTipoPropriedade() {
+        return this.tipoPropriedade;
     }
 
-    public Propriedade tipo(String tipo) {
-        this.tipo = tipo;
+    public Propriedade tipoPropriedade(String tipoPropriedade) {
+        this.tipoPropriedade = tipoPropriedade;
         return this;
     }
 
-    public void setTipo(String tipo) {
-        this.tipo = tipo;
+    public void setTipoPropriedade(String tipoPropriedade) {
+        this.tipoPropriedade = tipoPropriedade;
+    }
+
+    public String getTipoCriação() {
+        return this.tipoCriação;
+    }
+
+    public Propriedade tipoCriação(String tipoCriação) {
+        this.tipoCriação = tipoCriação;
+        return this;
+    }
+
+    public void setTipoCriação(String tipoCriação) {
+        this.tipoCriação = tipoCriação;
     }
 
     public Integer getNumeroAnimais() {
@@ -152,7 +171,8 @@ public class Propriedade implements Serializable {
     public String toString() {
         return "Propriedade{" +
             "id=" + getId() +
-            ", tipo='" + getTipo() + "'" +
+            ", tipoPropriedade='" + getTipoPropriedade() + "'" +
+            ", tipoCriação='" + getTipoCriação() + "'" +
             ", numeroAnimais=" + getNumeroAnimais() +
             ", acometidos='" + getAcometidos() + "'" +
             ", observacoes='" + getObservacoes() + "'" +

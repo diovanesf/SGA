@@ -40,6 +40,9 @@ class ProprietarioResourceIT {
     private static final String DEFAULT_EMAIL = "AAAAAAAAAA";
     private static final String UPDATED_EMAIL = "BBBBBBBBBB";
 
+    private static final Boolean DEFAULT_ENVIAR_LAUDO = false;
+    private static final Boolean UPDATED_ENVIAR_LAUDO = true;
+
     private static final String ENTITY_API_URL = "/api/proprietarios";
     private static final String ENTITY_API_URL_ID = ENTITY_API_URL + "/{id}";
 
@@ -67,7 +70,11 @@ class ProprietarioResourceIT {
      * if they test an entity which requires the current entity.
      */
     public static Proprietario createEntity(EntityManager em) {
-        Proprietario proprietario = new Proprietario().nome(DEFAULT_NOME).telefone(DEFAULT_TELEFONE).email(DEFAULT_EMAIL);
+        Proprietario proprietario = new Proprietario()
+            .nome(DEFAULT_NOME)
+            .telefone(DEFAULT_TELEFONE)
+            .email(DEFAULT_EMAIL)
+            .enviarLaudo(DEFAULT_ENVIAR_LAUDO);
         return proprietario;
     }
 
@@ -78,7 +85,11 @@ class ProprietarioResourceIT {
      * if they test an entity which requires the current entity.
      */
     public static Proprietario createUpdatedEntity(EntityManager em) {
-        Proprietario proprietario = new Proprietario().nome(UPDATED_NOME).telefone(UPDATED_TELEFONE).email(UPDATED_EMAIL);
+        Proprietario proprietario = new Proprietario()
+            .nome(UPDATED_NOME)
+            .telefone(UPDATED_TELEFONE)
+            .email(UPDATED_EMAIL)
+            .enviarLaudo(UPDATED_ENVIAR_LAUDO);
         return proprietario;
     }
 
@@ -106,6 +117,7 @@ class ProprietarioResourceIT {
         assertThat(testProprietario.getNome()).isEqualTo(DEFAULT_NOME);
         assertThat(testProprietario.getTelefone()).isEqualTo(DEFAULT_TELEFONE);
         assertThat(testProprietario.getEmail()).isEqualTo(DEFAULT_EMAIL);
+        assertThat(testProprietario.getEnviarLaudo()).isEqualTo(DEFAULT_ENVIAR_LAUDO);
     }
 
     @Test
@@ -143,7 +155,8 @@ class ProprietarioResourceIT {
             .andExpect(jsonPath("$.[*].id").value(hasItem(proprietario.getId().intValue())))
             .andExpect(jsonPath("$.[*].nome").value(hasItem(DEFAULT_NOME)))
             .andExpect(jsonPath("$.[*].telefone").value(hasItem(DEFAULT_TELEFONE)))
-            .andExpect(jsonPath("$.[*].email").value(hasItem(DEFAULT_EMAIL)));
+            .andExpect(jsonPath("$.[*].email").value(hasItem(DEFAULT_EMAIL)))
+            .andExpect(jsonPath("$.[*].enviarLaudo").value(hasItem(DEFAULT_ENVIAR_LAUDO.booleanValue())));
     }
 
     @Test
@@ -160,7 +173,8 @@ class ProprietarioResourceIT {
             .andExpect(jsonPath("$.id").value(proprietario.getId().intValue()))
             .andExpect(jsonPath("$.nome").value(DEFAULT_NOME))
             .andExpect(jsonPath("$.telefone").value(DEFAULT_TELEFONE))
-            .andExpect(jsonPath("$.email").value(DEFAULT_EMAIL));
+            .andExpect(jsonPath("$.email").value(DEFAULT_EMAIL))
+            .andExpect(jsonPath("$.enviarLaudo").value(DEFAULT_ENVIAR_LAUDO.booleanValue()));
     }
 
     @Test
@@ -182,7 +196,7 @@ class ProprietarioResourceIT {
         Proprietario updatedProprietario = proprietarioRepository.findById(proprietario.getId()).get();
         // Disconnect from session so that the updates on updatedProprietario are not directly saved in db
         em.detach(updatedProprietario);
-        updatedProprietario.nome(UPDATED_NOME).telefone(UPDATED_TELEFONE).email(UPDATED_EMAIL);
+        updatedProprietario.nome(UPDATED_NOME).telefone(UPDATED_TELEFONE).email(UPDATED_EMAIL).enviarLaudo(UPDATED_ENVIAR_LAUDO);
         ProprietarioDTO proprietarioDTO = proprietarioMapper.toDto(updatedProprietario);
 
         restProprietarioMockMvc
@@ -200,6 +214,7 @@ class ProprietarioResourceIT {
         assertThat(testProprietario.getNome()).isEqualTo(UPDATED_NOME);
         assertThat(testProprietario.getTelefone()).isEqualTo(UPDATED_TELEFONE);
         assertThat(testProprietario.getEmail()).isEqualTo(UPDATED_EMAIL);
+        assertThat(testProprietario.getEnviarLaudo()).isEqualTo(UPDATED_ENVIAR_LAUDO);
     }
 
     @Test
@@ -281,7 +296,7 @@ class ProprietarioResourceIT {
         Proprietario partialUpdatedProprietario = new Proprietario();
         partialUpdatedProprietario.setId(proprietario.getId());
 
-        partialUpdatedProprietario.telefone(UPDATED_TELEFONE).email(UPDATED_EMAIL);
+        partialUpdatedProprietario.telefone(UPDATED_TELEFONE).email(UPDATED_EMAIL).enviarLaudo(UPDATED_ENVIAR_LAUDO);
 
         restProprietarioMockMvc
             .perform(
@@ -298,6 +313,7 @@ class ProprietarioResourceIT {
         assertThat(testProprietario.getNome()).isEqualTo(DEFAULT_NOME);
         assertThat(testProprietario.getTelefone()).isEqualTo(UPDATED_TELEFONE);
         assertThat(testProprietario.getEmail()).isEqualTo(UPDATED_EMAIL);
+        assertThat(testProprietario.getEnviarLaudo()).isEqualTo(UPDATED_ENVIAR_LAUDO);
     }
 
     @Test
@@ -312,7 +328,7 @@ class ProprietarioResourceIT {
         Proprietario partialUpdatedProprietario = new Proprietario();
         partialUpdatedProprietario.setId(proprietario.getId());
 
-        partialUpdatedProprietario.nome(UPDATED_NOME).telefone(UPDATED_TELEFONE).email(UPDATED_EMAIL);
+        partialUpdatedProprietario.nome(UPDATED_NOME).telefone(UPDATED_TELEFONE).email(UPDATED_EMAIL).enviarLaudo(UPDATED_ENVIAR_LAUDO);
 
         restProprietarioMockMvc
             .perform(
@@ -329,6 +345,7 @@ class ProprietarioResourceIT {
         assertThat(testProprietario.getNome()).isEqualTo(UPDATED_NOME);
         assertThat(testProprietario.getTelefone()).isEqualTo(UPDATED_TELEFONE);
         assertThat(testProprietario.getEmail()).isEqualTo(UPDATED_EMAIL);
+        assertThat(testProprietario.getEnviarLaudo()).isEqualTo(UPDATED_ENVIAR_LAUDO);
     }
 
     @Test

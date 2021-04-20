@@ -38,6 +38,12 @@ const Midia = () => import('@/entities/midia/midia.vue');
 const MidiaUpdate = () => import('@/entities/midia/midia-update.vue');
 // prettier-ignore
 const MidiaDetails = () => import('@/entities/midia/midia-details.vue');
+// prettier-ignore
+const Medicoveterinario = () => import('@/entities/medicoveterinario/medicoveterinario.vue');
+// prettier-ignore
+const MedicoveterinarioUpdate = () => import('@/entities/medicoveterinario/medicoveterinario-update.vue');
+// prettier-ignore
+const MedicoveterinarioDetails = () => import('@/entities/medicoveterinario/medicoveterinario-details.vue');
 // jhipster-needle-add-entity-to-router-import - JHipster will import entities to the router here
 
 export default [
@@ -183,6 +189,30 @@ export default [
     path: '/midia/:midiaId/view',
     name: 'MidiaView',
     component: MidiaDetails,
+    meta: { authorities: [Authority.USER] },
+  },
+  {
+    path: '/medicoveterinario',
+    name: 'Medicoveterinario',
+    component: Medicoveterinario,
+    meta: { authorities: [Authority.USER] },
+  },
+  {
+    path: '/medicoveterinario/new',
+    name: 'MedicoveterinarioCreate',
+    component: MedicoveterinarioUpdate,
+    meta: { authorities: [Authority.USER] },
+  },
+  {
+    path: '/medicoveterinario/:medicoveterinarioId/edit',
+    name: 'MedicoveterinarioEdit',
+    component: MedicoveterinarioUpdate,
+    meta: { authorities: [Authority.USER] },
+  },
+  {
+    path: '/medicoveterinario/:medicoveterinarioId/view',
+    name: 'MedicoveterinarioView',
+    component: MedicoveterinarioDetails,
     meta: { authorities: [Authority.USER] },
   },
   // jhipster-needle-add-entity-to-router - JHipster will add entities to the router here

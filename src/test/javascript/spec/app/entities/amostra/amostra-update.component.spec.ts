@@ -14,7 +14,9 @@ import MidiaService from '@/entities/midia/midia.service';
 
 import ExameService from '@/entities/exame/exame.service';
 
-import ProprietarioService from '@/entities/proprietario/proprietario.service';
+import PropriedadeService from '@/entities/propriedade/propriedade.service';
+
+import MedicoveterinarioService from '@/entities/medicoveterinario/medicoveterinario.service';
 
 const localVue = createLocalVue();
 
@@ -50,7 +52,9 @@ describe('Component Tests', () => {
 
           exameService: () => new ExameService(),
 
-          proprietarioService: () => new ProprietarioService(),
+          propriedadeService: () => new PropriedadeService(),
+
+          medicoveterinarioService: () => new MedicoveterinarioService(),
         },
       });
       comp = wrapper.vm;

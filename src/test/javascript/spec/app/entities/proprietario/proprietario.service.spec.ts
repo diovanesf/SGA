@@ -29,7 +29,7 @@ describe('Service Tests', () => {
 
     beforeEach(() => {
       service = new ProprietarioService();
-      elemDefault = new Proprietario(0, 'AAAAAAA', 'AAAAAAA', 'AAAAAAA');
+      elemDefault = new Proprietario(0, 'AAAAAAA', 'AAAAAAA', 'AAAAAAA', false);
     });
 
     describe('Service methods', () => {
@@ -84,6 +84,7 @@ describe('Service Tests', () => {
             nome: 'BBBBBB',
             telefone: 'BBBBBB',
             email: 'BBBBBB',
+            enviarLaudo: true,
           },
           elemDefault
         );
@@ -112,6 +113,7 @@ describe('Service Tests', () => {
           {
             telefone: 'BBBBBB',
             email: 'BBBBBB',
+            enviarLaudo: true,
           },
           new Proprietario()
         );
@@ -142,6 +144,7 @@ describe('Service Tests', () => {
             nome: 'BBBBBB',
             telefone: 'BBBBBB',
             email: 'BBBBBB',
+            enviarLaudo: true,
           },
           elemDefault
         );

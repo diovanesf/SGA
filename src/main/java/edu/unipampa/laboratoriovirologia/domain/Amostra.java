@@ -2,6 +2,8 @@ package edu.unipampa.laboratoriovirologia.domain;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import java.io.Serializable;
+import java.math.BigDecimal;
+import java.time.LocalDate;
 import java.util.HashSet;
 import java.util.Set;
 import javax.persistence.*;
@@ -32,6 +34,12 @@ public class Amostra implements Serializable {
     @Column(name = "especie")
     private String especie;
 
+    @Column(name = "data_inicial")
+    private LocalDate dataInicial;
+
+    @Column(name = "data_final")
+    private LocalDate dataFinal;
+
     @Column(name = "material_recebido")
     private String materialRecebido;
 
@@ -43,6 +51,18 @@ public class Amostra implements Serializable {
 
     @Column(name = "status")
     private String status;
+
+    @Column(name = "tipo_med_vet")
+    private String tipoMedVet;
+
+    @Column(name = "valor_total", precision = 21, scale = 2)
+    private BigDecimal valorTotal;
+
+    @Column(name = "tipo_pagamento")
+    private String tipoPagamento;
+
+    @Column(name = "situacao")
+    private String situacao;
 
     @ManyToMany
     @JoinTable(
@@ -61,8 +81,12 @@ public class Amostra implements Serializable {
     private Set<Exame> exames = new HashSet<>();
 
     @ManyToOne
-    @JsonIgnoreProperties(value = { "endereco", "propriedade" }, allowSetters = true)
-    private Proprietario proprietario;
+    @JsonIgnoreProperties(value = { "endereco" }, allowSetters = true)
+    private Propriedade propriedade;
+
+    @OneToOne
+    @JoinColumn(unique = true)
+    private Medicoveterinario medicoveterinario;
 
     // jhipster-needle-entity-add-field - JHipster will add fields here
     public Long getId() {
@@ -130,6 +154,32 @@ public class Amostra implements Serializable {
         this.especie = especie;
     }
 
+    public LocalDate getDataInicial() {
+        return this.dataInicial;
+    }
+
+    public Amostra dataInicial(LocalDate dataInicial) {
+        this.dataInicial = dataInicial;
+        return this;
+    }
+
+    public void setDataInicial(LocalDate dataInicial) {
+        this.dataInicial = dataInicial;
+    }
+
+    public LocalDate getDataFinal() {
+        return this.dataFinal;
+    }
+
+    public Amostra dataFinal(LocalDate dataFinal) {
+        this.dataFinal = dataFinal;
+        return this;
+    }
+
+    public void setDataFinal(LocalDate dataFinal) {
+        this.dataFinal = dataFinal;
+    }
+
     public String getMaterialRecebido() {
         return this.materialRecebido;
     }
@@ -180,6 +230,58 @@ public class Amostra implements Serializable {
 
     public void setStatus(String status) {
         this.status = status;
+    }
+
+    public String getTipoMedVet() {
+        return this.tipoMedVet;
+    }
+
+    public Amostra tipoMedVet(String tipoMedVet) {
+        this.tipoMedVet = tipoMedVet;
+        return this;
+    }
+
+    public void setTipoMedVet(String tipoMedVet) {
+        this.tipoMedVet = tipoMedVet;
+    }
+
+    public BigDecimal getValorTotal() {
+        return this.valorTotal;
+    }
+
+    public Amostra valorTotal(BigDecimal valorTotal) {
+        this.valorTotal = valorTotal;
+        return this;
+    }
+
+    public void setValorTotal(BigDecimal valorTotal) {
+        this.valorTotal = valorTotal;
+    }
+
+    public String getTipoPagamento() {
+        return this.tipoPagamento;
+    }
+
+    public Amostra tipoPagamento(String tipoPagamento) {
+        this.tipoPagamento = tipoPagamento;
+        return this;
+    }
+
+    public void setTipoPagamento(String tipoPagamento) {
+        this.tipoPagamento = tipoPagamento;
+    }
+
+    public String getSituacao() {
+        return this.situacao;
+    }
+
+    public Amostra situacao(String situacao) {
+        this.situacao = situacao;
+        return this;
+    }
+
+    public void setSituacao(String situacao) {
+        this.situacao = situacao;
     }
 
     public Set<User> getUsers() {
@@ -267,17 +369,30 @@ public class Amostra implements Serializable {
         this.exames = exames;
     }
 
-    public Proprietario getProprietario() {
-        return this.proprietario;
+    public Propriedade getPropriedade() {
+        return this.propriedade;
     }
 
-    public Amostra proprietario(Proprietario proprietario) {
-        this.setProprietario(proprietario);
+    public Amostra propriedade(Propriedade propriedade) {
+        this.setPropriedade(propriedade);
         return this;
     }
 
-    public void setProprietario(Proprietario proprietario) {
-        this.proprietario = proprietario;
+    public void setPropriedade(Propriedade propriedade) {
+        this.propriedade = propriedade;
+    }
+
+    public Medicoveterinario getMedicoveterinario() {
+        return this.medicoveterinario;
+    }
+
+    public Amostra medicoveterinario(Medicoveterinario medicoveterinario) {
+        this.setMedicoveterinario(medicoveterinario);
+        return this;
+    }
+
+    public void setMedicoveterinario(Medicoveterinario medicoveterinario) {
+        this.medicoveterinario = medicoveterinario;
     }
 
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here
@@ -308,10 +423,16 @@ public class Amostra implements Serializable {
             ", formaEnvio='" + getFormaEnvio() + "'" +
             ", numeroAmostras=" + getNumeroAmostras() +
             ", especie='" + getEspecie() + "'" +
+            ", dataInicial='" + getDataInicial() + "'" +
+            ", dataFinal='" + getDataFinal() + "'" +
             ", materialRecebido='" + getMaterialRecebido() + "'" +
             ", acondicionamento='" + getAcondicionamento() + "'" +
             ", condicaoMaterial='" + getCondicaoMaterial() + "'" +
             ", status='" + getStatus() + "'" +
+            ", tipoMedVet='" + getTipoMedVet() + "'" +
+            ", valorTotal=" + getValorTotal() +
+            ", tipoPagamento='" + getTipoPagamento() + "'" +
+            ", situacao='" + getSituacao() + "'" +
             "}";
     }
 }

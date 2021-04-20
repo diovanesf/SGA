@@ -1,7 +1,11 @@
 {
   "fields": [
     {
-      "fieldName": "tipo",
+      "fieldName": "tipoPropriedade",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "tipoCriação",
       "fieldType": "String"
     },
     {
@@ -14,7 +18,8 @@
     },
     {
       "fieldName": "observacoes",
-      "fieldType": "String"
+      "fieldType": "byte[]",
+      "fieldTypeBlobContent": "text"
     },
     {
       "fieldName": "pricipalSuspeita",

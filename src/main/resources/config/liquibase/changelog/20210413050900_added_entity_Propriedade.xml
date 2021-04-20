@@ -14,7 +14,10 @@
             <column name="id" type="bigint">
                 <constraints primaryKey="true" nullable="false"/>
             </column>
-            <column name="tipo" type="varchar(255)">
+            <column name="tipo_propriedade" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+            <column name="tipo_criacao" type="varchar(255)">
                 <constraints nullable="true" />
             </column>
             <column name="numero_animais" type="integer">
@@ -23,7 +26,7 @@
             <column name="acometidos" type="varchar(255)">
                 <constraints nullable="true" />
             </column>
-            <column name="observacoes" type="varchar(255)">
+            <column name="observacoes" type="${clobType}">
                 <constraints nullable="true" />
             </column>
             <column name="pricipal_suspeita" type="varchar(255)">
@@ -52,10 +55,11 @@
                   separator=";"
                   tableName="propriedade">
             <column name="id" type="numeric"/>
-            <column name="tipo" type="string"/>
+            <column name="tipo_propriedade" type="string"/>
+            <column name="tipo_criacao" type="string"/>
             <column name="numero_animais" type="numeric"/>
             <column name="acometidos" type="string"/>
-            <column name="observacoes" type="string"/>
+            <column name="observacoes" type="clob"/>
             <column name="pricipal_suspeita" type="string"/>
             <!-- jhipster-needle-liquibase-add-loadcolumn - JHipster (and/or extensions) can add load columns here -->
         </loadData>

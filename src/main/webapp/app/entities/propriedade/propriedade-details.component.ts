@@ -1,10 +1,13 @@
-import { Component, Vue, Inject } from 'vue-property-decorator';
+import { Component, Inject } from 'vue-property-decorator';
+
+import { mixins } from 'vue-class-component';
+import JhiDataUtils from '@/shared/data/data-utils.service';
 
 import { IPropriedade } from '@/shared/model/propriedade.model';
 import PropriedadeService from './propriedade.service';
 
 @Component
-export default class PropriedadeDetails extends Vue {
+export default class PropriedadeDetails extends mixins(JhiDataUtils) {
   @Inject('propriedadeService') private propriedadeService: () => PropriedadeService;
   public propriedade: IPropriedade = {};
 

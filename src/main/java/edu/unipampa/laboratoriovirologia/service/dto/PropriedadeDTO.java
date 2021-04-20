@@ -2,6 +2,7 @@ package edu.unipampa.laboratoriovirologia.service.dto;
 
 import java.io.Serializable;
 import java.util.Objects;
+import javax.persistence.Lob;
 
 /**
  * A DTO for the {@link edu.unipampa.laboratoriovirologia.domain.Propriedade} entity.
@@ -10,12 +11,15 @@ public class PropriedadeDTO implements Serializable {
 
     private Long id;
 
-    private String tipo;
+    private String tipoPropriedade;
+
+    private String tipoCriação;
 
     private Integer numeroAnimais;
 
     private String acometidos;
 
+    @Lob
     private String observacoes;
 
     private String pricipalSuspeita;
@@ -30,12 +34,20 @@ public class PropriedadeDTO implements Serializable {
         this.id = id;
     }
 
-    public String getTipo() {
-        return tipo;
+    public String getTipoPropriedade() {
+        return tipoPropriedade;
     }
 
-    public void setTipo(String tipo) {
-        this.tipo = tipo;
+    public void setTipoPropriedade(String tipoPropriedade) {
+        this.tipoPropriedade = tipoPropriedade;
+    }
+
+    public String getTipoCriação() {
+        return tipoCriação;
+    }
+
+    public void setTipoCriação(String tipoCriação) {
+        this.tipoCriação = tipoCriação;
     }
 
     public Integer getNumeroAnimais() {
@@ -104,7 +116,8 @@ public class PropriedadeDTO implements Serializable {
     public String toString() {
         return "PropriedadeDTO{" +
             "id=" + getId() +
-            ", tipo='" + getTipo() + "'" +
+            ", tipoPropriedade='" + getTipoPropriedade() + "'" +
+            ", tipoCriação='" + getTipoCriação() + "'" +
             ", numeroAnimais=" + getNumeroAnimais() +
             ", acometidos='" + getAcometidos() + "'" +
             ", observacoes='" + getObservacoes() + "'" +

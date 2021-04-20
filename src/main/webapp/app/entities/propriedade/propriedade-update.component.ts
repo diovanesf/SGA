@@ -1,4 +1,7 @@
-import { Component, Vue, Inject } from 'vue-property-decorator';
+import { Component, Inject } from 'vue-property-decorator';
+
+import { mixins } from 'vue-class-component';
+import JhiDataUtils from '@/shared/data/data-utils.service';
 
 import EnderecoService from '@/entities/endereco/endereco.service';
 import { IEndereco } from '@/shared/model/endereco.model';
@@ -8,7 +11,8 @@ import PropriedadeService from './propriedade.service';
 
 const validations: any = {
   propriedade: {
-    tipo: {},
+    tipoPropriedade: {},
+    tipoCriação: {},
     numeroAnimais: {},
     acometidos: {},
     observacoes: {},
@@ -19,7 +23,7 @@ const validations: any = {
 @Component({
   validations,
 })
-export default class PropriedadeUpdate extends Vue {
+export default class PropriedadeUpdate extends mixins(JhiDataUtils) {
   @Inject('propriedadeService') private propriedadeService: () => PropriedadeService;
   public propriedade: IPropriedade = new Propriedade();
 

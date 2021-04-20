@@ -5,10 +5,16 @@
         <h2 class="jh-entity-heading" data-cy="propriedadeDetailsHeading"><span>Propriedade</span> {{ propriedade.id }}</h2>
         <dl class="row jh-entity-details">
           <dt>
-            <span>Tipo</span>
+            <span>Tipo Propriedade</span>
           </dt>
           <dd>
-            <span>{{ propriedade.tipo }}</span>
+            <span>{{ propriedade.tipoPropriedade }}</span>
+          </dd>
+          <dt>
+            <span>Tipo Criacao</span>
+          </dt>
+          <dd>
+            <span>{{ propriedade.tipoCriação }}</span>
           </dd>
           <dt>
             <span>Numero Animais</span>

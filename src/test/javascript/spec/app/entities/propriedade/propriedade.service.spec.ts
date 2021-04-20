@@ -29,7 +29,7 @@ describe('Service Tests', () => {
 
     beforeEach(() => {
       service = new PropriedadeService();
-      elemDefault = new Propriedade(0, 'AAAAAAA', 0, 'AAAAAAA', 'AAAAAAA', 'AAAAAAA');
+      elemDefault = new Propriedade(0, 'AAAAAAA', 'AAAAAAA', 0, 'AAAAAAA', 'AAAAAAA', 'AAAAAAA');
     });
 
     describe('Service methods', () => {
@@ -81,7 +81,8 @@ describe('Service Tests', () => {
       it('should update a Propriedade', async () => {
         const returnedFromService = Object.assign(
           {
-            tipo: 'BBBBBB',
+            tipoPropriedade: 'BBBBBB',
+            tipoCriação: 'BBBBBB',
             numeroAnimais: 1,
             acometidos: 'BBBBBB',
             observacoes: 'BBBBBB',
@@ -112,7 +113,8 @@ describe('Service Tests', () => {
       it('should partial update a Propriedade', async () => {
         const patchObject = Object.assign(
           {
-            tipo: 'BBBBBB',
+            tipoPropriedade: 'BBBBBB',
+            tipoCriação: 'BBBBBB',
             numeroAnimais: 1,
             acometidos: 'BBBBBB',
             observacoes: 'BBBBBB',
@@ -144,7 +146,8 @@ describe('Service Tests', () => {
       it('should return a list of Propriedade', async () => {
         const returnedFromService = Object.assign(
           {
-            tipo: 'BBBBBB',
+            tipoPropriedade: 'BBBBBB',
+            tipoCriação: 'BBBBBB',
             numeroAnimais: 1,
             acometidos: 'BBBBBB',
             observacoes: 'BBBBBB',

@@ -1,4 +1,7 @@
-import { Component, Vue, Inject } from 'vue-property-decorator';
+import { Component, Inject } from 'vue-property-decorator';
+
+import { mixins } from 'vue-class-component';
+import JhiDataUtils from '@/shared/data/data-utils.service';
 
 import AmostraService from '@/entities/amostra/amostra.service';
 import { IAmostra } from '@/shared/model/amostra.model';
@@ -11,13 +14,18 @@ const validations: any = {
     nome: {},
     tipo: {},
     resultado: {},
+    dataTeste: {},
+    dataLeitura: {},
+    preenchimentoEspelho: {},
+    observacoes: {},
+    valor: {},
   },
 };
 
 @Component({
   validations,
 })
-export default class ExameUpdate extends Vue {
+export default class ExameUpdate extends mixins(JhiDataUtils) {
   @Inject('exameService') private exameService: () => ExameService;
   public exame: IExame = new Exame();
 

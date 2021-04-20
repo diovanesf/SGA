@@ -12,9 +12,9 @@ public interface PropriedadeMapper extends EntityMapper<PropriedadeDTO, Propried
     @Mapping(target = "endereco", source = "endereco", qualifiedByName = "endereco")
     PropriedadeDTO toDto(Propriedade s);
 
-    @Named("tipo")
+    @Named("tipoPropriedade")
     @BeanMapping(ignoreByDefault = true)
     @Mapping(target = "id", source = "id")
-    @Mapping(target = "tipo", source = "tipo")
-    PropriedadeDTO toDtoTipo(Propriedade propriedade);
+    @Mapping(target = "tipoPropriedade", source = "tipoPropriedade")
+    PropriedadeDTO toDtoTipoPropriedade(Propriedade propriedade);
 }

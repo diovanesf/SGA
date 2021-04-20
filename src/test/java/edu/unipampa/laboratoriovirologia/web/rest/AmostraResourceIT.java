@@ -1,5 +1,6 @@
 package edu.unipampa.laboratoriovirologia.web.rest;
 
+import static edu.unipampa.laboratoriovirologia.web.rest.TestUtil.sameNumber;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.hamcrest.Matchers.hasItem;
 import static org.mockito.Mockito.*;
@@ -12,6 +13,9 @@ import edu.unipampa.laboratoriovirologia.repository.AmostraRepository;
 import edu.unipampa.laboratoriovirologia.service.AmostraService;
 import edu.unipampa.laboratoriovirologia.service.dto.AmostraDTO;
 import edu.unipampa.laboratoriovirologia.service.mapper.AmostraMapper;
+import java.math.BigDecimal;
+import java.time.LocalDate;
+import java.time.ZoneId;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
@@ -52,6 +56,12 @@ class AmostraResourceIT {
     private static final String DEFAULT_ESPECIE = "AAAAAAAAAA";
     private static final String UPDATED_ESPECIE = "BBBBBBBBBB";
 
+    private static final LocalDate DEFAULT_DATA_INICIAL = LocalDate.ofEpochDay(0L);
+    private static final LocalDate UPDATED_DATA_INICIAL = LocalDate.now(ZoneId.systemDefault());
+
+    private static final LocalDate DEFAULT_DATA_FINAL = LocalDate.ofEpochDay(0L);
+    private static final LocalDate UPDATED_DATA_FINAL = LocalDate.now(ZoneId.systemDefault());
+
     private static final String DEFAULT_MATERIAL_RECEBIDO = "AAAAAAAAAA";
     private static final String UPDATED_MATERIAL_RECEBIDO = "BBBBBBBBBB";
 
@@ -63,6 +73,18 @@ class AmostraResourceIT {
 
     private static final String DEFAULT_STATUS = "AAAAAAAAAA";
     private static final String UPDATED_STATUS = "BBBBBBBBBB";
+
+    private static final String DEFAULT_TIPO_MED_VET = "AAAAAAAAAA";
+    private static final String UPDATED_TIPO_MED_VET = "BBBBBBBBBB";
+
+    private static final BigDecimal DEFAULT_VALOR_TOTAL = new BigDecimal(1);
+    private static final BigDecimal UPDATED_VALOR_TOTAL = new BigDecimal(2);
+
+    private static final String DEFAULT_TIPO_PAGAMENTO = "AAAAAAAAAA";
+    private static final String UPDATED_TIPO_PAGAMENTO = "BBBBBBBBBB";
+
+    private static final String DEFAULT_SITUACAO = "AAAAAAAAAA";
+    private static final String UPDATED_SITUACAO = "BBBBBBBBBB";
 
     private static final String ENTITY_API_URL = "/api/amostras";
     private static final String ENTITY_API_URL_ID = ENTITY_API_URL + "/{id}";
@@ -102,10 +124,16 @@ class AmostraResourceIT {
             .formaEnvio(DEFAULT_FORMA_ENVIO)
             .numeroAmostras(DEFAULT_NUMERO_AMOSTRAS)
             .especie(DEFAULT_ESPECIE)
+            .dataInicial(DEFAULT_DATA_INICIAL)
+            .dataFinal(DEFAULT_DATA_FINAL)
             .materialRecebido(DEFAULT_MATERIAL_RECEBIDO)
             .acondicionamento(DEFAULT_ACONDICIONAMENTO)
             .condicaoMaterial(DEFAULT_CONDICAO_MATERIAL)
-            .status(DEFAULT_STATUS);
+            .status(DEFAULT_STATUS)
+            .tipoMedVet(DEFAULT_TIPO_MED_VET)
+            .valorTotal(DEFAULT_VALOR_TOTAL)
+            .tipoPagamento(DEFAULT_TIPO_PAGAMENTO)
+            .situacao(DEFAULT_SITUACAO);
         return amostra;
     }
 
@@ -121,10 +149,16 @@ class AmostraResourceIT {
             .formaEnvio(UPDATED_FORMA_ENVIO)
             .numeroAmostras(UPDATED_NUMERO_AMOSTRAS)
             .especie(UPDATED_ESPECIE)
+            .dataInicial(UPDATED_DATA_INICIAL)
+            .dataFinal(UPDATED_DATA_FINAL)
             .materialRecebido(UPDATED_MATERIAL_RECEBIDO)
             .acondicionamento(UPDATED_ACONDICIONAMENTO)
             .condicaoMaterial(UPDATED_CONDICAO_MATERIAL)
-            .status(UPDATED_STATUS);
+            .status(UPDATED_STATUS)
+            .tipoMedVet(UPDATED_TIPO_MED_VET)
+            .valorTotal(UPDATED_VALOR_TOTAL)
+            .tipoPagamento(UPDATED_TIPO_PAGAMENTO)
+            .situacao(UPDATED_SITUACAO);
         return amostra;
     }
 
@@ -151,10 +185,16 @@ class AmostraResourceIT {
         assertThat(testAmostra.getFormaEnvio()).isEqualTo(DEFAULT_FORMA_ENVIO);
         assertThat(testAmostra.getNumeroAmostras()).isEqualTo(DEFAULT_NUMERO_AMOSTRAS);
         assertThat(testAmostra.getEspecie()).isEqualTo(DEFAULT_ESPECIE);
+        assertThat(testAmostra.getDataInicial()).isEqualTo(DEFAULT_DATA_INICIAL);
+        assertThat(testAmostra.getDataFinal()).isEqualTo(DEFAULT_DATA_FINAL);
         assertThat(testAmostra.getMaterialRecebido()).isEqualTo(DEFAULT_MATERIAL_RECEBIDO);
         assertThat(testAmostra.getAcondicionamento()).isEqualTo(DEFAULT_ACONDICIONAMENTO);
         assertThat(testAmostra.getCondicaoMaterial()).isEqualTo(DEFAULT_CONDICAO_MATERIAL);
         assertThat(testAmostra.getStatus()).isEqualTo(DEFAULT_STATUS);
+        assertThat(testAmostra.getTipoMedVet()).isEqualTo(DEFAULT_TIPO_MED_VET);
+        assertThat(testAmostra.getValorTotal()).isEqualByComparingTo(DEFAULT_VALOR_TOTAL);
+        assertThat(testAmostra.getTipoPagamento()).isEqualTo(DEFAULT_TIPO_PAGAMENTO);
+        assertThat(testAmostra.getSituacao()).isEqualTo(DEFAULT_SITUACAO);
     }
 
     @Test
@@ -192,10 +232,16 @@ class AmostraResourceIT {
             .andExpect(jsonPath("$.[*].formaEnvio").value(hasItem(DEFAULT_FORMA_ENVIO)))
             .andExpect(jsonPath("$.[*].numeroAmostras").value(hasItem(DEFAULT_NUMERO_AMOSTRAS)))
             .andExpect(jsonPath("$.[*].especie").value(hasItem(DEFAULT_ESPECIE)))
+            .andExpect(jsonPath("$.[*].dataInicial").value(hasItem(DEFAULT_DATA_INICIAL.toString())))
+            .andExpect(jsonPath("$.[*].dataFinal").value(hasItem(DEFAULT_DATA_FINAL.toString())))
             .andExpect(jsonPath("$.[*].materialRecebido").value(hasItem(DEFAULT_MATERIAL_RECEBIDO)))
             .andExpect(jsonPath("$.[*].acondicionamento").value(hasItem(DEFAULT_ACONDICIONAMENTO)))
             .andExpect(jsonPath("$.[*].condicaoMaterial").value(hasItem(DEFAULT_CONDICAO_MATERIAL)))
-            .andExpect(jsonPath("$.[*].status").value(hasItem(DEFAULT_STATUS)));
+            .andExpect(jsonPath("$.[*].status").value(hasItem(DEFAULT_STATUS)))
+            .andExpect(jsonPath("$.[*].tipoMedVet").value(hasItem(DEFAULT_TIPO_MED_VET)))
+            .andExpect(jsonPath("$.[*].valorTotal").value(hasItem(sameNumber(DEFAULT_VALOR_TOTAL))))
+            .andExpect(jsonPath("$.[*].tipoPagamento").value(hasItem(DEFAULT_TIPO_PAGAMENTO)))
+            .andExpect(jsonPath("$.[*].situacao").value(hasItem(DEFAULT_SITUACAO)));
     }
 
     @SuppressWarnings({ "unchecked" })
@@ -232,10 +278,16 @@ class AmostraResourceIT {
             .andExpect(jsonPath("$.formaEnvio").value(DEFAULT_FORMA_ENVIO))
             .andExpect(jsonPath("$.numeroAmostras").value(DEFAULT_NUMERO_AMOSTRAS))
             .andExpect(jsonPath("$.especie").value(DEFAULT_ESPECIE))
+            .andExpect(jsonPath("$.dataInicial").value(DEFAULT_DATA_INICIAL.toString()))
+            .andExpect(jsonPath("$.dataFinal").value(DEFAULT_DATA_FINAL.toString()))
             .andExpect(jsonPath("$.materialRecebido").value(DEFAULT_MATERIAL_RECEBIDO))
             .andExpect(jsonPath("$.acondicionamento").value(DEFAULT_ACONDICIONAMENTO))
             .andExpect(jsonPath("$.condicaoMaterial").value(DEFAULT_CONDICAO_MATERIAL))
-            .andExpect(jsonPath("$.status").value(DEFAULT_STATUS));
+            .andExpect(jsonPath("$.status").value(DEFAULT_STATUS))
+            .andExpect(jsonPath("$.tipoMedVet").value(DEFAULT_TIPO_MED_VET))
+            .andExpect(jsonPath("$.valorTotal").value(sameNumber(DEFAULT_VALOR_TOTAL)))
+            .andExpect(jsonPath("$.tipoPagamento").value(DEFAULT_TIPO_PAGAMENTO))
+            .andExpect(jsonPath("$.situacao").value(DEFAULT_SITUACAO));
     }
 
     @Test
@@ -262,10 +314,16 @@ class AmostraResourceIT {
             .formaEnvio(UPDATED_FORMA_ENVIO)
             .numeroAmostras(UPDATED_NUMERO_AMOSTRAS)
             .especie(UPDATED_ESPECIE)
+            .dataInicial(UPDATED_DATA_INICIAL)
+            .dataFinal(UPDATED_DATA_FINAL)
             .materialRecebido(UPDATED_MATERIAL_RECEBIDO)
             .acondicionamento(UPDATED_ACONDICIONAMENTO)
             .condicaoMaterial(UPDATED_CONDICAO_MATERIAL)
-            .status(UPDATED_STATUS);
+            .status(UPDATED_STATUS)
+            .tipoMedVet(UPDATED_TIPO_MED_VET)
+            .valorTotal(UPDATED_VALOR_TOTAL)
+            .tipoPagamento(UPDATED_TIPO_PAGAMENTO)
+            .situacao(UPDATED_SITUACAO);
         AmostraDTO amostraDTO = amostraMapper.toDto(updatedAmostra);
 
         restAmostraMockMvc
@@ -284,10 +342,16 @@ class AmostraResourceIT {
         assertThat(testAmostra.getFormaEnvio()).isEqualTo(UPDATED_FORMA_ENVIO);
         assertThat(testAmostra.getNumeroAmostras()).isEqualTo(UPDATED_NUMERO_AMOSTRAS);
         assertThat(testAmostra.getEspecie()).isEqualTo(UPDATED_ESPECIE);
+        assertThat(testAmostra.getDataInicial()).isEqualTo(UPDATED_DATA_INICIAL);
+        assertThat(testAmostra.getDataFinal()).isEqualTo(UPDATED_DATA_FINAL);
         assertThat(testAmostra.getMaterialRecebido()).isEqualTo(UPDATED_MATERIAL_RECEBIDO);
         assertThat(testAmostra.getAcondicionamento()).isEqualTo(UPDATED_ACONDICIONAMENTO);
         assertThat(testAmostra.getCondicaoMaterial()).isEqualTo(UPDATED_CONDICAO_MATERIAL);
         assertThat(testAmostra.getStatus()).isEqualTo(UPDATED_STATUS);
+        assertThat(testAmostra.getTipoMedVet()).isEqualTo(UPDATED_TIPO_MED_VET);
+        assertThat(testAmostra.getValorTotal()).isEqualTo(UPDATED_VALOR_TOTAL);
+        assertThat(testAmostra.getTipoPagamento()).isEqualTo(UPDATED_TIPO_PAGAMENTO);
+        assertThat(testAmostra.getSituacao()).isEqualTo(UPDATED_SITUACAO);
     }
 
     @Test
@@ -389,10 +453,16 @@ class AmostraResourceIT {
         assertThat(testAmostra.getFormaEnvio()).isEqualTo(UPDATED_FORMA_ENVIO);
         assertThat(testAmostra.getNumeroAmostras()).isEqualTo(UPDATED_NUMERO_AMOSTRAS);
         assertThat(testAmostra.getEspecie()).isEqualTo(UPDATED_ESPECIE);
+        assertThat(testAmostra.getDataInicial()).isEqualTo(DEFAULT_DATA_INICIAL);
+        assertThat(testAmostra.getDataFinal()).isEqualTo(DEFAULT_DATA_FINAL);
         assertThat(testAmostra.getMaterialRecebido()).isEqualTo(DEFAULT_MATERIAL_RECEBIDO);
         assertThat(testAmostra.getAcondicionamento()).isEqualTo(DEFAULT_ACONDICIONAMENTO);
         assertThat(testAmostra.getCondicaoMaterial()).isEqualTo(DEFAULT_CONDICAO_MATERIAL);
         assertThat(testAmostra.getStatus()).isEqualTo(DEFAULT_STATUS);
+        assertThat(testAmostra.getTipoMedVet()).isEqualTo(DEFAULT_TIPO_MED_VET);
+        assertThat(testAmostra.getValorTotal()).isEqualByComparingTo(DEFAULT_VALOR_TOTAL);
+        assertThat(testAmostra.getTipoPagamento()).isEqualTo(DEFAULT_TIPO_PAGAMENTO);
+        assertThat(testAmostra.getSituacao()).isEqualTo(DEFAULT_SITUACAO);
     }
 
     @Test
@@ -412,10 +482,16 @@ class AmostraResourceIT {
             .formaEnvio(UPDATED_FORMA_ENVIO)
             .numeroAmostras(UPDATED_NUMERO_AMOSTRAS)
             .especie(UPDATED_ESPECIE)
+            .dataInicial(UPDATED_DATA_INICIAL)
+            .dataFinal(UPDATED_DATA_FINAL)
             .materialRecebido(UPDATED_MATERIAL_RECEBIDO)
             .acondicionamento(UPDATED_ACONDICIONAMENTO)
             .condicaoMaterial(UPDATED_CONDICAO_MATERIAL)
-            .status(UPDATED_STATUS);
+            .status(UPDATED_STATUS)
+            .tipoMedVet(UPDATED_TIPO_MED_VET)
+            .valorTotal(UPDATED_VALOR_TOTAL)
+            .tipoPagamento(UPDATED_TIPO_PAGAMENTO)
+            .situacao(UPDATED_SITUACAO);
 
         restAmostraMockMvc
             .perform(
@@ -433,10 +509,16 @@ class AmostraResourceIT {
         assertThat(testAmostra.getFormaEnvio()).isEqualTo(UPDATED_FORMA_ENVIO);
         assertThat(testAmostra.getNumeroAmostras()).isEqualTo(UPDATED_NUMERO_AMOSTRAS);
         assertThat(testAmostra.getEspecie()).isEqualTo(UPDATED_ESPECIE);
+        assertThat(testAmostra.getDataInicial()).isEqualTo(UPDATED_DATA_INICIAL);
+        assertThat(testAmostra.getDataFinal()).isEqualTo(UPDATED_DATA_FINAL);
         assertThat(testAmostra.getMaterialRecebido()).isEqualTo(UPDATED_MATERIAL_RECEBIDO);
         assertThat(testAmostra.getAcondicionamento()).isEqualTo(UPDATED_ACONDICIONAMENTO);
         assertThat(testAmostra.getCondicaoMaterial()).isEqualTo(UPDATED_CONDICAO_MATERIAL);
         assertThat(testAmostra.getStatus()).isEqualTo(UPDATED_STATUS);
+        assertThat(testAmostra.getTipoMedVet()).isEqualTo(UPDATED_TIPO_MED_VET);
+        assertThat(testAmostra.getValorTotal()).isEqualByComparingTo(UPDATED_VALOR_TOTAL);
+        assertThat(testAmostra.getTipoPagamento()).isEqualTo(UPDATED_TIPO_PAGAMENTO);
+        assertThat(testAmostra.getSituacao()).isEqualTo(UPDATED_SITUACAO);
     }
 
     @Test

@@ -2,7 +2,8 @@ import { IEndereco } from '@/shared/model/endereco.model';
 
 export interface IPropriedade {
   id?: number;
-  tipo?: string | null;
+  tipoPropriedade?: string | null;
+  tipoCriação?: string | null;
   numeroAnimais?: number | null;
   acometidos?: string | null;
   observacoes?: string | null;
@@ -13,7 +14,8 @@ export interface IPropriedade {
 export class Propriedade implements IPropriedade {
   constructor(
     public id?: number,
-    public tipo?: string | null,
+    public tipoPropriedade?: string | null,
+    public tipoCriação?: string | null,
     public numeroAnimais?: number | null,
     public acometidos?: string | null,
     public observacoes?: string | null,

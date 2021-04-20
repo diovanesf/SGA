@@ -23,6 +23,36 @@
             <span>{{ exame.resultado }}</span>
           </dd>
           <dt>
+            <span>Data Teste</span>
+          </dt>
+          <dd>
+            <span>{{ exame.dataTeste }}</span>
+          </dd>
+          <dt>
+            <span>Data Leitura</span>
+          </dt>
+          <dd>
+            <span>{{ exame.dataLeitura }}</span>
+          </dd>
+          <dt>
+            <span>Preenchimento Espelho</span>
+          </dt>
+          <dd>
+            <span>{{ exame.preenchimentoEspelho }}</span>
+          </dd>
+          <dt>
+            <span>Observacoes</span>
+          </dt>
+          <dd>
+            <span>{{ exame.observacoes }}</span>
+          </dd>
+          <dt>
+            <span>Valor</span>
+          </dt>
+          <dd>
+            <span>{{ exame.valor }}</span>
+          </dd>
+          <dt>
             <span>Amostra</span>
           </dt>
           <dd>

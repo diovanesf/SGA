@@ -4,12 +4,14 @@ import { Component, Vue, Inject } from 'vue-property-decorator';
 import Vue2Filters from 'vue2-filters';
 import { IExame } from '@/shared/model/exame.model';
 
+import JhiDataUtils from '@/shared/data/data-utils.service';
+
 import ExameService from './exame.service';
 
 @Component({
   mixins: [Vue2Filters.mixin],
 })
-export default class Exame extends Vue {
+export default class Exame extends mixins(JhiDataUtils) {
   @Inject('exameService') private exameService: () => ExameService;
   private removeId: number = null;
 

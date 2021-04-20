@@ -28,7 +28,8 @@
         <thead>
           <tr>
             <th scope="row"><span>ID</span></th>
-            <th scope="row"><span>Tipo</span></th>
+            <th scope="row"><span>Tipo Propriedade</span></th>
+            <th scope="row"><span>Tipo Criacao</span></th>
             <th scope="row"><span>Numero Animais</span></th>
             <th scope="row"><span>Acometidos</span></th>
             <th scope="row"><span>Observacoes</span></th>
@@ -42,7 +43,8 @@
             <td>
               <router-link :to="{ name: 'PropriedadeView', params: { propriedadeId: propriedade.id } }">{{ propriedade.id }}</router-link>
             </td>
-            <td>{{ propriedade.tipo }}</td>
+            <td>{{ propriedade.tipoPropriedade }}</td>
+            <td>{{ propriedade.tipoCriação }}</td>
             <td>{{ propriedade.numeroAnimais }}</td>
             <td>{{ propriedade.acometidos }}</td>
             <td>{{ propriedade.observacoes }}</td>

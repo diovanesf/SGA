@@ -1,7 +1,9 @@
 /* tslint:disable max-line-length */
 import axios from 'axios';
 import sinon from 'sinon';
+import dayjs from 'dayjs';
 
+import { DATE_FORMAT } from '@/shared/date/filters';
 import ExameService from '@/entities/exame/exame.service';
 import { Exame } from '@/shared/model/exame.model';
 
@@ -26,15 +28,23 @@ describe('Service Tests', () => {
   describe('Exame Service', () => {
     let service: ExameService;
     let elemDefault;
+    let currentDate: Date;
 
     beforeEach(() => {
       service = new ExameService();
-      elemDefault = new Exame(0, 'AAAAAAA', 'AAAAAAA', 'AAAAAAA');
+      currentDate = new Date();
+      elemDefault = new Exame(0, 'AAAAAAA', 'AAAAAAA', 'AAAAAAA', currentDate, currentDate, 'AAAAAAA', 'AAAAAAA', 0);
     });
 
     describe('Service methods', () => {
       it('should find an element', async () => {
-        const returnedFromService = Object.assign({}, elemDefault);
+        const returnedFromService = Object.assign(
+          {
+            dataTeste: dayjs(currentDate).format(DATE_FORMAT),
+            dataLeitura: dayjs(currentDate).format(DATE_FORMAT),
+          },
+          elemDefault
+        );
         axiosStub.get.resolves({ data: returnedFromService });
 
         return service.find(123).then(res => {
@@ -56,10 +66,18 @@ describe('Service Tests', () => {
         const returnedFromService = Object.assign(
           {
             id: 0,
+            dataTeste: dayjs(currentDate).format(DATE_FORMAT),
+            dataLeitura: dayjs(currentDate).format(DATE_FORMAT),
           },
           elemDefault
         );
-        const expected = Object.assign({}, returnedFromService);
+        const expected = Object.assign(
+          {
+            dataTeste: currentDate,
+            dataLeitura: currentDate,
+          },
+          returnedFromService
+        );
 
         axiosStub.post.resolves({ data: returnedFromService });
         return service.create({}).then(res => {
@@ -84,11 +102,22 @@ describe('Service Tests', () => {
             nome: 'BBBBBB',
             tipo: 'BBBBBB',
             resultado: 'BBBBBB',
+            dataTeste: dayjs(currentDate).format(DATE_FORMAT),
+            dataLeitura: dayjs(currentDate).format(DATE_FORMAT),
+            preenchimentoEspelho: 'BBBBBB',
+            observacoes: 'BBBBBB',
+            valor: 1,
           },
           elemDefault
         );
 
-        const expected = Object.assign({}, returnedFromService);
+        const expected = Object.assign(
+          {
+            dataTeste: currentDate,
+            dataLeitura: currentDate,
+          },
+          returnedFromService
+        );
         axiosStub.put.resolves({ data: returnedFromService });
 
         return service.update(expected).then(res => {
@@ -112,12 +141,20 @@ describe('Service Tests', () => {
           {
             nome: 'BBBBBB',
             resultado: 'BBBBBB',
+            dataLeitura: dayjs(currentDate).format(DATE_FORMAT),
+            preenchimentoEspelho: 'BBBBBB',
           },
           new Exame()
         );
         const returnedFromService = Object.assign(patchObject, elemDefault);
 
-        const expected = Object.assign({}, returnedFromService);
+        const expected = Object.assign(
+          {
+            dataTeste: currentDate,
+            dataLeitura: currentDate,
+          },
+          returnedFromService
+        );
         axiosStub.patch.resolves({ data: returnedFromService });
 
         return service.partialUpdate(patchObject).then(res => {
@@ -142,10 +179,21 @@ describe('Service Tests', () => {
             nome: 'BBBBBB',
             tipo: 'BBBBBB',
             resultado: 'BBBBBB',
+            dataTeste: dayjs(currentDate).format(DATE_FORMAT),
+            dataLeitura: dayjs(currentDate).format(DATE_FORMAT),
+            preenchimentoEspelho: 'BBBBBB',
+            observacoes: 'BBBBBB',
+            valor: 1,
           },
           elemDefault
         );
-        const expected = Object.assign({}, returnedFromService);
+        const expected = Object.assign(
+          {
+            dataTeste: currentDate,
+            dataLeitura: currentDate,
+          },
+          returnedFromService
+        );
         axiosStub.get.resolves([returnedFromService]);
         return service.retrieve().then(res => {
           expect(res).toContainEqual(expected);

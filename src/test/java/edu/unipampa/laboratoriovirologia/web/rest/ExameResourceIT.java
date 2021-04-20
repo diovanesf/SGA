@@ -1,5 +1,6 @@
 package edu.unipampa.laboratoriovirologia.web.rest;
 
+import static edu.unipampa.laboratoriovirologia.web.rest.TestUtil.sameNumber;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.hamcrest.Matchers.hasItem;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
@@ -10,6 +11,9 @@ import edu.unipampa.laboratoriovirologia.domain.Exame;
 import edu.unipampa.laboratoriovirologia.repository.ExameRepository;
 import edu.unipampa.laboratoriovirologia.service.dto.ExameDTO;
 import edu.unipampa.laboratoriovirologia.service.mapper.ExameMapper;
+import java.math.BigDecimal;
+import java.time.LocalDate;
+import java.time.ZoneId;
 import java.util.List;
 import java.util.Random;
 import java.util.concurrent.atomic.AtomicLong;
@@ -22,6 +26,7 @@ import org.springframework.http.MediaType;
 import org.springframework.security.test.context.support.WithMockUser;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.util.Base64Utils;
 
 /**
  * Integration tests for the {@link ExameResource} REST controller.
@@ -39,6 +44,21 @@ class ExameResourceIT {
 
     private static final String DEFAULT_RESULTADO = "AAAAAAAAAA";
     private static final String UPDATED_RESULTADO = "BBBBBBBBBB";
+
+    private static final LocalDate DEFAULT_DATA_TESTE = LocalDate.ofEpochDay(0L);
+    private static final LocalDate UPDATED_DATA_TESTE = LocalDate.now(ZoneId.systemDefault());
+
+    private static final LocalDate DEFAULT_DATA_LEITURA = LocalDate.ofEpochDay(0L);
+    private static final LocalDate UPDATED_DATA_LEITURA = LocalDate.now(ZoneId.systemDefault());
+
+    private static final String DEFAULT_PREENCHIMENTO_ESPELHO = "AAAAAAAAAA";
+    private static final String UPDATED_PREENCHIMENTO_ESPELHO = "BBBBBBBBBB";
+
+    private static final String DEFAULT_OBSERVACOES = "AAAAAAAAAA";
+    private static final String UPDATED_OBSERVACOES = "BBBBBBBBBB";
+
+    private static final BigDecimal DEFAULT_VALOR = new BigDecimal(1);
+    private static final BigDecimal UPDATED_VALOR = new BigDecimal(2);
 
     private static final String ENTITY_API_URL = "/api/exames";
     private static final String ENTITY_API_URL_ID = ENTITY_API_URL + "/{id}";
@@ -67,7 +87,15 @@ class ExameResourceIT {
      * if they test an entity which requires the current entity.
      */
     public static Exame createEntity(EntityManager em) {
-        Exame exame = new Exame().nome(DEFAULT_NOME).tipo(DEFAULT_TIPO).resultado(DEFAULT_RESULTADO);
+        Exame exame = new Exame()
+            .nome(DEFAULT_NOME)
+            .tipo(DEFAULT_TIPO)
+            .resultado(DEFAULT_RESULTADO)
+            .dataTeste(DEFAULT_DATA_TESTE)
+            .dataLeitura(DEFAULT_DATA_LEITURA)
+            .preenchimentoEspelho(DEFAULT_PREENCHIMENTO_ESPELHO)
+            .observacoes(DEFAULT_OBSERVACOES)
+            .valor(DEFAULT_VALOR);
         return exame;
     }
 
@@ -78,7 +106,15 @@ class ExameResourceIT {
      * if they test an entity which requires the current entity.
      */
     public static Exame createUpdatedEntity(EntityManager em) {
-        Exame exame = new Exame().nome(UPDATED_NOME).tipo(UPDATED_TIPO).resultado(UPDATED_RESULTADO);
+        Exame exame = new Exame()
+            .nome(UPDATED_NOME)
+            .tipo(UPDATED_TIPO)
+            .resultado(UPDATED_RESULTADO)
+            .dataTeste(UPDATED_DATA_TESTE)
+            .dataLeitura(UPDATED_DATA_LEITURA)
+            .preenchimentoEspelho(UPDATED_PREENCHIMENTO_ESPELHO)
+            .observacoes(UPDATED_OBSERVACOES)
+            .valor(UPDATED_VALOR);
         return exame;
     }
 
@@ -104,6 +140,11 @@ class ExameResourceIT {
         assertThat(testExame.getNome()).isEqualTo(DEFAULT_NOME);
         assertThat(testExame.getTipo()).isEqualTo(DEFAULT_TIPO);
         assertThat(testExame.getResultado()).isEqualTo(DEFAULT_RESULTADO);
+        assertThat(testExame.getDataTeste()).isEqualTo(DEFAULT_DATA_TESTE);
+        assertThat(testExame.getDataLeitura()).isEqualTo(DEFAULT_DATA_LEITURA);
+        assertThat(testExame.getPreenchimentoEspelho()).isEqualTo(DEFAULT_PREENCHIMENTO_ESPELHO);
+        assertThat(testExame.getObservacoes()).isEqualTo(DEFAULT_OBSERVACOES);
+        assertThat(testExame.getValor()).isEqualByComparingTo(DEFAULT_VALOR);
     }
 
     @Test
@@ -139,7 +180,12 @@ class ExameResourceIT {
             .andExpect(jsonPath("$.[*].id").value(hasItem(exame.getId().intValue())))
             .andExpect(jsonPath("$.[*].nome").value(hasItem(DEFAULT_NOME)))
             .andExpect(jsonPath("$.[*].tipo").value(hasItem(DEFAULT_TIPO)))
-            .andExpect(jsonPath("$.[*].resultado").value(hasItem(DEFAULT_RESULTADO)));
+            .andExpect(jsonPath("$.[*].resultado").value(hasItem(DEFAULT_RESULTADO)))
+            .andExpect(jsonPath("$.[*].dataTeste").value(hasItem(DEFAULT_DATA_TESTE.toString())))
+            .andExpect(jsonPath("$.[*].dataLeitura").value(hasItem(DEFAULT_DATA_LEITURA.toString())))
+            .andExpect(jsonPath("$.[*].preenchimentoEspelho").value(hasItem(DEFAULT_PREENCHIMENTO_ESPELHO.toString())))
+            .andExpect(jsonPath("$.[*].observacoes").value(hasItem(DEFAULT_OBSERVACOES.toString())))
+            .andExpect(jsonPath("$.[*].valor").value(hasItem(sameNumber(DEFAULT_VALOR))));
     }
 
     @Test
@@ -156,7 +202,12 @@ class ExameResourceIT {
             .andExpect(jsonPath("$.id").value(exame.getId().intValue()))
             .andExpect(jsonPath("$.nome").value(DEFAULT_NOME))
             .andExpect(jsonPath("$.tipo").value(DEFAULT_TIPO))
-            .andExpect(jsonPath("$.resultado").value(DEFAULT_RESULTADO));
+            .andExpect(jsonPath("$.resultado").value(DEFAULT_RESULTADO))
+            .andExpect(jsonPath("$.dataTeste").value(DEFAULT_DATA_TESTE.toString()))
+            .andExpect(jsonPath("$.dataLeitura").value(DEFAULT_DATA_LEITURA.toString()))
+            .andExpect(jsonPath("$.preenchimentoEspelho").value(DEFAULT_PREENCHIMENTO_ESPELHO.toString()))
+            .andExpect(jsonPath("$.observacoes").value(DEFAULT_OBSERVACOES.toString()))
+            .andExpect(jsonPath("$.valor").value(sameNumber(DEFAULT_VALOR)));
     }
 
     @Test
@@ -178,7 +229,15 @@ class ExameResourceIT {
         Exame updatedExame = exameRepository.findById(exame.getId()).get();
         // Disconnect from session so that the updates on updatedExame are not directly saved in db
         em.detach(updatedExame);
-        updatedExame.nome(UPDATED_NOME).tipo(UPDATED_TIPO).resultado(UPDATED_RESULTADO);
+        updatedExame
+            .nome(UPDATED_NOME)
+            .tipo(UPDATED_TIPO)
+            .resultado(UPDATED_RESULTADO)
+            .dataTeste(UPDATED_DATA_TESTE)
+            .dataLeitura(UPDATED_DATA_LEITURA)
+            .preenchimentoEspelho(UPDATED_PREENCHIMENTO_ESPELHO)
+            .observacoes(UPDATED_OBSERVACOES)
+            .valor(UPDATED_VALOR);
         ExameDTO exameDTO = exameMapper.toDto(updatedExame);
 
         restExameMockMvc
@@ -196,6 +255,11 @@ class ExameResourceIT {
         assertThat(testExame.getNome()).isEqualTo(UPDATED_NOME);
         assertThat(testExame.getTipo()).isEqualTo(UPDATED_TIPO);
         assertThat(testExame.getResultado()).isEqualTo(UPDATED_RESULTADO);
+        assertThat(testExame.getDataTeste()).isEqualTo(UPDATED_DATA_TESTE);
+        assertThat(testExame.getDataLeitura()).isEqualTo(UPDATED_DATA_LEITURA);
+        assertThat(testExame.getPreenchimentoEspelho()).isEqualTo(UPDATED_PREENCHIMENTO_ESPELHO);
+        assertThat(testExame.getObservacoes()).isEqualTo(UPDATED_OBSERVACOES);
+        assertThat(testExame.getValor()).isEqualTo(UPDATED_VALOR);
     }
 
     @Test
@@ -275,7 +339,11 @@ class ExameResourceIT {
         Exame partialUpdatedExame = new Exame();
         partialUpdatedExame.setId(exame.getId());
 
-        partialUpdatedExame.nome(UPDATED_NOME).resultado(UPDATED_RESULTADO);
+        partialUpdatedExame
+            .nome(UPDATED_NOME)
+            .resultado(UPDATED_RESULTADO)
+            .dataLeitura(UPDATED_DATA_LEITURA)
+            .preenchimentoEspelho(UPDATED_PREENCHIMENTO_ESPELHO);
 
         restExameMockMvc
             .perform(
@@ -292,6 +360,11 @@ class ExameResourceIT {
         assertThat(testExame.getNome()).isEqualTo(UPDATED_NOME);
         assertThat(testExame.getTipo()).isEqualTo(DEFAULT_TIPO);
         assertThat(testExame.getResultado()).isEqualTo(UPDATED_RESULTADO);
+        assertThat(testExame.getDataTeste()).isEqualTo(DEFAULT_DATA_TESTE);
+        assertThat(testExame.getDataLeitura()).isEqualTo(UPDATED_DATA_LEITURA);
+        assertThat(testExame.getPreenchimentoEspelho()).isEqualTo(UPDATED_PREENCHIMENTO_ESPELHO);
+        assertThat(testExame.getObservacoes()).isEqualTo(DEFAULT_OBSERVACOES);
+        assertThat(testExame.getValor()).isEqualByComparingTo(DEFAULT_VALOR);
     }
 
     @Test
@@ -306,7 +379,15 @@ class ExameResourceIT {
         Exame partialUpdatedExame = new Exame();
         partialUpdatedExame.setId(exame.getId());
 
-        partialUpdatedExame.nome(UPDATED_NOME).tipo(UPDATED_TIPO).resultado(UPDATED_RESULTADO);
+        partialUpdatedExame
+            .nome(UPDATED_NOME)
+            .tipo(UPDATED_TIPO)
+            .resultado(UPDATED_RESULTADO)
+            .dataTeste(UPDATED_DATA_TESTE)
+            .dataLeitura(UPDATED_DATA_LEITURA)
+            .preenchimentoEspelho(UPDATED_PREENCHIMENTO_ESPELHO)
+            .observacoes(UPDATED_OBSERVACOES)
+            .valor(UPDATED_VALOR);
 
         restExameMockMvc
             .perform(
@@ -323,6 +404,11 @@ class ExameResourceIT {
         assertThat(testExame.getNome()).isEqualTo(UPDATED_NOME);
         assertThat(testExame.getTipo()).isEqualTo(UPDATED_TIPO);
         assertThat(testExame.getResultado()).isEqualTo(UPDATED_RESULTADO);
+        assertThat(testExame.getDataTeste()).isEqualTo(UPDATED_DATA_TESTE);
+        assertThat(testExame.getDataLeitura()).isEqualTo(UPDATED_DATA_LEITURA);
+        assertThat(testExame.getPreenchimentoEspelho()).isEqualTo(UPDATED_PREENCHIMENTO_ESPELHO);
+        assertThat(testExame.getObservacoes()).isEqualTo(UPDATED_OBSERVACOES);
+        assertThat(testExame.getValor()).isEqualByComparingTo(UPDATED_VALOR);
     }
 
     @Test

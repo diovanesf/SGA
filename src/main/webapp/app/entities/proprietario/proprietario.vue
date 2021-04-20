@@ -31,6 +31,7 @@
             <th scope="row"><span>Nome</span></th>
             <th scope="row"><span>Telefone</span></th>
             <th scope="row"><span>Email</span></th>
+            <th scope="row"><span>Enviar Laudo</span></th>
             <th scope="row"><span>Endereco</span></th>
             <th scope="row"><span>Propriedade</span></th>
             <th scope="row"></th>
@@ -46,6 +47,7 @@
             <td>{{ proprietario.nome }}</td>
             <td>{{ proprietario.telefone }}</td>
             <td>{{ proprietario.email }}</td>
+            <td>{{ proprietario.enviarLaudo }}</td>
             <td>
               <div v-if="proprietario.endereco">
                 <router-link :to="{ name: 'EnderecoView', params: { enderecoId: proprietario.endereco.id } }">{{
@@ -56,7 +58,7 @@
             <td>
               <div v-if="proprietario.propriedade">
                 <router-link :to="{ name: 'PropriedadeView', params: { propriedadeId: proprietario.propriedade.id } }">{{
-                  proprietario.propriedade.tipo
+                  proprietario.propriedade.tipoPropriedade
                 }}</router-link>
               </div>
             </td>
