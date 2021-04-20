@@ -29,16 +29,6 @@
             <span>{{ proprietario.enviarLaudo }}</span>
           </dd>
           <dt>
-            <span>Endereco</span>
-          </dt>
-          <dd>
-            <div v-if="proprietario.endereco">
-              <router-link :to="{ name: 'EnderecoView', params: { enderecoId: proprietario.endereco.id } }">{{
-                proprietario.endereco.endereco
-              }}</router-link>
-            </div>
-          </dd>
-          <dt>
             <span>Propriedade</span>
           </dt>
           <dd>

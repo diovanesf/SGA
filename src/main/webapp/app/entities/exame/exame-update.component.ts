@@ -40,7 +40,10 @@ export default class ExameUpdate extends mixins(JhiDataUtils) {
       if (to.params.exameId) {
         vm.retrieveExame(to.params.exameId);
       }
-      vm.initRelationships();
+      if (to.params.amostraId) {
+        vm.retrieveAmostra(to.params.amostraId);
+      }
+      // vm.initRelationships();
     });
   }
 
@@ -101,11 +104,13 @@ export default class ExameUpdate extends mixins(JhiDataUtils) {
     this.$router.go(-1);
   }
 
-  public initRelationships(): void {
+  // public initRelationships(): void {
+    public retrieveAmostra(amostraId: number): void {
     this.amostraService()
-      .retrieve()
+      .find(amostraId)
       .then(res => {
-        this.amostras = res.data;
+        // this.amostras = res.data;
+          this.exame.amostra = res;
       });
   }
 }

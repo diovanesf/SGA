@@ -10,14 +10,12 @@ import org.springframework.stereotype.Component;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2021-04-20T01:13:37-0300",
+    date = "2021-04-20T03:17:39-0300",
     comments = "version: 1.4.2.Final, compiler: javac, environment: Java 11.0.10 (Ubuntu)"
 )
 @Component
 public class ProprietarioMapperImpl implements ProprietarioMapper {
 
-    @Autowired
-    private EnderecoMapper enderecoMapper;
     @Autowired
     private PropriedadeMapper propriedadeMapper;
 
@@ -34,7 +32,6 @@ public class ProprietarioMapperImpl implements ProprietarioMapper {
         proprietario.setTelefone( dto.getTelefone() );
         proprietario.setEmail( dto.getEmail() );
         proprietario.setEnviarLaudo( dto.getEnviarLaudo() );
-        proprietario.setEndereco( enderecoMapper.toEntity( dto.getEndereco() ) );
         proprietario.setPropriedade( propriedadeMapper.toEntity( dto.getPropriedade() ) );
 
         return proprietario;
@@ -89,9 +86,6 @@ public class ProprietarioMapperImpl implements ProprietarioMapper {
         if ( dto.getEnviarLaudo() != null ) {
             entity.setEnviarLaudo( dto.getEnviarLaudo() );
         }
-        if ( dto.getEndereco() != null ) {
-            entity.setEndereco( enderecoMapper.toEntity( dto.getEndereco() ) );
-        }
         if ( dto.getPropriedade() != null ) {
             entity.setPropriedade( propriedadeMapper.toEntity( dto.getPropriedade() ) );
         }
@@ -105,7 +99,6 @@ public class ProprietarioMapperImpl implements ProprietarioMapper {
 
         ProprietarioDTO proprietarioDTO = new ProprietarioDTO();
 
-        proprietarioDTO.setEndereco( enderecoMapper.toDtoEndereco( s.getEndereco() ) );
         proprietarioDTO.setPropriedade( propriedadeMapper.toDtoTipoPropriedade( s.getPropriedade() ) );
         proprietarioDTO.setId( s.getId() );
         proprietarioDTO.setNome( s.getNome() );

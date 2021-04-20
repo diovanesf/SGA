@@ -30,10 +30,6 @@ public class Proprietario implements Serializable {
     @Column(name = "enviar_laudo")
     private Boolean enviarLaudo;
 
-    @OneToOne
-    @JoinColumn(unique = true)
-    private Endereco endereco;
-
     @JsonIgnoreProperties(value = { "endereco" }, allowSetters = true)
     @OneToOne
     @JoinColumn(unique = true)
@@ -103,19 +99,6 @@ public class Proprietario implements Serializable {
 
     public void setEnviarLaudo(Boolean enviarLaudo) {
         this.enviarLaudo = enviarLaudo;
-    }
-
-    public Endereco getEndereco() {
-        return this.endereco;
-    }
-
-    public Proprietario endereco(Endereco endereco) {
-        this.setEndereco(endereco);
-        return this;
-    }
-
-    public void setEndereco(Endereco endereco) {
-        this.endereco = endereco;
     }
 
     public Propriedade getPropriedade() {

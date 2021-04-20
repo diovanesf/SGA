@@ -8,12 +8,6 @@
     -->
     <changeSet id="20210413050655-2" author="jhipster">
 
-        <addForeignKeyConstraint baseColumnNames="endereco_id"
-                                 baseTableName="proprietario"
-                                 constraintName="fk_proprietario__endereco_id"
-                                 referencedColumnNames="id"
-                                 referencedTableName="endereco"/>
-
         <addForeignKeyConstraint baseColumnNames="propriedade_id"
                                  baseTableName="proprietario"
                                  constraintName="fk_proprietario__propriedade_id"

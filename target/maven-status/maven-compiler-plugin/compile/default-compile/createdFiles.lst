@@ -53,6 +53,7 @@ edu/unipampa/laboratoriovirologia/web/rest/errors/ErrorConstants.class
 edu/unipampa/laboratoriovirologia/service/UsernameAlreadyUsedException.class
 edu/unipampa/laboratoriovirologia/web/rest/UserJWTController$JWTToken.class
 edu/unipampa/laboratoriovirologia/service/ProprietarioService.class
+edu/unipampa/laboratoriovirologia/web/rest/ExameController.class
 edu/unipampa/laboratoriovirologia/domain/Medicoveterinario.class
 edu/unipampa/laboratoriovirologia/web/rest/errors/ExceptionTranslator.class
 edu/unipampa/laboratoriovirologia/security/jwt/JWTFilter.class

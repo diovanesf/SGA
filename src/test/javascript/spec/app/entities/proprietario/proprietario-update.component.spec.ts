@@ -8,8 +8,6 @@ import ProprietarioUpdateComponent from '@/entities/proprietario/proprietario-up
 import ProprietarioClass from '@/entities/proprietario/proprietario-update.component';
 import ProprietarioService from '@/entities/proprietario/proprietario.service';
 
-import EnderecoService from '@/entities/endereco/endereco.service';
-
 import PropriedadeService from '@/entities/propriedade/propriedade.service';
 
 const localVue = createLocalVue();
@@ -39,8 +37,6 @@ describe('Component Tests', () => {
         router,
         provide: {
           proprietarioService: () => proprietarioServiceStub,
-
-          enderecoService: () => new EnderecoService(),
 
           propriedadeService: () => new PropriedadeService(),
         },

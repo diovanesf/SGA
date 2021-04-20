@@ -88,6 +88,11 @@ public class ExameService {
         return exameRepository.findById(id).map(exameMapper::toDto);
     }
 
+    @Transactional(readOnly = true)
+    public List<ExameDTO> findExamesByAmostraId(Long amostraId) {
+        return exameRepository.findByAmostraId(amostraId).stream().map(exameMapper::toDto).collect(Collectors.toCollection(LinkedList::new));
+    }
+
     /**
      * Delete the exame by id.
      *

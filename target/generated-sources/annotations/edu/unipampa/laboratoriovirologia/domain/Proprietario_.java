@@ -9,7 +9,6 @@ import javax.persistence.metamodel.StaticMetamodel;
 public abstract class Proprietario_ {
 
 	public static volatile SingularAttribute<Proprietario, String> telefone;
-	public static volatile SingularAttribute<Proprietario, Endereco> endereco;
 	public static volatile SingularAttribute<Proprietario, String> nome;
 	public static volatile SingularAttribute<Proprietario, Propriedade> propriedade;
 	public static volatile SingularAttribute<Proprietario, Long> id;
@@ -17,7 +16,6 @@ public abstract class Proprietario_ {
 	public static volatile SingularAttribute<Proprietario, Boolean> enviarLaudo;
 
 	public static final String TELEFONE = "telefone";
-	public static final String ENDERECO = "endereco";
 	public static final String NOME = "nome";
 	public static final String PROPRIEDADE = "propriedade";
 	public static final String ID = "id";

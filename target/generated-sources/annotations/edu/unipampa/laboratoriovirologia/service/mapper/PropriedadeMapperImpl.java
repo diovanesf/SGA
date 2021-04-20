@@ -10,7 +10,7 @@ import org.springframework.stereotype.Component;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2021-04-20T01:13:36-0300",
+    date = "2021-04-20T03:17:39-0300",
     comments = "version: 1.4.2.Final, compiler: javac, environment: Java 11.0.10 (Ubuntu)"
 )
 @Component
@@ -29,11 +29,11 @@ public class PropriedadeMapperImpl implements PropriedadeMapper {
 
         propriedade.id( dto.getId() );
         propriedade.setTipoPropriedade( dto.getTipoPropriedade() );
-        propriedade.setTipoCriação( dto.getTipoCriação() );
         propriedade.setNumeroAnimais( dto.getNumeroAnimais() );
         propriedade.setAcometidos( dto.getAcometidos() );
         propriedade.setObservacoes( dto.getObservacoes() );
         propriedade.setPricipalSuspeita( dto.getPricipalSuspeita() );
+        propriedade.setTipoCriacao( dto.getTipoCriacao() );
         propriedade.setEndereco( enderecoMapper.toEntity( dto.getEndereco() ) );
 
         return propriedade;
@@ -79,9 +79,6 @@ public class PropriedadeMapperImpl implements PropriedadeMapper {
         if ( dto.getTipoPropriedade() != null ) {
             entity.setTipoPropriedade( dto.getTipoPropriedade() );
         }
-        if ( dto.getTipoCriação() != null ) {
-            entity.setTipoCriação( dto.getTipoCriação() );
-        }
         if ( dto.getNumeroAnimais() != null ) {
             entity.setNumeroAnimais( dto.getNumeroAnimais() );
         }
@@ -93,6 +90,9 @@ public class PropriedadeMapperImpl implements PropriedadeMapper {
         }
         if ( dto.getPricipalSuspeita() != null ) {
             entity.setPricipalSuspeita( dto.getPricipalSuspeita() );
+        }
+        if ( dto.getTipoCriacao() != null ) {
+            entity.setTipoCriacao( dto.getTipoCriacao() );
         }
         if ( dto.getEndereco() != null ) {
             entity.setEndereco( enderecoMapper.toEntity( dto.getEndereco() ) );
@@ -110,11 +110,11 @@ public class PropriedadeMapperImpl implements PropriedadeMapper {
         propriedadeDTO.setEndereco( enderecoMapper.toDtoEndereco( s.getEndereco() ) );
         propriedadeDTO.setId( s.getId() );
         propriedadeDTO.setTipoPropriedade( s.getTipoPropriedade() );
-        propriedadeDTO.setTipoCriação( s.getTipoCriação() );
         propriedadeDTO.setNumeroAnimais( s.getNumeroAnimais() );
         propriedadeDTO.setAcometidos( s.getAcometidos() );
         propriedadeDTO.setObservacoes( s.getObservacoes() );
         propriedadeDTO.setPricipalSuspeita( s.getPricipalSuspeita() );
+        propriedadeDTO.setTipoCriacao( s.getTipoCriacao() );
 
         return propriedadeDTO;
     }

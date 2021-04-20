@@ -57,21 +57,6 @@
             />
           </div>
           <div class="form-group">
-            <label class="form-control-label" for="proprietario-endereco">Endereco</label>
-            <select class="form-control" id="proprietario-endereco" data-cy="endereco" name="endereco" v-model="proprietario.endereco">
-              <option v-bind:value="null"></option>
-              <option
-                v-bind:value="
-                  proprietario.endereco && enderecoOption.id === proprietario.endereco.id ? proprietario.endereco : enderecoOption
-                "
-                v-for="enderecoOption in enderecos"
-                :key="enderecoOption.id"
-              >
-                {{ enderecoOption.endereco }}
-              </option>
-            </select>
-          </div>
-          <div class="form-group">
             <label class="form-control-label" for="proprietario-propriedade">Propriedade</label>
             <select
               class="form-control"

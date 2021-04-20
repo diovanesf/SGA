@@ -8,6 +8,10 @@ import JhiDataUtils from '@/shared/data/data-utils.service';
 
 import ExameService from './exame.service';
 
+import { IAmostra } from '@/shared/model/amostra.model';
+
+import AmostraService from '@/entities/amostra/amostra.service';
+
 @Component({
   mixins: [Vue2Filters.mixin],
 })
@@ -15,23 +19,40 @@ export default class Exame extends mixins(JhiDataUtils) {
   @Inject('exameService') private exameService: () => ExameService;
   private removeId: number = null;
 
+  @Inject('amostraService') private amostraService: () => AmostraService;
+  public amostra: IAmostra = {};
+
+  private amostraId: number = null; 
+
   public exames: IExame[] = [];
 
   public isFetching = false;
 
-  public mounted(): void {
-    this.retrieveAllExames();
+  beforeRouteEnter(to, from, next) {
+    next(vm => {
+      vm.amostraId = to.params.amostraId;
+      vm.retrieveAmostra(vm.amostraId);
+      vm.retrieveExamesByAmostra(vm.amostraId);
+    });
   }
 
   public clear(): void {
-    this.retrieveAllExames();
+    this.retrieveExamesByAmostra(this.amostraId);
   }
 
-  public retrieveAllExames(): void {
+  public retrieveAmostra(amostraId: number) {
+    this.amostraService()
+      .find(amostraId)
+      .then(res => {
+        this.amostra = res;
+      });
+  }
+
+  public retrieveExamesByAmostra(amostraId: number): void {
     this.isFetching = true;
 
     this.exameService()
-      .retrieve()
+      .retrieveByAmostra(amostraId)
       .then(
         res => {
           this.exames = res.data;
@@ -67,7 +88,7 @@ export default class Exame extends mixins(JhiDataUtils) {
           autoHideDelay: 5000,
         });
         this.removeId = null;
-        this.retrieveAllExames();
+        this.retrieveExamesByAmostra(this.amostraId);
         this.closeDialog();
       });
   }
