@@ -45,9 +45,9 @@
   ],
   "service": "serviceClass",
   "dto": "mapstruct",
-  "jpaMetamodelFiltering": false,
+  "jpaMetamodelFiltering": true,
   "readOnly": false,
-  "pagination": "no",
+  "pagination": "pagination",
   "name": "Exame",
   "changelogDate": "20210413051619"
 }

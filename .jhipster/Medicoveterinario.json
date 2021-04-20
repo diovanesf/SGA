@@ -24,9 +24,9 @@
   "relationships": [],
   "service": "serviceClass",
   "dto": "mapstruct",
-  "jpaMetamodelFiltering": false,
+  "jpaMetamodelFiltering": true,
   "readOnly": false,
-  "pagination": "no",
+  "pagination": "pagination",
   "name": "Medicoveterinario",
   "changelogDate": "20210420025339"
 }
