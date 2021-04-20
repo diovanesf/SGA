@@ -21,18 +21,6 @@
             />
           </div>
           <div class="form-group">
-            <label class="form-control-label" for="propriedade-tipoCriação">Tipo Criacao</label>
-            <input
-              type="text"
-              class="form-control"
-              name="tipoCriação"
-              id="propriedade-tipoCriação"
-              data-cy="tipoCriação"
-              :class="{ valid: !$v.propriedade.tipoCriação.$invalid, invalid: $v.propriedade.tipoCriação.$invalid }"
-              v-model="$v.propriedade.tipoCriação.$model"
-            />
-          </div>
-          <div class="form-group">
             <label class="form-control-label" for="propriedade-numeroAnimais">Numero Animais</label>
             <input
               type="number"
@@ -77,6 +65,18 @@
               data-cy="pricipalSuspeita"
               :class="{ valid: !$v.propriedade.pricipalSuspeita.$invalid, invalid: $v.propriedade.pricipalSuspeita.$invalid }"
               v-model="$v.propriedade.pricipalSuspeita.$model"
+            />
+          </div>
+          <div class="form-group">
+            <label class="form-control-label" for="propriedade-tipoCriacao">Tipo Criacao</label>
+            <input
+              type="text"
+              class="form-control"
+              name="tipoCriacao"
+              id="propriedade-tipoCriacao"
+              data-cy="tipoCriacao"
+              :class="{ valid: !$v.propriedade.tipoCriacao.$invalid, invalid: $v.propriedade.tipoCriacao.$invalid }"
+              v-model="$v.propriedade.tipoCriacao.$model"
             />
           </div>
           <div class="form-group">

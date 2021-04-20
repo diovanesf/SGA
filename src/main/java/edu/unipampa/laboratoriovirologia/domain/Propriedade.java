@@ -21,9 +21,6 @@ public class Propriedade implements Serializable {
     @Column(name = "tipo_propriedade")
     private String tipoPropriedade;
 
-    @Column(name = "tipo_criacao")
-    private String tipoCriação;
-
     @Column(name = "numero_animais")
     private Integer numeroAnimais;
 
@@ -37,6 +34,9 @@ public class Propriedade implements Serializable {
 
     @Column(name = "pricipal_suspeita")
     private String pricipalSuspeita;
+
+    @Column(name = "tipo_criacao")
+    private String tipoCriacao;
 
     @OneToOne
     @JoinColumn(unique = true)
@@ -67,19 +67,6 @@ public class Propriedade implements Serializable {
 
     public void setTipoPropriedade(String tipoPropriedade) {
         this.tipoPropriedade = tipoPropriedade;
-    }
-
-    public String getTipoCriação() {
-        return this.tipoCriação;
-    }
-
-    public Propriedade tipoCriação(String tipoCriação) {
-        this.tipoCriação = tipoCriação;
-        return this;
-    }
-
-    public void setTipoCriação(String tipoCriação) {
-        this.tipoCriação = tipoCriação;
     }
 
     public Integer getNumeroAnimais() {
@@ -134,6 +121,19 @@ public class Propriedade implements Serializable {
         this.pricipalSuspeita = pricipalSuspeita;
     }
 
+    public String getTipoCriacao() {
+        return this.tipoCriacao;
+    }
+
+    public Propriedade tipoCriacao(String tipoCriacao) {
+        this.tipoCriacao = tipoCriacao;
+        return this;
+    }
+
+    public void setTipoCriacao(String tipoCriacao) {
+        this.tipoCriacao = tipoCriacao;
+    }
+
     public Endereco getEndereco() {
         return this.endereco;
     }
@@ -172,11 +172,11 @@ public class Propriedade implements Serializable {
         return "Propriedade{" +
             "id=" + getId() +
             ", tipoPropriedade='" + getTipoPropriedade() + "'" +
-            ", tipoCriação='" + getTipoCriação() + "'" +
             ", numeroAnimais=" + getNumeroAnimais() +
             ", acometidos='" + getAcometidos() + "'" +
             ", observacoes='" + getObservacoes() + "'" +
             ", pricipalSuspeita='" + getPricipalSuspeita() + "'" +
+            ", tipoCriacao='" + getTipoCriacao() + "'" +
             "}";
     }
 }

@@ -5,10 +5,6 @@
       "fieldType": "String"
     },
     {
-      "fieldName": "tipoCriacao",
-      "fieldType": "String"
-    },
-    {
       "fieldName": "numeroAnimais",
       "fieldType": "Integer"
     },
@@ -23,6 +19,10 @@
     },
     {
       "fieldName": "pricipalSuspeita",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "tipoCriacao",
       "fieldType": "String"
     }
   ],

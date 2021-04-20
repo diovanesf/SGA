@@ -35,9 +35,6 @@ class PropriedadeResourceIT {
     private static final String DEFAULT_TIPO_PROPRIEDADE = "AAAAAAAAAA";
     private static final String UPDATED_TIPO_PROPRIEDADE = "BBBBBBBBBB";
 
-    private static final String DEFAULT_TIPO_CRIACAO = "AAAAAAAAAA";
-    private static final String UPDATED_TIPO_CRIACAO = "BBBBBBBBBB";
-
     private static final Integer DEFAULT_NUMERO_ANIMAIS = 1;
     private static final Integer UPDATED_NUMERO_ANIMAIS = 2;
 
@@ -49,6 +46,9 @@ class PropriedadeResourceIT {
 
     private static final String DEFAULT_PRICIPAL_SUSPEITA = "AAAAAAAAAA";
     private static final String UPDATED_PRICIPAL_SUSPEITA = "BBBBBBBBBB";
+
+    private static final String DEFAULT_TIPO_CRIACAO = "AAAAAAAAAA";
+    private static final String UPDATED_TIPO_CRIACAO = "BBBBBBBBBB";
 
     private static final String ENTITY_API_URL = "/api/propriedades";
     private static final String ENTITY_API_URL_ID = ENTITY_API_URL + "/{id}";
@@ -79,11 +79,11 @@ class PropriedadeResourceIT {
     public static Propriedade createEntity(EntityManager em) {
         Propriedade propriedade = new Propriedade()
             .tipoPropriedade(DEFAULT_TIPO_PROPRIEDADE)
-            .tipoCriação(DEFAULT_TIPO_CRIACAO)
             .numeroAnimais(DEFAULT_NUMERO_ANIMAIS)
             .acometidos(DEFAULT_ACOMETIDOS)
             .observacoes(DEFAULT_OBSERVACOES)
-            .pricipalSuspeita(DEFAULT_PRICIPAL_SUSPEITA);
+            .pricipalSuspeita(DEFAULT_PRICIPAL_SUSPEITA)
+            .tipoCriacao(DEFAULT_TIPO_CRIACAO);
         return propriedade;
     }
 
@@ -96,11 +96,11 @@ class PropriedadeResourceIT {
     public static Propriedade createUpdatedEntity(EntityManager em) {
         Propriedade propriedade = new Propriedade()
             .tipoPropriedade(UPDATED_TIPO_PROPRIEDADE)
-            .tipoCriação(UPDATED_TIPO_CRIACAO)
             .numeroAnimais(UPDATED_NUMERO_ANIMAIS)
             .acometidos(UPDATED_ACOMETIDOS)
             .observacoes(UPDATED_OBSERVACOES)
-            .pricipalSuspeita(UPDATED_PRICIPAL_SUSPEITA);
+            .pricipalSuspeita(UPDATED_PRICIPAL_SUSPEITA)
+            .tipoCriacao(UPDATED_TIPO_CRIACAO);
         return propriedade;
     }
 
@@ -126,11 +126,11 @@ class PropriedadeResourceIT {
         assertThat(propriedadeList).hasSize(databaseSizeBeforeCreate + 1);
         Propriedade testPropriedade = propriedadeList.get(propriedadeList.size() - 1);
         assertThat(testPropriedade.getTipoPropriedade()).isEqualTo(DEFAULT_TIPO_PROPRIEDADE);
-        assertThat(testPropriedade.getTipoCriação()).isEqualTo(DEFAULT_TIPO_CRIACAO);
         assertThat(testPropriedade.getNumeroAnimais()).isEqualTo(DEFAULT_NUMERO_ANIMAIS);
         assertThat(testPropriedade.getAcometidos()).isEqualTo(DEFAULT_ACOMETIDOS);
         assertThat(testPropriedade.getObservacoes()).isEqualTo(DEFAULT_OBSERVACOES);
         assertThat(testPropriedade.getPricipalSuspeita()).isEqualTo(DEFAULT_PRICIPAL_SUSPEITA);
+        assertThat(testPropriedade.getTipoCriacao()).isEqualTo(DEFAULT_TIPO_CRIACAO);
     }
 
     @Test
@@ -167,11 +167,11 @@ class PropriedadeResourceIT {
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_VALUE))
             .andExpect(jsonPath("$.[*].id").value(hasItem(propriedade.getId().intValue())))
             .andExpect(jsonPath("$.[*].tipoPropriedade").value(hasItem(DEFAULT_TIPO_PROPRIEDADE)))
-            .andExpect(jsonPath("$.[*].tipoCriação").value(hasItem(DEFAULT_TIPO_CRIACAO)))
             .andExpect(jsonPath("$.[*].numeroAnimais").value(hasItem(DEFAULT_NUMERO_ANIMAIS)))
             .andExpect(jsonPath("$.[*].acometidos").value(hasItem(DEFAULT_ACOMETIDOS)))
             .andExpect(jsonPath("$.[*].observacoes").value(hasItem(DEFAULT_OBSERVACOES.toString())))
-            .andExpect(jsonPath("$.[*].pricipalSuspeita").value(hasItem(DEFAULT_PRICIPAL_SUSPEITA)));
+            .andExpect(jsonPath("$.[*].pricipalSuspeita").value(hasItem(DEFAULT_PRICIPAL_SUSPEITA)))
+            .andExpect(jsonPath("$.[*].tipoCriacao").value(hasItem(DEFAULT_TIPO_CRIACAO)));
     }
 
     @Test
@@ -187,11 +187,11 @@ class PropriedadeResourceIT {
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_VALUE))
             .andExpect(jsonPath("$.id").value(propriedade.getId().intValue()))
             .andExpect(jsonPath("$.tipoPropriedade").value(DEFAULT_TIPO_PROPRIEDADE))
-            .andExpect(jsonPath("$.tipoCriação").value(DEFAULT_TIPO_CRIACAO))
             .andExpect(jsonPath("$.numeroAnimais").value(DEFAULT_NUMERO_ANIMAIS))
             .andExpect(jsonPath("$.acometidos").value(DEFAULT_ACOMETIDOS))
             .andExpect(jsonPath("$.observacoes").value(DEFAULT_OBSERVACOES.toString()))
-            .andExpect(jsonPath("$.pricipalSuspeita").value(DEFAULT_PRICIPAL_SUSPEITA));
+            .andExpect(jsonPath("$.pricipalSuspeita").value(DEFAULT_PRICIPAL_SUSPEITA))
+            .andExpect(jsonPath("$.tipoCriacao").value(DEFAULT_TIPO_CRIACAO));
     }
 
     @Test
@@ -215,11 +215,11 @@ class PropriedadeResourceIT {
         em.detach(updatedPropriedade);
         updatedPropriedade
             .tipoPropriedade(UPDATED_TIPO_PROPRIEDADE)
-            .tipoCriação(UPDATED_TIPO_CRIACAO)
             .numeroAnimais(UPDATED_NUMERO_ANIMAIS)
             .acometidos(UPDATED_ACOMETIDOS)
             .observacoes(UPDATED_OBSERVACOES)
-            .pricipalSuspeita(UPDATED_PRICIPAL_SUSPEITA);
+            .pricipalSuspeita(UPDATED_PRICIPAL_SUSPEITA)
+            .tipoCriacao(UPDATED_TIPO_CRIACAO);
         PropriedadeDTO propriedadeDTO = propriedadeMapper.toDto(updatedPropriedade);
 
         restPropriedadeMockMvc
@@ -235,11 +235,11 @@ class PropriedadeResourceIT {
         assertThat(propriedadeList).hasSize(databaseSizeBeforeUpdate);
         Propriedade testPropriedade = propriedadeList.get(propriedadeList.size() - 1);
         assertThat(testPropriedade.getTipoPropriedade()).isEqualTo(UPDATED_TIPO_PROPRIEDADE);
-        assertThat(testPropriedade.getTipoCriação()).isEqualTo(UPDATED_TIPO_CRIACAO);
         assertThat(testPropriedade.getNumeroAnimais()).isEqualTo(UPDATED_NUMERO_ANIMAIS);
         assertThat(testPropriedade.getAcometidos()).isEqualTo(UPDATED_ACOMETIDOS);
         assertThat(testPropriedade.getObservacoes()).isEqualTo(UPDATED_OBSERVACOES);
         assertThat(testPropriedade.getPricipalSuspeita()).isEqualTo(UPDATED_PRICIPAL_SUSPEITA);
+        assertThat(testPropriedade.getTipoCriacao()).isEqualTo(UPDATED_TIPO_CRIACAO);
     }
 
     @Test
@@ -321,11 +321,11 @@ class PropriedadeResourceIT {
 
         partialUpdatedPropriedade
             .tipoPropriedade(UPDATED_TIPO_PROPRIEDADE)
-            .tipoCriação(UPDATED_TIPO_CRIACAO)
             .numeroAnimais(UPDATED_NUMERO_ANIMAIS)
             .acometidos(UPDATED_ACOMETIDOS)
             .observacoes(UPDATED_OBSERVACOES)
-            .pricipalSuspeita(UPDATED_PRICIPAL_SUSPEITA);
+            .pricipalSuspeita(UPDATED_PRICIPAL_SUSPEITA)
+            .tipoCriacao(UPDATED_TIPO_CRIACAO);
 
         restPropriedadeMockMvc
             .perform(
@@ -340,11 +340,11 @@ class PropriedadeResourceIT {
         assertThat(propriedadeList).hasSize(databaseSizeBeforeUpdate);
         Propriedade testPropriedade = propriedadeList.get(propriedadeList.size() - 1);
         assertThat(testPropriedade.getTipoPropriedade()).isEqualTo(UPDATED_TIPO_PROPRIEDADE);
-        assertThat(testPropriedade.getTipoCriação()).isEqualTo(UPDATED_TIPO_CRIACAO);
         assertThat(testPropriedade.getNumeroAnimais()).isEqualTo(UPDATED_NUMERO_ANIMAIS);
         assertThat(testPropriedade.getAcometidos()).isEqualTo(UPDATED_ACOMETIDOS);
         assertThat(testPropriedade.getObservacoes()).isEqualTo(UPDATED_OBSERVACOES);
         assertThat(testPropriedade.getPricipalSuspeita()).isEqualTo(UPDATED_PRICIPAL_SUSPEITA);
+        assertThat(testPropriedade.getTipoCriacao()).isEqualTo(UPDATED_TIPO_CRIACAO);
     }
 
     @Test
@@ -361,11 +361,11 @@ class PropriedadeResourceIT {
 
         partialUpdatedPropriedade
             .tipoPropriedade(UPDATED_TIPO_PROPRIEDADE)
-            .tipoCriação(UPDATED_TIPO_CRIACAO)
             .numeroAnimais(UPDATED_NUMERO_ANIMAIS)
             .acometidos(UPDATED_ACOMETIDOS)
             .observacoes(UPDATED_OBSERVACOES)
-            .pricipalSuspeita(UPDATED_PRICIPAL_SUSPEITA);
+            .pricipalSuspeita(UPDATED_PRICIPAL_SUSPEITA)
+            .tipoCriacao(UPDATED_TIPO_CRIACAO);
 
         restPropriedadeMockMvc
             .perform(
@@ -380,11 +380,11 @@ class PropriedadeResourceIT {
         assertThat(propriedadeList).hasSize(databaseSizeBeforeUpdate);
         Propriedade testPropriedade = propriedadeList.get(propriedadeList.size() - 1);
         assertThat(testPropriedade.getTipoPropriedade()).isEqualTo(UPDATED_TIPO_PROPRIEDADE);
-        assertThat(testPropriedade.getTipoCriação()).isEqualTo(UPDATED_TIPO_CRIACAO);
         assertThat(testPropriedade.getNumeroAnimais()).isEqualTo(UPDATED_NUMERO_ANIMAIS);
         assertThat(testPropriedade.getAcometidos()).isEqualTo(UPDATED_ACOMETIDOS);
         assertThat(testPropriedade.getObservacoes()).isEqualTo(UPDATED_OBSERVACOES);
         assertThat(testPropriedade.getPricipalSuspeita()).isEqualTo(UPDATED_PRICIPAL_SUSPEITA);
+        assertThat(testPropriedade.getTipoCriacao()).isEqualTo(UPDATED_TIPO_CRIACAO);
     }
 
     @Test

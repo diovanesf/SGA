@@ -22,7 +22,7 @@ public abstract class Propriedade_ {
 	public static final String PRICIPAL_SUSPEITA = "pricipalSuspeita";
 	public static final String NUMERO_ANIMAIS = "numeroAnimais";
 	public static final String ID = "id";
-	public static final String TIPO_CRIAÇÃO = "tipoCriação";
+	public static final String TIPO_CRIAÇÃO = "tipoCriacao";
 	public static final String TIPO_PROPRIEDADE = "tipoPropriedade";
 	public static final String ACOMETIDOS = "acometidos";
 

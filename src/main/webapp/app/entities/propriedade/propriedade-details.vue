@@ -11,12 +11,6 @@
             <span>{{ propriedade.tipoPropriedade }}</span>
           </dd>
           <dt>
-            <span>Tipo Criacao</span>
-          </dt>
-          <dd>
-            <span>{{ propriedade.tipoCriação }}</span>
-          </dd>
-          <dt>
             <span>Numero Animais</span>
           </dt>
           <dd>
@@ -39,6 +33,12 @@
           </dt>
           <dd>
             <span>{{ propriedade.pricipalSuspeita }}</span>
+          </dd>
+          <dt>
+            <span>Tipo Criacao</span>
+          </dt>
+          <dd>
+            <span>{{ propriedade.tipoCriacao }}</span>
           </dd>
           <dt>
             <span>Endereco</span>

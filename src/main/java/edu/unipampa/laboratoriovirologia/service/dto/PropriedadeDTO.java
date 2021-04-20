@@ -13,8 +13,6 @@ public class PropriedadeDTO implements Serializable {
 
     private String tipoPropriedade;
 
-    private String tipoCriação;
-
     private Integer numeroAnimais;
 
     private String acometidos;
@@ -23,6 +21,8 @@ public class PropriedadeDTO implements Serializable {
     private String observacoes;
 
     private String pricipalSuspeita;
+
+    private String tipoCriacao;
 
     private EnderecoDTO endereco;
 
@@ -40,14 +40,6 @@ public class PropriedadeDTO implements Serializable {
 
     public void setTipoPropriedade(String tipoPropriedade) {
         this.tipoPropriedade = tipoPropriedade;
-    }
-
-    public String getTipoCriação() {
-        return tipoCriação;
-    }
-
-    public void setTipoCriação(String tipoCriação) {
-        this.tipoCriação = tipoCriação;
     }
 
     public Integer getNumeroAnimais() {
@@ -80,6 +72,14 @@ public class PropriedadeDTO implements Serializable {
 
     public void setPricipalSuspeita(String pricipalSuspeita) {
         this.pricipalSuspeita = pricipalSuspeita;
+    }
+
+    public String getTipoCriacao() {
+        return tipoCriacao;
+    }
+
+    public void setTipoCriacao(String tipoCriacao) {
+        this.tipoCriacao = tipoCriacao;
     }
 
     public EnderecoDTO getEndereco() {
@@ -117,11 +117,11 @@ public class PropriedadeDTO implements Serializable {
         return "PropriedadeDTO{" +
             "id=" + getId() +
             ", tipoPropriedade='" + getTipoPropriedade() + "'" +
-            ", tipoCriação='" + getTipoCriação() + "'" +
             ", numeroAnimais=" + getNumeroAnimais() +
             ", acometidos='" + getAcometidos() + "'" +
             ", observacoes='" + getObservacoes() + "'" +
             ", pricipalSuspeita='" + getPricipalSuspeita() + "'" +
+            ", tipoCriacao='" + getTipoCriacao() + "'" +
             ", endereco=" + getEndereco() +
             "}";
     }

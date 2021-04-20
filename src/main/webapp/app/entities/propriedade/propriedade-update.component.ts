@@ -12,11 +12,11 @@ import PropriedadeService from './propriedade.service';
 const validations: any = {
   propriedade: {
     tipoPropriedade: {},
-    tipoCriação: {},
     numeroAnimais: {},
     acometidos: {},
     observacoes: {},
     pricipalSuspeita: {},
+    tipoCriacao: {},
   },
 };
 
