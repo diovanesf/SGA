@@ -11,41 +11,42 @@
 
           <div class="form-group">
             <label class="form-control-label" for="exame-nome">Nome</label>
-            <select class="form-control" id="exame-nome" data-cy="nome" name="nome" v-model="exame.nome">
+            <select class="form-control" id="exame-nome" data-cy="nome" name="nome" 
+            v-model="exame.nome" v-on:click="filtraTipoVirusPorTipoExame()">
               <option
-                v-bind:value="Soroneutralizacao"
+                value="SORONEUTRALIZACAO"
               >Soroneutralizacao
               </option>
               <option
-                v-bind:value="Ensaio_Imunoabsorcao_Enzimatica"
+                value="ENSAIO_IMUNOABSORCAO_ENZIMATICA"
               >Ensaio de Imunoabsorcao Enzimatica
               </option>
               <option
-                v-bind:value="Reacao_Cadeia_Polimerase"
+                value="REACAO_CADEIA_POLIMERASE"
               >Reacao em Cadeia de Polimerase
               </option>
               <option
-                v-bind:value="Imunocromatografia"
+                value="IMUNOCROMATOGRAFIA"
               >Imunocromatografia
               </option>
               <option
-                v-bind:value="Imunofluorescencia"
+                value="IMUNOFLUORESCENCIA"
               >Imunofluorescencia
               </option>
               <option
-                v-bind:value="Inibicao_Hemaglutinacao"
+                value="INIBICAO_HEMAGLUTINACAO"
               >Inibicao da Hemaglutinacao
               </option>
               <option
-                v-bind:value="Isolamento_Viral"
+                value="ISOLAMENTO_VIRAL"
               >Isolamento Viral
               </option>
               <option
-                v-bind:value="Imunodifusao_Gel_Agar"
+                value="IMUNODIFUSAO_GEL_AGAR"
               >Imunodifusao em Gel de Agar
               </option>
               <option
-                v-bind:value="Microscopia_Eletronica"
+                value="MICROSCOPIA_ELETRONICA"
               >Microscopia Eletronica
               </option>
             </select>
@@ -53,153 +54,13 @@
         
           <div class="form-group">
             <label class="form-control-label" for="exame-tipo">Tipo</label>
-            <select class="form-control" id="exame-tipo" data-cy="tipo" name="tipo" v-model="exame.tipo">
-              
-              <div v-show="exame.nome === 'Soroneutralizacao'">
-              <option
-                value="BVDV"
-              >BVDV
+            <select class="form-control" id="exame-tipo" data-cy="tipo" name="tipo" 
+            v-model="exame.tipo">
+              <option v-for="tipoVirus in tiposVirus" :key="tipoVirus" 
+             v-bind:value="exame.tipo && tipoVirus === exame.tipo ? exame.tipo : tipoVirus" >
+                {{tipoVirus}}
               </option>
-              <option
-                value="IBR"
-              >IBR
-              </option>
-              <option
-                v-bind:value="EHV"
-              >EHV
-              </option>
-              <option
-                v-bind:value="EAV"
-              >EAV
-              </option>
-              </div>
-              
-              <div v-show="exame.nome === 'Ensaio_Imunoabsorcao_Enzimatica'">
-              <option
-                v-bind:value="BVDV"
-              >BVDV
-              </option>
-              <option
-                v-bind:value="IBR"
-              >IBR
-              </option>
-              <option
-                v-bind:value="LEB"
-              >LEB
-              </option>
-              </div>
-
-              <div v-show="exame.nome === 'Reacao_Cadeia_Polimerase'">
-              <option
-                v-bind:value="BVDV"
-              >BVDV
-              </option>
-              <option
-                v-bind:value="IBR"
-              >IBR
-              </option>
-              <option
-                v-bind:value="CDV"
-              >CDV
-              </option>
-              <option
-                v-bind:value="EHV"
-              >EHV
-              </option>
-              <option
-                v-bind:value="AIE"
-              >AIE
-              </option>
-              <option
-                v-bind:value="FCM"
-              >FCM
-              </option>
-              <option
-                v-bind:value="BoHV-5"
-              >BoHV-5
-              </option>
-              <option
-                v-bind:value="ORFV"
-              >ORFV
-              </option>
-              </div>
-
-              <div v-show="exame.nome === 'Imunocromatografia'">
-              <option
-                v-bind:value="CDV"
-              >CDV
-              </option>
-              <option
-                v-bind:value="FIV/FELV"
-              >FIV/FELV
-              </option>
-              </div>
-
-              <div v-show="exame.nome === 'Imunofluorescencia'">
-              <option
-                v-bind:value="RABV"
-              >RABV
-              </option>
-              </div>
-
-              <div v-if="exame.nome === 'Inibicao_Hemaglutinacao'">
-              <option
-                v-bind:value="Influenza_Equina"
-              >Influenza equina
-              </option>
-              </div>
-
-              <div v-if="exame.nome === 'Isolamento_Viral'">
-              <option
-                v-bind:value="BVDV"
-              >BVDV
-              </option>
-              <option
-                v-bind:value="IBR"
-              >IBR
-              </option>
-              <option
-                v-bind:value="CPV"
-              >CPV
-              </option>
-              <option
-                v-bind:value="BRSV"
-              >BRSV
-              </option>
-              </div>
-
-              <div v-if="exame.nome === 'Imunodifusao_Gel_Agar'">
-              <option
-                v-bind:value="LEB"
-              >LEB
-              </option>
-              </div>
-
-              <div v-if="exame.nome === 'Microcospia_Eletronica'">
-              <option
-                v-bind:value="Coronavirus"
-              >Coronavirus
-              </option>
-              <option
-                v-bind:value="Rotavirus"
-              >Rotavirus
-              </option>
-              </div>
-
             </select>
-          </div>
-        
-          <div class="form-group">
-            <label class="form-control-label" for="exame-tipo">Tipo</label>
-            <input
-              type="text"
-              class="form-control"
-              name="tipo"
-              id="exame-tipo"
-              data-cy="tipo"
-              :class="{ valid: !$v.exame.tipo.$invalid, invalid: $v.exame.tipo.$invalid }"
-              v-model="$v.exame.tipo.$model"
-            />
           </div>
           <div class="form-group">
             <label class="form-control-label" for="exame-resultado">Resultado</label>

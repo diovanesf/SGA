@@ -1,5 +1,7 @@
 package edu.unipampa.laboratoriovirologia.domain;
 
+import edu.unipampa.laboratoriovirologia.domain.enumeration.TipoExame;
+import edu.unipampa.laboratoriovirologia.domain.enumeration.TipoVirus;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 import javax.annotation.Generated;
@@ -11,12 +13,12 @@ import javax.persistence.metamodel.StaticMetamodel;
 public abstract class Exame_ {
 
 	public static volatile SingularAttribute<Exame, String> observacoes;
-	public static volatile SingularAttribute<Exame, String> tipo;
+	public static volatile SingularAttribute<Exame, TipoVirus> tipo;
 	public static volatile SingularAttribute<Exame, String> preenchimentoEspelho;
 	public static volatile SingularAttribute<Exame, String> resultado;
 	public static volatile SingularAttribute<Exame, BigDecimal> valor;
 	public static volatile SingularAttribute<Exame, LocalDate> dataLeitura;
-	public static volatile SingularAttribute<Exame, String> nome;
+	public static volatile SingularAttribute<Exame, TipoExame> nome;
 	public static volatile SingularAttribute<Exame, Long> id;
 	public static volatile SingularAttribute<Exame, LocalDate> dataTeste;
 	public static volatile SingularAttribute<Exame, Amostra> amostra;

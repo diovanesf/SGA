@@ -8,6 +8,8 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 import edu.unipampa.laboratoriovirologia.IntegrationTest;
 import edu.unipampa.laboratoriovirologia.domain.Exame;
+import edu.unipampa.laboratoriovirologia.domain.enumeration.TipoExame;
+import edu.unipampa.laboratoriovirologia.domain.enumeration.TipoVirus;
 import edu.unipampa.laboratoriovirologia.repository.ExameRepository;
 import edu.unipampa.laboratoriovirologia.service.dto.ExameDTO;
 import edu.unipampa.laboratoriovirologia.service.mapper.ExameMapper;
@@ -36,11 +38,11 @@ import org.springframework.util.Base64Utils;
 @WithMockUser
 class ExameResourceIT {
 
-    private static final String DEFAULT_NOME = "AAAAAAAAAA";
-    private static final String UPDATED_NOME = "BBBBBBBBBB";
+    private static final TipoExame DEFAULT_NOME = TipoExame.SORONEUTRALIZACAO;
+    private static final TipoExame UPDATED_NOME = TipoExame.IMUNOCROMATOGRAFIA;
 
-    private static final String DEFAULT_TIPO = "AAAAAAAAAA";
-    private static final String UPDATED_TIPO = "BBBBBBBBBB";
+    private static final TipoVirus DEFAULT_TIPO = TipoVirus.BVDV;
+    private static final TipoVirus UPDATED_TIPO = TipoVirus.FIV_FELV;
 
     private static final String DEFAULT_RESULTADO = "AAAAAAAAAA";
     private static final String UPDATED_RESULTADO = "BBBBBBBBBB";

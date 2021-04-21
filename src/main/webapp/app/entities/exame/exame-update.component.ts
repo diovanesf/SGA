@@ -31,9 +31,10 @@ export default class ExameUpdate extends mixins(JhiDataUtils) {
 
   @Inject('amostraService') private amostraService: () => AmostraService;
 
-  public amostras: IAmostra[] = [];
+  public amostra: IAmostra = {};
   public isSaving = false;
   public currentLanguage = '';
+  public tiposVirus: String[] = [];
 
   beforeRouteEnter(to, from, next) {
     next(vm => {
@@ -43,7 +44,6 @@ export default class ExameUpdate extends mixins(JhiDataUtils) {
       if (to.params.amostraId) {
         vm.retrieveAmostra(to.params.amostraId);
       }
-      // vm.initRelationships();
     });
   }
 
@@ -64,7 +64,8 @@ export default class ExameUpdate extends mixins(JhiDataUtils) {
         .update(this.exame)
         .then(param => {
           this.isSaving = false;
-          this.$router.go(-1);
+          this.$router.push({ name: 'Exame' })
+          // this.$router.go(-1);
           const message = 'A Exame is updated with identifier ' + param.id;
           return this.$root.$bvToast.toast(message.toString(), {
             toaster: 'b-toaster-top-center',
@@ -79,7 +80,8 @@ export default class ExameUpdate extends mixins(JhiDataUtils) {
         .create(this.exame)
         .then(param => {
           this.isSaving = false;
-          this.$router.go(-1);
+          // this.$router.go(-1);
+          this.$router.push({ name: 'Exame' })
           const message = 'A Exame is created with identifier ' + param.id;
           this.$root.$bvToast.toast(message.toString(), {
             toaster: 'b-toaster-top-center',
@@ -101,16 +103,114 @@ export default class ExameUpdate extends mixins(JhiDataUtils) {
   }
 
   public previousState(): void {
-    this.$router.go(-1);
+    this.$router.push({ name: 'Exame' });
   }
 
-  // public initRelationships(): void {
-    public retrieveAmostra(amostraId: number): void {
+  public retrieveAmostra(amostraId: number): void {
     this.amostraService()
       .find(amostraId)
       .then(res => {
-        // this.amostras = res.data;
-          this.exame.amostra = res;
+        this.amostra = res;
+        this.exame.amostra = res;
       });
   }
+
+  public filtraTipoVirusPorTipoExame() {
+    let virus = "";
+    console.log("Aqui");
+    console.log(this.exame.nome);
+    switch (this.exame.nome) {
+      case 'SORONEUTRALIZACAO':
+        this.tiposVirus = [];
+        this.addBvdvTipoVirus();
+        this.addIbrTipoVirus();
+        this.addEhvTipoVirus();
+        virus = "EAV";
+        this.tiposVirus.push(virus);
+        break;
+      case 'ENSAIO_IMUNOABSORCAO_ENZIMATICA':
+        this.tiposVirus = [];
+        this.addBvdvTipoVirus();
+        this.addIbrTipoVirus();
+        this.addLebTipoVirus();
+        break;
+      case 'REACAO_CADEIA_POLIMERASE':
+        this.tiposVirus = [];
+        this.addBvdvTipoVirus();
+        this.addIbrTipoVirus();
+        this.addCdvTipoVirus();
+        this.addEhvTipoVirus();
+        virus = "AIE";
+        this.tiposVirus.push(virus);
+        virus = "FCM";
+        this.tiposVirus.push(virus);
+        virus = "BOHV_5";
+        this.tiposVirus.push(virus);
+        virus = "ORFV"
+        this.tiposVirus.push(virus);
+        break;
+      case 'IMUNOCROMATOGRAFIA':
+        this.tiposVirus = [];
+        this.addCdvTipoVirus();
+        virus = "FIV_FELV";
+        this.tiposVirus.push(virus);
+        break;
+      case 'IMUNOFLUORESCENCIA':
+        this.tiposVirus = [];
+        virus = "RABV";
+        this.tiposVirus.push(virus);
+        break;
+      case 'INIBICAO_HEMAGLUTINACAO':
+        this.tiposVirus = [];
+        virus = "INFLUENZA_EQUINA";
+        this.tiposVirus.push(virus);
+        break;
+      case 'ISOLAMENTO_VIRAL':
+        this.tiposVirus = [];
+        this.addBvdvTipoVirus();
+        this.addIbrTipoVirus();
+        virus = "CPV";
+        this.tiposVirus.push(virus);
+        virus = "BRSV";
+        this.tiposVirus.push(virus);
+        break;
+      case 'IMUNODIFUSAO_GEL_AGAR':
+        this.tiposVirus = [];
+        this.addLebTipoVirus();
+        break;
+      case 'MICROSCOPIA_ELETRONICA':
+        this.tiposVirus = [];
+        virus = "CORONAVIRUS";
+        this.tiposVirus.push(virus);
+        virus = "ROTAVIRUS";
+        this.tiposVirus.push(virus);
+        break;
+    }
+  }
+
+  public addBvdvTipoVirus() {
+    let bvdv = "BVDV";
+    this.tiposVirus.push(bvdv);
+  }
+
+  public addIbrTipoVirus() {
+    let ibr = "IBR";
+    this.tiposVirus.push(ibr);
+  }
+
+  public addEhvTipoVirus() {
+    let ehv = "EHV";
+    this.tiposVirus.push(ehv);
+  }
+
+  public addLebTipoVirus() {
+    let leb = "LEB";
+    this.tiposVirus.push(leb);
+  }
+
+  public addCdvTipoVirus() {
+    let cdv = "CDV";
+    this.tiposVirus.push(cdv);
+  }
+
 }

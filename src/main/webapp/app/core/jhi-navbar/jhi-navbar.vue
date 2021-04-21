@@ -45,10 +45,6 @@
             <font-awesome-icon icon="asterisk" />
             <span>Endereco</span>
           </b-dropdown-item>
-          <b-dropdown-item to="/exame">
-            <font-awesome-icon icon="asterisk" />
-            <span>Exame</span>
-          </b-dropdown-item>
           <b-dropdown-item to="/midia">
             <font-awesome-icon icon="asterisk" />
             <span>Midia</span>

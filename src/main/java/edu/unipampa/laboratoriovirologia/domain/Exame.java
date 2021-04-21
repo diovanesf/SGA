@@ -6,6 +6,8 @@ import java.math.BigDecimal;
 import java.time.LocalDate;
 import javax.persistence.*;
 import org.hibernate.annotations.Type;
+import edu.unipampa.laboratoriovirologia.domain.enumeration.TipoExame;
+import edu.unipampa.laboratoriovirologia.domain.enumeration.TipoVirus;
 
 /**
  * A Exame.
@@ -21,11 +23,13 @@ public class Exame implements Serializable {
     @SequenceGenerator(name = "sequenceGenerator")
     private Long id;
 
+    @Enumerated(EnumType.STRING)
     @Column(name = "nome")
-    private String nome;
+    private TipoExame nome;
 
+    @Enumerated(EnumType.STRING)
     @Column(name = "tipo")
-    private String tipo;
+    private TipoVirus tipo;
 
     @Column(name = "resultado")
     private String resultado;
@@ -67,29 +71,29 @@ public class Exame implements Serializable {
         return this;
     }
 
-    public String getNome() {
+    public TipoExame getNome() {
         return this.nome;
     }
 
-    public Exame nome(String nome) {
+    public Exame nome(TipoExame nome) {
         this.nome = nome;
         return this;
     }
 
-    public void setNome(String nome) {
+    public void setNome(TipoExame nome) {
         this.nome = nome;
     }
 
-    public String getTipo() {
+    public TipoVirus getTipo() {
         return this.tipo;
     }
 
-    public Exame tipo(String tipo) {
+    public Exame tipo(TipoVirus tipo) {
         this.tipo = tipo;
         return this;
     }
 
-    public void setTipo(String tipo) {
+    public void setTipo(TipoVirus tipo) {
         this.tipo = tipo;
     }
 

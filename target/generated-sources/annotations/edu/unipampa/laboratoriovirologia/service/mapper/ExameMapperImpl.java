@@ -1,6 +1,8 @@
 package edu.unipampa.laboratoriovirologia.service.mapper;
 
 import edu.unipampa.laboratoriovirologia.domain.Exame;
+import edu.unipampa.laboratoriovirologia.domain.enumeration.TipoExame;
+import edu.unipampa.laboratoriovirologia.domain.enumeration.TipoVirus;
 import edu.unipampa.laboratoriovirologia.service.dto.ExameDTO;
 import java.util.ArrayList;
 import java.util.List;
@@ -10,7 +12,7 @@ import org.springframework.stereotype.Component;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2021-04-20T03:17:38-0300",
+    date = "2021-04-21T14:34:27-0300",
     comments = "version: 1.4.2.Final, compiler: javac, environment: Java 11.0.10 (Ubuntu)"
 )
 @Component
@@ -28,8 +30,12 @@ public class ExameMapperImpl implements ExameMapper {
         Exame exame = new Exame();
 
         exame.id( dto.getId() );
-        exame.setNome( dto.getNome() );
-        exame.setTipo( dto.getTipo() );
+        if ( dto.getNome() != null ) {
+            exame.setNome( Enum.valueOf( TipoExame.class, dto.getNome() ) );
+        }
+        if ( dto.getTipo() != null ) {
+            exame.setTipo( Enum.valueOf( TipoVirus.class, dto.getTipo() ) );
+        }
         exame.setResultado( dto.getResultado() );
         exame.setDataTeste( dto.getDataTeste() );
         exame.setDataLeitura( dto.getDataLeitura() );
@@ -79,10 +85,10 @@ public class ExameMapperImpl implements ExameMapper {
             entity.id( dto.getId() );
         }
         if ( dto.getNome() != null ) {
-            entity.setNome( dto.getNome() );
+            entity.setNome( Enum.valueOf( TipoExame.class, dto.getNome() ) );
         }
         if ( dto.getTipo() != null ) {
-            entity.setTipo( dto.getTipo() );
+            entity.setTipo( Enum.valueOf( TipoVirus.class, dto.getTipo() ) );
         }
         if ( dto.getResultado() != null ) {
             entity.setResultado( dto.getResultado() );
@@ -117,8 +123,12 @@ public class ExameMapperImpl implements ExameMapper {
 
         exameDTO.setAmostra( amostraMapper.toDtoProtocolo( s.getAmostra() ) );
         exameDTO.setId( s.getId() );
-        exameDTO.setNome( s.getNome() );
-        exameDTO.setTipo( s.getTipo() );
+        if ( s.getNome() != null ) {
+            exameDTO.setNome( s.getNome().name() );
+        }
+        if ( s.getTipo() != null ) {
+            exameDTO.setTipo( s.getTipo().name() );
+        }
         exameDTO.setResultado( s.getResultado() );
         exameDTO.setDataTeste( s.getDataTeste() );
         exameDTO.setDataLeitura( s.getDataLeitura() );
