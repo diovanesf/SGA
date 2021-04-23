@@ -6,6 +6,8 @@ import edu.unipampa.laboratoriovirologia.service.dto.AmostraDTO;
 import edu.unipampa.laboratoriovirologia.web.rest.errors.BadRequestAlertException;
 import java.net.URI;
 import java.net.URISyntaxException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
@@ -53,7 +55,11 @@ public class AmostraResource {
         if (amostraDTO.getId() != null) {
             throw new BadRequestAlertException("A new amostra cannot already have an ID", ENTITY_NAME, "idexists");
         }
+        SimpleDateFormat format = new SimpleDateFormat("yy");
         AmostraDTO result = amostraService.save(amostraDTO);
+        result.setProtocolo("LV "+result.getId()+"/"+format.format(new Date()));
+        result = amostraService.save(result);
+        
         return ResponseEntity
             .created(new URI("/api/amostras/" + result.getId()))
             .headers(HeaderUtil.createEntityCreationAlert(applicationName, false, ENTITY_NAME, result.getId().toString()))

@@ -44,6 +44,7 @@ export default class ExameUpdate extends mixins(JhiDataUtils) {
       if (to.params.amostraId) {
         vm.retrieveAmostra(to.params.amostraId);
       }
+      vm.addTodosTipoVirus();
     });
   }
 
@@ -115,18 +116,36 @@ export default class ExameUpdate extends mixins(JhiDataUtils) {
       });
   }
 
+  public addTodosTipoVirus(){
+    this.addBvdvTipoVirus();
+        this.addIbrTipoVirus();
+        this.addEhvTipoVirus();
+        this.addLebTipoVirus();
+        this.addCdvTipoVirus();
+        this.addEhvTipoVirus();
+        this.addAieTipoVirus();
+        this.addFcmTipoVirus();
+        this.addBohvTipoVirus();
+        this.addOrfvTipoVirus();
+        this.addEavTipoVirus();
+        this.addFivFelvTipoVirus();
+        this.addRabvTipoVirus();
+        this.addInfluenzaEquinaTipoVirus();
+        this.addCpvTipoVirus();
+        this.addBrsvTipoVirus();
+        this.addCoronavirusTipoVirus();
+        this.addRotavirusTipoVirus();
+  }
+
   public filtraTipoVirusPorTipoExame() {
     let virus = "";
-    console.log("Aqui");
-    console.log(this.exame.nome);
     switch (this.exame.nome) {
       case 'SORONEUTRALIZACAO':
         this.tiposVirus = [];
         this.addBvdvTipoVirus();
         this.addIbrTipoVirus();
         this.addEhvTipoVirus();
-        virus = "EAV";
-        this.tiposVirus.push(virus);
+        this.addEavTipoVirus();
         break;
       case 'ENSAIO_IMUNOABSORCAO_ENZIMATICA':
         this.tiposVirus = [];
@@ -140,39 +159,30 @@ export default class ExameUpdate extends mixins(JhiDataUtils) {
         this.addIbrTipoVirus();
         this.addCdvTipoVirus();
         this.addEhvTipoVirus();
-        virus = "AIE";
-        this.tiposVirus.push(virus);
-        virus = "FCM";
-        this.tiposVirus.push(virus);
-        virus = "BOHV_5";
-        this.tiposVirus.push(virus);
-        virus = "ORFV"
-        this.tiposVirus.push(virus);
+        this.addAieTipoVirus();
+        this.addFcmTipoVirus();
+        this.addBohvTipoVirus();
+        this.addOrfvTipoVirus();
         break;
       case 'IMUNOCROMATOGRAFIA':
         this.tiposVirus = [];
         this.addCdvTipoVirus();
-        virus = "FIV_FELV";
-        this.tiposVirus.push(virus);
+        this.addFivFelvTipoVirus();
         break;
       case 'IMUNOFLUORESCENCIA':
         this.tiposVirus = [];
-        virus = "RABV";
-        this.tiposVirus.push(virus);
+        this.addRabvTipoVirus();
         break;
       case 'INIBICAO_HEMAGLUTINACAO':
         this.tiposVirus = [];
-        virus = "INFLUENZA_EQUINA";
-        this.tiposVirus.push(virus);
+        this.addInfluenzaEquinaTipoVirus();
         break;
       case 'ISOLAMENTO_VIRAL':
         this.tiposVirus = [];
         this.addBvdvTipoVirus();
         this.addIbrTipoVirus();
-        virus = "CPV";
-        this.tiposVirus.push(virus);
-        virus = "BRSV";
-        this.tiposVirus.push(virus);
+        this.addCpvTipoVirus();
+        this.addBrsvTipoVirus();
         break;
       case 'IMUNODIFUSAO_GEL_AGAR':
         this.tiposVirus = [];
@@ -180,10 +190,8 @@ export default class ExameUpdate extends mixins(JhiDataUtils) {
         break;
       case 'MICROSCOPIA_ELETRONICA':
         this.tiposVirus = [];
-        virus = "CORONAVIRUS";
-        this.tiposVirus.push(virus);
-        virus = "ROTAVIRUS";
-        this.tiposVirus.push(virus);
+        this.addCoronavirusTipoVirus();
+        this.addRotavirusTipoVirus();
         break;
     }
   }
@@ -211,6 +219,66 @@ export default class ExameUpdate extends mixins(JhiDataUtils) {
   public addCdvTipoVirus() {
     let cdv = "CDV";
     this.tiposVirus.push(cdv);
+  }
+
+  public addAieTipoVirus() {
+    let aie = "AIE";
+    this.tiposVirus.push(aie);
+  }
+
+  public addFcmTipoVirus() {
+    let fcm = "FCM";
+    this.tiposVirus.push(fcm);
+  }
+
+  public addBohvTipoVirus() {
+    let bohv = "BOHV_5";
+    this.tiposVirus.push(bohv);
+  }
+
+  public addOrfvTipoVirus() {
+    let orfv = "ORFV";
+    this.tiposVirus.push(orfv);
+  }
+
+  public addEavTipoVirus() {
+    let eav = "EAV";
+    this.tiposVirus.push(eav);
+  }
+
+  public addFivFelvTipoVirus() {
+    let fivFelv = "FIV_FELV";
+    this.tiposVirus.push(fivFelv);
+  }
+
+  public addRabvTipoVirus() {
+    let rabv = "RABV";
+    this.tiposVirus.push(rabv);
+  }
+
+  public addInfluenzaEquinaTipoVirus() {
+    let influenzaEquina = "INFLUENZA_EQUINA";
+    this.tiposVirus.push(influenzaEquina);
+  }
+
+  public addCpvTipoVirus() {
+    let cpv = "CPV";
+    this.tiposVirus.push(cpv);
+  }
+
+  public addBrsvTipoVirus() {
+    let brsv = "BRSV";
+    this.tiposVirus.push(brsv);
+  }
+
+  public addCoronavirusTipoVirus() {
+    let coronavirus = "CORONAVIRUS";
+    this.tiposVirus.push(coronavirus);
+  }
+
+  public addRotavirusTipoVirus() {
+    let rotavirus = "ROTAVIRUS";
+    this.tiposVirus.push(rotavirus);
   }
 
 }

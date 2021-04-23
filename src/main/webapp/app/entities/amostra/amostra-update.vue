@@ -8,7 +8,7 @@
             <label for="id">ID</label>
             <input type="text" class="form-control" id="id" name="id" v-model="amostra.id" readonly />
           </div>
-          <div class="form-group">
+          <div class="form-group" v-if="amostra.protocolo">
             <label class="form-control-label" for="amostra-protocolo">Protocolo</label>
             <input
               type="text"
@@ -208,7 +208,7 @@
               v-model="$v.amostra.situacao.$model"
             />
           </div>
-          <div class="form-group">
+          <!-- <div class="form-group">
             <label for="amostra-user">User</label>
             <select
               class="form-control"
@@ -223,7 +223,7 @@
                 {{ userOption.login }}
               </option>
             </select>
-          </div>
+          </div> -->
           <div class="form-group">
             <label class="form-control-label" for="amostra-propriedade">Propriedade</label>
             <select class="form-control" id="amostra-propriedade" data-cy="propriedade" name="propriedade" v-model="amostra.propriedade">

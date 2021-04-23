@@ -103,6 +103,7 @@ export default class AmostraUpdate extends Vue {
           });
         });
     } else {
+      this.setUser();
       this.amostraService()
         .create(this.amostra)
         .then(param => {
@@ -118,6 +119,10 @@ export default class AmostraUpdate extends Vue {
           });
         });
     }
+  }
+
+  public setUser() {
+    this.amostra.users.push(this.$store.getters.account);
   }
 
   public retrieveAmostra(amostraId): void {
