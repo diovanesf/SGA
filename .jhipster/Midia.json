@@ -24,9 +24,9 @@
   ],
   "service": "serviceClass",
   "dto": "mapstruct",
-  "jpaMetamodelFiltering": false,
+  "jpaMetamodelFiltering": true,
   "readOnly": false,
-  "pagination": "no",
+  "pagination": "pagination",
   "name": "Midia",
   "changelogDate": "20210413052631"
 }

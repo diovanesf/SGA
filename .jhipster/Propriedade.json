@@ -39,9 +39,9 @@
   ],
   "service": "serviceClass",
   "dto": "mapstruct",
-  "jpaMetamodelFiltering": false,
+  "jpaMetamodelFiltering": true,
   "readOnly": false,
-  "pagination": "no",
+  "pagination": "pagination",
   "name": "Propriedade",
   "changelogDate": "20210413050900"
 }
