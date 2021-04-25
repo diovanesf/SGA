@@ -2,20 +2,20 @@
   <div>
     <div class="row justify-content-center">
       <div class="col-md-8 toastify-container">
-        <h1 id="register-title" data-cy="registerTitle">Registration</h1>
+        <h1 id="register-title" data-cy="registerTitle">Cadastro</h1>
 
         <div class="alert alert-success" role="alert" v-if="success">
-          <strong>Registration saved!</strong> Please check your email for confirmation.
+          <strong>Cadastro salvo!</strong> Confira seu e-mail para confirmação.
         </div>
 
-        <div class="alert alert-danger" role="alert" v-if="error"><strong>Registration failed!</strong> Please try again later.</div>
+        <div class="alert alert-danger" role="alert" v-if="error"><strong>Falha no cadastro!</strong> Tente novamente mais tarde.</div>
 
         <div class="alert alert-danger" role="alert" v-if="errorUserExists">
-          <strong>Login name already registered!</strong> Please choose another one.
+          <strong>Nome de usuário ja cadastrado!</strong> Por favor, escolha outro.
         </div>
 
         <div class="alert alert-danger" role="alert" v-if="errorEmailExists">
-          <strong>Email is already in use!</strong> Please choose another one.
+          <strong>Este e-mail ja está em uso!</strong> Por favor, escolha outro.
         </div>
       </div>
     </div>
@@ -23,7 +23,7 @@
       <div class="col-md-8">
         <form id="register-form" name="registerForm" role="form" v-on:submit.prevent="register()" v-if="!success" no-validate>
           <div class="form-group">
-            <label class="form-control-label" for="username">Username</label>
+            <label class="form-control-label" for="username">Usuário</label>
             <input
               type="text"
               class="form-control"
@@ -38,20 +38,20 @@
               data-cy="username"
             />
             <div v-if="$v.registerAccount.login.$anyDirty && $v.registerAccount.login.$invalid">
-              <small class="form-text text-danger" v-if="!$v.registerAccount.login.required"> Your username is required. </small>
+              <small class="form-text text-danger" v-if="!$v.registerAccount.login.required"> Seu nome de usuário é necessário. </small>
               <small class="form-text text-danger" v-if="!$v.registerAccount.login.minLength">
-                Your username is required to be at least 1 character.
+                Seu nome de usuário deve conter ao menos 1 caracter.
               </small>
               <small class="form-text text-danger" v-if="!$v.registerAccount.login.maxLength">
-                Your username cannot be longer than 50 characters.
+                Seu nome de usuário não deve ultrapassar 50 caracteres.
               </small>
               <small class="form-text text-danger" v-if="!$v.registerAccount.login.pattern">
-                Your username can only contain letters and digits.
+                Seu nome de usuário deve conter somente letras e números.
               </small>
             </div>
           </div>
           <div class="form-group">
-            <label class="form-control-label" for="email">Email</label>
+            <label class="form-control-label" for="email">E-mail</label>
             <input
               type="email"
               class="form-control"
@@ -66,18 +66,18 @@
               data-cy="email"
             />
             <div v-if="$v.registerAccount.email.$anyDirty && $v.registerAccount.email.$invalid">
-              <small class="form-text text-danger" v-if="!$v.registerAccount.email.required"> Your email is required. </small>
-              <small class="form-text text-danger" v-if="!$v.registerAccount.email.email"> Your email is invalid. </small>
+              <small class="form-text text-danger" v-if="!$v.registerAccount.email.required"> Seu e-mail é necessário. </small>
+              <small class="form-text text-danger" v-if="!$v.registerAccount.email.email"> Seu e-mail é invalido. </small>
               <small class="form-text text-danger" v-if="!$v.registerAccount.email.minLength">
-                Your email is required to be at least 5 characters.
+                É necessário que seu e-mail contenha ao menos 5 caracteres.
               </small>
               <small class="form-text text-danger" v-if="!$v.registerAccount.email.maxLength">
-                Your email cannot be longer than 100 characters.
+                Seu e-mail não pode ultrapassar 100 caracteres.
               </small>
             </div>
           </div>
           <div class="form-group">
-            <label class="form-control-label" for="firstPassword">New password</label>
+            <label class="form-control-label" for="firstPassword">Nova senha</label>
             <input
               type="password"
               class="form-control"
@@ -91,17 +91,17 @@
               data-cy="firstPassword"
             />
             <div v-if="$v.registerAccount.password.$anyDirty && $v.registerAccount.password.$invalid">
-              <small class="form-text text-danger" v-if="!$v.registerAccount.password.required"> Your password is required. </small>
+              <small class="form-text text-danger" v-if="!$v.registerAccount.password.required"> Sua senha é necessária. </small>
               <small class="form-text text-danger" v-if="!$v.registerAccount.password.minLength">
-                Your password is required to be at least 4 characters.
+                É necessário que sua senha tenha ao menos 4 caracteres.
               </small>
               <small class="form-text text-danger" v-if="!$v.registerAccount.password.maxLength">
-                Your password cannot be longer than 50 characters.
+                Sua senha não pode ultrapassar 50 caracteres.
               </small>
             </div>
           </div>
           <div class="form-group">
-            <label class="form-control-label" for="secondPassword">New password confirmation</label>
+            <label class="form-control-label" for="secondPassword">Confirmação da nova senha</label>
             <input
               type="password"
               class="form-control"
@@ -115,27 +115,27 @@
               data-cy="secondPassword"
             />
             <div v-if="$v.confirmPassword.$dirty && $v.confirmPassword.$invalid">
-              <small class="form-text text-danger" v-if="!$v.confirmPassword.required"> Your confirmation password is required. </small>
+              <small class="form-text text-danger" v-if="!$v.confirmPassword.required"> Sua confirmação de senha é necessária. </small>
               <small class="form-text text-danger" v-if="!$v.confirmPassword.minLength">
-                Your confirmation password is required to be at least 4 characters.
+                É necessário que a confirmação da sua senha tenha ao menos 4 caracteres.
               </small>
               <small class="form-text text-danger" v-if="!$v.confirmPassword.maxLength">
-                Your confirmation password cannot be longer than 50 characters.
+                A confirmação da sua senha não pode ultrapassar 50 caracteres.
               </small>
               <small class="form-text text-danger" v-if="!$v.confirmPassword.sameAsPassword">
-                The password and its confirmation do not match!
+                A senha e a confirmação não coincidem!
               </small>
             </div>
           </div>
 
-          <button type="submit" :disabled="$v.$invalid" class="btn btn-primary" data-cy="submit">Register</button>
+          <button type="submit" :disabled="$v.$invalid" class="btn btn-primary" data-cy="submit">Registrar</button>
         </form>
         <p></p>
         <div class="alert alert-warning">
-          <span>If you want to </span>
-          <a class="alert-link" v-on:click="openLogin()">sign in</a
+          <span>Se quiser, faça </span>
+          <a class="alert-link" v-on:click="openLogin()">log in</a
           ><span
-            >, you can try the default accounts:<br />- Administrator (login="admin" and password="admin") <br />- User (login="user" and
+            >, voce pode tentar as contas padrões:<br />- Administrador (login="admin" and password="admin") <br />- Usuário (login="user" and
             password="user").</span
           >
         </div>
