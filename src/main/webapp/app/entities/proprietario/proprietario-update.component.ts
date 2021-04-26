@@ -1,8 +1,5 @@
 import { Component, Vue, Inject } from 'vue-property-decorator';
 
-import EnderecoService from '@/entities/endereco/endereco.service';
-import { IEndereco } from '@/shared/model/endereco.model';
-
 import PropriedadeService from '@/entities/propriedade/propriedade.service';
 import { IPropriedade } from '@/shared/model/propriedade.model';
 
@@ -24,10 +21,6 @@ const validations: any = {
 export default class ProprietarioUpdate extends Vue {
   @Inject('proprietarioService') private proprietarioService: () => ProprietarioService;
   public proprietario: IProprietario = new Proprietario();
-
-  @Inject('enderecoService') private enderecoService: () => EnderecoService;
-
-  public enderecos: IEndereco[] = [];
 
   @Inject('propriedadeService') private propriedadeService: () => PropriedadeService;
 
@@ -102,11 +95,6 @@ export default class ProprietarioUpdate extends Vue {
   }
 
   public initRelationships(): void {
-    this.enderecoService()
-      .retrieve()
-      .then(res => {
-        this.enderecos = res.data;
-      });
     this.propriedadeService()
       .retrieve()
       .then(res => {

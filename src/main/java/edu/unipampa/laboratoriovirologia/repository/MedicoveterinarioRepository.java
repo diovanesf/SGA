@@ -9,4 +9,4 @@ import org.springframework.stereotype.Repository;
  */
 @SuppressWarnings("unused")
 @Repository
-public interface MedicoveterinarioRepository extends JpaRepository<Medicoveterinario, Long> {}
+public interface MedicoveterinarioRepository extends JpaRepository<Medicoveterinario, Long>, JpaSpecificationExecutor<Medicoveterinario> {}

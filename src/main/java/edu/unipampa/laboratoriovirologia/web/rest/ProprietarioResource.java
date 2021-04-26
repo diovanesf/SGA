@@ -1,7 +1,9 @@
 package edu.unipampa.laboratoriovirologia.web.rest;
 
 import edu.unipampa.laboratoriovirologia.repository.ProprietarioRepository;
+import edu.unipampa.laboratoriovirologia.service.ProprietarioQueryService;
 import edu.unipampa.laboratoriovirologia.service.ProprietarioService;
+import edu.unipampa.laboratoriovirologia.service.criteria.ProprietarioCriteria;
 import edu.unipampa.laboratoriovirologia.service.dto.ProprietarioDTO;
 import edu.unipampa.laboratoriovirologia.web.rest.errors.BadRequestAlertException;
 import java.net.URI;
@@ -12,9 +14,15 @@ import java.util.Optional;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 import tech.jhipster.web.util.HeaderUtil;
+import tech.jhipster.web.util.PaginationUtil;
 import tech.jhipster.web.util.ResponseUtil;
 
 /**
@@ -35,9 +43,16 @@ public class ProprietarioResource {
 
     private final ProprietarioRepository proprietarioRepository;
 
-    public ProprietarioResource(ProprietarioService proprietarioService, ProprietarioRepository proprietarioRepository) {
+    private final ProprietarioQueryService proprietarioQueryService;
+
+    public ProprietarioResource(
+        ProprietarioService proprietarioService,
+        ProprietarioRepository proprietarioRepository,
+        ProprietarioQueryService proprietarioQueryService
+    ) {
         this.proprietarioService = proprietarioService;
         this.proprietarioRepository = proprietarioRepository;
+        this.proprietarioQueryService = proprietarioQueryService;
     }
 
     /**
@@ -133,12 +148,28 @@ public class ProprietarioResource {
     /**
      * {@code GET  /proprietarios} : get all the proprietarios.
      *
+     * @param pageable the pagination information.
+     * @param criteria the criteria which the requested entities should match.
      * @return the {@link ResponseEntity} with status {@code 200 (OK)} and the list of proprietarios in body.
      */
     @GetMapping("/proprietarios")
-    public List<ProprietarioDTO> getAllProprietarios() {
-        log.debug("REST request to get all Proprietarios");
-        return proprietarioService.findAll();
+    public ResponseEntity<List<ProprietarioDTO>> getAllProprietarios(ProprietarioCriteria criteria, Pageable pageable) {
+        log.debug("REST request to get Proprietarios by criteria: {}", criteria);
+        Page<ProprietarioDTO> page = proprietarioQueryService.findByCriteria(criteria, pageable);
+        HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(ServletUriComponentsBuilder.fromCurrentRequest(), page);
+        return ResponseEntity.ok().headers(headers).body(page.getContent());
+    }
+
+    /**
+     * {@code GET  /proprietarios/count} : count all the proprietarios.
+     *
+     * @param criteria the criteria which the requested entities should match.
+     * @return the {@link ResponseEntity} with status {@code 200 (OK)} and the count in body.
+     */
+    @GetMapping("/proprietarios/count")
+    public ResponseEntity<Long> countProprietarios(ProprietarioCriteria criteria) {
+        log.debug("REST request to count Proprietarios by criteria: {}", criteria);
+        return ResponseEntity.ok().body(proprietarioQueryService.countByCriteria(criteria));
     }
 
     /**

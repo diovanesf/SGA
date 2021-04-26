@@ -45,34 +45,6 @@
             <font-awesome-icon icon="asterisk" />
             <span>Endereço</span>
           </b-dropdown-item>
-          <b-dropdown-item to="/exame">
-            <font-awesome-icon icon="asterisk" />
-            <span>Exames</span>
-          </b-dropdown-item>
-          <b-dropdown-item to="/midia">
-            <font-awesome-icon icon="asterisk" />
-            <span>Midias</span>
-          </b-dropdown-item>
-          <b-dropdown-item to="/amostra">
-            <font-awesome-icon icon="asterisk" />
-            <span>Amostras</span>
-          </b-dropdown-item>
-          <b-dropdown-item to="/proprietario">
-            <font-awesome-icon icon="asterisk" />
-            <span>Proprietario</span>
-          </b-dropdown-item>
-          <b-dropdown-item to="/propriedade">
-            <font-awesome-icon icon="asterisk" />
-            <span>Propriedade</span>
-          </b-dropdown-item>
-          <b-dropdown-item to="/endereco">
-            <font-awesome-icon icon="asterisk" />
-            <span>Endereco</span>
-          </b-dropdown-item>
-          <b-dropdown-item to="/exame">
-            <font-awesome-icon icon="asterisk" />
-            <span>Exame</span>
-          </b-dropdown-item>
           <b-dropdown-item to="/midia">
             <font-awesome-icon icon="asterisk" />
             <span>Midia</span>

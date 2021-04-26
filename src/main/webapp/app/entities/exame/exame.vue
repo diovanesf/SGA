@@ -6,7 +6,7 @@
         <button class="btn btn-info mr-2" v-on:click="handleSyncList" :disabled="isFetching">
           <font-awesome-icon icon="sync" :spin="isFetching"></font-awesome-icon> <span>Refresh List</span>
         </button>
-        <router-link :to="{ name: 'ExameCreate' }" custom v-slot="{ navigate }">
+        <router-link :to="{ name: 'ExameCreate' , params: { amostraId: amostra.id } } " custom v-slot="{ navigate }">
           <button
             @click="navigate"
             id="jh-create-entity"
@@ -27,9 +27,11 @@
       <table class="table table-striped" aria-describedby="exames">
         <thead>
           <tr>
-            <th scope="row"><span>ID</span></th>
+            <!-- <th scope="row"><span>ID</span></th> -->
             <th scope="row"><span>Nome</span></th>
             <th scope="row"><span>Tipo</span></th>
+            <th scope="row"><span>Peso Material</span></th>
+            <th scope="row"><span>Estimativa Vacinas</span></th>
             <th scope="row"><span>Resultado</span></th>
             <th scope="row"><span>Data Teste</span></th>
             <th scope="row"><span>Data Leitura</span></th>
@@ -42,11 +44,13 @@
         </thead>
         <tbody>
           <tr v-for="exame in exames" :key="exame.id" data-cy="entityTable">
-            <td>
+            <!-- <td>
               <router-link :to="{ name: 'ExameView', params: { exameId: exame.id } }">{{ exame.id }}</router-link>
-            </td>
+            </td> -->
             <td>{{ exame.nome }}</td>
             <td>{{ exame.tipo }}</td>
+            <td>{{ exame.pesoMaterial }}</td>
+            <td>{{ exame.estimativaVacinas }}</td>
             <td>{{ exame.resultado }}</td>
             <td>{{ exame.dataTeste }}</td>
             <td>{{ exame.dataLeitura }}</td>
@@ -68,7 +72,7 @@
                     <span class="d-none d-md-inline">View</span>
                   </button>
                 </router-link>
-                <router-link :to="{ name: 'ExameEdit', params: { exameId: exame.id } }" custom v-slot="{ navigate }">
+                <router-link :to="{ name: 'ExameEdit', params: { exameId: exame.id , amostraId: amostra.id} }" custom v-slot="{ navigate }">
                   <button @click="navigate" class="btn btn-primary btn-sm edit" data-cy="entityEditButton">
                     <font-awesome-icon icon="pencil-alt"></font-awesome-icon>
                     <span class="d-none d-md-inline">Edit</span>

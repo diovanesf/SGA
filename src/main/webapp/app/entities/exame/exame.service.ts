@@ -31,6 +31,19 @@ export default class ExameService {
     });
   }
 
+  public retrieveByAmostra(amostraId: number): Promise<any> {
+    return new Promise<any>((resolve, reject) => {
+      axios
+        .get(`api/amostra/${amostraId}/exames`)
+        .then(res => {
+          resolve(res);
+        })
+        .catch(err => {
+          reject(err);
+        });
+    });
+  }
+
   public delete(id: number): Promise<any> {
     return new Promise<any>((resolve, reject) => {
       axios

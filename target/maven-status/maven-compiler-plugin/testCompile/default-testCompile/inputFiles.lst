@@ -1,4 +1,5 @@
 /var/lib/docker/overlay2/59ea2fa78ed385e4570ec82f87f1a67134bab6c5d605e79f81e2bb00a1a2ae3c/merged/home/jhipster/grupo-03/src/test/java/edu/unipampa/laboratoriovirologia/web/rest/UserJWTControllerIT.java
+/var/lib/docker/overlay2/59ea2fa78ed385e4570ec82f87f1a67134bab6c5d605e79f81e2bb00a1a2ae3c/merged/home/jhipster/grupo-03/src/test/java/edu/unipampa/laboratoriovirologia/service/mapper/MedicoveterinarioMapperTest.java
 /var/lib/docker/overlay2/59ea2fa78ed385e4570ec82f87f1a67134bab6c5d605e79f81e2bb00a1a2ae3c/merged/home/jhipster/grupo-03/src/test/java/edu/unipampa/laboratoriovirologia/config/WebConfigurerTestController.java
 /var/lib/docker/overlay2/59ea2fa78ed385e4570ec82f87f1a67134bab6c5d605e79f81e2bb00a1a2ae3c/merged/home/jhipster/grupo-03/src/test/java/edu/unipampa/laboratoriovirologia/service/dto/AmostraDTOTest.java
 /var/lib/docker/overlay2/59ea2fa78ed385e4570ec82f87f1a67134bab6c5d605e79f81e2bb00a1a2ae3c/merged/home/jhipster/grupo-03/src/test/java/edu/unipampa/laboratoriovirologia/domain/ProprietarioTest.java
@@ -7,8 +8,10 @@
 /var/lib/docker/overlay2/59ea2fa78ed385e4570ec82f87f1a67134bab6c5d605e79f81e2bb00a1a2ae3c/merged/home/jhipster/grupo-03/src/test/java/edu/unipampa/laboratoriovirologia/domain/AmostraTest.java
 /var/lib/docker/overlay2/59ea2fa78ed385e4570ec82f87f1a67134bab6c5d605e79f81e2bb00a1a2ae3c/merged/home/jhipster/grupo-03/src/test/java/edu/unipampa/laboratoriovirologia/service/mapper/ExameMapperTest.java
 /var/lib/docker/overlay2/59ea2fa78ed385e4570ec82f87f1a67134bab6c5d605e79f81e2bb00a1a2ae3c/merged/home/jhipster/grupo-03/src/test/java/edu/unipampa/laboratoriovirologia/domain/PropriedadeTest.java
+/var/lib/docker/overlay2/59ea2fa78ed385e4570ec82f87f1a67134bab6c5d605e79f81e2bb00a1a2ae3c/merged/home/jhipster/grupo-03/src/test/java/edu/unipampa/laboratoriovirologia/domain/MedicoveterinarioTest.java
 /var/lib/docker/overlay2/59ea2fa78ed385e4570ec82f87f1a67134bab6c5d605e79f81e2bb00a1a2ae3c/merged/home/jhipster/grupo-03/src/test/java/edu/unipampa/laboratoriovirologia/web/rest/ClientForwardControllerTest.java
 /var/lib/docker/overlay2/59ea2fa78ed385e4570ec82f87f1a67134bab6c5d605e79f81e2bb00a1a2ae3c/merged/home/jhipster/grupo-03/src/test/java/edu/unipampa/laboratoriovirologia/config/StaticResourcesWebConfigurerTest.java
+/var/lib/docker/overlay2/59ea2fa78ed385e4570ec82f87f1a67134bab6c5d605e79f81e2bb00a1a2ae3c/merged/home/jhipster/grupo-03/src/test/java/edu/unipampa/laboratoriovirologia/web/rest/MedicoveterinarioResourceIT.java
 /var/lib/docker/overlay2/59ea2fa78ed385e4570ec82f87f1a67134bab6c5d605e79f81e2bb00a1a2ae3c/merged/home/jhipster/grupo-03/src/test/java/edu/unipampa/laboratoriovirologia/security/jwt/TokenProviderTest.java
 /var/lib/docker/overlay2/59ea2fa78ed385e4570ec82f87f1a67134bab6c5d605e79f81e2bb00a1a2ae3c/merged/home/jhipster/grupo-03/src/test/java/edu/unipampa/laboratoriovirologia/web/rest/ProprietarioResourceIT.java
 /var/lib/docker/overlay2/59ea2fa78ed385e4570ec82f87f1a67134bab6c5d605e79f81e2bb00a1a2ae3c/merged/home/jhipster/grupo-03/src/test/java/edu/unipampa/laboratoriovirologia/web/rest/UserResourceIT.java
@@ -18,6 +21,7 @@
 /var/lib/docker/overlay2/59ea2fa78ed385e4570ec82f87f1a67134bab6c5d605e79f81e2bb00a1a2ae3c/merged/home/jhipster/grupo-03/src/test/java/edu/unipampa/laboratoriovirologia/service/dto/MidiaDTOTest.java
 /var/lib/docker/overlay2/59ea2fa78ed385e4570ec82f87f1a67134bab6c5d605e79f81e2bb00a1a2ae3c/merged/home/jhipster/grupo-03/src/test/java/edu/unipampa/laboratoriovirologia/service/dto/ExameDTOTest.java
 /var/lib/docker/overlay2/59ea2fa78ed385e4570ec82f87f1a67134bab6c5d605e79f81e2bb00a1a2ae3c/merged/home/jhipster/grupo-03/src/test/java/edu/unipampa/laboratoriovirologia/security/DomainUserDetailsServiceIT.java
+/var/lib/docker/overlay2/59ea2fa78ed385e4570ec82f87f1a67134bab6c5d605e79f81e2bb00a1a2ae3c/merged/home/jhipster/grupo-03/src/test/java/edu/unipampa/laboratoriovirologia/service/dto/MedicoveterinarioDTOTest.java
 /var/lib/docker/overlay2/59ea2fa78ed385e4570ec82f87f1a67134bab6c5d605e79f81e2bb00a1a2ae3c/merged/home/jhipster/grupo-03/src/test/java/edu/unipampa/laboratoriovirologia/service/dto/PropriedadeDTOTest.java
 /var/lib/docker/overlay2/59ea2fa78ed385e4570ec82f87f1a67134bab6c5d605e79f81e2bb00a1a2ae3c/merged/home/jhipster/grupo-03/src/test/java/edu/unipampa/laboratoriovirologia/IntegrationTest.java
 /var/lib/docker/overlay2/59ea2fa78ed385e4570ec82f87f1a67134bab6c5d605e79f81e2bb00a1a2ae3c/merged/home/jhipster/grupo-03/src/test/java/edu/unipampa/laboratoriovirologia/service/dto/ProprietarioDTOTest.java

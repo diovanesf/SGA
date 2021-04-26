@@ -2,6 +2,8 @@ package edu.unipampa.laboratoriovirologia.domain;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import java.io.Serializable;
+import java.util.HashSet;
+import java.util.Set;
 import javax.persistence.*;
 
 /**
@@ -30,14 +32,9 @@ public class Proprietario implements Serializable {
     @Column(name = "enviar_laudo")
     private Boolean enviarLaudo;
 
-    @OneToOne
-    @JoinColumn(unique = true)
-    private Endereco endereco;
-
-    @JsonIgnoreProperties(value = { "endereco" }, allowSetters = true)
-    @OneToOne
-    @JoinColumn(unique = true)
-    private Propriedade propriedade;
+    @OneToMany(mappedBy = "proprietario", cascade = CascadeType.REMOVE,orphanRemoval = true)
+    @JsonIgnoreProperties(value = { "proprietario", "endereco" }, allowSetters = true)
+    private Set<Propriedade> propriedades = new HashSet<>();
 
     // jhipster-needle-entity-add-field - JHipster will add fields here
     public Long getId() {
@@ -105,30 +102,35 @@ public class Proprietario implements Serializable {
         this.enviarLaudo = enviarLaudo;
     }
 
-    public Endereco getEndereco() {
-        return this.endereco;
+    public Set<Propriedade> getPropriedades() {
+        return this.propriedades;
     }
 
-    public Proprietario endereco(Endereco endereco) {
-        this.setEndereco(endereco);
+    public Proprietario propriedades(Set<Propriedade> propriedades) {
+        this.setPropriedades(propriedades);
         return this;
     }
 
-    public void setEndereco(Endereco endereco) {
-        this.endereco = endereco;
-    }
-
-    public Propriedade getPropriedade() {
-        return this.propriedade;
-    }
-
-    public Proprietario propriedade(Propriedade propriedade) {
-        this.setPropriedade(propriedade);
+    public Proprietario addPropriedade(Propriedade propriedade) {
+        this.propriedades.add(propriedade);
+        propriedade.setProprietario(this);
         return this;
     }
 
-    public void setPropriedade(Propriedade propriedade) {
-        this.propriedade = propriedade;
+    public Proprietario removePropriedade(Propriedade propriedade) {
+        this.propriedades.remove(propriedade);
+        propriedade.setProprietario(null);
+        return this;
+    }
+
+    public void setPropriedades(Set<Propriedade> propriedades) {
+        if (this.propriedades != null) {
+            this.propriedades.forEach(i -> i.setProprietario(null));
+        }
+        if (propriedades != null) {
+            propriedades.forEach(i -> i.setProprietario(this));
+        }
+        this.propriedades = propriedades;
     }
 
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here

@@ -10,7 +10,7 @@ import org.springframework.stereotype.Component;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2021-04-20T00:47:10-0300",
+    date = "2021-04-26T18:13:55-0300",
     comments = "version: 1.4.2.Final, compiler: javac, environment: Java 11.0.10 (Ubuntu)"
 )
 @Component
@@ -30,6 +30,8 @@ public class ExameMapperImpl implements ExameMapper {
         exame.id( dto.getId() );
         exame.setNome( dto.getNome() );
         exame.setTipo( dto.getTipo() );
+        exame.setPesoMaterial( dto.getPesoMaterial() );
+        exame.setEstimativaVacinas( dto.getEstimativaVacinas() );
         exame.setResultado( dto.getResultado() );
         exame.setDataTeste( dto.getDataTeste() );
         exame.setDataLeitura( dto.getDataLeitura() );
@@ -84,6 +86,12 @@ public class ExameMapperImpl implements ExameMapper {
         if ( dto.getTipo() != null ) {
             entity.setTipo( dto.getTipo() );
         }
+        if ( dto.getPesoMaterial() != null ) {
+            entity.setPesoMaterial( dto.getPesoMaterial() );
+        }
+        if ( dto.getEstimativaVacinas() != null ) {
+            entity.setEstimativaVacinas( dto.getEstimativaVacinas() );
+        }
         if ( dto.getResultado() != null ) {
             entity.setResultado( dto.getResultado() );
         }
@@ -119,6 +127,8 @@ public class ExameMapperImpl implements ExameMapper {
         exameDTO.setId( s.getId() );
         exameDTO.setNome( s.getNome() );
         exameDTO.setTipo( s.getTipo() );
+        exameDTO.setPesoMaterial( s.getPesoMaterial() );
+        exameDTO.setEstimativaVacinas( s.getEstimativaVacinas() );
         exameDTO.setResultado( s.getResultado() );
         exameDTO.setDataTeste( s.getDataTeste() );
         exameDTO.setDataLeitura( s.getDataLeitura() );

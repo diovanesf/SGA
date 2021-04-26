@@ -17,6 +17,10 @@ public class ExameDTO implements Serializable {
 
     private String tipo;
 
+    private String pesoMaterial;
+
+    private String estimativaVacinas;
+
     private String resultado;
 
     private LocalDate dataTeste;
@@ -55,6 +59,22 @@ public class ExameDTO implements Serializable {
 
     public void setTipo(String tipo) {
         this.tipo = tipo;
+    }
+
+    public String getPesoMaterial() {
+        return pesoMaterial;
+    }
+
+    public void setPesoMaterial(String pesoMaterial) {
+        this.pesoMaterial = pesoMaterial;
+    }
+
+    public String getEstimativaVacinas() {
+        return estimativaVacinas;
+    }
+
+    public void setEstimativaVacinas(String estimativaVacinas) {
+        this.estimativaVacinas = estimativaVacinas;
     }
 
     public String getResultado() {
@@ -141,6 +161,8 @@ public class ExameDTO implements Serializable {
             "id=" + getId() +
             ", nome='" + getNome() + "'" +
             ", tipo='" + getTipo() + "'" +
+            ", pesoMaterial='" + getPesoMaterial() + "'" +
+            ", estimativaVacinas='" + getEstimativaVacinas() + "'" +
             ", resultado='" + getResultado() + "'" +
             ", dataTeste='" + getDataTeste() + "'" +
             ", dataLeitura='" + getDataLeitura() + "'" +

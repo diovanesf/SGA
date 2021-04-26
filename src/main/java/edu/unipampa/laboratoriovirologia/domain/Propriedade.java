@@ -1,5 +1,6 @@
 package edu.unipampa.laboratoriovirologia.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import java.io.Serializable;
 import javax.persistence.*;
 import org.hibernate.annotations.Type;
@@ -21,9 +22,6 @@ public class Propriedade implements Serializable {
     @Column(name = "tipo_propriedade")
     private String tipoPropriedade;
 
-    @Column(name = "tipo_criacao")
-    private String tipoCriação;
-
     @Column(name = "numero_animais")
     private Integer numeroAnimais;
 
@@ -38,7 +36,14 @@ public class Propriedade implements Serializable {
     @Column(name = "pricipal_suspeita")
     private String pricipalSuspeita;
 
-    @OneToOne
+    @Column(name = "tipo_criacao")
+    private String tipoCriacao;
+
+    @ManyToOne
+    @JsonIgnoreProperties(value = { "propriedades" }, allowSetters = true)
+    private Proprietario proprietario;
+
+    @OneToOne(cascade = CascadeType.ALL, orphanRemoval = true)
     @JoinColumn(unique = true)
     private Endereco endereco;
 
@@ -67,19 +72,6 @@ public class Propriedade implements Serializable {
 
     public void setTipoPropriedade(String tipoPropriedade) {
         this.tipoPropriedade = tipoPropriedade;
-    }
-
-    public String getTipoCriação() {
-        return this.tipoCriação;
-    }
-
-    public Propriedade tipoCriação(String tipoCriação) {
-        this.tipoCriação = tipoCriação;
-        return this;
-    }
-
-    public void setTipoCriação(String tipoCriação) {
-        this.tipoCriação = tipoCriação;
     }
 
     public Integer getNumeroAnimais() {
@@ -134,6 +126,32 @@ public class Propriedade implements Serializable {
         this.pricipalSuspeita = pricipalSuspeita;
     }
 
+    public String getTipoCriacao() {
+        return this.tipoCriacao;
+    }
+
+    public Propriedade tipoCriacao(String tipoCriacao) {
+        this.tipoCriacao = tipoCriacao;
+        return this;
+    }
+
+    public void setTipoCriacao(String tipoCriacao) {
+        this.tipoCriacao = tipoCriacao;
+    }
+
+    public Proprietario getProprietario() {
+        return this.proprietario;
+    }
+
+    public Propriedade proprietario(Proprietario proprietario) {
+        this.setProprietario(proprietario);
+        return this;
+    }
+
+    public void setProprietario(Proprietario proprietario) {
+        this.proprietario = proprietario;
+    }
+
     public Endereco getEndereco() {
         return this.endereco;
     }
@@ -172,11 +190,11 @@ public class Propriedade implements Serializable {
         return "Propriedade{" +
             "id=" + getId() +
             ", tipoPropriedade='" + getTipoPropriedade() + "'" +
-            ", tipoCriação='" + getTipoCriação() + "'" +
             ", numeroAnimais=" + getNumeroAnimais() +
             ", acometidos='" + getAcometidos() + "'" +
             ", observacoes='" + getObservacoes() + "'" +
             ", pricipalSuspeita='" + getPricipalSuspeita() + "'" +
+            ", tipoCriacao='" + getTipoCriacao() + "'" +
             "}";
     }
 }

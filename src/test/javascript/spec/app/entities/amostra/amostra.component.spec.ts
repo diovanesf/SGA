@@ -13,6 +13,7 @@ config.initVueApp(localVue);
 const store = config.initVueXStore(localVue);
 localVue.component('font-awesome-icon', {});
 localVue.component('b-badge', {});
+localVue.component('jhi-sort-indicator', {});
 localVue.directive('b-modal', {});
 localVue.component('b-button', {});
 localVue.component('router-link', {});
@@ -38,7 +39,7 @@ describe('Component Tests', () => {
       wrapper = shallowMount<AmostraClass>(AmostraComponent, {
         store,
         localVue,
-        stubs: { bModal: bModalStub as any },
+        stubs: { jhiItemCount: true, bPagination: true, bModal: bModalStub as any },
         provide: {
           amostraService: () => amostraServiceStub,
         },
@@ -57,6 +58,68 @@ describe('Component Tests', () => {
       // THEN
       expect(amostraServiceStub.retrieve.called).toBeTruthy();
       expect(comp.amostras[0]).toEqual(jasmine.objectContaining({ id: 123 }));
+    });
+
+    it('should load a page', async () => {
+      // GIVEN
+      amostraServiceStub.retrieve.resolves({ headers: {}, data: [{ id: 123 }] });
+      comp.previousPage = 1;
+
+      // WHEN
+      comp.loadPage(2);
+      await comp.$nextTick();
+
+      // THEN
+      expect(amostraServiceStub.retrieve.called).toBeTruthy();
+      expect(comp.amostras[0]).toEqual(jasmine.objectContaining({ id: 123 }));
+    });
+
+    it('should not load a page if the page is the same as the previous page', () => {
+      // GIVEN
+      amostraServiceStub.retrieve.reset();
+      comp.previousPage = 1;
+
+      // WHEN
+      comp.loadPage(1);
+
+      // THEN
+      expect(amostraServiceStub.retrieve.called).toBeFalsy();
+    });
+
+    it('should re-initialize the page', async () => {
+      // GIVEN
+      amostraServiceStub.retrieve.reset();
+      amostraServiceStub.retrieve.resolves({ headers: {}, data: [{ id: 123 }] });
+
+      // WHEN
+      comp.loadPage(2);
+      await comp.$nextTick();
+      comp.clear();
+      await comp.$nextTick();
+
+      // THEN
+      expect(amostraServiceStub.retrieve.callCount).toEqual(3);
+      expect(comp.page).toEqual(1);
+      expect(comp.amostras[0]).toEqual(jasmine.objectContaining({ id: 123 }));
+    });
+
+    it('should calculate the sort attribute for an id', () => {
+      // WHEN
+      const result = comp.sort();
+
+      // THEN
+      expect(result).toEqual(['id,asc']);
+    });
+
+    it('should calculate the sort attribute for a non-id attribute', () => {
+      // GIVEN
+      comp.propOrder = 'name';
+
+      // WHEN
+      const result = comp.sort();
+
+      // THEN
+      expect(result).toEqual(['name,asc', 'id']);
     });
     it('Should call delete service on confirmDelete', async () => {
       // GIVEN

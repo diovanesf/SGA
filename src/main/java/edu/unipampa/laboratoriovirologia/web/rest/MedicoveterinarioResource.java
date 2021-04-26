@@ -1,7 +1,9 @@
 package edu.unipampa.laboratoriovirologia.web.rest;
 
 import edu.unipampa.laboratoriovirologia.repository.MedicoveterinarioRepository;
+import edu.unipampa.laboratoriovirologia.service.MedicoveterinarioQueryService;
 import edu.unipampa.laboratoriovirologia.service.MedicoveterinarioService;
+import edu.unipampa.laboratoriovirologia.service.criteria.MedicoveterinarioCriteria;
 import edu.unipampa.laboratoriovirologia.service.dto.MedicoveterinarioDTO;
 import edu.unipampa.laboratoriovirologia.web.rest.errors.BadRequestAlertException;
 import java.net.URI;
@@ -12,9 +14,15 @@ import java.util.Optional;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 import tech.jhipster.web.util.HeaderUtil;
+import tech.jhipster.web.util.PaginationUtil;
 import tech.jhipster.web.util.ResponseUtil;
 
 /**
@@ -35,12 +43,16 @@ public class MedicoveterinarioResource {
 
     private final MedicoveterinarioRepository medicoveterinarioRepository;
 
+    private final MedicoveterinarioQueryService medicoveterinarioQueryService;
+
     public MedicoveterinarioResource(
         MedicoveterinarioService medicoveterinarioService,
-        MedicoveterinarioRepository medicoveterinarioRepository
+        MedicoveterinarioRepository medicoveterinarioRepository,
+        MedicoveterinarioQueryService medicoveterinarioQueryService
     ) {
         this.medicoveterinarioService = medicoveterinarioService;
         this.medicoveterinarioRepository = medicoveterinarioRepository;
+        this.medicoveterinarioQueryService = medicoveterinarioQueryService;
     }
 
     /**
@@ -137,12 +149,28 @@ public class MedicoveterinarioResource {
     /**
      * {@code GET  /medicoveterinarios} : get all the medicoveterinarios.
      *
+     * @param pageable the pagination information.
+     * @param criteria the criteria which the requested entities should match.
      * @return the {@link ResponseEntity} with status {@code 200 (OK)} and the list of medicoveterinarios in body.
      */
     @GetMapping("/medicoveterinarios")
-    public List<MedicoveterinarioDTO> getAllMedicoveterinarios() {
-        log.debug("REST request to get all Medicoveterinarios");
-        return medicoveterinarioService.findAll();
+    public ResponseEntity<List<MedicoveterinarioDTO>> getAllMedicoveterinarios(MedicoveterinarioCriteria criteria, Pageable pageable) {
+        log.debug("REST request to get Medicoveterinarios by criteria: {}", criteria);
+        Page<MedicoveterinarioDTO> page = medicoveterinarioQueryService.findByCriteria(criteria, pageable);
+        HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(ServletUriComponentsBuilder.fromCurrentRequest(), page);
+        return ResponseEntity.ok().headers(headers).body(page.getContent());
+    }
+
+    /**
+     * {@code GET  /medicoveterinarios/count} : count all the medicoveterinarios.
+     *
+     * @param criteria the criteria which the requested entities should match.
+     * @return the {@link ResponseEntity} with status {@code 200 (OK)} and the count in body.
+     */
+    @GetMapping("/medicoveterinarios/count")
+    public ResponseEntity<Long> countMedicoveterinarios(MedicoveterinarioCriteria criteria) {
+        log.debug("REST request to count Medicoveterinarios by criteria: {}", criteria);
+        return ResponseEntity.ok().body(medicoveterinarioQueryService.countByCriteria(criteria));
     }
 
     /**

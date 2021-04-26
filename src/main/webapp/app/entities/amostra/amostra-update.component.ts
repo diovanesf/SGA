@@ -1,13 +1,5 @@
 import { Component, Vue, Inject } from 'vue-property-decorator';
 
-import UserService from '@/admin/user-management/user-management.service';
-
-import MidiaService from '@/entities/midia/midia.service';
-import { IMidia } from '@/shared/model/midia.model';
-
-import ExameService from '@/entities/exame/exame.service';
-import { IExame } from '@/shared/model/exame.model';
-
 import PropriedadeService from '@/entities/propriedade/propriedade.service';
 import { IPropriedade } from '@/shared/model/propriedade.model';
 
@@ -43,18 +35,6 @@ export default class AmostraUpdate extends Vue {
   @Inject('amostraService') private amostraService: () => AmostraService;
   public amostra: IAmostra = new Amostra();
 
-  @Inject('userService') private userService: () => UserService;
-
-  public users: Array<any> = [];
-
-  @Inject('midiaService') private midiaService: () => MidiaService;
-
-  public midias: IMidia[] = [];
-
-  @Inject('exameService') private exameService: () => ExameService;
-
-  public exames: IExame[] = [];
-
   @Inject('propriedadeService') private propriedadeService: () => PropriedadeService;
 
   public propriedades: IPropriedade[] = [];
@@ -82,7 +62,6 @@ export default class AmostraUpdate extends Vue {
         this.currentLanguage = this.$store.getters.currentLanguage;
       }
     );
-    this.amostra.users = [];
   }
 
   public save(): void {
@@ -103,6 +82,9 @@ export default class AmostraUpdate extends Vue {
           });
         });
     } else {
+      this.setUser();
+      this.setDataInicial();
+      this.setDataFinal();
       this.amostraService()
         .create(this.amostra)
         .then(param => {
@@ -120,6 +102,32 @@ export default class AmostraUpdate extends Vue {
     }
   }
 
+  setMedVet(){
+    switch (this.amostra.tipoMedVet){
+    case 'SEM_MED_VET':
+    case 'MESMO_PROPRIETARIO':
+      this.amostra.medicoveterinario = null;
+      break;
+    }
+  }
+
+  setDataInicial(){
+    let dataInicial = new Date();
+    this.amostra.dataInicial = dataInicial;
+  }
+
+  setDataFinal(){
+    let dataFinal = new Date();
+    dataFinal.setDate(dataFinal.getDate() + 15);
+    this.amostra.dataFinal = dataFinal;
+  }
+
+  public setUser() {
+    this.amostra.users = [];
+    console.log(this.amostra.users);
+    this.amostra.users.push(this.$store.getters.account);
+  }
+
   public retrieveAmostra(amostraId): void {
     this.amostraService()
       .find(amostraId)
@@ -133,21 +141,6 @@ export default class AmostraUpdate extends Vue {
   }
 
   public initRelationships(): void {
-    this.userService()
-      .retrieve()
-      .then(res => {
-        this.users = res.data;
-      });
-    this.midiaService()
-      .retrieve()
-      .then(res => {
-        this.midias = res.data;
-      });
-    this.exameService()
-      .retrieve()
-      .then(res => {
-        this.exames = res.data;
-      });
     this.propriedadeService()
       .retrieve()
       .then(res => {
@@ -158,16 +151,5 @@ export default class AmostraUpdate extends Vue {
       .then(res => {
         this.medicoveterinarios = res.data;
       });
-  }
-
-  public getSelected(selectedVals, option): any {
-    if (selectedVals) {
-      for (let i = 0; i < selectedVals.length; i++) {
-        if (option.id === selectedVals[i].id) {
-          return selectedVals[i];
-        }
-      }
-    }
-    return option;
   }
 }

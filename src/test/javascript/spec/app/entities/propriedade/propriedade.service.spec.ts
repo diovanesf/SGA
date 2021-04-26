@@ -29,7 +29,7 @@ describe('Service Tests', () => {
 
     beforeEach(() => {
       service = new PropriedadeService();
-      elemDefault = new Propriedade(0, 'AAAAAAA', 'AAAAAAA', 0, 'AAAAAAA', 'AAAAAAA', 'AAAAAAA');
+      elemDefault = new Propriedade(0, 'AAAAAAA', 0, 'AAAAAAA', 'AAAAAAA', 'AAAAAAA', 'AAAAAAA');
     });
 
     describe('Service methods', () => {
@@ -82,11 +82,11 @@ describe('Service Tests', () => {
         const returnedFromService = Object.assign(
           {
             tipoPropriedade: 'BBBBBB',
-            tipoCriação: 'BBBBBB',
             numeroAnimais: 1,
             acometidos: 'BBBBBB',
             observacoes: 'BBBBBB',
             pricipalSuspeita: 'BBBBBB',
+            tipoCriacao: 'BBBBBB',
           },
           elemDefault
         );
@@ -114,11 +114,11 @@ describe('Service Tests', () => {
         const patchObject = Object.assign(
           {
             tipoPropriedade: 'BBBBBB',
-            tipoCriação: 'BBBBBB',
             numeroAnimais: 1,
             acometidos: 'BBBBBB',
             observacoes: 'BBBBBB',
             pricipalSuspeita: 'BBBBBB',
+            tipoCriacao: 'BBBBBB',
           },
           new Propriedade()
         );
@@ -147,17 +147,17 @@ describe('Service Tests', () => {
         const returnedFromService = Object.assign(
           {
             tipoPropriedade: 'BBBBBB',
-            tipoCriação: 'BBBBBB',
             numeroAnimais: 1,
             acometidos: 'BBBBBB',
             observacoes: 'BBBBBB',
             pricipalSuspeita: 'BBBBBB',
+            tipoCriacao: 'BBBBBB',
           },
           elemDefault
         );
         const expected = Object.assign({}, returnedFromService);
         axiosStub.get.resolves([returnedFromService]);
-        return service.retrieve().then(res => {
+        return service.retrieve({ sort: {}, page: 0, size: 10 }).then(res => {
           expect(res).toContainEqual(expected);
         });
       });

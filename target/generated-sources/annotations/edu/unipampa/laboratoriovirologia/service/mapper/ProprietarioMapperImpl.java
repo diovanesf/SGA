@@ -5,21 +5,15 @@ import edu.unipampa.laboratoriovirologia.service.dto.ProprietarioDTO;
 import java.util.ArrayList;
 import java.util.List;
 import javax.annotation.processing.Generated;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2021-04-20T00:47:10-0300",
+    date = "2021-04-26T18:13:55-0300",
     comments = "version: 1.4.2.Final, compiler: javac, environment: Java 11.0.10 (Ubuntu)"
 )
 @Component
 public class ProprietarioMapperImpl implements ProprietarioMapper {
-
-    @Autowired
-    private EnderecoMapper enderecoMapper;
-    @Autowired
-    private PropriedadeMapper propriedadeMapper;
 
     @Override
     public Proprietario toEntity(ProprietarioDTO dto) {
@@ -34,10 +28,25 @@ public class ProprietarioMapperImpl implements ProprietarioMapper {
         proprietario.setTelefone( dto.getTelefone() );
         proprietario.setEmail( dto.getEmail() );
         proprietario.setEnviarLaudo( dto.getEnviarLaudo() );
-        proprietario.setEndereco( enderecoMapper.toEntity( dto.getEndereco() ) );
-        proprietario.setPropriedade( propriedadeMapper.toEntity( dto.getPropriedade() ) );
 
         return proprietario;
+    }
+
+    @Override
+    public ProprietarioDTO toDto(Proprietario entity) {
+        if ( entity == null ) {
+            return null;
+        }
+
+        ProprietarioDTO proprietarioDTO = new ProprietarioDTO();
+
+        proprietarioDTO.setId( entity.getId() );
+        proprietarioDTO.setNome( entity.getNome() );
+        proprietarioDTO.setTelefone( entity.getTelefone() );
+        proprietarioDTO.setEmail( entity.getEmail() );
+        proprietarioDTO.setEnviarLaudo( entity.getEnviarLaudo() );
+
+        return proprietarioDTO;
     }
 
     @Override
@@ -89,29 +98,18 @@ public class ProprietarioMapperImpl implements ProprietarioMapper {
         if ( dto.getEnviarLaudo() != null ) {
             entity.setEnviarLaudo( dto.getEnviarLaudo() );
         }
-        if ( dto.getEndereco() != null ) {
-            entity.setEndereco( enderecoMapper.toEntity( dto.getEndereco() ) );
-        }
-        if ( dto.getPropriedade() != null ) {
-            entity.setPropriedade( propriedadeMapper.toEntity( dto.getPropriedade() ) );
-        }
     }
 
     @Override
-    public ProprietarioDTO toDto(Proprietario s) {
-        if ( s == null ) {
+    public ProprietarioDTO toDtoNome(Proprietario proprietario) {
+        if ( proprietario == null ) {
             return null;
         }
 
         ProprietarioDTO proprietarioDTO = new ProprietarioDTO();
 
-        proprietarioDTO.setEndereco( enderecoMapper.toDtoEndereco( s.getEndereco() ) );
-        proprietarioDTO.setPropriedade( propriedadeMapper.toDtoTipoPropriedade( s.getPropriedade() ) );
-        proprietarioDTO.setId( s.getId() );
-        proprietarioDTO.setNome( s.getNome() );
-        proprietarioDTO.setTelefone( s.getTelefone() );
-        proprietarioDTO.setEmail( s.getEmail() );
-        proprietarioDTO.setEnviarLaudo( s.getEnviarLaudo() );
+        proprietarioDTO.setId( proprietario.getId() );
+        proprietarioDTO.setNome( proprietario.getNome() );
 
         return proprietarioDTO;
     }

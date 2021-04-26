@@ -4,12 +4,11 @@ import edu.unipampa.laboratoriovirologia.domain.Proprietario;
 import edu.unipampa.laboratoriovirologia.repository.ProprietarioRepository;
 import edu.unipampa.laboratoriovirologia.service.dto.ProprietarioDTO;
 import edu.unipampa.laboratoriovirologia.service.mapper.ProprietarioMapper;
-import java.util.LinkedList;
-import java.util.List;
 import java.util.Optional;
-import java.util.stream.Collectors;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -68,12 +67,13 @@ public class ProprietarioService {
     /**
      * Get all the proprietarios.
      *
+     * @param pageable the pagination information.
      * @return the list of entities.
      */
     @Transactional(readOnly = true)
-    public List<ProprietarioDTO> findAll() {
+    public Page<ProprietarioDTO> findAll(Pageable pageable) {
         log.debug("Request to get all Proprietarios");
-        return proprietarioRepository.findAll().stream().map(proprietarioMapper::toDto).collect(Collectors.toCollection(LinkedList::new));
+        return proprietarioRepository.findAll(pageable).map(proprietarioMapper::toDto);
     }
 
     /**

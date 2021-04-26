@@ -4,10 +4,10 @@
       <form name="editForm" role="form" novalidate v-on:submit.prevent="save()">
         <h2 id="rp6App.proprietario.home.createOrEditLabel" data-cy="ProprietarioCreateUpdateHeading">Create or edit a Proprietario</h2>
         <div>
-          <div class="form-group" v-if="proprietario.id">
+          <!-- <div class="form-group" v-if="proprietario.id">
             <label for="id">ID</label>
             <input type="text" class="form-control" id="id" name="id" v-model="proprietario.id" readonly />
-          </div>
+          </div> -->
           <div class="form-group">
             <label class="form-control-label" for="proprietario-nome">Nome</label>
             <input
@@ -56,22 +56,7 @@
               v-model="$v.proprietario.enviarLaudo.$model"
             />
           </div>
-          <div class="form-group">
-            <label class="form-control-label" for="proprietario-endereco">Endereco</label>
-            <select class="form-control" id="proprietario-endereco" data-cy="endereco" name="endereco" v-model="proprietario.endereco">
-              <option v-bind:value="null"></option>
-              <option
-                v-bind:value="
-                  proprietario.endereco && enderecoOption.id === proprietario.endereco.id ? proprietario.endereco : enderecoOption
-                "
-                v-for="enderecoOption in enderecos"
-                :key="enderecoOption.id"
-              >
-                {{ enderecoOption.endereco }}
-              </option>
-            </select>
-          </div>
-          <div class="form-group">
+          <!-- <div class="form-group">
             <label class="form-control-label" for="proprietario-propriedade">Propriedade</label>
             <select
               class="form-control"
@@ -93,7 +78,7 @@
                 {{ propriedadeOption.tipoPropriedade }}
               </option>
             </select>
-          </div>
+          </div> -->
         </div>
         <div>
           <button type="button" id="cancel-save" class="btn btn-secondary" v-on:click="previousState()">

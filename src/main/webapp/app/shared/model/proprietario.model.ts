@@ -1,4 +1,3 @@
-import { IEndereco } from '@/shared/model/endereco.model';
 import { IPropriedade } from '@/shared/model/propriedade.model';
 
 export interface IProprietario {
@@ -7,8 +6,7 @@ export interface IProprietario {
   telefone?: string | null;
   email?: string | null;
   enviarLaudo?: boolean | null;
-  endereco?: IEndereco | null;
-  propriedade?: IPropriedade | null;
+  propriedades?: IPropriedade[] | null;
 }
 
 export class Proprietario implements IProprietario {
@@ -18,8 +16,7 @@ export class Proprietario implements IProprietario {
     public telefone?: string | null,
     public email?: string | null,
     public enviarLaudo?: boolean | null,
-    public endereco?: IEndereco | null,
-    public propriedade?: IPropriedade | null
+    public propriedades?: IPropriedade[] | null
   ) {
     this.enviarLaudo = this.enviarLaudo ?? false;
   }

@@ -10,29 +10,35 @@
           </div>
           <div class="form-group">
             <label class="form-control-label" for="propriedade-tipoPropriedade">Tipo Propriedade</label>
-            <input
-              type="text"
+            <select
               class="form-control"
-              name="tipoPropriedade"
               id="propriedade-tipoPropriedade"
               data-cy="tipoPropriedade"
-              :class="{ valid: !$v.propriedade.tipoPropriedade.$invalid, invalid: $v.propriedade.tipoPropriedade.$invalid }"
-              v-model="$v.propriedade.tipoPropriedade.$model"
-            />
+              name="tipoPropriedade"
+              v-model="propriedade.tipoPropriedade"
+            >
+              <option value="RURAL_HARAS_GRANJA">Rural/Haras/Granja</option>
+              <option value="CANIL_GATIL">Canil/Gatil</option>
+              <option value="OUTRO">Não se aplica</option>
+            </select>
           </div>
-          <div class="form-group">
-            <label class="form-control-label" for="propriedade-tipoCriação">Tipo Criacao</label>
-            <input
-              type="text"
+          <div class="form-group" v-if="propriedade.tipoPropriedade === 'RURAL_HARAS_GRANJA'">
+            <label class="form-control-label" for="propriedade-tipoCriacao">Tipo Criacao</label>
+            <select
               class="form-control"
-              name="tipoCriação"
-              id="propriedade-tipoCriação"
-              data-cy="tipoCriação"
-              :class="{ valid: !$v.propriedade.tipoCriação.$invalid, invalid: $v.propriedade.tipoCriação.$invalid }"
-              v-model="$v.propriedade.tipoCriação.$model"
-            />
+              id="propriedade-tipoCriacao"
+              data-cy="tipoCriacao"
+              name="tipoCriacao"
+              v-model="propriedade.tipoCriacao"
+            >
+              <option value="CRIACAO_INTENSIVA">Criação intensiva</option>
+              <option value="CRIACAO_EXTENSIVA">Criação extensiva</option>
+              <option value="CRIACAO_SEMIEXTENSIVA">Criação semiextensiva</option>
+              <option value="ABERTA">Aberta</option>
+              <option value="FECHADA">Fechada</option>
+            </select>
           </div>
-          <div class="form-group">
+          <div class="form-group" v-if="propriedade.tipoPropriedade !== 'OUTRO'">
             <label class="form-control-label" for="propriedade-numeroAnimais">Numero Animais</label>
             <input
               type="number"
@@ -44,7 +50,7 @@
               v-model.number="$v.propriedade.numeroAnimais.$model"
             />
           </div>
-          <div class="form-group">
+          <div class="form-group" v-if="propriedade.tipoPropriedade !== 'OUTRO'">
             <label class="form-control-label" for="propriedade-acometidos">Acometidos</label>
             <input
               type="text"
@@ -80,6 +86,29 @@
             />
           </div>
           <div class="form-group">
+            <label class="form-control-label" for="propriedade-proprietario">Proprietario</label>
+            <select
+              class="form-control"
+              id="propriedade-proprietario"
+              data-cy="proprietario"
+              name="proprietario"
+              v-model="propriedade.proprietario"
+            >
+              <option v-bind:value="null"></option>
+              <option
+                v-bind:value="
+                  propriedade.proprietario && proprietarioOption.id === propriedade.proprietario.id
+                    ? propriedade.proprietario
+                    : proprietarioOption
+                "
+                v-for="proprietarioOption in proprietarios"
+                :key="proprietarioOption.id"
+              >
+                {{ proprietarioOption.nome }}
+              </option>
+            </select>
+          </div>
+          <!-- <div class="form-group">
             <label class="form-control-label" for="propriedade-endereco">Endereco</label>
             <select class="form-control" id="propriedade-endereco" data-cy="endereco" name="endereco" v-model="propriedade.endereco">
               <option v-bind:value="null"></option>
@@ -91,6 +120,33 @@
                 {{ enderecoOption.endereco }}
               </option>
             </select>
+          </div> -->
+          <div class="form-group">
+            <label class="form-control-label" for="endereco-endereco">Endereco</label>
+            <input type="text" class="form-control" name="endereco" id="endereco-endereco" data-cy="endereco" v-model="endereco.endereco" />
+          </div>
+          <div class="form-group">
+            <label class="form-control-label" for="endereco-cep">Cep</label>
+            <input type="text" class="form-control" name="cep" id="endereco-cep" data-cy="cep" v-model="endereco.cep" />
+          </div>
+          <div class="form-group">
+            <label class="form-control-label" for="endereco-cidade">Cidade</label>
+            <input type="text" class="form-control" name="cidade" id="endereco-cidade" data-cy="cidade" v-model="endereco.cidade" />
+          </div>
+          <div class="form-group">
+            <label class="form-control-label" for="endereco-estado">Estado</label>
+            <input type="text" class="form-control" name="estado" id="endereco-estado" data-cy="estado" v-model="endereco.estado" />
+          </div>
+          <div class="form-group">
+            <label class="form-control-label" for="endereco-coordenadasGps">Coordenadas Gps</label>
+            <input
+              type="text"
+              class="form-control"
+              name="coordenadasGps"
+              id="endereco-coordenadasGps"
+              data-cy="coordenadasGps"
+              v-model="endereco.coordenadasGps"
+            />
           </div>
         </div>
         <div>

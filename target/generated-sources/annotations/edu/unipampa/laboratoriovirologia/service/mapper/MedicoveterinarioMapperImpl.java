@@ -9,7 +9,7 @@ import org.springframework.stereotype.Component;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2021-04-20T00:47:10-0300",
+    date = "2021-04-26T18:13:55-0300",
     comments = "version: 1.4.2.Final, compiler: javac, environment: Java 11.0.10 (Ubuntu)"
 )
 @Component
@@ -27,7 +27,7 @@ public class MedicoveterinarioMapperImpl implements MedicoveterinarioMapper {
         medicoveterinario.setNome( dto.getNome() );
         medicoveterinario.setTelefone( dto.getTelefone() );
         medicoveterinario.setEmail( dto.getEmail() );
-        medicoveterinario.setCRMV( dto.getCRMV() );
+        medicoveterinario.setCrmv( dto.getCrmv() );
         medicoveterinario.setEnviarLaudo( dto.getEnviarLaudo() );
 
         return medicoveterinario;
@@ -45,7 +45,7 @@ public class MedicoveterinarioMapperImpl implements MedicoveterinarioMapper {
         medicoveterinarioDTO.setNome( entity.getNome() );
         medicoveterinarioDTO.setTelefone( entity.getTelefone() );
         medicoveterinarioDTO.setEmail( entity.getEmail() );
-        medicoveterinarioDTO.setCRMV( entity.getCRMV() );
+        medicoveterinarioDTO.setCrmv( entity.getCrmv() );
         medicoveterinarioDTO.setEnviarLaudo( entity.getEnviarLaudo() );
 
         return medicoveterinarioDTO;
@@ -97,8 +97,8 @@ public class MedicoveterinarioMapperImpl implements MedicoveterinarioMapper {
         if ( dto.getEmail() != null ) {
             entity.setEmail( dto.getEmail() );
         }
-        if ( dto.getCRMV() != null ) {
-            entity.setCRMV( dto.getCRMV() );
+        if ( dto.getCrmv() != null ) {
+            entity.setCrmv( dto.getCrmv() );
         }
         if ( dto.getEnviarLaudo() != null ) {
             entity.setEnviarLaudo( dto.getEnviarLaudo() );

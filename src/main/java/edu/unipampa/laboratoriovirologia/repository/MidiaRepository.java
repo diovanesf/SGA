@@ -9,4 +9,4 @@ import org.springframework.stereotype.Repository;
  */
 @SuppressWarnings("unused")
 @Repository
-public interface MidiaRepository extends JpaRepository<Midia, Long> {}
+public interface MidiaRepository extends JpaRepository<Midia, Long>, JpaSpecificationExecutor<Midia> {}

@@ -154,6 +154,12 @@ public class ExameResource {
         return ResponseUtil.wrapOrNotFound(exameDTO);
     }
 
+    @GetMapping("/amostra/{amostraId}/exames")
+    public List<ExameDTO> getAllExamesByAmostraId(@PathVariable Long amostraId) {
+        log.debug("REST request to get all Exames by amostra id");
+        return exameService.findByAmostraId(amostraId);
+    }
+
     /**
      * {@code DELETE  /exames/:id} : delete the "id" exame.
      *

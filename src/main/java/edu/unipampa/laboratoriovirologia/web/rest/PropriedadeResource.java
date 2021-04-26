@@ -1,7 +1,9 @@
 package edu.unipampa.laboratoriovirologia.web.rest;
 
 import edu.unipampa.laboratoriovirologia.repository.PropriedadeRepository;
+import edu.unipampa.laboratoriovirologia.service.PropriedadeQueryService;
 import edu.unipampa.laboratoriovirologia.service.PropriedadeService;
+import edu.unipampa.laboratoriovirologia.service.criteria.PropriedadeCriteria;
 import edu.unipampa.laboratoriovirologia.service.dto.PropriedadeDTO;
 import edu.unipampa.laboratoriovirologia.web.rest.errors.BadRequestAlertException;
 import java.net.URI;
@@ -12,9 +14,15 @@ import java.util.Optional;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 import tech.jhipster.web.util.HeaderUtil;
+import tech.jhipster.web.util.PaginationUtil;
 import tech.jhipster.web.util.ResponseUtil;
 
 /**
@@ -35,9 +43,16 @@ public class PropriedadeResource {
 
     private final PropriedadeRepository propriedadeRepository;
 
-    public PropriedadeResource(PropriedadeService propriedadeService, PropriedadeRepository propriedadeRepository) {
+    private final PropriedadeQueryService propriedadeQueryService;
+
+    public PropriedadeResource(
+        PropriedadeService propriedadeService,
+        PropriedadeRepository propriedadeRepository,
+        PropriedadeQueryService propriedadeQueryService
+    ) {
         this.propriedadeService = propriedadeService;
         this.propriedadeRepository = propriedadeRepository;
+        this.propriedadeQueryService = propriedadeQueryService;
     }
 
     /**
@@ -133,12 +148,28 @@ public class PropriedadeResource {
     /**
      * {@code GET  /propriedades} : get all the propriedades.
      *
+     * @param pageable the pagination information.
+     * @param criteria the criteria which the requested entities should match.
      * @return the {@link ResponseEntity} with status {@code 200 (OK)} and the list of propriedades in body.
      */
     @GetMapping("/propriedades")
-    public List<PropriedadeDTO> getAllPropriedades() {
-        log.debug("REST request to get all Propriedades");
-        return propriedadeService.findAll();
+    public ResponseEntity<List<PropriedadeDTO>> getAllPropriedades(PropriedadeCriteria criteria, Pageable pageable) {
+        log.debug("REST request to get Propriedades by criteria: {}", criteria);
+        Page<PropriedadeDTO> page = propriedadeQueryService.findByCriteria(criteria, pageable);
+        HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(ServletUriComponentsBuilder.fromCurrentRequest(), page);
+        return ResponseEntity.ok().headers(headers).body(page.getContent());
+    }
+
+    /**
+     * {@code GET  /propriedades/count} : count all the propriedades.
+     *
+     * @param criteria the criteria which the requested entities should match.
+     * @return the {@link ResponseEntity} with status {@code 200 (OK)} and the count in body.
+     */
+    @GetMapping("/propriedades/count")
+    public ResponseEntity<Long> countPropriedades(PropriedadeCriteria criteria) {
+        log.debug("REST request to count Propriedades by criteria: {}", criteria);
+        return ResponseEntity.ok().body(propriedadeQueryService.countByCriteria(criteria));
     }
 
     /**

@@ -9,14 +9,14 @@ import javax.persistence.metamodel.StaticMetamodel;
 public abstract class Medicoveterinario_ {
 
 	public static volatile SingularAttribute<Medicoveterinario, String> telefone;
-	public static volatile SingularAttribute<Medicoveterinario, String> CRMV;
+	public static volatile SingularAttribute<Medicoveterinario, String> crmv;
 	public static volatile SingularAttribute<Medicoveterinario, String> nome;
 	public static volatile SingularAttribute<Medicoveterinario, Long> id;
 	public static volatile SingularAttribute<Medicoveterinario, String> email;
 	public static volatile SingularAttribute<Medicoveterinario, Boolean> enviarLaudo;
 
 	public static final String TELEFONE = "telefone";
-	public static final String C_RM_V = "CRMV";
+	public static final String CRMV = "crmv";
 	public static final String NOME = "nome";
 	public static final String ID = "id";
 	public static final String EMAIL = "email";

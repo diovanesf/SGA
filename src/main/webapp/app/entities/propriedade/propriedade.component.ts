@@ -14,6 +14,13 @@ import PropriedadeService from './propriedade.service';
 export default class Propriedade extends mixins(JhiDataUtils) {
   @Inject('propriedadeService') private propriedadeService: () => PropriedadeService;
   private removeId: number = null;
+  public itemsPerPage = 20;
+  public queryCount: number = null;
+  public page = 1;
+  public previousPage = 1;
+  public propOrder = 'id';
+  public reverse = false;
+  public totalItems = 0;
 
   public propriedades: IPropriedade[] = [];
 
@@ -24,17 +31,25 @@ export default class Propriedade extends mixins(JhiDataUtils) {
   }
 
   public clear(): void {
+    this.page = 1;
     this.retrieveAllPropriedades();
   }
 
   public retrieveAllPropriedades(): void {
     this.isFetching = true;
 
+    const paginationQuery = {
+      page: this.page - 1,
+      size: this.itemsPerPage,
+      sort: this.sort(),
+    };
     this.propriedadeService()
-      .retrieve()
+      .retrieve(paginationQuery)
       .then(
         res => {
           this.propriedades = res.data;
+          this.totalItems = Number(res.headers['x-total-count']);
+          this.queryCount = this.totalItems;
           this.isFetching = false;
         },
         err => {
@@ -70,6 +85,31 @@ export default class Propriedade extends mixins(JhiDataUtils) {
         this.retrieveAllPropriedades();
         this.closeDialog();
       });
+  }
+
+  public sort(): Array<any> {
+    const result = [this.propOrder + ',' + (this.reverse ? 'desc' : 'asc')];
+    if (this.propOrder !== 'id') {
+      result.push('id');
+    }
+    return result;
+  }
+
+  public loadPage(page: number): void {
+    if (page !== this.previousPage) {
+      this.previousPage = page;
+      this.transition();
+    }
+  }
+
+  public transition(): void {
+    this.retrieveAllPropriedades();
+  }
+
+  public changeOrder(propOrder): void {
+    this.propOrder = propOrder;
+    this.reverse = !this.reverse;
+    this.transition();
   }
 
   public closeDialog(): void {

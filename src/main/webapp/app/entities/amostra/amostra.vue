@@ -27,32 +27,86 @@
       <table class="table table-striped" aria-describedby="amostras">
         <thead>
           <tr>
-            <th scope="row"><span>ID</span></th>
-            <th scope="row"><span>Protocolo</span></th>
-            <th scope="row"><span>Forma Envio</span></th>
-            <th scope="row"><span>Numero Amostras</span></th>
-            <th scope="row"><span>Especie</span></th>
-            <th scope="row"><span>Data Inicial</span></th>
-            <th scope="row"><span>Data Final</span></th>
-            <th scope="row"><span>Material Recebido</span></th>
-            <th scope="row"><span>Acondicionamento</span></th>
-            <th scope="row"><span>Condicao Material</span></th>
-            <th scope="row"><span>Status</span></th>
-            <th scope="row"><span>Tipo Med Vet</span></th>
-            <th scope="row"><span>Valor Total</span></th>
-            <th scope="row"><span>Tipo Pagamento</span></th>
-            <th scope="row"><span>Situacao</span></th>
+            <!-- <th scope="row" v-on:click="changeOrder('id')">
+              <span>ID</span> <jhi-sort-indicator :current-order="propOrder" :reverse="reverse" :field-name="'id'"></jhi-sort-indicator>
+            </th> -->
+            <th scope="row" v-on:click="changeOrder('protocolo')">
+              <span>Protocolo</span>
+              <jhi-sort-indicator :current-order="propOrder" :reverse="reverse" :field-name="'protocolo'"></jhi-sort-indicator>
+            </th>
+            <th scope="row" v-on:click="changeOrder('formaEnvio')">
+              <span>Forma Envio</span>
+              <jhi-sort-indicator :current-order="propOrder" :reverse="reverse" :field-name="'formaEnvio'"></jhi-sort-indicator>
+            </th>
+            <th scope="row" v-on:click="changeOrder('numeroAmostras')">
+              <span>Numero Amostras</span>
+              <jhi-sort-indicator :current-order="propOrder" :reverse="reverse" :field-name="'numeroAmostras'"></jhi-sort-indicator>
+            </th>
+            <th scope="row" v-on:click="changeOrder('especie')">
+              <span>Especie</span>
+              <jhi-sort-indicator :current-order="propOrder" :reverse="reverse" :field-name="'especie'"></jhi-sort-indicator>
+            </th>
+            <th scope="row" v-on:click="changeOrder('dataInicial')">
+              <span>Data Inicial</span>
+              <jhi-sort-indicator :current-order="propOrder" :reverse="reverse" :field-name="'dataInicial'"></jhi-sort-indicator>
+            </th>
+            <th scope="row" v-on:click="changeOrder('dataFinal')">
+              <span>Data Final</span>
+              <jhi-sort-indicator :current-order="propOrder" :reverse="reverse" :field-name="'dataFinal'"></jhi-sort-indicator>
+            </th>
+            <th scope="row" v-on:click="changeOrder('materialRecebido')">
+              <span>Material Recebido</span>
+              <jhi-sort-indicator :current-order="propOrder" :reverse="reverse" :field-name="'materialRecebido'"></jhi-sort-indicator>
+            </th>
+            <th scope="row" v-on:click="changeOrder('acondicionamento')">
+              <span>Acondicionamento</span>
+              <jhi-sort-indicator :current-order="propOrder" :reverse="reverse" :field-name="'acondicionamento'"></jhi-sort-indicator>
+            </th>
+            <th scope="row" v-on:click="changeOrder('condicaoMaterial')">
+              <span>Condicao Material</span>
+              <jhi-sort-indicator :current-order="propOrder" :reverse="reverse" :field-name="'condicaoMaterial'"></jhi-sort-indicator>
+            </th>
+            <th scope="row" v-on:click="changeOrder('status')">
+              <span>Status</span>
+              <jhi-sort-indicator :current-order="propOrder" :reverse="reverse" :field-name="'status'"></jhi-sort-indicator>
+            </th>
+            <th scope="row" v-on:click="changeOrder('tipoMedVet')">
+              <span>Tipo Med Vet</span>
+              <jhi-sort-indicator :current-order="propOrder" :reverse="reverse" :field-name="'tipoMedVet'"></jhi-sort-indicator>
+            </th>
+            <th scope="row" v-on:click="changeOrder('valorTotal')">
+              <span>Valor Total</span>
+              <jhi-sort-indicator :current-order="propOrder" :reverse="reverse" :field-name="'valorTotal'"></jhi-sort-indicator>
+            </th>
+            <th scope="row" v-on:click="changeOrder('tipoPagamento')">
+              <span>Tipo Pagamento</span>
+              <jhi-sort-indicator :current-order="propOrder" :reverse="reverse" :field-name="'tipoPagamento'"></jhi-sort-indicator>
+            </th>
+            <th scope="row" v-on:click="changeOrder('situacao')">
+              <span>Situacao</span>
+              <jhi-sort-indicator :current-order="propOrder" :reverse="reverse" :field-name="'situacao'"></jhi-sort-indicator>
+            </th>
+            <th scope="row" v-on:click="changeOrder('propriedade.tipoPropriedade')">
+              <span>Propriedade</span>
+              <jhi-sort-indicator
+                :current-order="propOrder"
+                :reverse="reverse"
+                :field-name="'propriedade.tipoPropriedade'"
+              ></jhi-sort-indicator>
+            </th>
+            <th scope="row" v-on:click="changeOrder('medicoveterinario.nome')">
+              <span>Medicoveterinario</span>
+              <jhi-sort-indicator :current-order="propOrder" :reverse="reverse" :field-name="'medicoveterinario.nome'"></jhi-sort-indicator>
+            </th>
             <th scope="row"><span>Usuário</span></th>
-            <th scope="row"><span>Propriedade</span></th>
-            <th scope="row"><span>Medicoveterinario</span></th>
             <th scope="row"></th>
           </tr>
         </thead>
         <tbody>
           <tr v-for="amostra in amostras" :key="amostra.id" data-cy="entityTable">
-            <td>
+            <!-- <td>
               <router-link :to="{ name: 'AmostraView', params: { amostraId: amostra.id } }">{{ amostra.id }}</router-link>
-            </td>
+            </td> -->
             <td>{{ amostra.protocolo }}</td>
             <td>{{ amostra.formaEnvio }}</td>
             <td>{{ amostra.numeroAmostras }}</td>
@@ -68,12 +122,6 @@
             <td>{{ amostra.tipoPagamento }}</td>
             <td>{{ amostra.situacao }}</td>
             <td>
-              <span v-for="(user, i) in amostra.users" :key="user.id"
-                >{{ i > 0 ? ', ' : '' }}
-                {{ user.login }}
-              </span>
-            </td>
-            <td>
               <div v-if="amostra.propriedade">
                 <router-link :to="{ name: 'PropriedadeView', params: { propriedadeId: amostra.propriedade.id } }">{{
                   amostra.propriedade.tipoPropriedade
@@ -87,8 +135,23 @@
                 }}</router-link>
               </div>
             </td>
+            <td>
+              <span v-for="(user, i) in amostra.users" :key="user.id"
+                >{{ i > 0 ? ', ' : '' }}{{ user.login }}</span>
+            </td>
+            <td></td>
             <td class="text-right">
               <div class="btn-group">
+                <router-link :to="{ name: 'Exame', params: { amostraId: amostra.id } }" custom v-slot="{ navigate }">
+                  <button
+                    @click="navigate"
+                    class="btn btn-warning btn-sm details"
+                    data-
+                    cy="entityDetailsButton">
+                    <font-awesome-icon icon="tasks"></font-awesome-icon>
+                  <span class="d-none d-md-inline">Exames</span>                  
+                  </button> 
+                </router-link>
                 <router-link :to="{ name: 'AmostraView', params: { amostraId: amostra.id } }" custom v-slot="{ navigate }">
                   <button @click="navigate" class="btn btn-info btn-sm details" data-cy="entityDetailsButton">
                     <font-awesome-icon icon="eye"></font-awesome-icon>
@@ -137,6 +200,14 @@
         </button>
       </div>
     </b-modal>
+    <div v-show="amostras && amostras.length > 0">
+      <div class="row justify-content-center">
+        <jhi-item-count :page="page" :total="queryCount" :itemsPerPage="itemsPerPage"></jhi-item-count>
+      </div>
+      <div class="row justify-content-center">
+        <b-pagination size="md" :total-rows="totalItems" v-model="page" :per-page="itemsPerPage" :change="loadPage(page)"></b-pagination>
+      </div>
+    </div>
   </div>
 </template>
 

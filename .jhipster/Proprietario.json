@@ -19,22 +19,11 @@
   ],
   "relationships": [
     {
-      "relationshipName": "endereco",
-      "otherEntityName": "endereco",
-      "relationshipType": "one-to-one",
-      "otherEntityField": "endereco",
-      "ownerSide": true,
-      "id": false,
-      "otherEntityRelationshipName": "proprietario"
-    },
-    {
-      "relationshipName": "propriedade",
+      "relationshipType": "one-to-many",
       "otherEntityName": "propriedade",
-      "relationshipType": "one-to-one",
-      "otherEntityField": "tipoPropriedade",
-      "ownerSide": true,
-      "id": false,
-      "otherEntityRelationshipName": "proprietario"
+      "otherEntityRelationshipName": "proprietario",
+      "relationshipName": "propriedade",
+      "otherEntityField": "tipoPropriedade"
     }
   ],
   "service": "serviceClass",

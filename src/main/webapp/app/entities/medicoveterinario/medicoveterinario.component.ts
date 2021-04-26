@@ -12,6 +12,13 @@ import MedicoveterinarioService from './medicoveterinario.service';
 export default class Medicoveterinario extends Vue {
   @Inject('medicoveterinarioService') private medicoveterinarioService: () => MedicoveterinarioService;
   private removeId: number = null;
+  public itemsPerPage = 20;
+  public queryCount: number = null;
+  public page = 1;
+  public previousPage = 1;
+  public propOrder = 'id';
+  public reverse = false;
+  public totalItems = 0;
 
   public medicoveterinarios: IMedicoveterinario[] = [];
 
@@ -22,17 +29,25 @@ export default class Medicoveterinario extends Vue {
   }
 
   public clear(): void {
+    this.page = 1;
     this.retrieveAllMedicoveterinarios();
   }
 
   public retrieveAllMedicoveterinarios(): void {
     this.isFetching = true;
 
+    const paginationQuery = {
+      page: this.page - 1,
+      size: this.itemsPerPage,
+      sort: this.sort(),
+    };
     this.medicoveterinarioService()
-      .retrieve()
+      .retrieve(paginationQuery)
       .then(
         res => {
           this.medicoveterinarios = res.data;
+          this.totalItems = Number(res.headers['x-total-count']);
+          this.queryCount = this.totalItems;
           this.isFetching = false;
         },
         err => {
@@ -68,6 +83,31 @@ export default class Medicoveterinario extends Vue {
         this.retrieveAllMedicoveterinarios();
         this.closeDialog();
       });
+  }
+
+  public sort(): Array<any> {
+    const result = [this.propOrder + ',' + (this.reverse ? 'desc' : 'asc')];
+    if (this.propOrder !== 'id') {
+      result.push('id');
+    }
+    return result;
+  }
+
+  public loadPage(page: number): void {
+    if (page !== this.previousPage) {
+      this.previousPage = page;
+      this.transition();
+    }
+  }
+
+  public transition(): void {
+    this.retrieveAllMedicoveterinarios();
+  }
+
+  public changeOrder(propOrder): void {
+    this.propOrder = propOrder;
+    this.reverse = !this.reverse;
+    this.transition();
   }
 
   public closeDialog(): void {

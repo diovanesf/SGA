@@ -4,12 +4,11 @@ import edu.unipampa.laboratoriovirologia.domain.Propriedade;
 import edu.unipampa.laboratoriovirologia.repository.PropriedadeRepository;
 import edu.unipampa.laboratoriovirologia.service.dto.PropriedadeDTO;
 import edu.unipampa.laboratoriovirologia.service.mapper.PropriedadeMapper;
-import java.util.LinkedList;
-import java.util.List;
 import java.util.Optional;
-import java.util.stream.Collectors;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -68,12 +67,13 @@ public class PropriedadeService {
     /**
      * Get all the propriedades.
      *
+     * @param pageable the pagination information.
      * @return the list of entities.
      */
     @Transactional(readOnly = true)
-    public List<PropriedadeDTO> findAll() {
+    public Page<PropriedadeDTO> findAll(Pageable pageable) {
         log.debug("Request to get all Propriedades");
-        return propriedadeRepository.findAll().stream().map(propriedadeMapper::toDto).collect(Collectors.toCollection(LinkedList::new));
+        return propriedadeRepository.findAll(pageable).map(propriedadeMapper::toDto);
     }
 
     /**

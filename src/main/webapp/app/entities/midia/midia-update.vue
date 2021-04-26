@@ -4,10 +4,10 @@
       <form name="editForm" role="form" novalidate v-on:submit.prevent="save()">
         <h2 id="rp6App.midia.home.createOrEditLabel" data-cy="MidiaCreateUpdateHeading">Create or edit a Midia</h2>
         <div>
-          <div class="form-group" v-if="midia.id">
+          <!-- <div class="form-group" v-if="midia.id">
             <label for="id">ID</label>
             <input type="text" class="form-control" id="id" name="id" v-model="midia.id" readonly />
-          </div>
+          </div> -->
           <div class="form-group">
             <label class="form-control-label" for="midia-nome">Nome</label>
             <input

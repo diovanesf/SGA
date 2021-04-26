@@ -27,34 +27,46 @@
       <table class="table table-striped" aria-describedby="proprietarios">
         <thead>
           <tr>
-            <th scope="row"><span>ID</span></th>
-            <th scope="row"><span>Nome</span></th>
-            <th scope="row"><span>Telefone</span></th>
-            <th scope="row"><span>Email</span></th>
-            <th scope="row"><span>Enviar Laudo</span></th>
-            <th scope="row"><span>Endereco</span></th>
-            <th scope="row"><span>Propriedade</span></th>
+            <!-- <th scope="row" v-on:click="changeOrder('id')">
+              <span>ID</span> <jhi-sort-indicator :current-order="propOrder" :reverse="reverse" :field-name="'id'"></jhi-sort-indicator>
+            </th> -->
+            <th scope="row" v-on:click="changeOrder('nome')">
+              <span>Nome</span> <jhi-sort-indicator :current-order="propOrder" :reverse="reverse" :field-name="'nome'"></jhi-sort-indicator>
+            </th>
+            <th scope="row" v-on:click="changeOrder('telefone')">
+              <span>Telefone</span>
+              <jhi-sort-indicator :current-order="propOrder" :reverse="reverse" :field-name="'telefone'"></jhi-sort-indicator>
+            </th>
+            <th scope="row" v-on:click="changeOrder('email')">
+              <span>Email</span>
+              <jhi-sort-indicator :current-order="propOrder" :reverse="reverse" :field-name="'email'"></jhi-sort-indicator>
+            </th>
+            <th scope="row" v-on:click="changeOrder('enviarLaudo')">
+              <span>Enviar Laudo</span>
+              <jhi-sort-indicator :current-order="propOrder" :reverse="reverse" :field-name="'enviarLaudo'"></jhi-sort-indicator>
+            </th>
+            <!-- <th scope="row" v-on:click="changeOrder('propriedade.tipoPropriedade')">
+              <span>Propriedade</span>
+              <jhi-sort-indicator
+                :current-order="propOrder"
+                :reverse="reverse"
+                :field-name="'propriedade.tipoPropriedade'"
+              ></jhi-sort-indicator>
+            </th> -->
             <th scope="row"></th>
           </tr>
         </thead>
         <tbody>
           <tr v-for="proprietario in proprietarios" :key="proprietario.id" data-cy="entityTable">
-            <td>
+            <!-- <td>
               <router-link :to="{ name: 'ProprietarioView', params: { proprietarioId: proprietario.id } }">{{
                 proprietario.id
               }}</router-link>
-            </td>
+            </td> -->
             <td>{{ proprietario.nome }}</td>
             <td>{{ proprietario.telefone }}</td>
             <td>{{ proprietario.email }}</td>
             <td>{{ proprietario.enviarLaudo }}</td>
-            <td>
-              <div v-if="proprietario.endereco">
-                <router-link :to="{ name: 'EnderecoView', params: { enderecoId: proprietario.endereco.id } }">{{
-                  proprietario.endereco.endereco
-                }}</router-link>
-              </div>
-            </td>
             <td>
               <div v-if="proprietario.propriedade">
                 <router-link :to="{ name: 'PropriedadeView', params: { propriedadeId: proprietario.propriedade.id } }">{{
@@ -112,6 +124,14 @@
         </button>
       </div>
     </b-modal>
+    <div v-show="proprietarios && proprietarios.length > 0">
+      <div class="row justify-content-center">
+        <jhi-item-count :page="page" :total="queryCount" :itemsPerPage="itemsPerPage"></jhi-item-count>
+      </div>
+      <div class="row justify-content-center">
+        <b-pagination size="md" :total-rows="totalItems" v-model="page" :per-page="itemsPerPage" :change="loadPage(page)"></b-pagination>
+      </div>
+    </div>
   </div>
 </template>
 

@@ -10,8 +10,10 @@ import javax.persistence.metamodel.StaticMetamodel;
 @StaticMetamodel(Exame.class)
 public abstract class Exame_ {
 
+	public static volatile SingularAttribute<Exame, String> estimativaVacinas;
 	public static volatile SingularAttribute<Exame, String> observacoes;
 	public static volatile SingularAttribute<Exame, String> tipo;
+	public static volatile SingularAttribute<Exame, String> pesoMaterial;
 	public static volatile SingularAttribute<Exame, String> preenchimentoEspelho;
 	public static volatile SingularAttribute<Exame, String> resultado;
 	public static volatile SingularAttribute<Exame, BigDecimal> valor;
@@ -21,8 +23,10 @@ public abstract class Exame_ {
 	public static volatile SingularAttribute<Exame, LocalDate> dataTeste;
 	public static volatile SingularAttribute<Exame, Amostra> amostra;
 
+	public static final String ESTIMATIVA_VACINAS = "estimativaVacinas";
 	public static final String OBSERVACOES = "observacoes";
 	public static final String TIPO = "tipo";
+	public static final String PESO_MATERIAL = "pesoMaterial";
 	public static final String PREENCHIMENTO_ESPELHO = "preenchimentoEspelho";
 	public static final String RESULTADO = "resultado";
 	public static final String VALOR = "valor";

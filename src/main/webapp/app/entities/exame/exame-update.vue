@@ -4,33 +4,69 @@
       <form name="editForm" role="form" novalidate v-on:submit.prevent="save()">
         <h2 id="rp6App.exame.home.createOrEditLabel" data-cy="ExameCreateUpdateHeading">Create or edit a Exame</h2>
         <div>
-          <div class="form-group" v-if="exame.id">
+          <!-- <div class="form-group" v-if="exame.id">
             <label for="id">ID</label>
             <input type="text" class="form-control" id="id" name="id" v-model="exame.id" readonly />
-          </div>
+          </div> -->
           <div class="form-group">
             <label class="form-control-label" for="exame-nome">Nome</label>
-            <input
-              type="text"
+            <select
               class="form-control"
-              name="nome"
               id="exame-nome"
               data-cy="nome"
-              :class="{ valid: !$v.exame.nome.$invalid, invalid: $v.exame.nome.$invalid }"
-              v-model="$v.exame.nome.$model"
-            />
+              name="nome"
+              v-model="exame.nome"
+              v-on:click="filtraTipoVirusPorTipoExame()"
+            >
+              <option value="SORONEUTRALIZACAO">Soroneutralizacao</option>
+              <option value="ENSAIO_IMUNOABSORCAO_ENZIMATICA">Ensaio de Imunoabsorcao Enzimatica</option>
+              <option value="REACAO_CADEIA_POLIMERASE">Reacao em Cadeia de Polimerase</option>
+              <option value="IMUNOCROMATOGRAFIA">Imunocromatografia</option>
+              <option value="IMUNOFLUORESCENCIA">Imunofluorescencia</option>
+              <option value="INIBICAO_HEMAGLUTINACAO">Inibicao da Hemaglutinacao</option>
+              <option value="ISOLAMENTO_VIRAL">Isolamento Viral</option>
+              <option value="IMUNODIFUSAO_GEL_AGAR">Imunodifusao em Gel de Agar</option>
+              <option value="MICROSCOPIA_ELETRONICA">Microscopia Eletronica</option>
+              <option value="VACINA_AUTOGENA">Vacina Autógena</option>
+            </select>
           </div>
-          <div class="form-group">
+          <div class="form-group" v-if="exame.nome !== 'VACINA_AUTOGENA'">
             <label class="form-control-label" for="exame-tipo">Tipo</label>
-            <input
-              type="text"
-              class="form-control"
-              name="tipo"
-              id="exame-tipo"
-              data-cy="tipo"
-              :class="{ valid: !$v.exame.tipo.$invalid, invalid: $v.exame.tipo.$invalid }"
-              v-model="$v.exame.tipo.$model"
-            />
+            <select class="form-control" id="exame-tipo" data-cy="tipo" name="tipo" v-model="exame.tipo">
+              <option
+                v-for="tipoVirus in tiposVirus"
+                :key="tipoVirus"
+                v-bind:value="exame.tipo && tipoVirus === exame.tipo ? exame.tipo : tipoVirus"
+              >
+                {{ tipoVirus }}
+              </option>
+            </select>
+          </div>
+          <div v-if="exame.nome === 'VACINA_AUTOGENA'">
+            <div class="form-group">
+              <label class="form-control-label" for="exame-pesoMaterial">Peso Material</label>
+              <input
+                type="text"
+                class="form-control"
+                name="pesoMaterial"
+                id="exame-pesoMaterial"
+                data-cy="pesoMaterial"
+                :class="{ valid: !$v.exame.pesoMaterial.$invalid, invalid: $v.exame.pesoMaterial.$invalid }"
+                v-model="$v.exame.pesoMaterial.$model"
+              />
+            </div>
+            <div class="form-group">
+              <label class="form-control-label" for="exame-estimativaVacinas">Estimativa Vacinas</label>
+              <input
+                type="text"
+                class="form-control"
+                name="estimativaVacinas"
+                id="exame-estimativaVacinas"
+                data-cy="estimativaVacinas"
+                :class="{ valid: !$v.exame.estimativaVacinas.$invalid, invalid: $v.exame.estimativaVacinas.$invalid }"
+                v-model="$v.exame.estimativaVacinas.$model"
+              />
+            </div>
           </div>
           <div class="form-group">
             <label class="form-control-label" for="exame-resultado">Resultado</label>
@@ -134,7 +170,7 @@
               v-model.number="$v.exame.valor.$model"
             />
           </div>
-          <div class="form-group">
+          <!-- <div class="form-group">
             <label class="form-control-label" for="exame-amostra">Amostra</label>
             <select class="form-control" id="exame-amostra" data-cy="amostra" name="amostra" v-model="exame.amostra">
               <option v-bind:value="null"></option>
@@ -146,7 +182,7 @@
                 {{ amostraOption.protocolo }}
               </option>
             </select>
-          </div>
+          </div> -->
         </div>
         <div>
           <button type="button" id="cancel-save" class="btn btn-secondary" v-on:click="previousState()">

@@ -4,10 +4,10 @@
       <form name="editForm" role="form" novalidate v-on:submit.prevent="save()">
         <h2 id="rp6App.endereco.home.createOrEditLabel" data-cy="EnderecoCreateUpdateHeading">Create or edit a Endereco</h2>
         <div>
-          <div class="form-group" v-if="endereco.id">
+          <!-- <div class="form-group" v-if="endereco.id">
             <label for="id">ID</label>
             <input type="text" class="form-control" id="id" name="id" v-model="endereco.id" readonly />
-          </div>
+          </div> -->
           <div class="form-group">
             <label class="form-control-label" for="endereco-endereco">Endereco</label>
             <input

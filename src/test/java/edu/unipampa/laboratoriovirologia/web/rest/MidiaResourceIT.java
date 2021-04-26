@@ -6,8 +6,10 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
 import edu.unipampa.laboratoriovirologia.IntegrationTest;
+import edu.unipampa.laboratoriovirologia.domain.Amostra;
 import edu.unipampa.laboratoriovirologia.domain.Midia;
 import edu.unipampa.laboratoriovirologia.repository.MidiaRepository;
+import edu.unipampa.laboratoriovirologia.service.criteria.MidiaCriteria;
 import edu.unipampa.laboratoriovirologia.service.dto.MidiaDTO;
 import edu.unipampa.laboratoriovirologia.service.mapper.MidiaMapper;
 import java.util.List;
@@ -171,6 +173,240 @@ class MidiaResourceIT {
             .andExpect(jsonPath("$.descricao").value(DEFAULT_DESCRICAO))
             .andExpect(jsonPath("$.fileContentType").value(DEFAULT_FILE_CONTENT_TYPE))
             .andExpect(jsonPath("$.file").value(Base64Utils.encodeToString(DEFAULT_FILE)));
+    }
+
+    @Test
+    @Transactional
+    void getMidiasByIdFiltering() throws Exception {
+        // Initialize the database
+        midiaRepository.saveAndFlush(midia);
+
+        Long id = midia.getId();
+
+        defaultMidiaShouldBeFound("id.equals=" + id);
+        defaultMidiaShouldNotBeFound("id.notEquals=" + id);
+
+        defaultMidiaShouldBeFound("id.greaterThanOrEqual=" + id);
+        defaultMidiaShouldNotBeFound("id.greaterThan=" + id);
+
+        defaultMidiaShouldBeFound("id.lessThanOrEqual=" + id);
+        defaultMidiaShouldNotBeFound("id.lessThan=" + id);
+    }
+
+    @Test
+    @Transactional
+    void getAllMidiasByNomeIsEqualToSomething() throws Exception {
+        // Initialize the database
+        midiaRepository.saveAndFlush(midia);
+
+        // Get all the midiaList where nome equals to DEFAULT_NOME
+        defaultMidiaShouldBeFound("nome.equals=" + DEFAULT_NOME);
+
+        // Get all the midiaList where nome equals to UPDATED_NOME
+        defaultMidiaShouldNotBeFound("nome.equals=" + UPDATED_NOME);
+    }
+
+    @Test
+    @Transactional
+    void getAllMidiasByNomeIsNotEqualToSomething() throws Exception {
+        // Initialize the database
+        midiaRepository.saveAndFlush(midia);
+
+        // Get all the midiaList where nome not equals to DEFAULT_NOME
+        defaultMidiaShouldNotBeFound("nome.notEquals=" + DEFAULT_NOME);
+
+        // Get all the midiaList where nome not equals to UPDATED_NOME
+        defaultMidiaShouldBeFound("nome.notEquals=" + UPDATED_NOME);
+    }
+
+    @Test
+    @Transactional
+    void getAllMidiasByNomeIsInShouldWork() throws Exception {
+        // Initialize the database
+        midiaRepository.saveAndFlush(midia);
+
+        // Get all the midiaList where nome in DEFAULT_NOME or UPDATED_NOME
+        defaultMidiaShouldBeFound("nome.in=" + DEFAULT_NOME + "," + UPDATED_NOME);
+
+        // Get all the midiaList where nome equals to UPDATED_NOME
+        defaultMidiaShouldNotBeFound("nome.in=" + UPDATED_NOME);
+    }
+
+    @Test
+    @Transactional
+    void getAllMidiasByNomeIsNullOrNotNull() throws Exception {
+        // Initialize the database
+        midiaRepository.saveAndFlush(midia);
+
+        // Get all the midiaList where nome is not null
+        defaultMidiaShouldBeFound("nome.specified=true");
+
+        // Get all the midiaList where nome is null
+        defaultMidiaShouldNotBeFound("nome.specified=false");
+    }
+
+    @Test
+    @Transactional
+    void getAllMidiasByNomeContainsSomething() throws Exception {
+        // Initialize the database
+        midiaRepository.saveAndFlush(midia);
+
+        // Get all the midiaList where nome contains DEFAULT_NOME
+        defaultMidiaShouldBeFound("nome.contains=" + DEFAULT_NOME);
+
+        // Get all the midiaList where nome contains UPDATED_NOME
+        defaultMidiaShouldNotBeFound("nome.contains=" + UPDATED_NOME);
+    }
+
+    @Test
+    @Transactional
+    void getAllMidiasByNomeNotContainsSomething() throws Exception {
+        // Initialize the database
+        midiaRepository.saveAndFlush(midia);
+
+        // Get all the midiaList where nome does not contain DEFAULT_NOME
+        defaultMidiaShouldNotBeFound("nome.doesNotContain=" + DEFAULT_NOME);
+
+        // Get all the midiaList where nome does not contain UPDATED_NOME
+        defaultMidiaShouldBeFound("nome.doesNotContain=" + UPDATED_NOME);
+    }
+
+    @Test
+    @Transactional
+    void getAllMidiasByDescricaoIsEqualToSomething() throws Exception {
+        // Initialize the database
+        midiaRepository.saveAndFlush(midia);
+
+        // Get all the midiaList where descricao equals to DEFAULT_DESCRICAO
+        defaultMidiaShouldBeFound("descricao.equals=" + DEFAULT_DESCRICAO);
+
+        // Get all the midiaList where descricao equals to UPDATED_DESCRICAO
+        defaultMidiaShouldNotBeFound("descricao.equals=" + UPDATED_DESCRICAO);
+    }
+
+    @Test
+    @Transactional
+    void getAllMidiasByDescricaoIsNotEqualToSomething() throws Exception {
+        // Initialize the database
+        midiaRepository.saveAndFlush(midia);
+
+        // Get all the midiaList where descricao not equals to DEFAULT_DESCRICAO
+        defaultMidiaShouldNotBeFound("descricao.notEquals=" + DEFAULT_DESCRICAO);
+
+        // Get all the midiaList where descricao not equals to UPDATED_DESCRICAO
+        defaultMidiaShouldBeFound("descricao.notEquals=" + UPDATED_DESCRICAO);
+    }
+
+    @Test
+    @Transactional
+    void getAllMidiasByDescricaoIsInShouldWork() throws Exception {
+        // Initialize the database
+        midiaRepository.saveAndFlush(midia);
+
+        // Get all the midiaList where descricao in DEFAULT_DESCRICAO or UPDATED_DESCRICAO
+        defaultMidiaShouldBeFound("descricao.in=" + DEFAULT_DESCRICAO + "," + UPDATED_DESCRICAO);
+
+        // Get all the midiaList where descricao equals to UPDATED_DESCRICAO
+        defaultMidiaShouldNotBeFound("descricao.in=" + UPDATED_DESCRICAO);
+    }
+
+    @Test
+    @Transactional
+    void getAllMidiasByDescricaoIsNullOrNotNull() throws Exception {
+        // Initialize the database
+        midiaRepository.saveAndFlush(midia);
+
+        // Get all the midiaList where descricao is not null
+        defaultMidiaShouldBeFound("descricao.specified=true");
+
+        // Get all the midiaList where descricao is null
+        defaultMidiaShouldNotBeFound("descricao.specified=false");
+    }
+
+    @Test
+    @Transactional
+    void getAllMidiasByDescricaoContainsSomething() throws Exception {
+        // Initialize the database
+        midiaRepository.saveAndFlush(midia);
+
+        // Get all the midiaList where descricao contains DEFAULT_DESCRICAO
+        defaultMidiaShouldBeFound("descricao.contains=" + DEFAULT_DESCRICAO);
+
+        // Get all the midiaList where descricao contains UPDATED_DESCRICAO
+        defaultMidiaShouldNotBeFound("descricao.contains=" + UPDATED_DESCRICAO);
+    }
+
+    @Test
+    @Transactional
+    void getAllMidiasByDescricaoNotContainsSomething() throws Exception {
+        // Initialize the database
+        midiaRepository.saveAndFlush(midia);
+
+        // Get all the midiaList where descricao does not contain DEFAULT_DESCRICAO
+        defaultMidiaShouldNotBeFound("descricao.doesNotContain=" + DEFAULT_DESCRICAO);
+
+        // Get all the midiaList where descricao does not contain UPDATED_DESCRICAO
+        defaultMidiaShouldBeFound("descricao.doesNotContain=" + UPDATED_DESCRICAO);
+    }
+
+    @Test
+    @Transactional
+    void getAllMidiasByAmostraIsEqualToSomething() throws Exception {
+        // Initialize the database
+        midiaRepository.saveAndFlush(midia);
+        Amostra amostra = AmostraResourceIT.createEntity(em);
+        em.persist(amostra);
+        em.flush();
+        midia.setAmostra(amostra);
+        midiaRepository.saveAndFlush(midia);
+        Long amostraId = amostra.getId();
+
+        // Get all the midiaList where amostra equals to amostraId
+        defaultMidiaShouldBeFound("amostraId.equals=" + amostraId);
+
+        // Get all the midiaList where amostra equals to (amostraId + 1)
+        defaultMidiaShouldNotBeFound("amostraId.equals=" + (amostraId + 1));
+    }
+
+    /**
+     * Executes the search, and checks that the default entity is returned.
+     */
+    private void defaultMidiaShouldBeFound(String filter) throws Exception {
+        restMidiaMockMvc
+            .perform(get(ENTITY_API_URL + "?sort=id,desc&" + filter))
+            .andExpect(status().isOk())
+            .andExpect(content().contentType(MediaType.APPLICATION_JSON_VALUE))
+            .andExpect(jsonPath("$.[*].id").value(hasItem(midia.getId().intValue())))
+            .andExpect(jsonPath("$.[*].nome").value(hasItem(DEFAULT_NOME)))
+            .andExpect(jsonPath("$.[*].descricao").value(hasItem(DEFAULT_DESCRICAO)))
+            .andExpect(jsonPath("$.[*].fileContentType").value(hasItem(DEFAULT_FILE_CONTENT_TYPE)))
+            .andExpect(jsonPath("$.[*].file").value(hasItem(Base64Utils.encodeToString(DEFAULT_FILE))));
+
+        // Check, that the count call also returns 1
+        restMidiaMockMvc
+            .perform(get(ENTITY_API_URL + "/count?sort=id,desc&" + filter))
+            .andExpect(status().isOk())
+            .andExpect(content().contentType(MediaType.APPLICATION_JSON_VALUE))
+            .andExpect(content().string("1"));
+    }
+
+    /**
+     * Executes the search, and checks that the default entity is not returned.
+     */
+    private void defaultMidiaShouldNotBeFound(String filter) throws Exception {
+        restMidiaMockMvc
+            .perform(get(ENTITY_API_URL + "?sort=id,desc&" + filter))
+            .andExpect(status().isOk())
+            .andExpect(content().contentType(MediaType.APPLICATION_JSON_VALUE))
+            .andExpect(jsonPath("$").isArray())
+            .andExpect(jsonPath("$").isEmpty());
+
+        // Check, that the count call also returns 0
+        restMidiaMockMvc
+            .perform(get(ENTITY_API_URL + "/count?sort=id,desc&" + filter))
+            .andExpect(status().isOk())
+            .andExpect(content().contentType(MediaType.APPLICATION_JSON_VALUE))
+            .andExpect(content().string("0"));
     }
 
     @Test

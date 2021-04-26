@@ -28,26 +28,6 @@
           <dd>
             <span>{{ proprietario.enviarLaudo }}</span>
           </dd>
-          <dt>
-            <span>Endereco</span>
-          </dt>
-          <dd>
-            <div v-if="proprietario.endereco">
-              <router-link :to="{ name: 'EnderecoView', params: { enderecoId: proprietario.endereco.id } }">{{
-                proprietario.endereco.endereco
-              }}</router-link>
-            </div>
-          </dd>
-          <dt>
-            <span>Propriedade</span>
-          </dt>
-          <dd>
-            <div v-if="proprietario.propriedade">
-              <router-link :to="{ name: 'PropriedadeView', params: { propriedadeId: proprietario.propriedade.id } }">{{
-                proprietario.propriedade.tipoPropriedade
-              }}</router-link>
-            </div>
-          </dd>
         </dl>
         <button type="submit" v-on:click.prevent="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
           <font-awesome-icon icon="arrow-left"></font-awesome-icon>&nbsp;<span> Back</span>

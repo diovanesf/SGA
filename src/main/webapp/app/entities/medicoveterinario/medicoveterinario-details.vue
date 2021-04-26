@@ -25,10 +25,10 @@
             <span>{{ medicoveterinario.email }}</span>
           </dd>
           <dt>
-            <span>CRMV</span>
+            <span>Crmv</span>
           </dt>
           <dd>
-            <span>{{ medicoveterinario.CRMV }}</span>
+            <span>{{ medicoveterinario.crmv }}</span>
           </dd>
           <dt>
             <span>Enviar Laudo</span>

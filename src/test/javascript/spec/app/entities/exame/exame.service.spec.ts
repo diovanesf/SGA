@@ -33,7 +33,7 @@ describe('Service Tests', () => {
     beforeEach(() => {
       service = new ExameService();
       currentDate = new Date();
-      elemDefault = new Exame(0, 'AAAAAAA', 'AAAAAAA', 'AAAAAAA', currentDate, currentDate, 'AAAAAAA', 'AAAAAAA', 0);
+      elemDefault = new Exame(0, 'AAAAAAA', 'AAAAAAA', 'AAAAAAA', 'AAAAAAA', 'AAAAAAA', currentDate, currentDate, 'AAAAAAA', 'AAAAAAA', 0);
     });
 
     describe('Service methods', () => {
@@ -101,6 +101,8 @@ describe('Service Tests', () => {
           {
             nome: 'BBBBBB',
             tipo: 'BBBBBB',
+            pesoMaterial: 'BBBBBB',
+            estimativaVacinas: 'BBBBBB',
             resultado: 'BBBBBB',
             dataTeste: dayjs(currentDate).format(DATE_FORMAT),
             dataLeitura: dayjs(currentDate).format(DATE_FORMAT),
@@ -140,9 +142,9 @@ describe('Service Tests', () => {
         const patchObject = Object.assign(
           {
             nome: 'BBBBBB',
+            pesoMaterial: 'BBBBBB',
             resultado: 'BBBBBB',
-            dataLeitura: dayjs(currentDate).format(DATE_FORMAT),
-            preenchimentoEspelho: 'BBBBBB',
+            dataTeste: dayjs(currentDate).format(DATE_FORMAT),
           },
           new Exame()
         );
@@ -178,6 +180,8 @@ describe('Service Tests', () => {
           {
             nome: 'BBBBBB',
             tipo: 'BBBBBB',
+            pesoMaterial: 'BBBBBB',
+            estimativaVacinas: 'BBBBBB',
             resultado: 'BBBBBB',
             dataTeste: dayjs(currentDate).format(DATE_FORMAT),
             dataLeitura: dayjs(currentDate).format(DATE_FORMAT),
