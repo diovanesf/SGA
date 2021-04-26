@@ -32,6 +32,9 @@
             <column name="tipo_criacao" type="varchar(255)">
                 <constraints nullable="true" />
             </column>
+            <column name="proprietario_id" type="bigint">
+                <constraints nullable="true" />
+            </column>
             <column name="endereco_id" type="bigint">
                 <constraints nullable="true" unique="true" uniqueConstraintName="ux_propriedade__endereco_id" />
             </column>

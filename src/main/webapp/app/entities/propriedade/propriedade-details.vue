@@ -41,6 +41,16 @@
             <span>{{ propriedade.tipoCriacao }}</span>
           </dd>
           <dt>
+            <span>Proprietario</span>
+          </dt>
+          <dd>
+            <div v-if="propriedade.proprietario">
+              <router-link :to="{ name: 'ProprietarioView', params: { proprietarioId: propriedade.proprietario.id } }">{{
+                propriedade.proprietario.nome
+              }}</router-link>
+            </div>
+          </dd>
+          <dt>
             <span>Endereco</span>
           </dt>
           <dd>

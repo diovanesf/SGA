@@ -13,7 +13,7 @@ import org.springframework.stereotype.Repository;
  * Spring Data SQL repository for the Amostra entity.
  */
 @Repository
-public interface AmostraRepository extends JpaRepository<Amostra, Long> {
+public interface AmostraRepository extends JpaRepository<Amostra, Long>, JpaSpecificationExecutor<Amostra> {
     @Query(
         value = "select distinct amostra from Amostra amostra left join fetch amostra.users",
         countQuery = "select count(distinct amostra) from Amostra amostra"

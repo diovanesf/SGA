@@ -76,6 +76,12 @@ public class ExameService {
         return exameRepository.findAll().stream().map(exameMapper::toDto).collect(Collectors.toCollection(LinkedList::new));
     }
 
+    @Transactional(readOnly = true)
+    public List<ExameDTO> findByAmostraId(Long amostraId) {
+        log.debug("Request to get all Exames");
+        return exameRepository.findByAmostraId(amostraId).stream().map(exameMapper::toDto).collect(Collectors.toCollection(LinkedList::new));
+    }
+
     /**
      * Get one exame by id.
      *
@@ -86,11 +92,6 @@ public class ExameService {
     public Optional<ExameDTO> findOne(Long id) {
         log.debug("Request to get Exame : {}", id);
         return exameRepository.findById(id).map(exameMapper::toDto);
-    }
-
-    @Transactional(readOnly = true)
-    public List<ExameDTO> findExamesByAmostraId(Long amostraId) {
-        return exameRepository.findByAmostraId(amostraId).stream().map(exameMapper::toDto).collect(Collectors.toCollection(LinkedList::new));
     }
 
     /**

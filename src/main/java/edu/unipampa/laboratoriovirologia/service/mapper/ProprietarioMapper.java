@@ -7,8 +7,11 @@ import org.mapstruct.*;
 /**
  * Mapper for the entity {@link Proprietario} and its DTO {@link ProprietarioDTO}.
  */
-@Mapper(componentModel = "spring", uses = { PropriedadeMapper.class })
+@Mapper(componentModel = "spring", uses = {})
 public interface ProprietarioMapper extends EntityMapper<ProprietarioDTO, Proprietario> {
-    @Mapping(target = "propriedade", source = "propriedade", qualifiedByName = "tipoPropriedade")
-    ProprietarioDTO toDto(Proprietario s);
+    @Named("nome")
+    @BeanMapping(ignoreByDefault = true)
+    @Mapping(target = "id", source = "id")
+    @Mapping(target = "nome", source = "nome")
+    ProprietarioDTO toDtoNome(Proprietario proprietario);
 }

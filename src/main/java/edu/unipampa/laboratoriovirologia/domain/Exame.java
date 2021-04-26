@@ -6,8 +6,6 @@ import java.math.BigDecimal;
 import java.time.LocalDate;
 import javax.persistence.*;
 import org.hibernate.annotations.Type;
-import edu.unipampa.laboratoriovirologia.domain.enumeration.TipoExame;
-import edu.unipampa.laboratoriovirologia.domain.enumeration.TipoVirus;
 
 /**
  * A Exame.
@@ -23,13 +21,17 @@ public class Exame implements Serializable {
     @SequenceGenerator(name = "sequenceGenerator")
     private Long id;
 
-    @Enumerated(EnumType.STRING)
     @Column(name = "nome")
-    private TipoExame nome;
+    private String nome;
 
-    @Enumerated(EnumType.STRING)
     @Column(name = "tipo")
-    private TipoVirus tipo;
+    private String tipo;
+
+    @Column(name = "peso_material")
+    private String pesoMaterial;
+
+    @Column(name = "estimativa_vacinas")
+    private String estimativaVacinas;
 
     @Column(name = "resultado")
     private String resultado;
@@ -71,30 +73,56 @@ public class Exame implements Serializable {
         return this;
     }
 
-    public TipoExame getNome() {
+    public String getNome() {
         return this.nome;
     }
 
-    public Exame nome(TipoExame nome) {
+    public Exame nome(String nome) {
         this.nome = nome;
         return this;
     }
 
-    public void setNome(TipoExame nome) {
+    public void setNome(String nome) {
         this.nome = nome;
     }
 
-    public TipoVirus getTipo() {
+    public String getTipo() {
         return this.tipo;
     }
 
-    public Exame tipo(TipoVirus tipo) {
+    public Exame tipo(String tipo) {
         this.tipo = tipo;
         return this;
     }
 
-    public void setTipo(TipoVirus tipo) {
+    public void setTipo(String tipo) {
         this.tipo = tipo;
+    }
+
+    public String getPesoMaterial() {
+        return this.pesoMaterial;
+    }
+
+    public Exame pesoMaterial(String pesoMaterial) {
+        this.pesoMaterial = pesoMaterial;
+        return this;
+    }
+
+    public void setPesoMaterial(String pesoMaterial) {
+        this.pesoMaterial = pesoMaterial;
+    }
+
+    public String getEstimativaVacinas() {
+        return this.estimativaVacinas;
+    }
+
+    public Exame estimativaVacinas(String estimativaVacinas) {
+        this.estimativaVacinas = estimativaVacinas;
+        return this;
+    }
+
+    public void setEstimativaVacinas(String estimativaVacinas) {
+        this.estimativaVacinas = estimativaVacinas;
     }
 
     public String getResultado() {
@@ -214,6 +242,8 @@ public class Exame implements Serializable {
             "id=" + getId() +
             ", nome='" + getNome() + "'" +
             ", tipo='" + getTipo() + "'" +
+            ", pesoMaterial='" + getPesoMaterial() + "'" +
+            ", estimativaVacinas='" + getEstimativaVacinas() + "'" +
             ", resultado='" + getResultado() + "'" +
             ", dataTeste='" + getDataTeste() + "'" +
             ", dataLeitura='" + getDataLeitura() + "'" +

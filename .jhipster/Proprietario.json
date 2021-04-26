@@ -19,13 +19,11 @@
   ],
   "relationships": [
     {
-      "relationshipName": "propriedade",
+      "relationshipType": "one-to-many",
       "otherEntityName": "propriedade",
-      "relationshipType": "one-to-one",
-      "otherEntityField": "tipoPropriedade",
-      "ownerSide": true,
-      "id": false,
-      "otherEntityRelationshipName": "proprietario"
+      "otherEntityRelationshipName": "proprietario",
+      "relationshipName": "propriedade",
+      "otherEntityField": "tipoPropriedade"
     }
   ],
   "service": "serviceClass",

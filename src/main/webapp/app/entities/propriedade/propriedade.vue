@@ -27,28 +27,62 @@
       <table class="table table-striped" aria-describedby="propriedades">
         <thead>
           <tr>
-            <th scope="row"><span>ID</span></th>
-            <th scope="row"><span>Tipo Propriedade</span></th>
-            <th scope="row"><span>Numero Animais</span></th>
-            <th scope="row"><span>Acometidos</span></th>
-            <th scope="row"><span>Observacoes</span></th>
-            <th scope="row"><span>Pricipal Suspeita</span></th>
-            <th scope="row"><span>Tipo Criacao</span></th>
-            <th scope="row"><span>Endereco</span></th>
+            <!-- <th scope="row" v-on:click="changeOrder('id')">
+              <span>ID</span> <jhi-sort-indicator :current-order="propOrder" :reverse="reverse" :field-name="'id'"></jhi-sort-indicator>
+            </th> -->
+            <th scope="row" v-on:click="changeOrder('tipoPropriedade')">
+              <span>Tipo Propriedade</span>
+              <jhi-sort-indicator :current-order="propOrder" :reverse="reverse" :field-name="'tipoPropriedade'"></jhi-sort-indicator>
+            </th>
+            <th scope="row" v-on:click="changeOrder('numeroAnimais')">
+              <span>Numero Animais</span>
+              <jhi-sort-indicator :current-order="propOrder" :reverse="reverse" :field-name="'numeroAnimais'"></jhi-sort-indicator>
+            </th>
+            <th scope="row" v-on:click="changeOrder('acometidos')">
+              <span>Acometidos</span>
+              <jhi-sort-indicator :current-order="propOrder" :reverse="reverse" :field-name="'acometidos'"></jhi-sort-indicator>
+            </th>
+            <th scope="row" v-on:click="changeOrder('observacoes')">
+              <span>Observacoes</span>
+              <jhi-sort-indicator :current-order="propOrder" :reverse="reverse" :field-name="'observacoes'"></jhi-sort-indicator>
+            </th>
+            <th scope="row" v-on:click="changeOrder('pricipalSuspeita')">
+              <span>Pricipal Suspeita</span>
+              <jhi-sort-indicator :current-order="propOrder" :reverse="reverse" :field-name="'pricipalSuspeita'"></jhi-sort-indicator>
+            </th>
+            <th scope="row" v-on:click="changeOrder('tipoCriacao')">
+              <span>Tipo Criacao</span>
+              <jhi-sort-indicator :current-order="propOrder" :reverse="reverse" :field-name="'tipoCriacao'"></jhi-sort-indicator>
+            </th>
+            <th scope="row" v-on:click="changeOrder('proprietario.nome')">
+              <span>Proprietario</span>
+              <jhi-sort-indicator :current-order="propOrder" :reverse="reverse" :field-name="'proprietario.nome'"></jhi-sort-indicator>
+            </th>
+            <th scope="row" v-on:click="changeOrder('endereco.endereco')">
+              <span>Endereco</span>
+              <jhi-sort-indicator :current-order="propOrder" :reverse="reverse" :field-name="'endereco.endereco'"></jhi-sort-indicator>
+            </th>
             <th scope="row"></th>
           </tr>
         </thead>
         <tbody>
           <tr v-for="propriedade in propriedades" :key="propriedade.id" data-cy="entityTable">
-            <td>
+            <!-- <td>
               <router-link :to="{ name: 'PropriedadeView', params: { propriedadeId: propriedade.id } }">{{ propriedade.id }}</router-link>
-            </td>
+            </td> -->
             <td>{{ propriedade.tipoPropriedade }}</td>
             <td>{{ propriedade.numeroAnimais }}</td>
             <td>{{ propriedade.acometidos }}</td>
             <td>{{ propriedade.observacoes }}</td>
             <td>{{ propriedade.pricipalSuspeita }}</td>
             <td>{{ propriedade.tipoCriacao }}</td>
+            <td>
+              <div v-if="propriedade.proprietario">
+                <router-link :to="{ name: 'ProprietarioView', params: { proprietarioId: propriedade.proprietario.id } }">{{
+                  propriedade.proprietario.nome
+                }}</router-link>
+              </div>
+            </td>
             <td>
               <div v-if="propriedade.endereco">
                 <router-link :to="{ name: 'EnderecoView', params: { enderecoId: propriedade.endereco.id } }">{{
@@ -64,7 +98,7 @@
                     <span class="d-none d-md-inline">View</span>
                   </button>
                 </router-link>
-                <router-link :to="{ name: 'PropriedadeEdit', params: { propriedadeId: propriedade.id } }" custom v-slot="{ navigate }">
+                <router-link :to="{ name: 'PropriedadeEdit', params: { propriedadeId: propriedade.id , enderecoId: propriedade.endereco.id} }" custom v-slot="{ navigate }">
                   <button @click="navigate" class="btn btn-primary btn-sm edit" data-cy="entityEditButton">
                     <font-awesome-icon icon="pencil-alt"></font-awesome-icon>
                     <span class="d-none d-md-inline">Edit</span>
@@ -106,6 +140,14 @@
         </button>
       </div>
     </b-modal>
+    <div v-show="propriedades && propriedades.length > 0">
+      <div class="row justify-content-center">
+        <jhi-item-count :page="page" :total="queryCount" :itemsPerPage="itemsPerPage"></jhi-item-count>
+      </div>
+      <div class="row justify-content-center">
+        <b-pagination size="md" :total-rows="totalItems" v-model="page" :per-page="itemsPerPage" :change="loadPage(page)"></b-pagination>
+      </div>
+    </div>
   </div>
 </template>
 

@@ -31,12 +31,11 @@ export default class ExameService {
     });
   }
 
-  public retrieveByAmostra(amostraId : number): Promise<any> {
+  public retrieveByAmostra(amostraId: number): Promise<any> {
     return new Promise<any>((resolve, reject) => {
       axios
         .get(`api/amostra/${amostraId}/exames`)
         .then(res => {
-          console.log(res.data);
           resolve(res);
         })
         .catch(err => {

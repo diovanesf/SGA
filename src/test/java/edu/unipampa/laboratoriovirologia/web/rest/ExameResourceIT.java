@@ -8,8 +8,6 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 import edu.unipampa.laboratoriovirologia.IntegrationTest;
 import edu.unipampa.laboratoriovirologia.domain.Exame;
-import edu.unipampa.laboratoriovirologia.domain.enumeration.TipoExame;
-import edu.unipampa.laboratoriovirologia.domain.enumeration.TipoVirus;
 import edu.unipampa.laboratoriovirologia.repository.ExameRepository;
 import edu.unipampa.laboratoriovirologia.service.dto.ExameDTO;
 import edu.unipampa.laboratoriovirologia.service.mapper.ExameMapper;
@@ -38,11 +36,17 @@ import org.springframework.util.Base64Utils;
 @WithMockUser
 class ExameResourceIT {
 
-    private static final TipoExame DEFAULT_NOME = TipoExame.SORONEUTRALIZACAO;
-    private static final TipoExame UPDATED_NOME = TipoExame.IMUNOCROMATOGRAFIA;
+    private static final String DEFAULT_NOME = "AAAAAAAAAA";
+    private static final String UPDATED_NOME = "BBBBBBBBBB";
 
-    private static final TipoVirus DEFAULT_TIPO = TipoVirus.BVDV;
-    private static final TipoVirus UPDATED_TIPO = TipoVirus.FIV_FELV;
+    private static final String DEFAULT_TIPO = "AAAAAAAAAA";
+    private static final String UPDATED_TIPO = "BBBBBBBBBB";
+
+    private static final String DEFAULT_PESO_MATERIAL = "AAAAAAAAAA";
+    private static final String UPDATED_PESO_MATERIAL = "BBBBBBBBBB";
+
+    private static final String DEFAULT_ESTIMATIVA_VACINAS = "AAAAAAAAAA";
+    private static final String UPDATED_ESTIMATIVA_VACINAS = "BBBBBBBBBB";
 
     private static final String DEFAULT_RESULTADO = "AAAAAAAAAA";
     private static final String UPDATED_RESULTADO = "BBBBBBBBBB";
@@ -92,6 +96,8 @@ class ExameResourceIT {
         Exame exame = new Exame()
             .nome(DEFAULT_NOME)
             .tipo(DEFAULT_TIPO)
+            .pesoMaterial(DEFAULT_PESO_MATERIAL)
+            .estimativaVacinas(DEFAULT_ESTIMATIVA_VACINAS)
             .resultado(DEFAULT_RESULTADO)
             .dataTeste(DEFAULT_DATA_TESTE)
             .dataLeitura(DEFAULT_DATA_LEITURA)
@@ -111,6 +117,8 @@ class ExameResourceIT {
         Exame exame = new Exame()
             .nome(UPDATED_NOME)
             .tipo(UPDATED_TIPO)
+            .pesoMaterial(UPDATED_PESO_MATERIAL)
+            .estimativaVacinas(UPDATED_ESTIMATIVA_VACINAS)
             .resultado(UPDATED_RESULTADO)
             .dataTeste(UPDATED_DATA_TESTE)
             .dataLeitura(UPDATED_DATA_LEITURA)
@@ -141,6 +149,8 @@ class ExameResourceIT {
         Exame testExame = exameList.get(exameList.size() - 1);
         assertThat(testExame.getNome()).isEqualTo(DEFAULT_NOME);
         assertThat(testExame.getTipo()).isEqualTo(DEFAULT_TIPO);
+        assertThat(testExame.getPesoMaterial()).isEqualTo(DEFAULT_PESO_MATERIAL);
+        assertThat(testExame.getEstimativaVacinas()).isEqualTo(DEFAULT_ESTIMATIVA_VACINAS);
         assertThat(testExame.getResultado()).isEqualTo(DEFAULT_RESULTADO);
         assertThat(testExame.getDataTeste()).isEqualTo(DEFAULT_DATA_TESTE);
         assertThat(testExame.getDataLeitura()).isEqualTo(DEFAULT_DATA_LEITURA);
@@ -182,6 +192,8 @@ class ExameResourceIT {
             .andExpect(jsonPath("$.[*].id").value(hasItem(exame.getId().intValue())))
             .andExpect(jsonPath("$.[*].nome").value(hasItem(DEFAULT_NOME)))
             .andExpect(jsonPath("$.[*].tipo").value(hasItem(DEFAULT_TIPO)))
+            .andExpect(jsonPath("$.[*].pesoMaterial").value(hasItem(DEFAULT_PESO_MATERIAL)))
+            .andExpect(jsonPath("$.[*].estimativaVacinas").value(hasItem(DEFAULT_ESTIMATIVA_VACINAS)))
             .andExpect(jsonPath("$.[*].resultado").value(hasItem(DEFAULT_RESULTADO)))
             .andExpect(jsonPath("$.[*].dataTeste").value(hasItem(DEFAULT_DATA_TESTE.toString())))
             .andExpect(jsonPath("$.[*].dataLeitura").value(hasItem(DEFAULT_DATA_LEITURA.toString())))
@@ -204,6 +216,8 @@ class ExameResourceIT {
             .andExpect(jsonPath("$.id").value(exame.getId().intValue()))
             .andExpect(jsonPath("$.nome").value(DEFAULT_NOME))
             .andExpect(jsonPath("$.tipo").value(DEFAULT_TIPO))
+            .andExpect(jsonPath("$.pesoMaterial").value(DEFAULT_PESO_MATERIAL))
+            .andExpect(jsonPath("$.estimativaVacinas").value(DEFAULT_ESTIMATIVA_VACINAS))
             .andExpect(jsonPath("$.resultado").value(DEFAULT_RESULTADO))
             .andExpect(jsonPath("$.dataTeste").value(DEFAULT_DATA_TESTE.toString()))
             .andExpect(jsonPath("$.dataLeitura").value(DEFAULT_DATA_LEITURA.toString()))
@@ -234,6 +248,8 @@ class ExameResourceIT {
         updatedExame
             .nome(UPDATED_NOME)
             .tipo(UPDATED_TIPO)
+            .pesoMaterial(UPDATED_PESO_MATERIAL)
+            .estimativaVacinas(UPDATED_ESTIMATIVA_VACINAS)
             .resultado(UPDATED_RESULTADO)
             .dataTeste(UPDATED_DATA_TESTE)
             .dataLeitura(UPDATED_DATA_LEITURA)
@@ -256,6 +272,8 @@ class ExameResourceIT {
         Exame testExame = exameList.get(exameList.size() - 1);
         assertThat(testExame.getNome()).isEqualTo(UPDATED_NOME);
         assertThat(testExame.getTipo()).isEqualTo(UPDATED_TIPO);
+        assertThat(testExame.getPesoMaterial()).isEqualTo(UPDATED_PESO_MATERIAL);
+        assertThat(testExame.getEstimativaVacinas()).isEqualTo(UPDATED_ESTIMATIVA_VACINAS);
         assertThat(testExame.getResultado()).isEqualTo(UPDATED_RESULTADO);
         assertThat(testExame.getDataTeste()).isEqualTo(UPDATED_DATA_TESTE);
         assertThat(testExame.getDataLeitura()).isEqualTo(UPDATED_DATA_LEITURA);
@@ -343,9 +361,9 @@ class ExameResourceIT {
 
         partialUpdatedExame
             .nome(UPDATED_NOME)
+            .pesoMaterial(UPDATED_PESO_MATERIAL)
             .resultado(UPDATED_RESULTADO)
-            .dataLeitura(UPDATED_DATA_LEITURA)
-            .preenchimentoEspelho(UPDATED_PREENCHIMENTO_ESPELHO);
+            .dataTeste(UPDATED_DATA_TESTE);
 
         restExameMockMvc
             .perform(
@@ -361,10 +379,12 @@ class ExameResourceIT {
         Exame testExame = exameList.get(exameList.size() - 1);
         assertThat(testExame.getNome()).isEqualTo(UPDATED_NOME);
         assertThat(testExame.getTipo()).isEqualTo(DEFAULT_TIPO);
+        assertThat(testExame.getPesoMaterial()).isEqualTo(UPDATED_PESO_MATERIAL);
+        assertThat(testExame.getEstimativaVacinas()).isEqualTo(DEFAULT_ESTIMATIVA_VACINAS);
         assertThat(testExame.getResultado()).isEqualTo(UPDATED_RESULTADO);
-        assertThat(testExame.getDataTeste()).isEqualTo(DEFAULT_DATA_TESTE);
-        assertThat(testExame.getDataLeitura()).isEqualTo(UPDATED_DATA_LEITURA);
-        assertThat(testExame.getPreenchimentoEspelho()).isEqualTo(UPDATED_PREENCHIMENTO_ESPELHO);
+        assertThat(testExame.getDataTeste()).isEqualTo(UPDATED_DATA_TESTE);
+        assertThat(testExame.getDataLeitura()).isEqualTo(DEFAULT_DATA_LEITURA);
+        assertThat(testExame.getPreenchimentoEspelho()).isEqualTo(DEFAULT_PREENCHIMENTO_ESPELHO);
         assertThat(testExame.getObservacoes()).isEqualTo(DEFAULT_OBSERVACOES);
         assertThat(testExame.getValor()).isEqualByComparingTo(DEFAULT_VALOR);
     }
@@ -384,6 +404,8 @@ class ExameResourceIT {
         partialUpdatedExame
             .nome(UPDATED_NOME)
             .tipo(UPDATED_TIPO)
+            .pesoMaterial(UPDATED_PESO_MATERIAL)
+            .estimativaVacinas(UPDATED_ESTIMATIVA_VACINAS)
             .resultado(UPDATED_RESULTADO)
             .dataTeste(UPDATED_DATA_TESTE)
             .dataLeitura(UPDATED_DATA_LEITURA)
@@ -405,6 +427,8 @@ class ExameResourceIT {
         Exame testExame = exameList.get(exameList.size() - 1);
         assertThat(testExame.getNome()).isEqualTo(UPDATED_NOME);
         assertThat(testExame.getTipo()).isEqualTo(UPDATED_TIPO);
+        assertThat(testExame.getPesoMaterial()).isEqualTo(UPDATED_PESO_MATERIAL);
+        assertThat(testExame.getEstimativaVacinas()).isEqualTo(UPDATED_ESTIMATIVA_VACINAS);
         assertThat(testExame.getResultado()).isEqualTo(UPDATED_RESULTADO);
         assertThat(testExame.getDataTeste()).isEqualTo(UPDATED_DATA_TESTE);
         assertThat(testExame.getDataLeitura()).isEqualTo(UPDATED_DATA_LEITURA);

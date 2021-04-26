@@ -24,6 +24,8 @@ public class PropriedadeDTO implements Serializable {
 
     private String tipoCriacao;
 
+    private ProprietarioDTO proprietario;
+
     private EnderecoDTO endereco;
 
     public Long getId() {
@@ -82,6 +84,14 @@ public class PropriedadeDTO implements Serializable {
         this.tipoCriacao = tipoCriacao;
     }
 
+    public ProprietarioDTO getProprietario() {
+        return proprietario;
+    }
+
+    public void setProprietario(ProprietarioDTO proprietario) {
+        this.proprietario = proprietario;
+    }
+
     public EnderecoDTO getEndereco() {
         return endereco;
     }
@@ -122,6 +132,7 @@ public class PropriedadeDTO implements Serializable {
             ", observacoes='" + getObservacoes() + "'" +
             ", pricipalSuspeita='" + getPricipalSuspeita() + "'" +
             ", tipoCriacao='" + getTipoCriacao() + "'" +
+            ", proprietario=" + getProprietario() +
             ", endereco=" + getEndereco() +
             "}";
     }

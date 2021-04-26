@@ -6,10 +6,10 @@
           Create or edit a Medicoveterinario
         </h2>
         <div>
-          <div class="form-group" v-if="medicoveterinario.id">
+          <!-- <div class="form-group" v-if="medicoveterinario.id">
             <label for="id">ID</label>
             <input type="text" class="form-control" id="id" name="id" v-model="medicoveterinario.id" readonly />
-          </div>
+          </div> -->
           <div class="form-group">
             <label class="form-control-label" for="medicoveterinario-nome">Nome</label>
             <input
@@ -47,15 +47,15 @@
             />
           </div>
           <div class="form-group">
-            <label class="form-control-label" for="medicoveterinario-CRMV">CRMV</label>
+            <label class="form-control-label" for="medicoveterinario-crmv">CRMV</label>
             <input
               type="text"
               class="form-control"
-              name="CRMV"
-              id="medicoveterinario-CRMV"
-              data-cy="CRMV"
-              :class="{ valid: !$v.medicoveterinario.CRMV.$invalid, invalid: $v.medicoveterinario.CRMV.$invalid }"
-              v-model="$v.medicoveterinario.CRMV.$model"
+              name="crmv"
+              id="medicoveterinario-crmv"
+              data-cy="crmv"
+              :class="{ valid: !$v.medicoveterinario.crmv.$invalid, invalid: $v.medicoveterinario.crmv.$invalid }"
+              v-model="$v.medicoveterinario.crmv.$model"
             />
           </div>
           <div class="form-group">

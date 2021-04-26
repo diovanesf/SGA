@@ -27,20 +27,36 @@
       <table class="table table-striped" aria-describedby="enderecos">
         <thead>
           <tr>
-            <th scope="row"><span>ID</span></th>
-            <th scope="row"><span>Endereco</span></th>
-            <th scope="row"><span>Cep</span></th>
-            <th scope="row"><span>Cidade</span></th>
-            <th scope="row"><span>Estado</span></th>
-            <th scope="row"><span>Coordenadas Gps</span></th>
+            <!-- <th scope="row" v-on:click="changeOrder('id')">
+              <span>ID</span> <jhi-sort-indicator :current-order="propOrder" :reverse="reverse" :field-name="'id'"></jhi-sort-indicator>
+            </th> -->
+            <th scope="row" v-on:click="changeOrder('endereco')">
+              <span>Endereco</span>
+              <jhi-sort-indicator :current-order="propOrder" :reverse="reverse" :field-name="'endereco'"></jhi-sort-indicator>
+            </th>
+            <th scope="row" v-on:click="changeOrder('cep')">
+              <span>Cep</span> <jhi-sort-indicator :current-order="propOrder" :reverse="reverse" :field-name="'cep'"></jhi-sort-indicator>
+            </th>
+            <th scope="row" v-on:click="changeOrder('cidade')">
+              <span>Cidade</span>
+              <jhi-sort-indicator :current-order="propOrder" :reverse="reverse" :field-name="'cidade'"></jhi-sort-indicator>
+            </th>
+            <th scope="row" v-on:click="changeOrder('estado')">
+              <span>Estado</span>
+              <jhi-sort-indicator :current-order="propOrder" :reverse="reverse" :field-name="'estado'"></jhi-sort-indicator>
+            </th>
+            <th scope="row" v-on:click="changeOrder('coordenadasGps')">
+              <span>Coordenadas Gps</span>
+              <jhi-sort-indicator :current-order="propOrder" :reverse="reverse" :field-name="'coordenadasGps'"></jhi-sort-indicator>
+            </th>
             <th scope="row"></th>
           </tr>
         </thead>
         <tbody>
           <tr v-for="endereco in enderecos" :key="endereco.id" data-cy="entityTable">
-            <td>
+            <!-- <td>
               <router-link :to="{ name: 'EnderecoView', params: { enderecoId: endereco.id } }">{{ endereco.id }}</router-link>
-            </td>
+            </td> -->
             <td>{{ endereco.endereco }}</td>
             <td>{{ endereco.cep }}</td>
             <td>{{ endereco.cidade }}</td>
@@ -96,6 +112,14 @@
         </button>
       </div>
     </b-modal>
+    <div v-show="enderecos && enderecos.length > 0">
+      <div class="row justify-content-center">
+        <jhi-item-count :page="page" :total="queryCount" :itemsPerPage="itemsPerPage"></jhi-item-count>
+      </div>
+      <div class="row justify-content-center">
+        <b-pagination size="md" :total-rows="totalItems" v-model="page" :per-page="itemsPerPage" :change="loadPage(page)"></b-pagination>
+      </div>
+    </div>
   </div>
 </template>
 

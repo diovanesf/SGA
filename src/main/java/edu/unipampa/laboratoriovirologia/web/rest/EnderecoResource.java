@@ -1,7 +1,9 @@
 package edu.unipampa.laboratoriovirologia.web.rest;
 
 import edu.unipampa.laboratoriovirologia.repository.EnderecoRepository;
+import edu.unipampa.laboratoriovirologia.service.EnderecoQueryService;
 import edu.unipampa.laboratoriovirologia.service.EnderecoService;
+import edu.unipampa.laboratoriovirologia.service.criteria.EnderecoCriteria;
 import edu.unipampa.laboratoriovirologia.service.dto.EnderecoDTO;
 import edu.unipampa.laboratoriovirologia.web.rest.errors.BadRequestAlertException;
 import java.net.URI;
@@ -12,9 +14,15 @@ import java.util.Optional;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 import tech.jhipster.web.util.HeaderUtil;
+import tech.jhipster.web.util.PaginationUtil;
 import tech.jhipster.web.util.ResponseUtil;
 
 /**
@@ -35,9 +43,16 @@ public class EnderecoResource {
 
     private final EnderecoRepository enderecoRepository;
 
-    public EnderecoResource(EnderecoService enderecoService, EnderecoRepository enderecoRepository) {
+    private final EnderecoQueryService enderecoQueryService;
+
+    public EnderecoResource(
+        EnderecoService enderecoService,
+        EnderecoRepository enderecoRepository,
+        EnderecoQueryService enderecoQueryService
+    ) {
         this.enderecoService = enderecoService;
         this.enderecoRepository = enderecoRepository;
+        this.enderecoQueryService = enderecoQueryService;
     }
 
     /**
@@ -133,12 +148,28 @@ public class EnderecoResource {
     /**
      * {@code GET  /enderecos} : get all the enderecos.
      *
+     * @param pageable the pagination information.
+     * @param criteria the criteria which the requested entities should match.
      * @return the {@link ResponseEntity} with status {@code 200 (OK)} and the list of enderecos in body.
      */
     @GetMapping("/enderecos")
-    public List<EnderecoDTO> getAllEnderecos() {
-        log.debug("REST request to get all Enderecos");
-        return enderecoService.findAll();
+    public ResponseEntity<List<EnderecoDTO>> getAllEnderecos(EnderecoCriteria criteria, Pageable pageable) {
+        log.debug("REST request to get Enderecos by criteria: {}", criteria);
+        Page<EnderecoDTO> page = enderecoQueryService.findByCriteria(criteria, pageable);
+        HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(ServletUriComponentsBuilder.fromCurrentRequest(), page);
+        return ResponseEntity.ok().headers(headers).body(page.getContent());
+    }
+
+    /**
+     * {@code GET  /enderecos/count} : count all the enderecos.
+     *
+     * @param criteria the criteria which the requested entities should match.
+     * @return the {@link ResponseEntity} with status {@code 200 (OK)} and the count in body.
+     */
+    @GetMapping("/enderecos/count")
+    public ResponseEntity<Long> countEnderecos(EnderecoCriteria criteria) {
+        log.debug("REST request to count Enderecos by criteria: {}", criteria);
+        return ResponseEntity.ok().body(enderecoQueryService.countByCriteria(criteria));
     }
 
     /**

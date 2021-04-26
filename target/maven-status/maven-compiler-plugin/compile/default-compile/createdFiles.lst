@@ -1,9 +1,12 @@
+edu/unipampa/laboratoriovirologia/service/criteria/EnderecoCriteria.class
 edu/unipampa/laboratoriovirologia/config/SecurityConfiguration.class
 edu/unipampa/laboratoriovirologia/web/rest/MidiaResource.class
+edu/unipampa/laboratoriovirologia/service/ProprietarioQueryService.class
 edu/unipampa/laboratoriovirologia/domain/Midia_.class
 edu/unipampa/laboratoriovirologia/repository/EnderecoRepository.class
 edu/unipampa/laboratoriovirologia/domain/Endereco_.class
 edu/unipampa/laboratoriovirologia/repository/ExameRepository.class
+edu/unipampa/laboratoriovirologia/service/criteria/MidiaCriteria.class
 edu/unipampa/laboratoriovirologia/service/dto/MedicoveterinarioDTO.class
 edu/unipampa/laboratoriovirologia/service/mapper/MidiaMapperImpl.class
 edu/unipampa/laboratoriovirologia/repository/PropriedadeRepository.class
@@ -12,6 +15,7 @@ edu/unipampa/laboratoriovirologia/repository/AmostraRepository.class
 edu/unipampa/laboratoriovirologia/aop/logging/LoggingAspect.class
 edu/unipampa/laboratoriovirologia/config/StaticResourcesWebConfiguration.class
 META-INF/spring-configuration-metadata.json
+edu/unipampa/laboratoriovirologia/service/PropriedadeQueryService.class
 edu/unipampa/laboratoriovirologia/service/mapper/ProprietarioMapperImpl.class
 edu/unipampa/laboratoriovirologia/web/rest/errors/InvalidPasswordException.class
 edu/unipampa/laboratoriovirologia/domain/Endereco.class
@@ -32,6 +36,7 @@ edu/unipampa/laboratoriovirologia/config/LoggingConfiguration.class
 edu/unipampa/laboratoriovirologia/service/dto/AmostraDTO.class
 edu/unipampa/laboratoriovirologia/config/AsyncConfiguration.class
 edu/unipampa/laboratoriovirologia/web/rest/ExameResource.class
+edu/unipampa/laboratoriovirologia/service/criteria/PropriedadeCriteria.class
 edu/unipampa/laboratoriovirologia/security/SpringSecurityAuditorAware.class
 edu/unipampa/laboratoriovirologia/domain/Authority.class
 edu/unipampa/laboratoriovirologia/config/Constants.class
@@ -50,11 +55,11 @@ edu/unipampa/laboratoriovirologia/domain/Amostra.class
 edu/unipampa/laboratoriovirologia/repository/AuthorityRepository.class
 edu/unipampa/laboratoriovirologia/security/jwt/TokenProvider.class
 edu/unipampa/laboratoriovirologia/domain/enumeration/TipoVirus.class
+edu/unipampa/laboratoriovirologia/service/AmostraQueryService.class
 edu/unipampa/laboratoriovirologia/web/rest/errors/ErrorConstants.class
 edu/unipampa/laboratoriovirologia/service/UsernameAlreadyUsedException.class
 edu/unipampa/laboratoriovirologia/web/rest/UserJWTController$JWTToken.class
 edu/unipampa/laboratoriovirologia/service/ProprietarioService.class
-edu/unipampa/laboratoriovirologia/web/rest/ExameController.class
 edu/unipampa/laboratoriovirologia/domain/Medicoveterinario.class
 edu/unipampa/laboratoriovirologia/web/rest/errors/ExceptionTranslator.class
 edu/unipampa/laboratoriovirologia/security/jwt/JWTFilter.class
@@ -63,17 +68,21 @@ edu/unipampa/laboratoriovirologia/repository/MidiaRepository.class
 edu/unipampa/laboratoriovirologia/web/rest/MedicoveterinarioResource.class
 edu/unipampa/laboratoriovirologia/service/mapper/PropriedadeMapperImpl.class
 edu/unipampa/laboratoriovirologia/domain/Authority_.class
+edu/unipampa/laboratoriovirologia/service/criteria/AmostraCriteria.class
 edu/unipampa/laboratoriovirologia/domain/User_.class
 edu/unipampa/laboratoriovirologia/service/EnderecoService.class
 edu/unipampa/laboratoriovirologia/web/rest/vm/LoginVM.class
 edu/unipampa/laboratoriovirologia/service/dto/MidiaDTO.class
 edu/unipampa/laboratoriovirologia/config/CacheConfiguration.class
 edu/unipampa/laboratoriovirologia/service/dto/AdminUserDTO.class
+edu/unipampa/laboratoriovirologia/service/MedicoveterinarioQueryService.class
+edu/unipampa/laboratoriovirologia/service/EnderecoQueryService.class
 edu/unipampa/laboratoriovirologia/service/mapper/EntityMapper.class
 edu/unipampa/laboratoriovirologia/service/mapper/MidiaMapper.class
 edu/unipampa/laboratoriovirologia/web/rest/UserResource.class
 edu/unipampa/laboratoriovirologia/web/rest/AmostraResource.class
 edu/unipampa/laboratoriovirologia/domain/Exame_.class
+edu/unipampa/laboratoriovirologia/service/criteria/MedicoveterinarioCriteria.class
 edu/unipampa/laboratoriovirologia/domain/Midia.class
 edu/unipampa/laboratoriovirologia/config/DateTimeFormatConfiguration.class
 edu/unipampa/laboratoriovirologia/service/mapper/ExameMapper.class
@@ -87,6 +96,7 @@ edu/unipampa/laboratoriovirologia/security/AuthoritiesConstants.class
 edu/unipampa/laboratoriovirologia/web/rest/errors/LoginAlreadyUsedException.class
 edu/unipampa/laboratoriovirologia/service/InvalidPasswordException.class
 edu/unipampa/laboratoriovirologia/web/rest/EnderecoResource.class
+edu/unipampa/laboratoriovirologia/service/criteria/ExameCriteria.class
 edu/unipampa/laboratoriovirologia/web/rest/AccountResource$AccountResourceException.class
 edu/unipampa/laboratoriovirologia/service/dto/PropriedadeDTO.class
 edu/unipampa/laboratoriovirologia/service/dto/ProprietarioDTO.class
@@ -108,6 +118,7 @@ edu/unipampa/laboratoriovirologia/service/mapper/EnderecoMapper.class
 edu/unipampa/laboratoriovirologia/web/rest/PropriedadeResource.class
 edu/unipampa/laboratoriovirologia/security/SecurityUtils.class
 edu/unipampa/laboratoriovirologia/domain/AbstractAuditingEntity_.class
+edu/unipampa/laboratoriovirologia/service/MidiaQueryService.class
 edu/unipampa/laboratoriovirologia/service/mapper/EnderecoMapperImpl.class
 edu/unipampa/laboratoriovirologia/security/DomainUserDetailsService.class
 edu/unipampa/laboratoriovirologia/domain/Propriedade.class
@@ -119,3 +130,4 @@ edu/unipampa/laboratoriovirologia/web/rest/UserJWTController.class
 edu/unipampa/laboratoriovirologia/service/mapper/AmostraMapper.class
 edu/unipampa/laboratoriovirologia/security/jwt/JWTConfigurer.class
 edu/unipampa/laboratoriovirologia/config/LiquibaseConfiguration.class
+edu/unipampa/laboratoriovirologia/service/criteria/ProprietarioCriteria.class

@@ -72,11 +72,11 @@ public class Amostra implements Serializable {
     )
     private Set<User> users = new HashSet<>();
 
-    @OneToMany(mappedBy = "amostra")
+    @OneToMany(mappedBy = "amostra", cascade = CascadeType.REMOVE, orphanRemoval = true)
     @JsonIgnoreProperties(value = { "amostra" }, allowSetters = true)
     private Set<Midia> midias = new HashSet<>();
 
-    @OneToMany(mappedBy = "amostra")
+    @OneToMany(mappedBy = "amostra", cascade = CascadeType.REMOVE,orphanRemoval = true)
     @JsonIgnoreProperties(value = { "amostra" }, allowSetters = true)
     private Set<Exame> exames = new HashSet<>();
 

@@ -6,7 +6,7 @@ export interface IProprietario {
   telefone?: string | null;
   email?: string | null;
   enviarLaudo?: boolean | null;
-  propriedade?: IPropriedade | null;
+  propriedades?: IPropriedade[] | null;
 }
 
 export class Proprietario implements IProprietario {
@@ -16,7 +16,7 @@ export class Proprietario implements IProprietario {
     public telefone?: string | null,
     public email?: string | null,
     public enviarLaudo?: boolean | null,
-    public propriedade?: IPropriedade | null
+    public propriedades?: IPropriedade[] | null
   ) {
     this.enviarLaudo = this.enviarLaudo ?? false;
   }

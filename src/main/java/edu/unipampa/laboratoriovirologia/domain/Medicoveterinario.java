@@ -27,7 +27,7 @@ public class Medicoveterinario implements Serializable {
     private String email;
 
     @Column(name = "crmv")
-    private String CRMV;
+    private String crmv;
 
     @Column(name = "enviar_laudo")
     private Boolean enviarLaudo;
@@ -85,17 +85,17 @@ public class Medicoveterinario implements Serializable {
         this.email = email;
     }
 
-    public String getCRMV() {
-        return this.CRMV;
+    public String getCrmv() {
+        return this.crmv;
     }
 
-    public Medicoveterinario CRMV(String CRMV) {
-        this.CRMV = CRMV;
+    public Medicoveterinario crmv(String crmv) {
+        this.crmv = crmv;
         return this;
     }
 
-    public void setCRMV(String CRMV) {
-        this.CRMV = CRMV;
+    public void setCrmv(String crmv) {
+        this.crmv = crmv;
     }
 
     public Boolean getEnviarLaudo() {
@@ -138,7 +138,7 @@ public class Medicoveterinario implements Serializable {
             ", nome='" + getNome() + "'" +
             ", telefone='" + getTelefone() + "'" +
             ", email='" + getEmail() + "'" +
-            ", CRMV='" + getCRMV() + "'" +
+            ", crmv='" + getCrmv() + "'" +
             ", enviarLaudo='" + getEnviarLaudo() + "'" +
             "}";
     }

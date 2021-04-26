@@ -26,9 +26,6 @@
             <column name="enviar_laudo" type="boolean">
                 <constraints nullable="true" />
             </column>
-            <column name="propriedade_id" type="bigint">
-                <constraints nullable="true" unique="true" uniqueConstraintName="ux_proprietario__propriedade_id" />
-            </column>
             <!-- jhipster-needle-liquibase-add-column - JHipster will add columns here -->
         </createTable>
     </changeSet>

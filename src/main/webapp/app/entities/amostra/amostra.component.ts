@@ -12,6 +12,13 @@ import AmostraService from './amostra.service';
 export default class Amostra extends Vue {
   @Inject('amostraService') private amostraService: () => AmostraService;
   private removeId: number = null;
+  public itemsPerPage = 20;
+  public queryCount: number = null;
+  public page = 1;
+  public previousPage = 1;
+  public propOrder = 'id';
+  public reverse = false;
+  public totalItems = 0;
 
   public amostras: IAmostra[] = [];
 
@@ -22,17 +29,25 @@ export default class Amostra extends Vue {
   }
 
   public clear(): void {
+    this.page = 1;
     this.retrieveAllAmostras();
   }
 
   public retrieveAllAmostras(): void {
     this.isFetching = true;
 
+    const paginationQuery = {
+      page: this.page - 1,
+      size: this.itemsPerPage,
+      sort: this.sort(),
+    };
     this.amostraService()
-      .retrieve()
+      .retrieve(paginationQuery)
       .then(
         res => {
           this.amostras = res.data;
+          this.totalItems = Number(res.headers['x-total-count']);
+          this.queryCount = this.totalItems;
           this.isFetching = false;
         },
         err => {
@@ -68,6 +83,31 @@ export default class Amostra extends Vue {
         this.retrieveAllAmostras();
         this.closeDialog();
       });
+  }
+
+  public sort(): Array<any> {
+    const result = [this.propOrder + ',' + (this.reverse ? 'desc' : 'asc')];
+    if (this.propOrder !== 'id') {
+      result.push('id');
+    }
+    return result;
+  }
+
+  public loadPage(page: number): void {
+    if (page !== this.previousPage) {
+      this.previousPage = page;
+      this.transition();
+    }
+  }
+
+  public transition(): void {
+    this.retrieveAllAmostras();
+  }
+
+  public changeOrder(propOrder): void {
+    this.propOrder = propOrder;
+    this.reverse = !this.reverse;
+    this.transition();
   }
 
   public closeDialog(): void {

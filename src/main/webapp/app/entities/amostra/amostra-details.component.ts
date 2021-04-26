@@ -25,6 +25,6 @@ export default class AmostraDetails extends Vue {
   }
 
   public previousState() {
-    this.$router.push({ name: 'Amostra' });
+    this.$router.go(-1);
   }
 }

@@ -16,7 +16,7 @@ public class MedicoveterinarioDTO implements Serializable {
 
     private String email;
 
-    private String CRMV;
+    private String crmv;
 
     private Boolean enviarLaudo;
 
@@ -52,12 +52,12 @@ public class MedicoveterinarioDTO implements Serializable {
         this.email = email;
     }
 
-    public String getCRMV() {
-        return CRMV;
+    public String getCrmv() {
+        return crmv;
     }
 
-    public void setCRMV(String CRMV) {
-        this.CRMV = CRMV;
+    public void setCrmv(String crmv) {
+        this.crmv = crmv;
     }
 
     public Boolean getEnviarLaudo() {
@@ -97,7 +97,7 @@ public class MedicoveterinarioDTO implements Serializable {
             ", nome='" + getNome() + "'" +
             ", telefone='" + getTelefone() + "'" +
             ", email='" + getEmail() + "'" +
-            ", CRMV='" + getCRMV() + "'" +
+            ", crmv='" + getCrmv() + "'" +
             ", enviarLaudo='" + getEnviarLaudo() + "'" +
             "}";
     }

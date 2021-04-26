@@ -28,6 +28,6 @@ export default class ExameDetails extends mixins(JhiDataUtils) {
   }
 
   public previousState() {
-    this.$router.push({ name: 'Exame' });
+    this.$router.go(-1);
   }
 }

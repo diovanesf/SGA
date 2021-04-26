@@ -4,10 +4,7 @@ import edu.unipampa.laboratoriovirologia.domain.Amostra;
 import edu.unipampa.laboratoriovirologia.repository.AmostraRepository;
 import edu.unipampa.laboratoriovirologia.service.dto.AmostraDTO;
 import edu.unipampa.laboratoriovirologia.service.mapper.AmostraMapper;
-import java.util.LinkedList;
-import java.util.List;
 import java.util.Optional;
-import java.util.stream.Collectors;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.data.domain.Page;
@@ -70,16 +67,13 @@ public class AmostraService {
     /**
      * Get all the amostras.
      *
+     * @param pageable the pagination information.
      * @return the list of entities.
      */
     @Transactional(readOnly = true)
-    public List<AmostraDTO> findAll() {
+    public Page<AmostraDTO> findAll(Pageable pageable) {
         log.debug("Request to get all Amostras");
-        return amostraRepository
-            .findAllWithEagerRelationships()
-            .stream()
-            .map(amostraMapper::toDto)
-            .collect(Collectors.toCollection(LinkedList::new));
+        return amostraRepository.findAll(pageable).map(amostraMapper::toDto);
     }
 
     /**

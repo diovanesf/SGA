@@ -1,5 +1,6 @@
 package edu.unipampa.laboratoriovirologia.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import java.io.Serializable;
 import javax.persistence.*;
 import org.hibernate.annotations.Type;
@@ -38,7 +39,11 @@ public class Propriedade implements Serializable {
     @Column(name = "tipo_criacao")
     private String tipoCriacao;
 
-    @OneToOne
+    @ManyToOne
+    @JsonIgnoreProperties(value = { "propriedades" }, allowSetters = true)
+    private Proprietario proprietario;
+
+    @OneToOne(cascade = CascadeType.ALL, orphanRemoval = true)
     @JoinColumn(unique = true)
     private Endereco endereco;
 
@@ -132,6 +137,19 @@ public class Propriedade implements Serializable {
 
     public void setTipoCriacao(String tipoCriacao) {
         this.tipoCriacao = tipoCriacao;
+    }
+
+    public Proprietario getProprietario() {
+        return this.proprietario;
+    }
+
+    public Propriedade proprietario(Proprietario proprietario) {
+        this.setProprietario(proprietario);
+        return this;
+    }
+
+    public void setProprietario(Proprietario proprietario) {
+        this.proprietario = proprietario;
     }
 
     public Endereco getEndereco() {

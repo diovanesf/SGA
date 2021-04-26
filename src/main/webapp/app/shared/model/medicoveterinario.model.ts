@@ -3,7 +3,7 @@ export interface IMedicoveterinario {
   nome?: string | null;
   telefone?: string | null;
   email?: string | null;
-  CRMV?: string | null;
+  crmv?: string | null;
   enviarLaudo?: boolean | null;
 }
 
@@ -13,7 +13,7 @@ export class Medicoveterinario implements IMedicoveterinario {
     public nome?: string | null,
     public telefone?: string | null,
     public email?: string | null,
-    public CRMV?: string | null,
+    public crmv?: string | null,
     public enviarLaudo?: boolean | null
   ) {
     this.enviarLaudo = this.enviarLaudo ?? false;

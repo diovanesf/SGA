@@ -3,6 +3,9 @@ import { Component, Inject } from 'vue-property-decorator';
 import { mixins } from 'vue-class-component';
 import JhiDataUtils from '@/shared/data/data-utils.service';
 
+import ProprietarioService from '@/entities/proprietario/proprietario.service';
+import { IProprietario } from '@/shared/model/proprietario.model';
+
 import EnderecoService from '@/entities/endereco/endereco.service';
 import { IEndereco } from '@/shared/model/endereco.model';
 
@@ -27,9 +30,13 @@ export default class PropriedadeUpdate extends mixins(JhiDataUtils) {
   @Inject('propriedadeService') private propriedadeService: () => PropriedadeService;
   public propriedade: IPropriedade = new Propriedade();
 
+  @Inject('proprietarioService') private proprietarioService: () => ProprietarioService;
+
+  public proprietarios: IProprietario[] = [];
+
   @Inject('enderecoService') private enderecoService: () => EnderecoService;
 
-  public enderecos: IEndereco[] = [];
+  public endereco: IEndereco = {};
   public isSaving = false;
   public currentLanguage = '';
 
@@ -37,6 +44,8 @@ export default class PropriedadeUpdate extends mixins(JhiDataUtils) {
     next(vm => {
       if (to.params.propriedadeId) {
         vm.retrievePropriedade(to.params.propriedadeId);
+      }if(to.params.enderecoId){
+        vm.retrieveEnderecoPropriedade(to.params.enderecoId);
       }
       vm.initRelationships();
     });
@@ -55,6 +64,7 @@ export default class PropriedadeUpdate extends mixins(JhiDataUtils) {
   public save(): void {
     this.isSaving = true;
     if (this.propriedade.id) {
+      this.setEnderecoPropriedade();
       this.propriedadeService()
         .update(this.propriedade)
         .then(param => {
@@ -70,6 +80,7 @@ export default class PropriedadeUpdate extends mixins(JhiDataUtils) {
           });
         });
     } else {
+      this.setEnderecoPropriedade();
       this.propriedadeService()
         .create(this.propriedade)
         .then(param => {
@@ -87,6 +98,18 @@ export default class PropriedadeUpdate extends mixins(JhiDataUtils) {
     }
   }
 
+  public setEnderecoPropriedade(){
+    this.propriedade.endereco = this.endereco;
+  }
+
+  public retrieveEnderecoPropriedade(enderecoId: number): void{
+    this.enderecoService()
+      .find(enderecoId)
+      .then(res => {
+        this.endereco = res;
+      });
+  }
+
   public retrievePropriedade(propriedadeId): void {
     this.propriedadeService()
       .find(propriedadeId)
@@ -100,10 +123,10 @@ export default class PropriedadeUpdate extends mixins(JhiDataUtils) {
   }
 
   public initRelationships(): void {
-    this.enderecoService()
+    this.proprietarioService()
       .retrieve()
       .then(res => {
-        this.enderecos = res.data;
+        this.proprietarios = res.data;
       });
   }
 }

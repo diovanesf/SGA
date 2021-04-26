@@ -8,7 +8,7 @@ const validations: any = {
     nome: {},
     telefone: {},
     email: {},
-    CRMV: {},
+    crmv: {},
     enviarLaudo: {},
   },
 };

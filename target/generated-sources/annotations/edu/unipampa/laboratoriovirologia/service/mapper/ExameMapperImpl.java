@@ -1,8 +1,6 @@
 package edu.unipampa.laboratoriovirologia.service.mapper;
 
 import edu.unipampa.laboratoriovirologia.domain.Exame;
-import edu.unipampa.laboratoriovirologia.domain.enumeration.TipoExame;
-import edu.unipampa.laboratoriovirologia.domain.enumeration.TipoVirus;
 import edu.unipampa.laboratoriovirologia.service.dto.ExameDTO;
 import java.util.ArrayList;
 import java.util.List;
@@ -12,7 +10,7 @@ import org.springframework.stereotype.Component;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2021-04-23T00:52:31-0300",
+    date = "2021-04-26T18:13:55-0300",
     comments = "version: 1.4.2.Final, compiler: javac, environment: Java 11.0.10 (Ubuntu)"
 )
 @Component
@@ -30,12 +28,10 @@ public class ExameMapperImpl implements ExameMapper {
         Exame exame = new Exame();
 
         exame.id( dto.getId() );
-        if ( dto.getNome() != null ) {
-            exame.setNome( Enum.valueOf( TipoExame.class, dto.getNome() ) );
-        }
-        if ( dto.getTipo() != null ) {
-            exame.setTipo( Enum.valueOf( TipoVirus.class, dto.getTipo() ) );
-        }
+        exame.setNome( dto.getNome() );
+        exame.setTipo( dto.getTipo() );
+        exame.setPesoMaterial( dto.getPesoMaterial() );
+        exame.setEstimativaVacinas( dto.getEstimativaVacinas() );
         exame.setResultado( dto.getResultado() );
         exame.setDataTeste( dto.getDataTeste() );
         exame.setDataLeitura( dto.getDataLeitura() );
@@ -85,10 +81,16 @@ public class ExameMapperImpl implements ExameMapper {
             entity.id( dto.getId() );
         }
         if ( dto.getNome() != null ) {
-            entity.setNome( Enum.valueOf( TipoExame.class, dto.getNome() ) );
+            entity.setNome( dto.getNome() );
         }
         if ( dto.getTipo() != null ) {
-            entity.setTipo( Enum.valueOf( TipoVirus.class, dto.getTipo() ) );
+            entity.setTipo( dto.getTipo() );
+        }
+        if ( dto.getPesoMaterial() != null ) {
+            entity.setPesoMaterial( dto.getPesoMaterial() );
+        }
+        if ( dto.getEstimativaVacinas() != null ) {
+            entity.setEstimativaVacinas( dto.getEstimativaVacinas() );
         }
         if ( dto.getResultado() != null ) {
             entity.setResultado( dto.getResultado() );
@@ -123,12 +125,10 @@ public class ExameMapperImpl implements ExameMapper {
 
         exameDTO.setAmostra( amostraMapper.toDtoProtocolo( s.getAmostra() ) );
         exameDTO.setId( s.getId() );
-        if ( s.getNome() != null ) {
-            exameDTO.setNome( s.getNome().name() );
-        }
-        if ( s.getTipo() != null ) {
-            exameDTO.setTipo( s.getTipo().name() );
-        }
+        exameDTO.setNome( s.getNome() );
+        exameDTO.setTipo( s.getTipo() );
+        exameDTO.setPesoMaterial( s.getPesoMaterial() );
+        exameDTO.setEstimativaVacinas( s.getEstimativaVacinas() );
         exameDTO.setResultado( s.getResultado() );
         exameDTO.setDataTeste( s.getDataTeste() );
         exameDTO.setDataLeitura( s.getDataLeitura() );

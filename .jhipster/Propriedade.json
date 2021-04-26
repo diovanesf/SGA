@@ -28,6 +28,12 @@
   ],
   "relationships": [
     {
+      "relationshipName": "proprietario",
+      "otherEntityName": "proprietario",
+      "relationshipType": "many-to-one",
+      "otherEntityField": "nome"
+    },
+    {
       "relationshipName": "endereco",
       "otherEntityName": "endereco",
       "relationshipType": "one-to-one",

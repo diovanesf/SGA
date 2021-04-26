@@ -7,10 +7,8 @@ import { IExame } from '@/shared/model/exame.model';
 import JhiDataUtils from '@/shared/data/data-utils.service';
 
 import ExameService from './exame.service';
-
+import AmostraService from '../amostra/amostra.service';
 import { IAmostra } from '@/shared/model/amostra.model';
-
-import AmostraService from '@/entities/amostra/amostra.service';
 
 @Component({
   mixins: [Vue2Filters.mixin],
@@ -21,26 +19,20 @@ export default class Exame extends mixins(JhiDataUtils) {
 
   @Inject('amostraService') private amostraService: () => AmostraService;
   public amostra: IAmostra = {};
-
-  private amostraId: number = null; 
-
+  private amostraId: number = null;
   public exames: IExame[] = [];
 
   public isFetching = false;
 
-  beforeRouteEnter(to, from, next) {
+  beforeRouteEnter(to, from, next){
     next(vm => {
       vm.amostraId = to.params.amostraId;
       vm.retrieveAmostra(vm.amostraId);
       vm.retrieveExamesByAmostra(vm.amostraId);
-    });
+    })
   }
 
-  public clear(): void {
-    this.retrieveExamesByAmostra(this.amostraId);
-  }
-
-  public retrieveAmostra(amostraId: number) {
+  public retrieveAmostra(amostraId): void {
     this.amostraService()
       .find(amostraId)
       .then(res => {
@@ -48,14 +40,18 @@ export default class Exame extends mixins(JhiDataUtils) {
       });
   }
 
-  public retrieveExamesByAmostra(amostraId: number): void {
-    this.isFetching = true;
+  public clear(): void {
+    this.retrieveExamesByAmostra(this.amostraId);
+  }
 
+    public retrieveExamesByAmostra(amostraId: number): void {
+    this.isFetching = true;
     this.exameService()
       .retrieveByAmostra(amostraId)
       .then(
         res => {
           this.exames = res.data;
+          console.log(this.exames);
           this.isFetching = false;
         },
         err => {
@@ -93,12 +89,11 @@ export default class Exame extends mixins(JhiDataUtils) {
       });
   }
 
+  public transition(): void {
+    this.retrieveExamesByAmostra(this.amostraId);
+  }
+
   public closeDialog(): void {
     (<any>this.$refs.removeEntity).hide();
   }
-
-  public previousState() {
-    this.$router.push({ name: 'Amostra' });
-  }
-
 }

@@ -13,6 +13,8 @@ const validations: any = {
   exame: {
     nome: {},
     tipo: {},
+    pesoMaterial: {},
+    estimativaVacinas: {},
     resultado: {},
     dataTeste: {},
     dataLeitura: {},
@@ -116,25 +118,25 @@ export default class ExameUpdate extends mixins(JhiDataUtils) {
       });
   }
 
-  public addTodosTipoVirus(){
+  public addTodosTipoVirus() {
     this.addBvdvTipoVirus();
-        this.addIbrTipoVirus();
-        this.addEhvTipoVirus();
-        this.addLebTipoVirus();
-        this.addCdvTipoVirus();
-        this.addEhvTipoVirus();
-        this.addAieTipoVirus();
-        this.addFcmTipoVirus();
-        this.addBohvTipoVirus();
-        this.addOrfvTipoVirus();
-        this.addEavTipoVirus();
-        this.addFivFelvTipoVirus();
-        this.addRabvTipoVirus();
-        this.addInfluenzaEquinaTipoVirus();
-        this.addCpvTipoVirus();
-        this.addBrsvTipoVirus();
-        this.addCoronavirusTipoVirus();
-        this.addRotavirusTipoVirus();
+    this.addIbrTipoVirus();
+    this.addEhvTipoVirus();
+    this.addLebTipoVirus();
+    this.addCdvTipoVirus();
+    this.addEhvTipoVirus();
+    this.addAieTipoVirus();
+    this.addFcmTipoVirus();
+    this.addBohvTipoVirus();
+    this.addOrfvTipoVirus();
+    this.addEavTipoVirus();
+    this.addFivFelvTipoVirus();
+    this.addRabvTipoVirus();
+    this.addInfluenzaEquinaTipoVirus();
+    this.addCpvTipoVirus();
+    this.addBrsvTipoVirus();
+    this.addCoronavirusTipoVirus();
+    this.addRotavirusTipoVirus();
   }
 
   public filtraTipoVirusPorTipoExame() {
@@ -192,6 +194,9 @@ export default class ExameUpdate extends mixins(JhiDataUtils) {
         this.tiposVirus = [];
         this.addCoronavirusTipoVirus();
         this.addRotavirusTipoVirus();
+        break;
+      case 'VACINA_AUTOGENA':
+        this.exame.nome = 'VACINA_AUTOGENA';
         break;
     }
   }

@@ -27,19 +27,31 @@
       <table class="table table-striped" aria-describedby="midias">
         <thead>
           <tr>
-            <th scope="row"><span>ID</span></th>
-            <th scope="row"><span>Nome</span></th>
-            <th scope="row"><span>Descricao</span></th>
-            <th scope="row"><span>File</span></th>
-            <th scope="row"><span>Amostra</span></th>
+            <!-- <th scope="row" v-on:click="changeOrder('id')">
+              <span>ID</span> <jhi-sort-indicator :current-order="propOrder" :reverse="reverse" :field-name="'id'"></jhi-sort-indicator>
+            </th> -->
+            <th scope="row" v-on:click="changeOrder('nome')">
+              <span>Nome</span> <jhi-sort-indicator :current-order="propOrder" :reverse="reverse" :field-name="'nome'"></jhi-sort-indicator>
+            </th>
+            <th scope="row" v-on:click="changeOrder('descricao')">
+              <span>Descricao</span>
+              <jhi-sort-indicator :current-order="propOrder" :reverse="reverse" :field-name="'descricao'"></jhi-sort-indicator>
+            </th>
+            <th scope="row" v-on:click="changeOrder('file')">
+              <span>File</span> <jhi-sort-indicator :current-order="propOrder" :reverse="reverse" :field-name="'file'"></jhi-sort-indicator>
+            </th>
+            <th scope="row" v-on:click="changeOrder('amostra.protocolo')">
+              <span>Amostra</span>
+              <jhi-sort-indicator :current-order="propOrder" :reverse="reverse" :field-name="'amostra.protocolo'"></jhi-sort-indicator>
+            </th>
             <th scope="row"></th>
           </tr>
         </thead>
         <tbody>
           <tr v-for="midia in midias" :key="midia.id" data-cy="entityTable">
-            <td>
+            <!-- <td>
               <router-link :to="{ name: 'MidiaView', params: { midiaId: midia.id } }">{{ midia.id }}</router-link>
-            </td>
+            </td> -->
             <td>{{ midia.nome }}</td>
             <td>{{ midia.descricao }}</td>
             <td>
@@ -103,6 +115,14 @@
         </button>
       </div>
     </b-modal>
+    <div v-show="midias && midias.length > 0">
+      <div class="row justify-content-center">
+        <jhi-item-count :page="page" :total="queryCount" :itemsPerPage="itemsPerPage"></jhi-item-count>
+      </div>
+      <div class="row justify-content-center">
+        <b-pagination size="md" :total-rows="totalItems" v-model="page" :per-page="itemsPerPage" :change="loadPage(page)"></b-pagination>
+      </div>
+    </div>
   </div>
 </template>
 

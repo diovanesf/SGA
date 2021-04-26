@@ -4,10 +4,10 @@
       <form name="editForm" role="form" novalidate v-on:submit.prevent="save()">
         <h2 id="rp6App.amostra.home.createOrEditLabel" data-cy="AmostraCreateUpdateHeading">Create or edit a Amostra</h2>
         <div>
-          <div class="form-group" v-if="amostra.id">
+          <!-- <div class="form-group" v-if="amostra.id">
             <label for="id">ID</label>
             <input type="text" class="form-control" id="id" name="id" v-model="amostra.id" readonly />
-          </div>
+          </div> -->
           <div class="form-group" v-if="amostra.protocolo">
             <label class="form-control-label" for="amostra-protocolo">Protocolo</label>
             <input
@@ -18,19 +18,23 @@
               data-cy="protocolo"
               :class="{ valid: !$v.amostra.protocolo.$invalid, invalid: $v.amostra.protocolo.$invalid }"
               v-model="$v.amostra.protocolo.$model"
+              readonly
             />
           </div>
           <div class="form-group">
             <label class="form-control-label" for="amostra-formaEnvio">Forma Envio</label>
-            <input
-              type="text"
+            <select
               class="form-control"
-              name="formaEnvio"
               id="amostra-formaEnvio"
               data-cy="formaEnvio"
-              :class="{ valid: !$v.amostra.formaEnvio.$invalid, invalid: $v.amostra.formaEnvio.$invalid }"
-              v-model="$v.amostra.formaEnvio.$model"
-            />
+              name="formaEnvio"
+              v-model="amostra.formaEnvio"
+            >
+              <option value="CORREIOS">Correios</option>
+              <option value="RODOVIARIA">Rodoviária</option>
+              <option value="TRANSPORTADORA">Transportadora</option>
+              <option value="ENTREGA_LABORATORIO">Entrega no laboratório</option>
+            </select>
           </div>
           <div class="form-group">
             <label class="form-control-label" for="amostra-numeroAmostras">Numero Amostras</label>
@@ -46,17 +50,25 @@
           </div>
           <div class="form-group">
             <label class="form-control-label" for="amostra-especie">Especie</label>
-            <input
-              type="text"
+            <select
               class="form-control"
-              name="especie"
-              id="amostra-especie"
+              id="amostra-especie-select"
               data-cy="especie"
-              :class="{ valid: !$v.amostra.especie.$invalid, invalid: $v.amostra.especie.$invalid }"
-              v-model="$v.amostra.especie.$model"
-            />
+              name="especie-select"
+              v-model="amostra.especie"
+            >
+              <option value="BOVINA">Bovina</option>
+              <option value="EQUINA">Equina</option>
+              <option value="OVINA">Ovina</option>
+              <option value="SUINA">Suína</option>
+              <option value="CANINA">Canina</option>
+              <option value="FELINA">Felina</option>
+              <option value="SELVAGENS">Selvagens</option>
+              <option value="MORCEGOS">Morcegos</option>
+              <option value="OUTRO">Outro</option>
+            </select>
           </div>
-          <div class="form-group">
+          <div class="form-group" v-if="amostra.dataInicial">
             <label class="form-control-label" for="amostra-dataInicial">Data Inicial</label>
             <b-input-group class="mb-3">
               <b-input-group-prepend>
@@ -81,10 +93,11 @@
                 name="dataInicial"
                 :class="{ valid: !$v.amostra.dataInicial.$invalid, invalid: $v.amostra.dataInicial.$invalid }"
                 v-model="$v.amostra.dataInicial.$model"
+                readonly
               />
             </b-input-group>
           </div>
-          <div class="form-group">
+          <div class="form-group" v-if="amostra.dataFinal">
             <label class="form-control-label" for="amostra-dataFinal">Data Final</label>
             <b-input-group class="mb-3">
               <b-input-group-prepend>
@@ -109,68 +122,91 @@
                 name="dataFinal"
                 :class="{ valid: !$v.amostra.dataFinal.$invalid, invalid: $v.amostra.dataFinal.$invalid }"
                 v-model="$v.amostra.dataFinal.$model"
+                readonly
               />
             </b-input-group>
           </div>
           <div class="form-group">
             <label class="form-control-label" for="amostra-materialRecebido">Material Recebido</label>
-            <input
-              type="text"
+            <select
               class="form-control"
-              name="materialRecebido"
               id="amostra-materialRecebido"
               data-cy="materialRecebido"
-              :class="{ valid: !$v.amostra.materialRecebido.$invalid, invalid: $v.amostra.materialRecebido.$invalid }"
-              v-model="$v.amostra.materialRecebido.$model"
-            />
+              name="materialRecebido"
+              v-model="amostra.materialRecebido"
+            >
+              <option value="SANGUE_TOTAL">Sangue total</option>
+              <option value="SORO">Soro</option>
+              <option value="CROSTAS">Crostas</option>
+              <option value="NEOPLASIAS">Neoplasias</option>
+              <option value="TECIDOS">Tecidos</option>
+              <option value="SWAB_NASAL">Swab Nasal</option>
+              <option value="SWAB_OCULAR">Swab Ocular</option>
+              <option value="SWAB_VESICULAS_LESOES">Swab de Vesículas/Lesões</option>
+            </select>
           </div>
           <div class="form-group">
             <label class="form-control-label" for="amostra-acondicionamento">Acondicionamento</label>
-            <input
-              type="text"
+            <select
               class="form-control"
-              name="acondicionamento"
               id="amostra-acondicionamento"
               data-cy="acondicionamento"
-              :class="{ valid: !$v.amostra.acondicionamento.$invalid, invalid: $v.amostra.acondicionamento.$invalid }"
-              v-model="$v.amostra.acondicionamento.$model"
-            />
+              name="acondicionamento"
+              v-model="amostra.acondicionamento"
+            >
+              <option value="REFRIGERADA">Refrigerada</option>
+              <option value="CONGELADA">Congelada</option>
+              <option value="TEMPERATURA_AMBIENTE">Temperatura Ambiente</option>
+              <option value="FORMOL">Formol</option>
+              <option value="PARAFINIZADA">Parafinizada</option>
+            </select>
           </div>
           <div class="form-group">
             <label class="form-control-label" for="amostra-condicaoMaterial">Condicao Material</label>
-            <input
-              type="text"
+            <select
               class="form-control"
-              name="condicaoMaterial"
               id="amostra-condicaoMaterial"
               data-cy="condicaoMaterial"
-              :class="{ valid: !$v.amostra.condicaoMaterial.$invalid, invalid: $v.amostra.condicaoMaterial.$invalid }"
-              v-model="$v.amostra.condicaoMaterial.$model"
-            />
+              name="condicaoMaterial"
+              v-model="amostra.condicaoMaterial"
+            >
+              <option value="BOM">Bom</option>
+              <option value="HEMOLISADO">Hemolisado</option>
+              <option value="COAGULADO">Coagulado</option>
+              <option value="PUTREFAÇÃO">Putrefação</option>
+              <option value="SWAB_SECO">Swab Seco</option>
+              <option value="DESCONGELADO">Descongelado</option>
+              <option value="OUTRO">Outro</option>
+            </select>
           </div>
           <div class="form-group">
             <label class="form-control-label" for="amostra-status">Status</label>
-            <input
-              type="text"
+            <select
               class="form-control"
-              name="status"
               id="amostra-status"
               data-cy="status"
-              :class="{ valid: !$v.amostra.status.$invalid, invalid: $v.amostra.status.$invalid }"
-              v-model="$v.amostra.status.$model"
-            />
+              name="status"
+              v-model="amostra.status"
+            >
+              <option value="ACEITO">Aceito</option>
+              <option value="RECUSADO">Recusado</option>
+              <option value="AGUARDANDO_SOLICITACAO_HISTORICO">Aguardando solicitação/histórico</option>
+            </select>
           </div>
           <div class="form-group">
             <label class="form-control-label" for="amostra-tipoMedVet">Tipo Med Vet</label>
-            <input
-              type="text"
+            <select
               class="form-control"
-              name="tipoMedVet"
               id="amostra-tipoMedVet"
               data-cy="tipoMedVet"
-              :class="{ valid: !$v.amostra.tipoMedVet.$invalid, invalid: $v.amostra.tipoMedVet.$invalid }"
-              v-model="$v.amostra.tipoMedVet.$model"
-            />
+              name="tipoMedVet"
+              v-model="amostra.tipoMedVet"
+              v-on:click="setMedVet()"
+            >
+              <option value="MESMO_PROPRIETARIO">Mesmo do proprietário</option>
+              <option value="SEM_MED_VET">Não há veterinário responsavel</option>
+              <option value="COM_MED_VET">Há veterinário responsável</option>
+            </select>
           </div>
           <div class="form-group">
             <label class="form-control-label" for="amostra-valorTotal">Valor Total</label>
@@ -186,27 +222,31 @@
           </div>
           <div class="form-group">
             <label class="form-control-label" for="amostra-tipoPagamento">Tipo Pagamento</label>
-            <input
-              type="text"
+            <select
               class="form-control"
-              name="tipoPagamento"
               id="amostra-tipoPagamento"
               data-cy="tipoPagamento"
-              :class="{ valid: !$v.amostra.tipoPagamento.$invalid, invalid: $v.amostra.tipoPagamento.$invalid }"
-              v-model="$v.amostra.tipoPagamento.$model"
-            />
+              name="tipoPagamento"
+              v-model="amostra.tipoPagamento"
+            >
+              <option value="DEPOSITO">Depósito bancário</option>
+              <option value="DINHEIRO">Dinheiro</option>
+              <option value="CARTAO">Cartão</option>
+              <option value="ISENTO">Isento</option>
+            </select>
           </div>
           <div class="form-group">
             <label class="form-control-label" for="amostra-situacao">Situacao</label>
-            <input
-              type="text"
+            <select
               class="form-control"
-              name="situacao"
               id="amostra-situacao"
               data-cy="situacao"
-              :class="{ valid: !$v.amostra.situacao.$invalid, invalid: $v.amostra.situacao.$invalid }"
-              v-model="$v.amostra.situacao.$model"
-            />
+              name="situacao"
+              v-model="amostra.situacao"
+            >
+              <option value="PAGO">Pago</option>
+              <option value="AGUARDANDO_PAGAMENTO">Aguardando pagamento</option>
+            </select>
           </div>
           <!-- <div class="form-group">
             <label for="amostra-user">User</label>
@@ -239,7 +279,7 @@
               </option>
             </select>
           </div>
-          <div class="form-group">
+          <div class="form-group" v-if="amostra.tipoMedVet === 'COM_MED_VET'">
             <label class="form-control-label" for="amostra-medicoveterinario">Medicoveterinario</label>
             <select
               class="form-control"
