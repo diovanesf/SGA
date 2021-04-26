@@ -3,31 +3,31 @@
     <div class="col-8">
       <div v-if="user">
         <h2 class="jh-entity-heading">
-          <span>User</span> [<strong>{{ user.login }}</strong
+          <span>Usuário</span> [<strong>{{ user.login }}</strong
           >]
         </h2>
         <dl class="row jh-entity-details">
           <dt><span>Login</span></dt>
           <dd>
             <span>{{ user.login }}</span>
-            <b-badge variant="success" v-if="user.activated">Activated</b-badge>
-            <b-badge variant="danger" v-if="!user.activated">Deactivated</b-badge>
+            <b-badge variant="success" v-if="user.activated">Ativado</b-badge>
+            <b-badge variant="danger" v-if="!user.activated">Desativado</b-badge>
           </dd>
-          <dt><span>First Name</span></dt>
+          <dt><span>Nome</span></dt>
           <dd>{{ user.firstName }}</dd>
-          <dt><span>Last Name</span></dt>
+          <dt><span>Sobrenome</span></dt>
           <dd>{{ user.lastName }}</dd>
-          <dt><span>Email</span></dt>
+          <dt><span>E-mail</span></dt>
           <dd>{{ user.email }}</dd>
-          <dt><span>Created By</span></dt>
+          <dt><span>Criado por</span></dt>
           <dd>{{ user.createdBy }}</dd>
-          <dt><span>Created Date</span></dt>
+          <dt><span>Data de criação</span></dt>
           <dd>{{ user.createdDate | formatDate }}</dd>
-          <dt><span>Last Modified By</span></dt>
+          <dt><span>Última modificação por</span></dt>
           <dd>{{ user.lastModifiedBy }}</dd>
-          <dt><span>Last Modified Date</span></dt>
+          <dt><span>Data da última modificação</span></dt>
           <dd>{{ user.lastModifiedDate | formatDate }}</dd>
-          <dt><span>Profiles</span></dt>
+          <dt><span>Perfis</span></dt>
           <dd>
             <ul class="list-unstyled">
               <li v-for="authority of user.authorities" :key="authority">
@@ -38,7 +38,7 @@
         </dl>
         <router-link custom v-slot="{ navigate }" :to="{ name: 'JhiUser' }">
           <button @click="navigate" class="btn btn-info">
-            <font-awesome-icon icon="arrow-left"></font-awesome-icon>&nbsp;<span> Back</span>
+            <font-awesome-icon icon="arrow-left"></font-awesome-icon>&nbsp;<span> Voltar</span>
           </button>
         </router-link>
       </div>

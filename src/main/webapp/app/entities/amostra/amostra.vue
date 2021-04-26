@@ -4,7 +4,7 @@
       <span id="amostra-heading">Amostras</span>
       <div class="d-flex justify-content-end">
         <button class="btn btn-info mr-2" v-on:click="handleSyncList" :disabled="isFetching">
-          <font-awesome-icon icon="sync" :spin="isFetching"></font-awesome-icon> <span>Refresh List</span>
+          <font-awesome-icon icon="sync" :spin="isFetching"></font-awesome-icon> <span>Atualizar Lista</span>
         </button>
         <router-link :to="{ name: 'AmostraCreate' }" custom v-slot="{ navigate }">
           <button
@@ -14,14 +14,14 @@
             class="btn btn-primary jh-create-entity create-amostra"
           >
             <font-awesome-icon icon="plus"></font-awesome-icon>
-            <span> Create a new Amostra </span>
+            <span> Criar uma nova amostra </span>
           </button>
         </router-link>
       </div>
     </h2>
     <br />
     <div class="alert alert-warning" v-if="!isFetching && amostras && amostras.length === 0">
-      <span>No amostras found</span>
+      <span>Nenhuma amostra encontrada</span>
     </div>
     <div class="table-responsive" v-if="amostras && amostras.length > 0">
       <table class="table table-striped" aria-describedby="amostras">
@@ -42,7 +42,7 @@
             <th scope="row"><span>Valor Total</span></th>
             <th scope="row"><span>Tipo Pagamento</span></th>
             <th scope="row"><span>Situacao</span></th>
-            <th scope="row"><span>User</span></th>
+            <th scope="row"><span>Usuário</span></th>
             <th scope="row"><span>Propriedade</span></th>
             <th scope="row"><span>Medicoveterinario</span></th>
             <th scope="row"></th>
@@ -92,13 +92,13 @@
                 <router-link :to="{ name: 'AmostraView', params: { amostraId: amostra.id } }" custom v-slot="{ navigate }">
                   <button @click="navigate" class="btn btn-info btn-sm details" data-cy="entityDetailsButton">
                     <font-awesome-icon icon="eye"></font-awesome-icon>
-                    <span class="d-none d-md-inline">View</span>
+                    <span class="d-none d-md-inline">Ver</span>
                   </button>
                 </router-link>
                 <router-link :to="{ name: 'AmostraEdit', params: { amostraId: amostra.id } }" custom v-slot="{ navigate }">
                   <button @click="navigate" class="btn btn-primary btn-sm edit" data-cy="entityEditButton">
                     <font-awesome-icon icon="pencil-alt"></font-awesome-icon>
-                    <span class="d-none d-md-inline">Edit</span>
+                    <span class="d-none d-md-inline">Editar</span>
                   </button>
                 </router-link>
                 <b-button
@@ -109,7 +109,7 @@
                   v-b-modal.removeEntity
                 >
                   <font-awesome-icon icon="times"></font-awesome-icon>
-                  <span class="d-none d-md-inline">Delete</span>
+                  <span class="d-none d-md-inline">Deletar</span>
                 </b-button>
               </div>
             </td>
@@ -122,10 +122,10 @@
         ><span id="rp6App.amostra.delete.question" data-cy="amostraDeleteDialogHeading">Confirm delete operation</span></span
       >
       <div class="modal-body">
-        <p id="jhi-delete-amostra-heading">Are you sure you want to delete this Amostra?</p>
+        <p id="jhi-delete-amostra-heading">Tem certeza que deseja deletar esta Amostra?</p>
       </div>
       <div slot="modal-footer">
-        <button type="button" class="btn btn-secondary" v-on:click="closeDialog()">Cancel</button>
+        <button type="button" class="btn btn-secondary" v-on:click="closeDialog()">Cancelar</button>
         <button
           type="button"
           class="btn btn-primary"
@@ -133,7 +133,7 @@
           data-cy="entityConfirmDeleteButton"
           v-on:click="removeAmostra()"
         >
-          Delete
+          Deletar
         </button>
       </div>
     </b-modal>

@@ -2,7 +2,7 @@
   <div class="row justify-content-center">
     <div class="col-8">
       <form name="editForm" role="form" novalidate v-on:submit.prevent="save()">
-        <h2 id="rp6App.amostra.home.createOrEditLabel" data-cy="AmostraCreateUpdateHeading">Create or edit a Amostra</h2>
+        <h2 id="rp6App.amostra.home.createOrEditLabel" data-cy="AmostraCreateUpdateHeading">Criar ou editar uma Amostra</h2>
         <div>
           <div class="form-group" v-if="amostra.id">
             <label for="id">ID</label>
@@ -240,7 +240,7 @@
             </select>
           </div>
           <div class="form-group">
-            <label class="form-control-label" for="amostra-medicoveterinario">Medicoveterinario</label>
+            <label class="form-control-label" for="amostra-medicoveterinario">Medico Veterinario</label>
             <select
               class="form-control"
               id="amostra-medicoveterinario"
@@ -265,7 +265,7 @@
         </div>
         <div>
           <button type="button" id="cancel-save" class="btn btn-secondary" v-on:click="previousState()">
-            <font-awesome-icon icon="ban"></font-awesome-icon>&nbsp;<span>Cancel</span>
+            <font-awesome-icon icon="ban"></font-awesome-icon>&nbsp;<span>Cancelar</span>
           </button>
           <button
             type="submit"
@@ -274,7 +274,7 @@
             :disabled="$v.amostra.$invalid || isSaving"
             class="btn btn-primary"
           >
-            <font-awesome-icon icon="save"></font-awesome-icon>&nbsp;<span>Save</span>
+            <font-awesome-icon icon="save"></font-awesome-icon>&nbsp;<span>Salvar</span>
           </button>
         </div>
       </form>

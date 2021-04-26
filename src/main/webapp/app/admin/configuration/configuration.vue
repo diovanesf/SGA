@@ -1,16 +1,16 @@
 <template>
   <div>
-    <h2 id="configuration-page-heading" data-cy="configurationPageHeading">Configuration</h2>
+    <h2 id="configuration-page-heading" data-cy="configurationPageHeading">Configuração</h2>
 
     <div v-if="allConfiguration && configuration">
-      <span>Filter (by prefix)</span> <input type="text" v-model="filtered" class="form-control" />
-      <h3>Spring configuration</h3>
+      <span>Filtro (by prefix)</span> <input type="text" v-model="filtered" class="form-control" />
+      <h3>Configuração spring</h3>
       <table class="table table-striped table-bordered table-responsive d-table" aria-describedby="Configuration">
         <thead>
           <tr>
-            <th class="w-40" v-on:click="changeOrder('prefix')" scope="col"><span>Prefix</span></th>
+            <th class="w-40" v-on:click="changeOrder('prefix')" scope="col"><span>Prefixo</span></th>
             <th class="w-60" v-on:click="changeOrder('properties')" scope="col">
-              <span>Properties</span>
+              <span>Propriedades</span>
             </th>
           </tr>
         </thead>

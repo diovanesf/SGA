@@ -3,7 +3,7 @@
     <h2 id="logs-page-heading" data-cy="logsPageHeading">Logs</h2>
 
     <div v-if="loggers">
-      <p>There are {{ loggers.length }} loggers.</p>
+      <p>Há {{ loggers.length }} loggers.</p>
 
       <span>Filter</span> <input type="text" v-model="filtered" class="form-control" />
 

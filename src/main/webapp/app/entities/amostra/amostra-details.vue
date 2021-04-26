@@ -83,13 +83,13 @@
             <span>{{ amostra.tipoPagamento }}</span>
           </dd>
           <dt>
-            <span>Situacao</span>
+            <span>Situação</span>
           </dt>
           <dd>
             <span>{{ amostra.situacao }}</span>
           </dd>
           <dt>
-            <span>User</span>
+            <span>Usuário</span>
           </dt>
           <dd>
             <span v-for="(user, i) in amostra.users" :key="user.id"
@@ -108,7 +108,7 @@
             </div>
           </dd>
           <dt>
-            <span>Medicoveterinario</span>
+            <span>Medico Veterinário</span>
           </dt>
           <dd>
             <div v-if="amostra.medicoveterinario">
@@ -119,11 +119,11 @@
           </dd>
         </dl>
         <button type="submit" v-on:click.prevent="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
-          <font-awesome-icon icon="arrow-left"></font-awesome-icon>&nbsp;<span> Back</span>
+          <font-awesome-icon icon="arrow-left"></font-awesome-icon>&nbsp;<span> Voltar</span>
         </button>
         <router-link v-if="amostra.id" :to="{ name: 'AmostraEdit', params: { amostraId: amostra.id } }" custom v-slot="{ navigate }">
           <button @click="navigate" class="btn btn-primary">
-            <font-awesome-icon icon="pencil-alt"></font-awesome-icon>&nbsp;<span> Edit</span>
+            <font-awesome-icon icon="pencil-alt"></font-awesome-icon>&nbsp;<span> Editar</span>
           </button>
         </router-link>
       </div>
