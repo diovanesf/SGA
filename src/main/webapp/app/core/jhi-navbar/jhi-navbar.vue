@@ -2,7 +2,7 @@
   <b-navbar data-cy="navbar" toggleable="md" type="dark" class="header_style b-nav-bar">
     <b-navbar-brand class="logo" b-link to="/">
       <span class="logo-img"></span>
-      <span class="navbar-title">RP6</span> <span class="navbar-version">{{ version }}</span>
+      <span class="navbar-title">Laboratório de Virologia</span> <span class="navbar-version"></span>
     </b-navbar-brand>
     <b-navbar-toggle
       right
@@ -21,7 +21,7 @@
         <b-nav-item to="/" exact>
           <span>
             <font-awesome-icon icon="home" />
-            <span>Home</span>
+            <span>Início</span>
           </span>
         </b-nav-item>
         <b-nav-item-dropdown right id="entity-menu" v-if="authenticated" active-class="active" class="pointer" data-cy="entity">
@@ -35,7 +35,7 @@
           </b-dropdown-item>
           <b-dropdown-item to="/proprietario">
             <font-awesome-icon icon="asterisk" />
-            <span>Proprietario</span>
+            <span>Proprietário</span>
           </b-dropdown-item>
           <b-dropdown-item to="/propriedade">
             <font-awesome-icon icon="asterisk" />
@@ -43,7 +43,7 @@
           </b-dropdown-item>
           <b-dropdown-item to="/endereco">
             <font-awesome-icon icon="asterisk" />
-            <span>Endereco</span>
+            <span>Endereço</span>
           </b-dropdown-item>
           <b-dropdown-item to="/midia">
             <font-awesome-icon icon="asterisk" />
@@ -108,23 +108,23 @@
         >
           <span slot="button-content" class="navbar-dropdown-menu">
             <font-awesome-icon icon="user" />
-            <span class="no-bold"> Account </span>
+            <span class="no-bold"> Conta </span>
           </span>
           <b-dropdown-item data-cy="settings" to="/account/settings" tag="b-dropdown-item" v-if="authenticated" active-class="active">
             <font-awesome-icon icon="wrench" />
-            <span>Settings</span>
+            <span>Configurações</span>
           </b-dropdown-item>
           <b-dropdown-item data-cy="passwordItem" to="/account/password" tag="b-dropdown-item" v-if="authenticated" active-class="active">
             <font-awesome-icon icon="lock" />
-            <span>Password</span>
+            <span>Senha</span>
           </b-dropdown-item>
           <b-dropdown-item data-cy="logout" v-if="authenticated" v-on:click="logout()" id="logout" active-class="active">
             <font-awesome-icon icon="sign-out-alt" />
-            <span>Sign out</span>
+            <span>Log out</span>
           </b-dropdown-item>
           <b-dropdown-item data-cy="login" v-if="!authenticated" v-on:click="openLogin()" id="login" active-class="active">
             <font-awesome-icon icon="sign-in-alt" />
-            <span>Sign in</span>
+            <span>Log in</span>
           </b-dropdown-item>
           <b-dropdown-item
             data-cy="register"
@@ -135,7 +135,7 @@
             active-class="active"
           >
             <font-awesome-icon icon="user-plus" />
-            <span>Register</span>
+            <span>Registro</span>
           </b-dropdown-item>
         </b-nav-item-dropdown>
       </b-navbar-nav>

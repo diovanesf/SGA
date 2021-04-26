@@ -2,7 +2,7 @@
   <div class="row justify-content-center">
     <div class="col-8">
       <form name="editForm" role="form" novalidate v-on:submit.prevent="save()" v-if="userAccount">
-        <h2 id="myUserLabel">Create or edit a User</h2>
+        <h2 id="myUserLabel">Criar ou editar um usuário</h2>
         <div>
           <div class="form-group" :hidden="!userAccount.id">
             <label>ID</label>
@@ -20,19 +20,19 @@
             />
 
             <div v-if="$v.userAccount.login.$anyDirty && $v.userAccount.login.$invalid">
-              <small class="form-text text-danger" v-if="!$v.userAccount.login.required"> This field is required. </small>
+              <small class="form-text text-danger" v-if="!$v.userAccount.login.required"> Este campo é obrigatório. </small>
 
               <small class="form-text text-danger" v-if="!$v.userAccount.login.maxLength">
-                This field cannot be longer than 50 characters.
+                Este campo não pode ultrapassar 50 caracteres.
               </small>
 
               <small class="form-text text-danger" v-if="!$v.userAccount.login.pattern">
-                This field can only contain letters, digits and e-mail addresses.
+                Esse campo pode conter somente letras, números e endereço de e-mail.
               </small>
             </div>
           </div>
           <div class="form-group">
-            <label class="form-control-label" for="firstName">First Name</label>
+            <label class="form-control-label" for="firstName">Nome</label>
             <input
               type="text"
               class="form-control"
@@ -43,12 +43,12 @@
             />
             <div v-if="$v.userAccount.firstName.$anyDirty && $v.userAccount.firstName.$invalid">
               <small class="form-text text-danger" v-if="!$v.userAccount.firstName.maxLength">
-                This field cannot be longer than 50 characters.
+                Este campo não pode ultrapassar 50 caracteres.
               </small>
             </div>
           </div>
           <div class="form-group">
-            <label class="form-control-label" for="lastName">Last Name</label>
+            <label class="form-control-label" for="lastName">Sobrenome</label>
             <input
               type="text"
               class="form-control"
@@ -59,12 +59,12 @@
             />
             <div v-if="$v.userAccount.lastName.$anyDirty && $v.userAccount.lastName.$invalid">
               <small class="form-text text-danger" v-if="!$v.userAccount.lastName.maxLength">
-                This field cannot be longer than 50 characters.
+                Este campo não pode ultrapassar 50 caracteres.
               </small>
             </div>
           </div>
           <div class="form-group">
-            <label class="form-control-label" for="email">Email</label>
+            <label class="form-control-label" for="email">E-mail</label>
             <input
               type="email"
               class="form-control"
@@ -76,13 +76,13 @@
               required
             />
             <div v-if="$v.userAccount.email.$anyDirty && $v.userAccount.email.$invalid">
-              <small class="form-text text-danger" v-if="!$v.userAccount.email.required"> Your email is required. </small>
-              <small class="form-text text-danger" v-if="!$v.userAccount.email.email"> Your email is invalid. </small>
+              <small class="form-text text-danger" v-if="!$v.userAccount.email.required"> Seu e-mail é necessário. </small>
+              <small class="form-text text-danger" v-if="!$v.userAccount.email.email"> Seu e-mail é invalido. </small>
               <small class="form-text text-danger" v-if="!$v.userAccount.email.minLength">
-                Your email is required to be at least 5 characters.
+                Seu e-mail deve conter ao menos 5 caracteres.
               </small>
               <small class="form-text text-danger" v-if="!$v.userAccount.email.maxLength">
-                Your email cannot be longer than 50 characters.
+                Seu e-mail não pode ultrapassar 50 caracteres.
               </small>
             </div>
           </div>
@@ -101,7 +101,7 @@
           </div>
 
           <div class="form-group">
-            <label>Profiles</label>
+            <label>Perfis</label>
             <select class="form-control" multiple name="authority" v-model="userAccount.authorities">
               <option v-for="authority of authorities" :value="authority" :key="authority">{{ authority }}</option>
             </select>
@@ -109,10 +109,10 @@
         </div>
         <div>
           <button type="button" class="btn btn-secondary" v-on:click="previousState()">
-            <font-awesome-icon icon="ban"></font-awesome-icon>&nbsp;<span>Cancel</span>
+            <font-awesome-icon icon="ban"></font-awesome-icon>&nbsp;<span>Cancelar</span>
           </button>
           <button type="submit" :disabled="$v.userAccount.$invalid || isSaving" class="btn btn-primary">
-            <font-awesome-icon icon="save"></font-awesome-icon>&nbsp;<span>Save</span>
+            <font-awesome-icon icon="save"></font-awesome-icon>&nbsp;<span>Salvar</span>
           </button>
         </div>
       </form>

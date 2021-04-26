@@ -4,25 +4,25 @@
       <span class="hipster img-fluid rounded"></span>
     </div>
     <div class="col-md-9">
-      <h1 class="display-4">Welcome, Laboratório de Virologia!</h1>
-      <p class="lead">This is your homepage</p>
+      <h1 class="display-4">Bem vindo, Laboratório de Virologia!</h1>
+      <p class="lead">Esta é a sua página inicial</p>
 
       <div>
         <div class="alert alert-success" v-if="authenticated">
-          <span v-if="username">You are logged in as user "{{ username }}"</span>
+          <span v-if="username">Você está logado com o usuário "{{ username }}"</span>
         </div>
 
         <div class="alert alert-warning" v-if="!authenticated">
-          <span>If you want to </span>
-          <a class="alert-link" v-on:click="openLogin()">sign in</a
+          <span>Você quer fazer </span>
+          <a class="alert-link" v-on:click="openLogin()">login</a
           ><span
-            >, you can try the default accounts:<br />- Administrator (login="admin" and password="admin") <br />- User (login="user" and
+            >, você pode usar as contas padrões:<br />- Administrador (login="admin" and password="admin") <br />- Usuário (login="user" and
             password="user").</span
           >
         </div>
         <div class="alert alert-warning" v-if="!authenticated">
-          <span>You don't have an account yet?</span>&nbsp;
-          <router-link class="alert-link" to="/register">Register a new account</router-link>
+          <span>Não possui uma conta ainda?</span>&nbsp;
+          <router-link class="alert-link" to="/register">Crie uma nova conta</router-link>
         </div>
       </div>
     </div>

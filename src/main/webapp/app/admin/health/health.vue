@@ -12,7 +12,7 @@
           <tr>
             <th scope="col">Service Name</th>
             <th class="text-center" scope="col">Status</th>
-            <th class="text-center" scope="col">Details</th>
+            <th class="text-center" scope="col">Detalhes</th>
           </tr>
         </thead>
         <tbody>
