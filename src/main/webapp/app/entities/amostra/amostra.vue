@@ -4,7 +4,8 @@
       <span id="amostra-heading">Amostras</span>
       <div class="d-flex justify-content-end">
         <button class="btn btn-info mr-2" v-on:click="handleSyncList" :disabled="isFetching">
-          <font-awesome-icon icon="sync" :spin="isFetching"></font-awesome-icon> <span>Atualizar Lista</span>
+          <font-awesome-icon icon="sync" :spin="isFetching"></font-awesome-icon>
+          <span>Atualizar Lista</span>
         </button>
         <router-link :to="{ name: 'AmostraCreate' }" custom v-slot="{ navigate }">
           <button
@@ -28,8 +29,8 @@
         <thead>
           <tr>
             <!-- <th scope="row" v-on:click="changeOrder('id')">
-              <span>ID</span> <jhi-sort-indicator :current-order="propOrder" :reverse="reverse" :field-name="'id'"></jhi-sort-indicator>
-            </th> -->
+            <span>ID</span> <jhi-sort-indicator :current-order="propOrder" :reverse="reverse" :field-name="'id'"></jhi-sort-indicator>
+          </th> -->
             <th scope="row" v-on:click="changeOrder('protocolo')">
               <span>Protocolo</span>
               <jhi-sort-indicator :current-order="propOrder" :reverse="reverse" :field-name="'protocolo'"></jhi-sort-indicator>
@@ -105,8 +106,8 @@
         <tbody>
           <tr v-for="amostra in amostras" :key="amostra.id" data-cy="entityTable">
             <!-- <td>
-              <router-link :to="{ name: 'AmostraView', params: { amostraId: amostra.id } }">{{ amostra.id }}</router-link>
-            </td> -->
+            <router-link :to="{ name: 'AmostraView', params: { amostraId: amostra.id } }">{{ amostra.id }}</router-link>
+          </td> -->
             <td>{{ amostra.protocolo }}</td>
             <td>{{ amostra.formaEnvio }}</td>
             <td>{{ amostra.numeroAmostras }}</td>
@@ -123,16 +124,16 @@
             <td>{{ amostra.situacao }}</td>
             <td>
               <div v-if="amostra.propriedade">
-                <router-link :to="{ name: 'PropriedadeView', params: { propriedadeId: amostra.propriedade.id } }">{{
-                  amostra.propriedade.tipoPropriedade
-                }}</router-link>
+                <router-link :to="{ name: 'PropriedadeView', params: { propriedadeId: amostra.propriedade.id } }"
+                  >{{ amostra.propriedade.tipoPropriedade }}
+                </router-link>
               </div>
             </td>
             <td>
               <div v-if="amostra.medicoveterinario">
-                <router-link :to="{ name: 'MedicoveterinarioView', params: { medicoveterinarioId: amostra.medicoveterinario.id } }">{{
-                  amostra.medicoveterinario.nome
-                }}</router-link>
+                <router-link :to="{ name: 'MedicoveterinarioView', params: { medicoveterinarioId: amostra.medicoveterinario.id } }">
+                  {{ amostra.medicoveterinario.nome }}
+                </router-link>
               </div>
             </td>
             <td>
@@ -141,10 +142,21 @@
             <td></td>
             <td class="text-right">
               <div class="btn-group">
+                <router-link
+                  v-if="verificaExames(amostra) && verificaUsuario()"
+                  :to="{ name: 'Laudo', params: { amostraId: amostra.id } }"
+                  custom
+                  v-slot="{ navigate }"
+                >
+                  <button @click="navigate" class="btn btn-info btn-sm details" data- cy="entityDetailsButton">
+                    <font-awesome-icon icon="book"></font-awesome-icon>
+                    <span class="d-none d-md-inline">Gerar Laudo</span>
+                  </button>
+                </router-link>
                 <router-link :to="{ name: 'Exame', params: { amostraId: amostra.id } }" custom v-slot="{ navigate }">
                   <button @click="navigate" class="btn btn-warning btn-sm details" data- cy="entityDetailsButton">
-                              <font-awesome-icon icon="tasks"></font-awesome-icon>
-                    <span class="d-none d-md-inline">Exames</span>                  
+                    <font-awesome-icon icon="tasks"></font-awesome-icon>
+                    <span class="d-none d-md-inline">Exames</span>
                   </button>
                 </router-link>
                 <router-link :to="{ name: 'AmostraView', params: { amostraId: amostra.id } }" custom v-slot="{ navigate }">

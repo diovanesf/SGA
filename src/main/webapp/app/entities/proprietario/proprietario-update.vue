@@ -1,7 +1,7 @@
 <template>
   <div class="row justify-content-center">
     <div class="col-8">
-      <form name="editForm" role="form" novalidate v-on:submit.prevent="save()">
+      <form name="editForm" role="form" validate v-on:submit.prevent="save()">
         <h2 id="rp6App.proprietario.home.createOrEditLabel" data-cy="ProprietarioCreateUpdateHeading">Create or edit a Proprietario</h2>
         <div>
           <!-- <div class="form-group" v-if="proprietario.id">
@@ -35,11 +35,12 @@
           <div class="form-group">
             <label class="form-control-label" for="proprietario-email">Email</label>
             <input
-              type="text"
+              type="email"
               class="form-control"
               name="email"
               id="proprietario-email"
               data-cy="email"
+              required
               :class="{ valid: !$v.proprietario.email.$invalid, invalid: $v.proprietario.email.$invalid }"
               v-model="$v.proprietario.email.$model"
             />

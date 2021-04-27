@@ -9,56 +9,56 @@ import org.springframework.stereotype.Component;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2021-04-27T00:18:05-0300",
+    date = "2021-04-27T04:41:14-0300",
     comments = "version: 1.4.2.Final, compiler: javac, environment: Java 11.0.10 (Ubuntu)"
 )
 @Component
 public class EnderecoMapperImpl implements EnderecoMapper {
 
     @Override
-    public Endereco toEntity(EnderecoDTO dto) {
-        if ( dto == null ) {
+    public Endereco toEntity(EnderecoDTO arg0) {
+        if ( arg0 == null ) {
             return null;
         }
 
         Endereco endereco = new Endereco();
 
-        endereco.id( dto.getId() );
-        endereco.setEndereco( dto.getEndereco() );
-        endereco.setCep( dto.getCep() );
-        endereco.setCidade( dto.getCidade() );
-        endereco.setEstado( dto.getEstado() );
-        endereco.setCoordenadasGps( dto.getCoordenadasGps() );
+        endereco.id( arg0.getId() );
+        endereco.setEndereco( arg0.getEndereco() );
+        endereco.setCep( arg0.getCep() );
+        endereco.setCidade( arg0.getCidade() );
+        endereco.setEstado( arg0.getEstado() );
+        endereco.setCoordenadasGps( arg0.getCoordenadasGps() );
 
         return endereco;
     }
 
     @Override
-    public EnderecoDTO toDto(Endereco entity) {
-        if ( entity == null ) {
+    public EnderecoDTO toDto(Endereco arg0) {
+        if ( arg0 == null ) {
             return null;
         }
 
         EnderecoDTO enderecoDTO = new EnderecoDTO();
 
-        enderecoDTO.setId( entity.getId() );
-        enderecoDTO.setEndereco( entity.getEndereco() );
-        enderecoDTO.setCep( entity.getCep() );
-        enderecoDTO.setCidade( entity.getCidade() );
-        enderecoDTO.setEstado( entity.getEstado() );
-        enderecoDTO.setCoordenadasGps( entity.getCoordenadasGps() );
+        enderecoDTO.setId( arg0.getId() );
+        enderecoDTO.setEndereco( arg0.getEndereco() );
+        enderecoDTO.setCep( arg0.getCep() );
+        enderecoDTO.setCidade( arg0.getCidade() );
+        enderecoDTO.setEstado( arg0.getEstado() );
+        enderecoDTO.setCoordenadasGps( arg0.getCoordenadasGps() );
 
         return enderecoDTO;
     }
 
     @Override
-    public List<Endereco> toEntity(List<EnderecoDTO> dtoList) {
-        if ( dtoList == null ) {
+    public List<Endereco> toEntity(List<EnderecoDTO> arg0) {
+        if ( arg0 == null ) {
             return null;
         }
 
-        List<Endereco> list = new ArrayList<Endereco>( dtoList.size() );
-        for ( EnderecoDTO enderecoDTO : dtoList ) {
+        List<Endereco> list = new ArrayList<Endereco>( arg0.size() );
+        for ( EnderecoDTO enderecoDTO : arg0 ) {
             list.add( toEntity( enderecoDTO ) );
         }
 
@@ -66,13 +66,13 @@ public class EnderecoMapperImpl implements EnderecoMapper {
     }
 
     @Override
-    public List<EnderecoDTO> toDto(List<Endereco> entityList) {
-        if ( entityList == null ) {
+    public List<EnderecoDTO> toDto(List<Endereco> arg0) {
+        if ( arg0 == null ) {
             return null;
         }
 
-        List<EnderecoDTO> list = new ArrayList<EnderecoDTO>( entityList.size() );
-        for ( Endereco endereco : entityList ) {
+        List<EnderecoDTO> list = new ArrayList<EnderecoDTO>( arg0.size() );
+        for ( Endereco endereco : arg0 ) {
             list.add( toDto( endereco ) );
         }
 
@@ -80,28 +80,28 @@ public class EnderecoMapperImpl implements EnderecoMapper {
     }
 
     @Override
-    public void partialUpdate(Endereco entity, EnderecoDTO dto) {
-        if ( dto == null ) {
+    public void partialUpdate(Endereco arg0, EnderecoDTO arg1) {
+        if ( arg1 == null ) {
             return;
         }
 
-        if ( dto.getId() != null ) {
-            entity.id( dto.getId() );
+        if ( arg1.getId() != null ) {
+            arg0.id( arg1.getId() );
         }
-        if ( dto.getEndereco() != null ) {
-            entity.setEndereco( dto.getEndereco() );
+        if ( arg1.getEndereco() != null ) {
+            arg0.setEndereco( arg1.getEndereco() );
         }
-        if ( dto.getCep() != null ) {
-            entity.setCep( dto.getCep() );
+        if ( arg1.getCep() != null ) {
+            arg0.setCep( arg1.getCep() );
         }
-        if ( dto.getCidade() != null ) {
-            entity.setCidade( dto.getCidade() );
+        if ( arg1.getCidade() != null ) {
+            arg0.setCidade( arg1.getCidade() );
         }
-        if ( dto.getEstado() != null ) {
-            entity.setEstado( dto.getEstado() );
+        if ( arg1.getEstado() != null ) {
+            arg0.setEstado( arg1.getEstado() );
         }
-        if ( dto.getCoordenadasGps() != null ) {
-            entity.setCoordenadasGps( dto.getCoordenadasGps() );
+        if ( arg1.getCoordenadasGps() != null ) {
+            arg0.setCoordenadasGps( arg1.getCoordenadasGps() );
         }
     }
 
@@ -115,6 +115,7 @@ public class EnderecoMapperImpl implements EnderecoMapper {
 
         enderecoDTO.setId( endereco.getId() );
         enderecoDTO.setEndereco( endereco.getEndereco() );
+        enderecoDTO.setCidade( endereco.getCidade() );
 
         return enderecoDTO;
     }

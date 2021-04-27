@@ -16,6 +16,7 @@
               data-cy="tipoPropriedade"
               name="tipoPropriedade"
               v-model="propriedade.tipoPropriedade"
+              v-on:click="setTipoPropriedade()"
             >
               <option value="RURAL_HARAS_GRANJA">Rural/Haras/Granja</option>
               <option value="CANIL_GATIL">Canil/Gatil</option>

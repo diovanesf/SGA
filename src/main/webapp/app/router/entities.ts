@@ -3,6 +3,8 @@ import { Authority } from '@/shared/security/authority';
 // prettier-ignore
 
 // prettier-ignore
+const Laudo = () => import('@/entities/laudo/laudo.vue');
+// prettier-ignore
 const Amostra = () => import('@/entities/amostra/amostra.vue');
 // prettier-ignore
 const AmostraUpdate = () => import('@/entities/amostra/amostra-update.vue');
@@ -47,6 +49,12 @@ const MedicoveterinarioDetails = () => import('@/entities/medicoveterinario/medi
 // jhipster-needle-add-entity-to-router-import - JHipster will import entities to the router here
 
 export default [
+  {
+    path: 'amostra/:amostraId/laudo',
+    name: 'Laudo',
+    component: Laudo,
+    meta: { authorities: [Authority.PROFESSOR] },
+  },
   {
     path: '/amostra',
     name: 'Amostra',

@@ -13,5 +13,6 @@ public interface EnderecoMapper extends EntityMapper<EnderecoDTO, Endereco> {
     @BeanMapping(ignoreByDefault = true)
     @Mapping(target = "id", source = "id")
     @Mapping(target = "endereco", source = "endereco")
+    @Mapping(target = "cidade", source = "cidade")
     EnderecoDTO toDtoEndereco(Endereco endereco);
 }

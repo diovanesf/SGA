@@ -1,7 +1,7 @@
 <template>
   <div class="row justify-content-center">
     <div class="col-8">
-      <form name="editForm" role="form" novalidate v-on:submit.prevent="save()">
+      <form name="editForm" role="form" validate v-on:submit.prevent="save()">
         <h2 id="rp6App.medicoveterinario.home.createOrEditLabel" data-cy="MedicoveterinarioCreateUpdateHeading">
           Create or edit a Medicoveterinario
         </h2>
@@ -37,11 +37,12 @@
           <div class="form-group">
             <label class="form-control-label" for="medicoveterinario-email">Email</label>
             <input
-              type="text"
+              type="email"
               class="form-control"
               name="email"
               id="medicoveterinario-email"
               data-cy="email"
+              required
               :class="{ valid: !$v.medicoveterinario.email.$invalid, invalid: $v.medicoveterinario.email.$invalid }"
               v-model="$v.medicoveterinario.email.$model"
             />

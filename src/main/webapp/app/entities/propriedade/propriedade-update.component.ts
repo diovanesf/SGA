@@ -44,7 +44,8 @@ export default class PropriedadeUpdate extends mixins(JhiDataUtils) {
     next(vm => {
       if (to.params.propriedadeId) {
         vm.retrievePropriedade(to.params.propriedadeId);
-      }if(to.params.enderecoId){
+      }
+      if (to.params.enderecoId) {
         vm.retrieveEnderecoPropriedade(to.params.enderecoId);
       }
       vm.initRelationships();
@@ -59,6 +60,15 @@ export default class PropriedadeUpdate extends mixins(JhiDataUtils) {
         this.currentLanguage = this.$store.getters.currentLanguage;
       }
     );
+  }
+
+  setTipoPropriedade() {
+    switch (this.propriedade.tipoPropriedade) {
+      case 'OUTRO':
+      case 'CANIL_GATIL':
+        this.propriedade.tipoCriacao = null;
+        break;
+    }
   }
 
   public save(): void {
@@ -98,11 +108,11 @@ export default class PropriedadeUpdate extends mixins(JhiDataUtils) {
     }
   }
 
-  public setEnderecoPropriedade(){
+  public setEnderecoPropriedade() {
     this.propriedade.endereco = this.endereco;
   }
 
-  public retrieveEnderecoPropriedade(enderecoId: number): void{
+  public retrieveEnderecoPropriedade(enderecoId: number): void {
     this.enderecoService()
       .find(enderecoId)
       .then(res => {
