@@ -28,14 +28,14 @@
             <span>Lembrar-me</span>
           </b-form-checkbox>
           <div>
-            <b-button data-cy="submit" type="submit" variant="primary">Entrar</b-button>
+            <b-button class="btn btn-success" data-cy="submit" type="submit" variant="primary">Entrar</b-button>
           </div>
         </b-form>
         <p></p>
         <div>
-          <b-alert show variant="warning">
+          
             <b-link :to="'/account/reset/request'" class="alert-link" data-cy="forgetYourPasswordSelector">Esqueceu sua senha?</b-link>
-          </b-alert>
+          
         </div>
         <!--        <div>-->
         <!--          <b-alert show variant="warning">-->

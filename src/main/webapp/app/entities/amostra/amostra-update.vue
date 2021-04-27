@@ -22,7 +22,7 @@
             />
           </div>
           <div class="form-group">
-            <label class="form-control-label" for="amostra-formaEnvio">Forma Envio</label>
+            <label class="form-control-label" for="amostra-formaEnvio">Forma de envio</label>
             <select
               class="form-control"
               id="amostra-formaEnvio"
@@ -37,7 +37,7 @@
             </select>
           </div>
           <div class="form-group">
-            <label class="form-control-label" for="amostra-numeroAmostras">Numero Amostras</label>
+            <label class="form-control-label" for="amostra-numeroAmostras">Número de amostras</label>
             <input
               type="number"
               class="form-control"
@@ -49,7 +49,7 @@
             />
           </div>
           <div class="form-group">
-            <label class="form-control-label" for="amostra-especie">Especie</label>
+            <label class="form-control-label" for="amostra-especie">Espécie</label>
             <select
               class="form-control"
               id="amostra-especie-select"
@@ -162,7 +162,7 @@
             </select>
           </div>
           <div class="form-group">
-            <label class="form-control-label" for="amostra-condicaoMaterial">Condicao Material</label>
+            <label class="form-control-label" for="amostra-condicaoMaterial">Condição do material</label>
             <select
               class="form-control"
               id="amostra-condicaoMaterial"
@@ -194,7 +194,7 @@
             </select>
           </div>
           <div class="form-group">
-            <label class="form-control-label" for="amostra-tipoMedVet">Tipo Med Vet</label>
+            <label class="form-control-label" for="amostra-tipoMedVet">Tipo Med. Vet.</label>
             <select
               class="form-control"
               id="amostra-tipoMedVet"
@@ -221,7 +221,7 @@
             />
           </div>
           <div class="form-group">
-            <label class="form-control-label" for="amostra-tipoPagamento">Tipo Pagamento</label>
+            <label class="form-control-label" for="amostra-tipoPagamento">Tipo de pagamento</label>
             <select
               class="form-control"
               id="amostra-tipoPagamento"
@@ -236,7 +236,7 @@
             </select>
           </div>
           <div class="form-group">
-            <label class="form-control-label" for="amostra-situacao">Situacao</label>
+            <label class="form-control-label" for="amostra-situacao">Situação</label>
             <select
               class="form-control"
               id="amostra-situacao"
@@ -280,7 +280,7 @@
             </select>
           </div>
           <div class="form-group" v-if="amostra.tipoMedVet === 'COM_MED_VET'">
-            <label class="form-control-label" for="amostra-medicoveterinario">Medicoveterinario</label>
+            <label class="form-control-label" for="amostra-medicoveterinario">Médico Veterinário</label>
 
             <select
               class="form-control"
@@ -305,7 +305,7 @@
           </div>
         </div>
         <div>
-          <button type="button" id="cancel-save" class="btn btn-secondary" v-on:click="previousState()">
+          <button type="button" id="cancel-save" class="btn btn-outline-danger" v-on:click="previousState()">
             <font-awesome-icon icon="ban"></font-awesome-icon>&nbsp;<span>Cancelar</span>
           </button>
           <button
@@ -313,7 +313,7 @@
             id="save-entity"
             data-cy="entityCreateSaveButton"
             :disabled="$v.amostra.$invalid || isSaving"
-            class="btn btn-primary"
+            class="btn btn-success"
           >
             <font-awesome-icon icon="save"></font-awesome-icon>&nbsp;<span>Salvar</span>
           </button>

@@ -4,11 +4,11 @@
       <span id="user-management-page-heading" data-cy="userManagementPageHeading">Usuários</span>
 
       <div class="d-flex justify-content-end">
-        <button class="btn btn-info mr-2" v-on:click="handleSyncList" :disabled="isLoading">
+        <button class="btn btn-outline-success mr-2" v-on:click="handleSyncList" :disabled="isLoading">
           <font-awesome-icon icon="sync" :spin="isLoading"></font-awesome-icon> <span>Atualizar lista</span>
         </button>
         <router-link custom v-slot="{ navigate }" :to="{ name: 'JhiUserCreate' }">
-          <button @click="navigate" class="btn btn-primary jh-create-entity">
+          <button @click="navigate" class="btn btn-outline-success jh-create-entity">
             <font-awesome-icon icon="plus"></font-awesome-icon> <span>Criar novo usuário</span>
           </button>
         </router-link>

@@ -80,7 +80,7 @@
             </div>
           </div>
 
-          <button type="submit" :disabled="$v.resetPassword.$invalid" class="btn btn-primary" data-cy="submit">Salvar</button>
+          <button type="submit" :disabled="$v.resetPassword.$invalid" class="btn btn-success" data-cy="submit">Salvar</button>
         </form>
       </div>
     </div>

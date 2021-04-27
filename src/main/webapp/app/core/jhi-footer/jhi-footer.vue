@@ -1,6 +1,6 @@
 <template>
   <div id="footer" class="footer">
-    <p>Laboratório de Virologia | UNIPAMPA - 2021</p>
+    <h9>Laboratório de Virologia | UNIPAMPA - 2021</h9>
   </div>
 </template>
 
