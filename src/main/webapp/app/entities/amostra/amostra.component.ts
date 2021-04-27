@@ -5,6 +5,7 @@ import Vue2Filters from 'vue2-filters';
 import { IAmostra } from '@/shared/model/amostra.model';
 
 import AmostraService from './amostra.service';
+import { Authority } from '@/shared/security/authority';
 
 @Component({
   mixins: [Vue2Filters.mixin],
@@ -65,6 +66,11 @@ export default class Amostra extends Vue {
     if (<any>this.$refs.removeEntity) {
       (<any>this.$refs.removeEntity).show();
     }
+  }
+
+  public verificaUsuario(): boolean {
+    console.log(this.$store.getters.account);
+    return this.$store.getters.account.authorities.find(elen => elen === 'ROLE_PROFESSOR');
   }
 
   public removeAmostra(): void {

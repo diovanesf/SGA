@@ -29,6 +29,10 @@
             <font-awesome-icon icon="th-list" />
             <span class="no-bold">Entities</span>
           </span>
+          <b-dropdown-item to="/admin/user-management" active-class="active">
+            <font-awesome-icon icon="users" />
+            <span>User management</span>
+          </b-dropdown-item>
           <b-dropdown-item to="/amostra">
             <font-awesome-icon icon="asterisk" />
             <span>Amostra</span>
@@ -41,10 +45,10 @@
             <font-awesome-icon icon="asterisk" />
             <span>Propriedade</span>
           </b-dropdown-item>
-          <b-dropdown-item to="/endereco">
-            <font-awesome-icon icon="asterisk" />
-            <span>Endereço</span>
-          </b-dropdown-item>
+          <!--          <b-dropdown-item to="/endereco">-->
+          <!--            <font-awesome-icon icon="asterisk" />-->
+          <!--            <span>Endereço</span>-->
+          <!--          </b-dropdown-item>-->
           <b-dropdown-item to="/midia">
             <font-awesome-icon icon="asterisk" />
             <span>Midia</span>
@@ -68,10 +72,6 @@
             <font-awesome-icon icon="users-cog" />
             <span class="no-bold">Administration</span>
           </span>
-          <b-dropdown-item to="/admin/user-management" active-class="active">
-            <font-awesome-icon icon="users" />
-            <span>User management</span>
-          </b-dropdown-item>
           <b-dropdown-item to="/admin/metrics" active-class="active">
             <font-awesome-icon icon="tachometer-alt" />
             <span>Metrics</span>

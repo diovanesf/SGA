@@ -86,6 +86,7 @@
                   </button>
                 </router-link>
                 <b-button
+                  v-if="verificaUsuario()"
                   v-on:click="prepareRemove(medicoveterinario)"
                   variant="danger"
                   class="btn btn-sm"

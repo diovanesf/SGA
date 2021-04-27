@@ -16,14 +16,15 @@
           <span>Você quer fazer </span>
           <a class="alert-link" v-on:click="openLogin()">login</a
           ><span
-            >, você pode usar as contas padrões:<br />- Administrador (login="admin" and password="admin") <br />- Usuário (login="user" and
+            >, você pode usar as contas padrões: <br />- Administrador (login="admin" and password="admin") <br />- Usuário (login="user"
+            and password="user") <br />- Aluno (login="aluno" and password="user") <br />- Professor (login="professor" and
             password="user").</span
           >
         </div>
-        <div class="alert alert-warning" v-if="!authenticated">
-          <span>Não possui uma conta ainda?</span>&nbsp;
-          <router-link class="alert-link" to="/register">Crie uma nova conta</router-link>
-        </div>
+        <!--        <div class="alert alert-warning" v-if="!authenticated">-->
+        <!--          <span>Não possui uma conta ainda?</span>&nbsp;-->
+        <!--          <router-link class="alert-link" to="/register">Crie uma nova conta</router-link>-->
+        <!--        </div>-->
       </div>
     </div>
   </div>

@@ -80,6 +80,7 @@
                   </button>
                 </router-link>
                 <b-button
+                  v-if="verificaUsuario()"
                   v-on:click="prepareRemove(midia)"
                   variant="danger"
                   class="btn btn-sm"

@@ -89,6 +89,7 @@
                   </button>
                 </router-link>
                 <b-button
+                  v-if="verificaUsuario()"
                   v-on:click="prepareRemove(proprietario)"
                   variant="danger"
                   class="btn btn-sm"

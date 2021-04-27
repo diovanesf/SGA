@@ -98,13 +98,18 @@
                     <span class="d-none d-md-inline">View</span>
                   </button>
                 </router-link>
-                <router-link :to="{ name: 'PropriedadeEdit', params: { propriedadeId: propriedade.id , enderecoId: propriedade.endereco.id} }" custom v-slot="{ navigate }">
+                <router-link
+                  :to="{ name: 'PropriedadeEdit', params: { propriedadeId: propriedade.id, enderecoId: propriedade.endereco.id } }"
+                  custom
+                  v-slot="{ navigate }"
+                >
                   <button @click="navigate" class="btn btn-primary btn-sm edit" data-cy="entityEditButton">
                     <font-awesome-icon icon="pencil-alt"></font-awesome-icon>
                     <span class="d-none d-md-inline">Edit</span>
                   </button>
                 </router-link>
                 <b-button
+                  v-if="verificaUsuario()"
                   v-on:click="prepareRemove(propriedade)"
                   variant="danger"
                   class="btn btn-sm"

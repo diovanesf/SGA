@@ -24,12 +24,14 @@ export default class Exame extends mixins(JhiDataUtils) {
 
   public isFetching = false;
 
-  beforeRouteEnter(to, from, next){
+  beforeRouteEnter(to, from, next) {
     next(vm => {
-      vm.amostraId = to.params.amostraId;
-      vm.retrieveAmostra(vm.amostraId);
-      vm.retrieveExamesByAmostra(vm.amostraId);
-    })
+      if (to.params.amostraId) {
+        vm.amostraId = to.params.amostraId;
+        vm.retrieveAmostra(vm.amostraId);
+        vm.retrieveExamesByAmostra(vm.amostraId);
+      }
+    });
   }
 
   public retrieveAmostra(amostraId): void {
@@ -44,14 +46,13 @@ export default class Exame extends mixins(JhiDataUtils) {
     this.retrieveExamesByAmostra(this.amostraId);
   }
 
-    public retrieveExamesByAmostra(amostraId: number): void {
+  public retrieveExamesByAmostra(amostraId: number): void {
     this.isFetching = true;
     this.exameService()
       .retrieveByAmostra(amostraId)
       .then(
         res => {
           this.exames = res.data;
-          console.log(this.exames);
           this.isFetching = false;
         },
         err => {
@@ -62,6 +63,10 @@ export default class Exame extends mixins(JhiDataUtils) {
 
   public handleSyncList(): void {
     this.clear();
+  }
+
+  public verificaUsuario(): boolean {
+    return this.$store.getters.account.authorities.find(elen => elen === 'ROLE_PROFESSOR');
   }
 
   public prepareRemove(instance: IExame): void {

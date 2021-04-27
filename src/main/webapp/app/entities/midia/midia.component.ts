@@ -35,6 +35,10 @@ export default class Midia extends mixins(JhiDataUtils) {
     this.retrieveAllMidias();
   }
 
+  public verificaUsuario(): boolean {
+    return this.$store.getters.account.authorities.find(elen => elen === 'ROLE_PROFESSOR');
+  }
+
   public retrieveAllMidias(): void {
     this.isFetching = true;
 

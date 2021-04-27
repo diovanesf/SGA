@@ -35,6 +35,10 @@ export default class Propriedade extends mixins(JhiDataUtils) {
     this.retrieveAllPropriedades();
   }
 
+  public verificaUsuario(): boolean {
+    return this.$store.getters.account.authorities.find(elen => elen === 'ROLE_PROFESSOR');
+  }
+
   public retrieveAllPropriedades(): void {
     this.isFetching = true;
 

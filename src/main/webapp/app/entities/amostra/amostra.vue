@@ -136,21 +136,16 @@
               </div>
             </td>
             <td>
-              <span v-for="(user, i) in amostra.users" :key="user.id"
-                >{{ i > 0 ? ', ' : '' }}{{ user.login }}</span>
+              <span v-for="(user, i) in amostra.users" :key="user.id">{{ i > 0 ? ', ' : '' }}{{ user.login }}</span>
             </td>
             <td></td>
             <td class="text-right">
               <div class="btn-group">
                 <router-link :to="{ name: 'Exame', params: { amostraId: amostra.id } }" custom v-slot="{ navigate }">
-                  <button
-                    @click="navigate"
-                    class="btn btn-warning btn-sm details"
-                    data-
-                    cy="entityDetailsButton">
-                    <font-awesome-icon icon="tasks"></font-awesome-icon>
-                  <span class="d-none d-md-inline">Exames</span>                  
-                  </button> 
+                  <button @click="navigate" class="btn btn-warning btn-sm details" data- cy="entityDetailsButton">
+                              <font-awesome-icon icon="tasks"></font-awesome-icon>
+                    <span class="d-none d-md-inline">Exames</span>                  
+                  </button>
                 </router-link>
                 <router-link :to="{ name: 'AmostraView', params: { amostraId: amostra.id } }" custom v-slot="{ navigate }">
                   <button @click="navigate" class="btn btn-info btn-sm details" data-cy="entityDetailsButton">
@@ -165,6 +160,7 @@
                   </button>
                 </router-link>
                 <b-button
+                  v-if="verificaUsuario()"
                   v-on:click="prepareRemove(amostra)"
                   variant="danger"
                   class="btn btn-sm"

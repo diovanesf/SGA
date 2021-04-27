@@ -6,7 +6,7 @@
         <button class="btn btn-info mr-2" v-on:click="handleSyncList" :disabled="isFetching">
           <font-awesome-icon icon="sync" :spin="isFetching"></font-awesome-icon> <span>Refresh List</span>
         </button>
-        <router-link :to="{ name: 'ExameCreate' , params: { amostraId: amostra.id } } " custom v-slot="{ navigate }">
+        <router-link :to="{ name: 'ExameCreate', params: { amostraId: amostra.id } }" custom v-slot="{ navigate }">
           <button
             @click="navigate"
             id="jh-create-entity"
@@ -72,13 +72,14 @@
                     <span class="d-none d-md-inline">View</span>
                   </button>
                 </router-link>
-                <router-link :to="{ name: 'ExameEdit', params: { exameId: exame.id , amostraId: amostra.id} }" custom v-slot="{ navigate }">
+                <router-link :to="{ name: 'ExameEdit', params: { exameId: exame.id, amostraId: amostra.id } }" custom v-slot="{ navigate }">
                   <button @click="navigate" class="btn btn-primary btn-sm edit" data-cy="entityEditButton">
                     <font-awesome-icon icon="pencil-alt"></font-awesome-icon>
                     <span class="d-none d-md-inline">Edit</span>
                   </button>
                 </router-link>
                 <b-button
+                  v-if="verificaUsuario()"
                   v-on:click="prepareRemove(exame)"
                   variant="danger"
                   class="btn btn-sm"

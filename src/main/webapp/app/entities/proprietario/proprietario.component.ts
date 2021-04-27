@@ -28,6 +28,10 @@ export default class Proprietario extends Vue {
     this.retrieveAllProprietarios();
   }
 
+  public verificaUsuario(): boolean {
+    return this.$store.getters.account.authorities.find(elen => elen === 'ROLE_PROFESSOR');
+  }
+
   public clear(): void {
     this.page = 1;
     this.retrieveAllProprietarios();
