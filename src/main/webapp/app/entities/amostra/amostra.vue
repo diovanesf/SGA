@@ -3,16 +3,15 @@
     <h2 id="page-heading" data-cy="AmostraHeading">
       <span id="amostra-heading">Amostras</span>
       <div class="d-flex justify-content-end">
-        <button class="btn btn-info mr-2" v-on:click="handleSyncList" :disabled="isFetching">
-          <font-awesome-icon icon="sync" :spin="isFetching"></font-awesome-icon>
-          <span>Atualizar Lista</span>
+        <button class="btn btn-outline-success mr-2" v-on:click="handleSyncList" :disabled="isFetching">
+          <font-awesome-icon icon="sync" :spin="isFetching"></font-awesome-icon> <span>Atualizar Lista</span>
         </button>
         <router-link :to="{ name: 'AmostraCreate' }" custom v-slot="{ navigate }">
           <button
             @click="navigate"
             id="jh-create-entity"
             data-cy="entityCreateButton"
-            class="btn btn-primary jh-create-entity create-amostra"
+            class="btn btn-outline-success jh-create-entity create-amostra"
           >
             <font-awesome-icon icon="plus"></font-awesome-icon>
             <span> Criar uma nova amostra </span>
@@ -36,27 +35,27 @@
               <jhi-sort-indicator :current-order="propOrder" :reverse="reverse" :field-name="'protocolo'"></jhi-sort-indicator>
             </th>
             <th scope="row" v-on:click="changeOrder('formaEnvio')">
-              <span>Forma Envio</span>
+              <span>Forma de envio</span>
               <jhi-sort-indicator :current-order="propOrder" :reverse="reverse" :field-name="'formaEnvio'"></jhi-sort-indicator>
             </th>
             <th scope="row" v-on:click="changeOrder('numeroAmostras')">
-              <span>Numero Amostras</span>
+              <span>Número de amostras</span>
               <jhi-sort-indicator :current-order="propOrder" :reverse="reverse" :field-name="'numeroAmostras'"></jhi-sort-indicator>
             </th>
             <th scope="row" v-on:click="changeOrder('especie')">
-              <span>Especie</span>
+              <span>Espécie</span>
               <jhi-sort-indicator :current-order="propOrder" :reverse="reverse" :field-name="'especie'"></jhi-sort-indicator>
             </th>
             <th scope="row" v-on:click="changeOrder('dataInicial')">
-              <span>Data Inicial</span>
+              <span>Data inicial</span>
               <jhi-sort-indicator :current-order="propOrder" :reverse="reverse" :field-name="'dataInicial'"></jhi-sort-indicator>
             </th>
             <th scope="row" v-on:click="changeOrder('dataFinal')">
-              <span>Data Final</span>
+              <span>Data final</span>
               <jhi-sort-indicator :current-order="propOrder" :reverse="reverse" :field-name="'dataFinal'"></jhi-sort-indicator>
             </th>
             <th scope="row" v-on:click="changeOrder('materialRecebido')">
-              <span>Material Recebido</span>
+              <span>Material recebido</span>
               <jhi-sort-indicator :current-order="propOrder" :reverse="reverse" :field-name="'materialRecebido'"></jhi-sort-indicator>
             </th>
             <th scope="row" v-on:click="changeOrder('acondicionamento')">
@@ -64,7 +63,7 @@
               <jhi-sort-indicator :current-order="propOrder" :reverse="reverse" :field-name="'acondicionamento'"></jhi-sort-indicator>
             </th>
             <th scope="row" v-on:click="changeOrder('condicaoMaterial')">
-              <span>Condicao Material</span>
+              <span>Condição do material</span>
               <jhi-sort-indicator :current-order="propOrder" :reverse="reverse" :field-name="'condicaoMaterial'"></jhi-sort-indicator>
             </th>
             <th scope="row" v-on:click="changeOrder('status')">
@@ -72,19 +71,19 @@
               <jhi-sort-indicator :current-order="propOrder" :reverse="reverse" :field-name="'status'"></jhi-sort-indicator>
             </th>
             <th scope="row" v-on:click="changeOrder('tipoMedVet')">
-              <span>Tipo Med Vet</span>
+              <span>Tipo Med. Vet.</span>
               <jhi-sort-indicator :current-order="propOrder" :reverse="reverse" :field-name="'tipoMedVet'"></jhi-sort-indicator>
             </th>
             <th scope="row" v-on:click="changeOrder('valorTotal')">
-              <span>Valor Total</span>
+              <span>Valor total</span>
               <jhi-sort-indicator :current-order="propOrder" :reverse="reverse" :field-name="'valorTotal'"></jhi-sort-indicator>
             </th>
             <th scope="row" v-on:click="changeOrder('tipoPagamento')">
-              <span>Tipo Pagamento</span>
+              <span>Tipo do pagamento</span>
               <jhi-sort-indicator :current-order="propOrder" :reverse="reverse" :field-name="'tipoPagamento'"></jhi-sort-indicator>
             </th>
             <th scope="row" v-on:click="changeOrder('situacao')">
-              <span>Situacao</span>
+              <span>Situação</span>
               <jhi-sort-indicator :current-order="propOrder" :reverse="reverse" :field-name="'situacao'"></jhi-sort-indicator>
             </th>
             <th scope="row" v-on:click="changeOrder('propriedade.tipoPropriedade')">
@@ -96,7 +95,7 @@
               ></jhi-sort-indicator>
             </th>
             <th scope="row" v-on:click="changeOrder('medicoveterinario.nome')">
-              <span>Medicoveterinario</span>
+              <span>Médico veterinário</span>
               <jhi-sort-indicator :current-order="propOrder" :reverse="reverse" :field-name="'medicoveterinario.nome'"></jhi-sort-indicator>
             </th>
             <th scope="row"><span>Usuário</span></th>
@@ -160,7 +159,7 @@
                   </button>
                 </router-link>
                 <router-link :to="{ name: 'AmostraView', params: { amostraId: amostra.id } }" custom v-slot="{ navigate }">
-                  <button @click="navigate" class="btn btn-info btn-sm details" data-cy="entityDetailsButton">
+                  <button @click="navigate" class="btn btn-success btn-sm details" data-cy="entityDetailsButton">
                     <font-awesome-icon icon="eye"></font-awesome-icon>
                     <span class="d-none d-md-inline">Ver</span>
                   </button>
@@ -190,7 +189,7 @@
     </div>
     <b-modal ref="removeEntity" id="removeEntity">
       <span slot="modal-title"
-        ><span id="rp6App.amostra.delete.question" data-cy="amostraDeleteDialogHeading">Confirm delete operation</span></span
+        ><span id="rp6App.amostra.delete.question" data-cy="amostraDeleteDialogHeading">Confirmar exclusão</span></span
       >
       <div class="modal-body">
         <p id="jhi-delete-amostra-heading">Tem certeza que deseja deletar esta Amostra?</p>
@@ -199,7 +198,7 @@
         <button type="button" class="btn btn-secondary" v-on:click="closeDialog()">Cancelar</button>
         <button
           type="button"
-          class="btn btn-primary"
+          class="btn btn-danger"
           id="jhi-confirm-delete-amostra"
           data-cy="entityConfirmDeleteButton"
           v-on:click="removeAmostra()"

@@ -11,19 +11,19 @@
             <span>{{ amostra.protocolo }}</span>
           </dd>
           <dt>
-            <span>Forma Envio</span>
+            <span>Forma de envio</span>
           </dt>
           <dd>
             <span>{{ amostra.formaEnvio }}</span>
           </dd>
           <dt>
-            <span>Numero Amostras</span>
+            <span>Número de amostras</span>
           </dt>
           <dd>
             <span>{{ amostra.numeroAmostras }}</span>
           </dd>
           <dt>
-            <span>Especie</span>
+            <span>Espécie</span>
           </dt>
           <dd>
             <span>{{ amostra.especie }}</span>
@@ -53,7 +53,7 @@
             <span>{{ amostra.acondicionamento }}</span>
           </dd>
           <dt>
-            <span>Condicao Material</span>
+            <span>Condição do Material</span>
           </dt>
           <dd>
             <span>{{ amostra.condicaoMaterial }}</span>
@@ -65,7 +65,7 @@
             <span>{{ amostra.status }}</span>
           </dd>
           <dt>
-            <span>Tipo Med Vet</span>
+            <span>Tipo Med. Vet.</span>
           </dt>
           <dd>
             <span>{{ amostra.tipoMedVet }}</span>
@@ -77,7 +77,7 @@
             <span>{{ amostra.valorTotal }}</span>
           </dd>
           <dt>
-            <span>Tipo Pagamento</span>
+            <span>Tipo de Pagamento</span>
           </dt>
           <dd>
             <span>{{ amostra.tipoPagamento }}</span>
@@ -108,7 +108,7 @@
             </div>
           </dd>
           <dt>
-            <span>Medico Veterinário</span>
+            <span>Médico Veterinário</span>
           </dt>
           <dd>
             <div v-if="amostra.medicoveterinario">
@@ -118,11 +118,11 @@
             </div>
           </dd>
         </dl>
-        <button type="submit" v-on:click.prevent="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <button type="submit" v-on:click.prevent="previousState()" class="btn btn-outline-success" data-cy="entityDetailsBackButton">
           <font-awesome-icon icon="arrow-left"></font-awesome-icon>&nbsp;<span> Voltar</span>
         </button>
         <router-link v-if="amostra.id" :to="{ name: 'AmostraEdit', params: { amostraId: amostra.id } }" custom v-slot="{ navigate }">
-          <button @click="navigate" class="btn btn-primary">
+          <button @click="navigate" class="btn btn-success">
             <font-awesome-icon icon="pencil-alt"></font-awesome-icon>&nbsp;<span> Editar</span>
           </button>
         </router-link>

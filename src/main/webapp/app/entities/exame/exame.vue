@@ -3,25 +3,25 @@
     <h2 id="page-heading" data-cy="ExameHeading">
       <span id="exame-heading">Exames</span>
       <div class="d-flex justify-content-end">
-        <button class="btn btn-info mr-2" v-on:click="handleSyncList" :disabled="isFetching">
-          <font-awesome-icon icon="sync" :spin="isFetching"></font-awesome-icon> <span>Refresh List</span>
+        <button class="btn btn-outline-success mr-2" v-on:click="handleSyncList" :disabled="isFetching">
+          <font-awesome-icon icon="sync" :spin="isFetching"></font-awesome-icon> <span>Atualizar lista</span>
         </button>
         <router-link :to="{ name: 'ExameCreate', params: { amostraId: amostra.id } }" custom v-slot="{ navigate }">
           <button
             @click="navigate"
             id="jh-create-entity"
             data-cy="entityCreateButton"
-            class="btn btn-primary jh-create-entity create-exame"
+            class="btn btn-outline-success jh-create-entity create-exame"
           >
             <font-awesome-icon icon="plus"></font-awesome-icon>
-            <span> Create a new Exame </span>
+            <span> Adicionar um novo exame </span>
           </button>
         </router-link>
       </div>
     </h2>
     <br />
-    <div class="alert alert-warning" v-if="!isFetching && exames && exames.length === 0">
-      <span>No exames found</span>
+    <div class="alert alert-success" v-if="!isFetching && exames && exames.length === 0">
+      <span>Nenhum exame encontrado</span>
     </div>
     <div class="table-responsive" v-if="exames && exames.length > 0">
       <table class="table table-striped" aria-describedby="exames">

@@ -12,9 +12,7 @@
         <div class="alert alert-success" role="alert" v-if="success">
           <strong>Senha alterada!</strong>
         </div>
-        <div class="alert alert-danger" role="alert" v-if="error">
-          <strong>Um erro ocorreu!</strong> A senha não pode ser alterada.
-        </div>
+        <div class="alert alert-danger" role="alert" v-if="error"><strong>Um erro ocorreu!</strong> A senha não pode ser alterada.</div>
 
         <div class="alert alert-danger" role="alert" v-if="doNotMatch">As senhas não coincidem!</div>
 
@@ -80,7 +78,7 @@
             </div>
           </div>
 
-          <button type="submit" :disabled="$v.resetPassword.$invalid" class="btn btn-primary" data-cy="submit">Salvar</button>
+          <button type="submit" :disabled="$v.resetPassword.$invalid" class="btn btn-success" data-cy="submit">Salvar</button>
         </form>
       </div>
     </div>

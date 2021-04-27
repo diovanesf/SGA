@@ -3,7 +3,7 @@
     <div class="col-8">
       <div v-if="medicoveterinario">
         <h2 class="jh-entity-heading" data-cy="medicoveterinarioDetailsHeading">
-          <span>Medicoveterinario</span> {{ medicoveterinario.id }}
+          <span>Médico Veterinário</span> {{ medicoveterinario.id }}
         </h2>
         <dl class="row jh-entity-details">
           <dt>
@@ -19,13 +19,13 @@
             <span>{{ medicoveterinario.telefone }}</span>
           </dd>
           <dt>
-            <span>Email</span>
+            <span>E-mail</span>
           </dt>
           <dd>
             <span>{{ medicoveterinario.email }}</span>
           </dd>
           <dt>
-            <span>Crmv</span>
+            <span>CRMV</span>
           </dt>
           <dd>
             <span>{{ medicoveterinario.crmv }}</span>
@@ -37,8 +37,8 @@
             <span>{{ medicoveterinario.enviarLaudo }}</span>
           </dd>
         </dl>
-        <button type="submit" v-on:click.prevent="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
-          <font-awesome-icon icon="arrow-left"></font-awesome-icon>&nbsp;<span> Back</span>
+        <button type="submit" v-on:click.prevent="previousState()" class="btn btn-outline-success" data-cy="entityDetailsBackButton">
+          <font-awesome-icon icon="arrow-left"></font-awesome-icon>&nbsp;<span> Voltar</span>
         </button>
         <router-link
           v-if="medicoveterinario.id"
@@ -46,8 +46,8 @@
           custom
           v-slot="{ navigate }"
         >
-          <button @click="navigate" class="btn btn-primary">
-            <font-awesome-icon icon="pencil-alt"></font-awesome-icon>&nbsp;<span> Edit</span>
+          <button @click="navigate" class="btn btn-success">
+            <font-awesome-icon icon="pencil-alt"></font-awesome-icon>&nbsp;<span> Editar</span>
           </button>
         </router-link>
       </div>
