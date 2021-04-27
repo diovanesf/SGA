@@ -32,12 +32,12 @@ export default [
     path: '/account/password',
     name: 'ChangePassword',
     component: ChangePassword,
-    meta: { authorities: [Authority.USER] },
+    meta: { authorities: [Authority.USER, Authority.ALUNO, Authority.PROFESSOR] },
   },
   {
     path: '/account/settings',
     name: 'Settings',
     component: Settings,
-    meta: { authorities: [Authority.USER] },
+    meta: { authorities: [Authority.USER, Authority.ALUNO, Authority.PROFESSOR] },
   },
 ];

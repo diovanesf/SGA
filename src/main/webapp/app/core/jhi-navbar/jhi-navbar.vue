@@ -126,17 +126,17 @@
             <font-awesome-icon icon="sign-in-alt" />
             <span>Log in</span>
           </b-dropdown-item>
-          <b-dropdown-item
-            data-cy="register"
-            to="/register"
-            tag="b-dropdown-item"
-            id="register"
-            v-if="!authenticated"
-            active-class="active"
-          >
-            <font-awesome-icon icon="user-plus" />
-            <span>Registro</span>
-          </b-dropdown-item>
+          <!--          <b-dropdown-item-->
+          <!--            data-cy="register"-->
+          <!--            to="/register"-->
+          <!--            tag="b-dropdown-item"-->
+          <!--            id="register"-->
+          <!--            v-if="!authenticated"-->
+          <!--            active-class="active"-->
+          <!--          >-->
+          <!--            <font-awesome-icon icon="user-plus" />-->
+          <!--            <span>Registro</span>-->
+          <!--          </b-dropdown-item>-->
         </b-nav-item-dropdown>
       </b-navbar-nav>
     </b-collapse>
