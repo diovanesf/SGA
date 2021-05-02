@@ -13,7 +13,9 @@ import edu.unipampa.laboratoriovirologia.domain.Exame;
 import edu.unipampa.laboratoriovirologia.domain.Medicoveterinario;
 import edu.unipampa.laboratoriovirologia.domain.Midia;
 import edu.unipampa.laboratoriovirologia.domain.Propriedade;
+import edu.unipampa.laboratoriovirologia.domain.Subamostra;
 import edu.unipampa.laboratoriovirologia.domain.User;
+import edu.unipampa.laboratoriovirologia.domain.Vacina;
 import edu.unipampa.laboratoriovirologia.repository.AmostraRepository;
 import edu.unipampa.laboratoriovirologia.service.AmostraService;
 import edu.unipampa.laboratoriovirologia.service.criteria.AmostraCriteria;
@@ -63,13 +65,19 @@ class AmostraResourceIT {
     private static final String DEFAULT_ESPECIE = "AAAAAAAAAA";
     private static final String UPDATED_ESPECIE = "BBBBBBBBBB";
 
+    private static final Integer DEFAULT_NUMERO_ANIMAIS = 1;
+    private static final Integer UPDATED_NUMERO_ANIMAIS = 2;
+    private static final Integer SMALLER_NUMERO_ANIMAIS = 1 - 1;
+
+    private static final String DEFAULT_ACOMETIDOS = "AAAAAAAAAA";
+    private static final String UPDATED_ACOMETIDOS = "BBBBBBBBBB";
+
+    private static final String DEFAULT_PRICIPAL_SUSPEITA = "AAAAAAAAAA";
+    private static final String UPDATED_PRICIPAL_SUSPEITA = "BBBBBBBBBB";
+
     private static final LocalDate DEFAULT_DATA_INICIAL = LocalDate.ofEpochDay(0L);
     private static final LocalDate UPDATED_DATA_INICIAL = LocalDate.now(ZoneId.systemDefault());
     private static final LocalDate SMALLER_DATA_INICIAL = LocalDate.ofEpochDay(-1L);
-
-    private static final LocalDate DEFAULT_DATA_FINAL = LocalDate.ofEpochDay(0L);
-    private static final LocalDate UPDATED_DATA_FINAL = LocalDate.now(ZoneId.systemDefault());
-    private static final LocalDate SMALLER_DATA_FINAL = LocalDate.ofEpochDay(-1L);
 
     private static final String DEFAULT_MATERIAL_RECEBIDO = "AAAAAAAAAA";
     private static final String UPDATED_MATERIAL_RECEBIDO = "BBBBBBBBBB";
@@ -92,6 +100,9 @@ class AmostraResourceIT {
 
     private static final String DEFAULT_TIPO_PAGAMENTO = "AAAAAAAAAA";
     private static final String UPDATED_TIPO_PAGAMENTO = "BBBBBBBBBB";
+
+    private static final String DEFAULT_TIPO = "AAAAAAAAAA";
+    private static final String UPDATED_TIPO = "BBBBBBBBBB";
 
     private static final String DEFAULT_SITUACAO = "AAAAAAAAAA";
     private static final String UPDATED_SITUACAO = "BBBBBBBBBB";
@@ -134,8 +145,10 @@ class AmostraResourceIT {
             .formaEnvio(DEFAULT_FORMA_ENVIO)
             .numeroAmostras(DEFAULT_NUMERO_AMOSTRAS)
             .especie(DEFAULT_ESPECIE)
+            .numeroAnimais(DEFAULT_NUMERO_ANIMAIS)
+            .acometidos(DEFAULT_ACOMETIDOS)
+            .pricipalSuspeita(DEFAULT_PRICIPAL_SUSPEITA)
             .dataInicial(DEFAULT_DATA_INICIAL)
-            .dataFinal(DEFAULT_DATA_FINAL)
             .materialRecebido(DEFAULT_MATERIAL_RECEBIDO)
             .acondicionamento(DEFAULT_ACONDICIONAMENTO)
             .condicaoMaterial(DEFAULT_CONDICAO_MATERIAL)
@@ -143,6 +156,7 @@ class AmostraResourceIT {
             .tipoMedVet(DEFAULT_TIPO_MED_VET)
             .valorTotal(DEFAULT_VALOR_TOTAL)
             .tipoPagamento(DEFAULT_TIPO_PAGAMENTO)
+            .tipo(DEFAULT_TIPO)
             .situacao(DEFAULT_SITUACAO);
         return amostra;
     }
@@ -159,8 +173,10 @@ class AmostraResourceIT {
             .formaEnvio(UPDATED_FORMA_ENVIO)
             .numeroAmostras(UPDATED_NUMERO_AMOSTRAS)
             .especie(UPDATED_ESPECIE)
+            .numeroAnimais(UPDATED_NUMERO_ANIMAIS)
+            .acometidos(UPDATED_ACOMETIDOS)
+            .pricipalSuspeita(UPDATED_PRICIPAL_SUSPEITA)
             .dataInicial(UPDATED_DATA_INICIAL)
-            .dataFinal(UPDATED_DATA_FINAL)
             .materialRecebido(UPDATED_MATERIAL_RECEBIDO)
             .acondicionamento(UPDATED_ACONDICIONAMENTO)
             .condicaoMaterial(UPDATED_CONDICAO_MATERIAL)
@@ -168,6 +184,7 @@ class AmostraResourceIT {
             .tipoMedVet(UPDATED_TIPO_MED_VET)
             .valorTotal(UPDATED_VALOR_TOTAL)
             .tipoPagamento(UPDATED_TIPO_PAGAMENTO)
+            .tipo(UPDATED_TIPO)
             .situacao(UPDATED_SITUACAO);
         return amostra;
     }
@@ -195,8 +212,10 @@ class AmostraResourceIT {
         assertThat(testAmostra.getFormaEnvio()).isEqualTo(DEFAULT_FORMA_ENVIO);
         assertThat(testAmostra.getNumeroAmostras()).isEqualTo(DEFAULT_NUMERO_AMOSTRAS);
         assertThat(testAmostra.getEspecie()).isEqualTo(DEFAULT_ESPECIE);
+        assertThat(testAmostra.getNumeroAnimais()).isEqualTo(DEFAULT_NUMERO_ANIMAIS);
+        assertThat(testAmostra.getAcometidos()).isEqualTo(DEFAULT_ACOMETIDOS);
+        assertThat(testAmostra.getPricipalSuspeita()).isEqualTo(DEFAULT_PRICIPAL_SUSPEITA);
         assertThat(testAmostra.getDataInicial()).isEqualTo(DEFAULT_DATA_INICIAL);
-        assertThat(testAmostra.getDataFinal()).isEqualTo(DEFAULT_DATA_FINAL);
         assertThat(testAmostra.getMaterialRecebido()).isEqualTo(DEFAULT_MATERIAL_RECEBIDO);
         assertThat(testAmostra.getAcondicionamento()).isEqualTo(DEFAULT_ACONDICIONAMENTO);
         assertThat(testAmostra.getCondicaoMaterial()).isEqualTo(DEFAULT_CONDICAO_MATERIAL);
@@ -204,6 +223,7 @@ class AmostraResourceIT {
         assertThat(testAmostra.getTipoMedVet()).isEqualTo(DEFAULT_TIPO_MED_VET);
         assertThat(testAmostra.getValorTotal()).isEqualByComparingTo(DEFAULT_VALOR_TOTAL);
         assertThat(testAmostra.getTipoPagamento()).isEqualTo(DEFAULT_TIPO_PAGAMENTO);
+        assertThat(testAmostra.getTipo()).isEqualTo(DEFAULT_TIPO);
         assertThat(testAmostra.getSituacao()).isEqualTo(DEFAULT_SITUACAO);
     }
 
@@ -242,8 +262,10 @@ class AmostraResourceIT {
             .andExpect(jsonPath("$.[*].formaEnvio").value(hasItem(DEFAULT_FORMA_ENVIO)))
             .andExpect(jsonPath("$.[*].numeroAmostras").value(hasItem(DEFAULT_NUMERO_AMOSTRAS)))
             .andExpect(jsonPath("$.[*].especie").value(hasItem(DEFAULT_ESPECIE)))
+            .andExpect(jsonPath("$.[*].numeroAnimais").value(hasItem(DEFAULT_NUMERO_ANIMAIS)))
+            .andExpect(jsonPath("$.[*].acometidos").value(hasItem(DEFAULT_ACOMETIDOS)))
+            .andExpect(jsonPath("$.[*].pricipalSuspeita").value(hasItem(DEFAULT_PRICIPAL_SUSPEITA)))
             .andExpect(jsonPath("$.[*].dataInicial").value(hasItem(DEFAULT_DATA_INICIAL.toString())))
-            .andExpect(jsonPath("$.[*].dataFinal").value(hasItem(DEFAULT_DATA_FINAL.toString())))
             .andExpect(jsonPath("$.[*].materialRecebido").value(hasItem(DEFAULT_MATERIAL_RECEBIDO)))
             .andExpect(jsonPath("$.[*].acondicionamento").value(hasItem(DEFAULT_ACONDICIONAMENTO)))
             .andExpect(jsonPath("$.[*].condicaoMaterial").value(hasItem(DEFAULT_CONDICAO_MATERIAL)))
@@ -251,6 +273,7 @@ class AmostraResourceIT {
             .andExpect(jsonPath("$.[*].tipoMedVet").value(hasItem(DEFAULT_TIPO_MED_VET)))
             .andExpect(jsonPath("$.[*].valorTotal").value(hasItem(sameNumber(DEFAULT_VALOR_TOTAL))))
             .andExpect(jsonPath("$.[*].tipoPagamento").value(hasItem(DEFAULT_TIPO_PAGAMENTO)))
+            .andExpect(jsonPath("$.[*].tipo").value(hasItem(DEFAULT_TIPO)))
             .andExpect(jsonPath("$.[*].situacao").value(hasItem(DEFAULT_SITUACAO)));
     }
 
@@ -288,8 +311,10 @@ class AmostraResourceIT {
             .andExpect(jsonPath("$.formaEnvio").value(DEFAULT_FORMA_ENVIO))
             .andExpect(jsonPath("$.numeroAmostras").value(DEFAULT_NUMERO_AMOSTRAS))
             .andExpect(jsonPath("$.especie").value(DEFAULT_ESPECIE))
+            .andExpect(jsonPath("$.numeroAnimais").value(DEFAULT_NUMERO_ANIMAIS))
+            .andExpect(jsonPath("$.acometidos").value(DEFAULT_ACOMETIDOS))
+            .andExpect(jsonPath("$.pricipalSuspeita").value(DEFAULT_PRICIPAL_SUSPEITA))
             .andExpect(jsonPath("$.dataInicial").value(DEFAULT_DATA_INICIAL.toString()))
-            .andExpect(jsonPath("$.dataFinal").value(DEFAULT_DATA_FINAL.toString()))
             .andExpect(jsonPath("$.materialRecebido").value(DEFAULT_MATERIAL_RECEBIDO))
             .andExpect(jsonPath("$.acondicionamento").value(DEFAULT_ACONDICIONAMENTO))
             .andExpect(jsonPath("$.condicaoMaterial").value(DEFAULT_CONDICAO_MATERIAL))
@@ -297,6 +322,7 @@ class AmostraResourceIT {
             .andExpect(jsonPath("$.tipoMedVet").value(DEFAULT_TIPO_MED_VET))
             .andExpect(jsonPath("$.valorTotal").value(sameNumber(DEFAULT_VALOR_TOTAL)))
             .andExpect(jsonPath("$.tipoPagamento").value(DEFAULT_TIPO_PAGAMENTO))
+            .andExpect(jsonPath("$.tipo").value(DEFAULT_TIPO))
             .andExpect(jsonPath("$.situacao").value(DEFAULT_SITUACAO));
     }
 
@@ -658,6 +684,266 @@ class AmostraResourceIT {
 
     @Test
     @Transactional
+    void getAllAmostrasByNumeroAnimaisIsEqualToSomething() throws Exception {
+        // Initialize the database
+        amostraRepository.saveAndFlush(amostra);
+
+        // Get all the amostraList where numeroAnimais equals to DEFAULT_NUMERO_ANIMAIS
+        defaultAmostraShouldBeFound("numeroAnimais.equals=" + DEFAULT_NUMERO_ANIMAIS);
+
+        // Get all the amostraList where numeroAnimais equals to UPDATED_NUMERO_ANIMAIS
+        defaultAmostraShouldNotBeFound("numeroAnimais.equals=" + UPDATED_NUMERO_ANIMAIS);
+    }
+
+    @Test
+    @Transactional
+    void getAllAmostrasByNumeroAnimaisIsNotEqualToSomething() throws Exception {
+        // Initialize the database
+        amostraRepository.saveAndFlush(amostra);
+
+        // Get all the amostraList where numeroAnimais not equals to DEFAULT_NUMERO_ANIMAIS
+        defaultAmostraShouldNotBeFound("numeroAnimais.notEquals=" + DEFAULT_NUMERO_ANIMAIS);
+
+        // Get all the amostraList where numeroAnimais not equals to UPDATED_NUMERO_ANIMAIS
+        defaultAmostraShouldBeFound("numeroAnimais.notEquals=" + UPDATED_NUMERO_ANIMAIS);
+    }
+
+    @Test
+    @Transactional
+    void getAllAmostrasByNumeroAnimaisIsInShouldWork() throws Exception {
+        // Initialize the database
+        amostraRepository.saveAndFlush(amostra);
+
+        // Get all the amostraList where numeroAnimais in DEFAULT_NUMERO_ANIMAIS or UPDATED_NUMERO_ANIMAIS
+        defaultAmostraShouldBeFound("numeroAnimais.in=" + DEFAULT_NUMERO_ANIMAIS + "," + UPDATED_NUMERO_ANIMAIS);
+
+        // Get all the amostraList where numeroAnimais equals to UPDATED_NUMERO_ANIMAIS
+        defaultAmostraShouldNotBeFound("numeroAnimais.in=" + UPDATED_NUMERO_ANIMAIS);
+    }
+
+    @Test
+    @Transactional
+    void getAllAmostrasByNumeroAnimaisIsNullOrNotNull() throws Exception {
+        // Initialize the database
+        amostraRepository.saveAndFlush(amostra);
+
+        // Get all the amostraList where numeroAnimais is not null
+        defaultAmostraShouldBeFound("numeroAnimais.specified=true");
+
+        // Get all the amostraList where numeroAnimais is null
+        defaultAmostraShouldNotBeFound("numeroAnimais.specified=false");
+    }
+
+    @Test
+    @Transactional
+    void getAllAmostrasByNumeroAnimaisIsGreaterThanOrEqualToSomething() throws Exception {
+        // Initialize the database
+        amostraRepository.saveAndFlush(amostra);
+
+        // Get all the amostraList where numeroAnimais is greater than or equal to DEFAULT_NUMERO_ANIMAIS
+        defaultAmostraShouldBeFound("numeroAnimais.greaterThanOrEqual=" + DEFAULT_NUMERO_ANIMAIS);
+
+        // Get all the amostraList where numeroAnimais is greater than or equal to UPDATED_NUMERO_ANIMAIS
+        defaultAmostraShouldNotBeFound("numeroAnimais.greaterThanOrEqual=" + UPDATED_NUMERO_ANIMAIS);
+    }
+
+    @Test
+    @Transactional
+    void getAllAmostrasByNumeroAnimaisIsLessThanOrEqualToSomething() throws Exception {
+        // Initialize the database
+        amostraRepository.saveAndFlush(amostra);
+
+        // Get all the amostraList where numeroAnimais is less than or equal to DEFAULT_NUMERO_ANIMAIS
+        defaultAmostraShouldBeFound("numeroAnimais.lessThanOrEqual=" + DEFAULT_NUMERO_ANIMAIS);
+
+        // Get all the amostraList where numeroAnimais is less than or equal to SMALLER_NUMERO_ANIMAIS
+        defaultAmostraShouldNotBeFound("numeroAnimais.lessThanOrEqual=" + SMALLER_NUMERO_ANIMAIS);
+    }
+
+    @Test
+    @Transactional
+    void getAllAmostrasByNumeroAnimaisIsLessThanSomething() throws Exception {
+        // Initialize the database
+        amostraRepository.saveAndFlush(amostra);
+
+        // Get all the amostraList where numeroAnimais is less than DEFAULT_NUMERO_ANIMAIS
+        defaultAmostraShouldNotBeFound("numeroAnimais.lessThan=" + DEFAULT_NUMERO_ANIMAIS);
+
+        // Get all the amostraList where numeroAnimais is less than UPDATED_NUMERO_ANIMAIS
+        defaultAmostraShouldBeFound("numeroAnimais.lessThan=" + UPDATED_NUMERO_ANIMAIS);
+    }
+
+    @Test
+    @Transactional
+    void getAllAmostrasByNumeroAnimaisIsGreaterThanSomething() throws Exception {
+        // Initialize the database
+        amostraRepository.saveAndFlush(amostra);
+
+        // Get all the amostraList where numeroAnimais is greater than DEFAULT_NUMERO_ANIMAIS
+        defaultAmostraShouldNotBeFound("numeroAnimais.greaterThan=" + DEFAULT_NUMERO_ANIMAIS);
+
+        // Get all the amostraList where numeroAnimais is greater than SMALLER_NUMERO_ANIMAIS
+        defaultAmostraShouldBeFound("numeroAnimais.greaterThan=" + SMALLER_NUMERO_ANIMAIS);
+    }
+
+    @Test
+    @Transactional
+    void getAllAmostrasByAcometidosIsEqualToSomething() throws Exception {
+        // Initialize the database
+        amostraRepository.saveAndFlush(amostra);
+
+        // Get all the amostraList where acometidos equals to DEFAULT_ACOMETIDOS
+        defaultAmostraShouldBeFound("acometidos.equals=" + DEFAULT_ACOMETIDOS);
+
+        // Get all the amostraList where acometidos equals to UPDATED_ACOMETIDOS
+        defaultAmostraShouldNotBeFound("acometidos.equals=" + UPDATED_ACOMETIDOS);
+    }
+
+    @Test
+    @Transactional
+    void getAllAmostrasByAcometidosIsNotEqualToSomething() throws Exception {
+        // Initialize the database
+        amostraRepository.saveAndFlush(amostra);
+
+        // Get all the amostraList where acometidos not equals to DEFAULT_ACOMETIDOS
+        defaultAmostraShouldNotBeFound("acometidos.notEquals=" + DEFAULT_ACOMETIDOS);
+
+        // Get all the amostraList where acometidos not equals to UPDATED_ACOMETIDOS
+        defaultAmostraShouldBeFound("acometidos.notEquals=" + UPDATED_ACOMETIDOS);
+    }
+
+    @Test
+    @Transactional
+    void getAllAmostrasByAcometidosIsInShouldWork() throws Exception {
+        // Initialize the database
+        amostraRepository.saveAndFlush(amostra);
+
+        // Get all the amostraList where acometidos in DEFAULT_ACOMETIDOS or UPDATED_ACOMETIDOS
+        defaultAmostraShouldBeFound("acometidos.in=" + DEFAULT_ACOMETIDOS + "," + UPDATED_ACOMETIDOS);
+
+        // Get all the amostraList where acometidos equals to UPDATED_ACOMETIDOS
+        defaultAmostraShouldNotBeFound("acometidos.in=" + UPDATED_ACOMETIDOS);
+    }
+
+    @Test
+    @Transactional
+    void getAllAmostrasByAcometidosIsNullOrNotNull() throws Exception {
+        // Initialize the database
+        amostraRepository.saveAndFlush(amostra);
+
+        // Get all the amostraList where acometidos is not null
+        defaultAmostraShouldBeFound("acometidos.specified=true");
+
+        // Get all the amostraList where acometidos is null
+        defaultAmostraShouldNotBeFound("acometidos.specified=false");
+    }
+
+    @Test
+    @Transactional
+    void getAllAmostrasByAcometidosContainsSomething() throws Exception {
+        // Initialize the database
+        amostraRepository.saveAndFlush(amostra);
+
+        // Get all the amostraList where acometidos contains DEFAULT_ACOMETIDOS
+        defaultAmostraShouldBeFound("acometidos.contains=" + DEFAULT_ACOMETIDOS);
+
+        // Get all the amostraList where acometidos contains UPDATED_ACOMETIDOS
+        defaultAmostraShouldNotBeFound("acometidos.contains=" + UPDATED_ACOMETIDOS);
+    }
+
+    @Test
+    @Transactional
+    void getAllAmostrasByAcometidosNotContainsSomething() throws Exception {
+        // Initialize the database
+        amostraRepository.saveAndFlush(amostra);
+
+        // Get all the amostraList where acometidos does not contain DEFAULT_ACOMETIDOS
+        defaultAmostraShouldNotBeFound("acometidos.doesNotContain=" + DEFAULT_ACOMETIDOS);
+
+        // Get all the amostraList where acometidos does not contain UPDATED_ACOMETIDOS
+        defaultAmostraShouldBeFound("acometidos.doesNotContain=" + UPDATED_ACOMETIDOS);
+    }
+
+    @Test
+    @Transactional
+    void getAllAmostrasByPricipalSuspeitaIsEqualToSomething() throws Exception {
+        // Initialize the database
+        amostraRepository.saveAndFlush(amostra);
+
+        // Get all the amostraList where pricipalSuspeita equals to DEFAULT_PRICIPAL_SUSPEITA
+        defaultAmostraShouldBeFound("pricipalSuspeita.equals=" + DEFAULT_PRICIPAL_SUSPEITA);
+
+        // Get all the amostraList where pricipalSuspeita equals to UPDATED_PRICIPAL_SUSPEITA
+        defaultAmostraShouldNotBeFound("pricipalSuspeita.equals=" + UPDATED_PRICIPAL_SUSPEITA);
+    }
+
+    @Test
+    @Transactional
+    void getAllAmostrasByPricipalSuspeitaIsNotEqualToSomething() throws Exception {
+        // Initialize the database
+        amostraRepository.saveAndFlush(amostra);
+
+        // Get all the amostraList where pricipalSuspeita not equals to DEFAULT_PRICIPAL_SUSPEITA
+        defaultAmostraShouldNotBeFound("pricipalSuspeita.notEquals=" + DEFAULT_PRICIPAL_SUSPEITA);
+
+        // Get all the amostraList where pricipalSuspeita not equals to UPDATED_PRICIPAL_SUSPEITA
+        defaultAmostraShouldBeFound("pricipalSuspeita.notEquals=" + UPDATED_PRICIPAL_SUSPEITA);
+    }
+
+    @Test
+    @Transactional
+    void getAllAmostrasByPricipalSuspeitaIsInShouldWork() throws Exception {
+        // Initialize the database
+        amostraRepository.saveAndFlush(amostra);
+
+        // Get all the amostraList where pricipalSuspeita in DEFAULT_PRICIPAL_SUSPEITA or UPDATED_PRICIPAL_SUSPEITA
+        defaultAmostraShouldBeFound("pricipalSuspeita.in=" + DEFAULT_PRICIPAL_SUSPEITA + "," + UPDATED_PRICIPAL_SUSPEITA);
+
+        // Get all the amostraList where pricipalSuspeita equals to UPDATED_PRICIPAL_SUSPEITA
+        defaultAmostraShouldNotBeFound("pricipalSuspeita.in=" + UPDATED_PRICIPAL_SUSPEITA);
+    }
+
+    @Test
+    @Transactional
+    void getAllAmostrasByPricipalSuspeitaIsNullOrNotNull() throws Exception {
+        // Initialize the database
+        amostraRepository.saveAndFlush(amostra);
+
+        // Get all the amostraList where pricipalSuspeita is not null
+        defaultAmostraShouldBeFound("pricipalSuspeita.specified=true");
+
+        // Get all the amostraList where pricipalSuspeita is null
+        defaultAmostraShouldNotBeFound("pricipalSuspeita.specified=false");
+    }
+
+    @Test
+    @Transactional
+    void getAllAmostrasByPricipalSuspeitaContainsSomething() throws Exception {
+        // Initialize the database
+        amostraRepository.saveAndFlush(amostra);
+
+        // Get all the amostraList where pricipalSuspeita contains DEFAULT_PRICIPAL_SUSPEITA
+        defaultAmostraShouldBeFound("pricipalSuspeita.contains=" + DEFAULT_PRICIPAL_SUSPEITA);
+
+        // Get all the amostraList where pricipalSuspeita contains UPDATED_PRICIPAL_SUSPEITA
+        defaultAmostraShouldNotBeFound("pricipalSuspeita.contains=" + UPDATED_PRICIPAL_SUSPEITA);
+    }
+
+    @Test
+    @Transactional
+    void getAllAmostrasByPricipalSuspeitaNotContainsSomething() throws Exception {
+        // Initialize the database
+        amostraRepository.saveAndFlush(amostra);
+
+        // Get all the amostraList where pricipalSuspeita does not contain DEFAULT_PRICIPAL_SUSPEITA
+        defaultAmostraShouldNotBeFound("pricipalSuspeita.doesNotContain=" + DEFAULT_PRICIPAL_SUSPEITA);
+
+        // Get all the amostraList where pricipalSuspeita does not contain UPDATED_PRICIPAL_SUSPEITA
+        defaultAmostraShouldBeFound("pricipalSuspeita.doesNotContain=" + UPDATED_PRICIPAL_SUSPEITA);
+    }
+
+    @Test
+    @Transactional
     void getAllAmostrasByDataInicialIsEqualToSomething() throws Exception {
         // Initialize the database
         amostraRepository.saveAndFlush(amostra);
@@ -758,110 +1044,6 @@ class AmostraResourceIT {
 
         // Get all the amostraList where dataInicial is greater than SMALLER_DATA_INICIAL
         defaultAmostraShouldBeFound("dataInicial.greaterThan=" + SMALLER_DATA_INICIAL);
-    }
-
-    @Test
-    @Transactional
-    void getAllAmostrasByDataFinalIsEqualToSomething() throws Exception {
-        // Initialize the database
-        amostraRepository.saveAndFlush(amostra);
-
-        // Get all the amostraList where dataFinal equals to DEFAULT_DATA_FINAL
-        defaultAmostraShouldBeFound("dataFinal.equals=" + DEFAULT_DATA_FINAL);
-
-        // Get all the amostraList where dataFinal equals to UPDATED_DATA_FINAL
-        defaultAmostraShouldNotBeFound("dataFinal.equals=" + UPDATED_DATA_FINAL);
-    }
-
-    @Test
-    @Transactional
-    void getAllAmostrasByDataFinalIsNotEqualToSomething() throws Exception {
-        // Initialize the database
-        amostraRepository.saveAndFlush(amostra);
-
-        // Get all the amostraList where dataFinal not equals to DEFAULT_DATA_FINAL
-        defaultAmostraShouldNotBeFound("dataFinal.notEquals=" + DEFAULT_DATA_FINAL);
-
-        // Get all the amostraList where dataFinal not equals to UPDATED_DATA_FINAL
-        defaultAmostraShouldBeFound("dataFinal.notEquals=" + UPDATED_DATA_FINAL);
-    }
-
-    @Test
-    @Transactional
-    void getAllAmostrasByDataFinalIsInShouldWork() throws Exception {
-        // Initialize the database
-        amostraRepository.saveAndFlush(amostra);
-
-        // Get all the amostraList where dataFinal in DEFAULT_DATA_FINAL or UPDATED_DATA_FINAL
-        defaultAmostraShouldBeFound("dataFinal.in=" + DEFAULT_DATA_FINAL + "," + UPDATED_DATA_FINAL);
-
-        // Get all the amostraList where dataFinal equals to UPDATED_DATA_FINAL
-        defaultAmostraShouldNotBeFound("dataFinal.in=" + UPDATED_DATA_FINAL);
-    }
-
-    @Test
-    @Transactional
-    void getAllAmostrasByDataFinalIsNullOrNotNull() throws Exception {
-        // Initialize the database
-        amostraRepository.saveAndFlush(amostra);
-
-        // Get all the amostraList where dataFinal is not null
-        defaultAmostraShouldBeFound("dataFinal.specified=true");
-
-        // Get all the amostraList where dataFinal is null
-        defaultAmostraShouldNotBeFound("dataFinal.specified=false");
-    }
-
-    @Test
-    @Transactional
-    void getAllAmostrasByDataFinalIsGreaterThanOrEqualToSomething() throws Exception {
-        // Initialize the database
-        amostraRepository.saveAndFlush(amostra);
-
-        // Get all the amostraList where dataFinal is greater than or equal to DEFAULT_DATA_FINAL
-        defaultAmostraShouldBeFound("dataFinal.greaterThanOrEqual=" + DEFAULT_DATA_FINAL);
-
-        // Get all the amostraList where dataFinal is greater than or equal to UPDATED_DATA_FINAL
-        defaultAmostraShouldNotBeFound("dataFinal.greaterThanOrEqual=" + UPDATED_DATA_FINAL);
-    }
-
-    @Test
-    @Transactional
-    void getAllAmostrasByDataFinalIsLessThanOrEqualToSomething() throws Exception {
-        // Initialize the database
-        amostraRepository.saveAndFlush(amostra);
-
-        // Get all the amostraList where dataFinal is less than or equal to DEFAULT_DATA_FINAL
-        defaultAmostraShouldBeFound("dataFinal.lessThanOrEqual=" + DEFAULT_DATA_FINAL);
-
-        // Get all the amostraList where dataFinal is less than or equal to SMALLER_DATA_FINAL
-        defaultAmostraShouldNotBeFound("dataFinal.lessThanOrEqual=" + SMALLER_DATA_FINAL);
-    }
-
-    @Test
-    @Transactional
-    void getAllAmostrasByDataFinalIsLessThanSomething() throws Exception {
-        // Initialize the database
-        amostraRepository.saveAndFlush(amostra);
-
-        // Get all the amostraList where dataFinal is less than DEFAULT_DATA_FINAL
-        defaultAmostraShouldNotBeFound("dataFinal.lessThan=" + DEFAULT_DATA_FINAL);
-
-        // Get all the amostraList where dataFinal is less than UPDATED_DATA_FINAL
-        defaultAmostraShouldBeFound("dataFinal.lessThan=" + UPDATED_DATA_FINAL);
-    }
-
-    @Test
-    @Transactional
-    void getAllAmostrasByDataFinalIsGreaterThanSomething() throws Exception {
-        // Initialize the database
-        amostraRepository.saveAndFlush(amostra);
-
-        // Get all the amostraList where dataFinal is greater than DEFAULT_DATA_FINAL
-        defaultAmostraShouldNotBeFound("dataFinal.greaterThan=" + DEFAULT_DATA_FINAL);
-
-        // Get all the amostraList where dataFinal is greater than SMALLER_DATA_FINAL
-        defaultAmostraShouldBeFound("dataFinal.greaterThan=" + SMALLER_DATA_FINAL);
     }
 
     @Test
@@ -1438,6 +1620,84 @@ class AmostraResourceIT {
 
     @Test
     @Transactional
+    void getAllAmostrasByTipoIsEqualToSomething() throws Exception {
+        // Initialize the database
+        amostraRepository.saveAndFlush(amostra);
+
+        // Get all the amostraList where tipo equals to DEFAULT_TIPO
+        defaultAmostraShouldBeFound("tipo.equals=" + DEFAULT_TIPO);
+
+        // Get all the amostraList where tipo equals to UPDATED_TIPO
+        defaultAmostraShouldNotBeFound("tipo.equals=" + UPDATED_TIPO);
+    }
+
+    @Test
+    @Transactional
+    void getAllAmostrasByTipoIsNotEqualToSomething() throws Exception {
+        // Initialize the database
+        amostraRepository.saveAndFlush(amostra);
+
+        // Get all the amostraList where tipo not equals to DEFAULT_TIPO
+        defaultAmostraShouldNotBeFound("tipo.notEquals=" + DEFAULT_TIPO);
+
+        // Get all the amostraList where tipo not equals to UPDATED_TIPO
+        defaultAmostraShouldBeFound("tipo.notEquals=" + UPDATED_TIPO);
+    }
+
+    @Test
+    @Transactional
+    void getAllAmostrasByTipoIsInShouldWork() throws Exception {
+        // Initialize the database
+        amostraRepository.saveAndFlush(amostra);
+
+        // Get all the amostraList where tipo in DEFAULT_TIPO or UPDATED_TIPO
+        defaultAmostraShouldBeFound("tipo.in=" + DEFAULT_TIPO + "," + UPDATED_TIPO);
+
+        // Get all the amostraList where tipo equals to UPDATED_TIPO
+        defaultAmostraShouldNotBeFound("tipo.in=" + UPDATED_TIPO);
+    }
+
+    @Test
+    @Transactional
+    void getAllAmostrasByTipoIsNullOrNotNull() throws Exception {
+        // Initialize the database
+        amostraRepository.saveAndFlush(amostra);
+
+        // Get all the amostraList where tipo is not null
+        defaultAmostraShouldBeFound("tipo.specified=true");
+
+        // Get all the amostraList where tipo is null
+        defaultAmostraShouldNotBeFound("tipo.specified=false");
+    }
+
+    @Test
+    @Transactional
+    void getAllAmostrasByTipoContainsSomething() throws Exception {
+        // Initialize the database
+        amostraRepository.saveAndFlush(amostra);
+
+        // Get all the amostraList where tipo contains DEFAULT_TIPO
+        defaultAmostraShouldBeFound("tipo.contains=" + DEFAULT_TIPO);
+
+        // Get all the amostraList where tipo contains UPDATED_TIPO
+        defaultAmostraShouldNotBeFound("tipo.contains=" + UPDATED_TIPO);
+    }
+
+    @Test
+    @Transactional
+    void getAllAmostrasByTipoNotContainsSomething() throws Exception {
+        // Initialize the database
+        amostraRepository.saveAndFlush(amostra);
+
+        // Get all the amostraList where tipo does not contain DEFAULT_TIPO
+        defaultAmostraShouldNotBeFound("tipo.doesNotContain=" + DEFAULT_TIPO);
+
+        // Get all the amostraList where tipo does not contain UPDATED_TIPO
+        defaultAmostraShouldBeFound("tipo.doesNotContain=" + UPDATED_TIPO);
+    }
+
+    @Test
+    @Transactional
     void getAllAmostrasBySituacaoIsEqualToSomething() throws Exception {
         // Initialize the database
         amostraRepository.saveAndFlush(amostra);
@@ -1609,6 +1869,44 @@ class AmostraResourceIT {
         defaultAmostraShouldNotBeFound("medicoveterinarioId.equals=" + (medicoveterinarioId + 1));
     }
 
+    @Test
+    @Transactional
+    void getAllAmostrasBySubamostraIsEqualToSomething() throws Exception {
+        // Initialize the database
+        amostraRepository.saveAndFlush(amostra);
+        Subamostra subamostra = SubamostraResourceIT.createEntity(em);
+        em.persist(subamostra);
+        em.flush();
+        amostra.setSubamostra(subamostra);
+        amostraRepository.saveAndFlush(amostra);
+        Long subamostraId = subamostra.getId();
+
+        // Get all the amostraList where subamostra equals to subamostraId
+        defaultAmostraShouldBeFound("subamostraId.equals=" + subamostraId);
+
+        // Get all the amostraList where subamostra equals to (subamostraId + 1)
+        defaultAmostraShouldNotBeFound("subamostraId.equals=" + (subamostraId + 1));
+    }
+
+    @Test
+    @Transactional
+    void getAllAmostrasByVacinaIsEqualToSomething() throws Exception {
+        // Initialize the database
+        amostraRepository.saveAndFlush(amostra);
+        Vacina vacina = VacinaResourceIT.createEntity(em);
+        em.persist(vacina);
+        em.flush();
+        amostra.setVacina(vacina);
+        amostraRepository.saveAndFlush(amostra);
+        Long vacinaId = vacina.getId();
+
+        // Get all the amostraList where vacina equals to vacinaId
+        defaultAmostraShouldBeFound("vacinaId.equals=" + vacinaId);
+
+        // Get all the amostraList where vacina equals to (vacinaId + 1)
+        defaultAmostraShouldNotBeFound("vacinaId.equals=" + (vacinaId + 1));
+    }
+
     /**
      * Executes the search, and checks that the default entity is returned.
      */
@@ -1622,8 +1920,10 @@ class AmostraResourceIT {
             .andExpect(jsonPath("$.[*].formaEnvio").value(hasItem(DEFAULT_FORMA_ENVIO)))
             .andExpect(jsonPath("$.[*].numeroAmostras").value(hasItem(DEFAULT_NUMERO_AMOSTRAS)))
             .andExpect(jsonPath("$.[*].especie").value(hasItem(DEFAULT_ESPECIE)))
+            .andExpect(jsonPath("$.[*].numeroAnimais").value(hasItem(DEFAULT_NUMERO_ANIMAIS)))
+            .andExpect(jsonPath("$.[*].acometidos").value(hasItem(DEFAULT_ACOMETIDOS)))
+            .andExpect(jsonPath("$.[*].pricipalSuspeita").value(hasItem(DEFAULT_PRICIPAL_SUSPEITA)))
             .andExpect(jsonPath("$.[*].dataInicial").value(hasItem(DEFAULT_DATA_INICIAL.toString())))
-            .andExpect(jsonPath("$.[*].dataFinal").value(hasItem(DEFAULT_DATA_FINAL.toString())))
             .andExpect(jsonPath("$.[*].materialRecebido").value(hasItem(DEFAULT_MATERIAL_RECEBIDO)))
             .andExpect(jsonPath("$.[*].acondicionamento").value(hasItem(DEFAULT_ACONDICIONAMENTO)))
             .andExpect(jsonPath("$.[*].condicaoMaterial").value(hasItem(DEFAULT_CONDICAO_MATERIAL)))
@@ -1631,6 +1931,7 @@ class AmostraResourceIT {
             .andExpect(jsonPath("$.[*].tipoMedVet").value(hasItem(DEFAULT_TIPO_MED_VET)))
             .andExpect(jsonPath("$.[*].valorTotal").value(hasItem(sameNumber(DEFAULT_VALOR_TOTAL))))
             .andExpect(jsonPath("$.[*].tipoPagamento").value(hasItem(DEFAULT_TIPO_PAGAMENTO)))
+            .andExpect(jsonPath("$.[*].tipo").value(hasItem(DEFAULT_TIPO)))
             .andExpect(jsonPath("$.[*].situacao").value(hasItem(DEFAULT_SITUACAO)));
 
         // Check, that the count call also returns 1
@@ -1684,8 +1985,10 @@ class AmostraResourceIT {
             .formaEnvio(UPDATED_FORMA_ENVIO)
             .numeroAmostras(UPDATED_NUMERO_AMOSTRAS)
             .especie(UPDATED_ESPECIE)
+            .numeroAnimais(UPDATED_NUMERO_ANIMAIS)
+            .acometidos(UPDATED_ACOMETIDOS)
+            .pricipalSuspeita(UPDATED_PRICIPAL_SUSPEITA)
             .dataInicial(UPDATED_DATA_INICIAL)
-            .dataFinal(UPDATED_DATA_FINAL)
             .materialRecebido(UPDATED_MATERIAL_RECEBIDO)
             .acondicionamento(UPDATED_ACONDICIONAMENTO)
             .condicaoMaterial(UPDATED_CONDICAO_MATERIAL)
@@ -1693,6 +1996,7 @@ class AmostraResourceIT {
             .tipoMedVet(UPDATED_TIPO_MED_VET)
             .valorTotal(UPDATED_VALOR_TOTAL)
             .tipoPagamento(UPDATED_TIPO_PAGAMENTO)
+            .tipo(UPDATED_TIPO)
             .situacao(UPDATED_SITUACAO);
         AmostraDTO amostraDTO = amostraMapper.toDto(updatedAmostra);
 
@@ -1712,8 +2016,10 @@ class AmostraResourceIT {
         assertThat(testAmostra.getFormaEnvio()).isEqualTo(UPDATED_FORMA_ENVIO);
         assertThat(testAmostra.getNumeroAmostras()).isEqualTo(UPDATED_NUMERO_AMOSTRAS);
         assertThat(testAmostra.getEspecie()).isEqualTo(UPDATED_ESPECIE);
+        assertThat(testAmostra.getNumeroAnimais()).isEqualTo(UPDATED_NUMERO_ANIMAIS);
+        assertThat(testAmostra.getAcometidos()).isEqualTo(UPDATED_ACOMETIDOS);
+        assertThat(testAmostra.getPricipalSuspeita()).isEqualTo(UPDATED_PRICIPAL_SUSPEITA);
         assertThat(testAmostra.getDataInicial()).isEqualTo(UPDATED_DATA_INICIAL);
-        assertThat(testAmostra.getDataFinal()).isEqualTo(UPDATED_DATA_FINAL);
         assertThat(testAmostra.getMaterialRecebido()).isEqualTo(UPDATED_MATERIAL_RECEBIDO);
         assertThat(testAmostra.getAcondicionamento()).isEqualTo(UPDATED_ACONDICIONAMENTO);
         assertThat(testAmostra.getCondicaoMaterial()).isEqualTo(UPDATED_CONDICAO_MATERIAL);
@@ -1721,6 +2027,7 @@ class AmostraResourceIT {
         assertThat(testAmostra.getTipoMedVet()).isEqualTo(UPDATED_TIPO_MED_VET);
         assertThat(testAmostra.getValorTotal()).isEqualTo(UPDATED_VALOR_TOTAL);
         assertThat(testAmostra.getTipoPagamento()).isEqualTo(UPDATED_TIPO_PAGAMENTO);
+        assertThat(testAmostra.getTipo()).isEqualTo(UPDATED_TIPO);
         assertThat(testAmostra.getSituacao()).isEqualTo(UPDATED_SITUACAO);
     }
 
@@ -1805,7 +2112,8 @@ class AmostraResourceIT {
             .protocolo(UPDATED_PROTOCOLO)
             .formaEnvio(UPDATED_FORMA_ENVIO)
             .numeroAmostras(UPDATED_NUMERO_AMOSTRAS)
-            .especie(UPDATED_ESPECIE);
+            .especie(UPDATED_ESPECIE)
+            .situacao(UPDATED_SITUACAO);
 
         restAmostraMockMvc
             .perform(
@@ -1823,8 +2131,10 @@ class AmostraResourceIT {
         assertThat(testAmostra.getFormaEnvio()).isEqualTo(UPDATED_FORMA_ENVIO);
         assertThat(testAmostra.getNumeroAmostras()).isEqualTo(UPDATED_NUMERO_AMOSTRAS);
         assertThat(testAmostra.getEspecie()).isEqualTo(UPDATED_ESPECIE);
+        assertThat(testAmostra.getNumeroAnimais()).isEqualTo(DEFAULT_NUMERO_ANIMAIS);
+        assertThat(testAmostra.getAcometidos()).isEqualTo(DEFAULT_ACOMETIDOS);
+        assertThat(testAmostra.getPricipalSuspeita()).isEqualTo(DEFAULT_PRICIPAL_SUSPEITA);
         assertThat(testAmostra.getDataInicial()).isEqualTo(DEFAULT_DATA_INICIAL);
-        assertThat(testAmostra.getDataFinal()).isEqualTo(DEFAULT_DATA_FINAL);
         assertThat(testAmostra.getMaterialRecebido()).isEqualTo(DEFAULT_MATERIAL_RECEBIDO);
         assertThat(testAmostra.getAcondicionamento()).isEqualTo(DEFAULT_ACONDICIONAMENTO);
         assertThat(testAmostra.getCondicaoMaterial()).isEqualTo(DEFAULT_CONDICAO_MATERIAL);
@@ -1832,7 +2142,8 @@ class AmostraResourceIT {
         assertThat(testAmostra.getTipoMedVet()).isEqualTo(DEFAULT_TIPO_MED_VET);
         assertThat(testAmostra.getValorTotal()).isEqualByComparingTo(DEFAULT_VALOR_TOTAL);
         assertThat(testAmostra.getTipoPagamento()).isEqualTo(DEFAULT_TIPO_PAGAMENTO);
-        assertThat(testAmostra.getSituacao()).isEqualTo(DEFAULT_SITUACAO);
+        assertThat(testAmostra.getTipo()).isEqualTo(DEFAULT_TIPO);
+        assertThat(testAmostra.getSituacao()).isEqualTo(UPDATED_SITUACAO);
     }
 
     @Test
@@ -1852,8 +2163,10 @@ class AmostraResourceIT {
             .formaEnvio(UPDATED_FORMA_ENVIO)
             .numeroAmostras(UPDATED_NUMERO_AMOSTRAS)
             .especie(UPDATED_ESPECIE)
+            .numeroAnimais(UPDATED_NUMERO_ANIMAIS)
+            .acometidos(UPDATED_ACOMETIDOS)
+            .pricipalSuspeita(UPDATED_PRICIPAL_SUSPEITA)
             .dataInicial(UPDATED_DATA_INICIAL)
-            .dataFinal(UPDATED_DATA_FINAL)
             .materialRecebido(UPDATED_MATERIAL_RECEBIDO)
             .acondicionamento(UPDATED_ACONDICIONAMENTO)
             .condicaoMaterial(UPDATED_CONDICAO_MATERIAL)
@@ -1861,6 +2174,7 @@ class AmostraResourceIT {
             .tipoMedVet(UPDATED_TIPO_MED_VET)
             .valorTotal(UPDATED_VALOR_TOTAL)
             .tipoPagamento(UPDATED_TIPO_PAGAMENTO)
+            .tipo(UPDATED_TIPO)
             .situacao(UPDATED_SITUACAO);
 
         restAmostraMockMvc
@@ -1879,8 +2193,10 @@ class AmostraResourceIT {
         assertThat(testAmostra.getFormaEnvio()).isEqualTo(UPDATED_FORMA_ENVIO);
         assertThat(testAmostra.getNumeroAmostras()).isEqualTo(UPDATED_NUMERO_AMOSTRAS);
         assertThat(testAmostra.getEspecie()).isEqualTo(UPDATED_ESPECIE);
+        assertThat(testAmostra.getNumeroAnimais()).isEqualTo(UPDATED_NUMERO_ANIMAIS);
+        assertThat(testAmostra.getAcometidos()).isEqualTo(UPDATED_ACOMETIDOS);
+        assertThat(testAmostra.getPricipalSuspeita()).isEqualTo(UPDATED_PRICIPAL_SUSPEITA);
         assertThat(testAmostra.getDataInicial()).isEqualTo(UPDATED_DATA_INICIAL);
-        assertThat(testAmostra.getDataFinal()).isEqualTo(UPDATED_DATA_FINAL);
         assertThat(testAmostra.getMaterialRecebido()).isEqualTo(UPDATED_MATERIAL_RECEBIDO);
         assertThat(testAmostra.getAcondicionamento()).isEqualTo(UPDATED_ACONDICIONAMENTO);
         assertThat(testAmostra.getCondicaoMaterial()).isEqualTo(UPDATED_CONDICAO_MATERIAL);
@@ -1888,6 +2204,7 @@ class AmostraResourceIT {
         assertThat(testAmostra.getTipoMedVet()).isEqualTo(UPDATED_TIPO_MED_VET);
         assertThat(testAmostra.getValorTotal()).isEqualByComparingTo(UPDATED_VALOR_TOTAL);
         assertThat(testAmostra.getTipoPagamento()).isEqualTo(UPDATED_TIPO_PAGAMENTO);
+        assertThat(testAmostra.getTipo()).isEqualTo(UPDATED_TIPO);
         assertThat(testAmostra.getSituacao()).isEqualTo(UPDATED_SITUACAO);
     }
 

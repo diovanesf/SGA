@@ -39,7 +39,9 @@ describe('Service Tests', () => {
         'AAAAAAA',
         0,
         'AAAAAAA',
-        currentDate,
+        0,
+        'AAAAAAA',
+        'AAAAAAA',
         currentDate,
         'AAAAAAA',
         'AAAAAAA',
@@ -47,6 +49,7 @@ describe('Service Tests', () => {
         'AAAAAAA',
         'AAAAAAA',
         0,
+        'AAAAAAA',
         'AAAAAAA',
         'AAAAAAA'
       );
@@ -57,7 +60,6 @@ describe('Service Tests', () => {
         const returnedFromService = Object.assign(
           {
             dataInicial: dayjs(currentDate).format(DATE_FORMAT),
-            dataFinal: dayjs(currentDate).format(DATE_FORMAT),
           },
           elemDefault
         );
@@ -83,14 +85,12 @@ describe('Service Tests', () => {
           {
             id: 0,
             dataInicial: dayjs(currentDate).format(DATE_FORMAT),
-            dataFinal: dayjs(currentDate).format(DATE_FORMAT),
           },
           elemDefault
         );
         const expected = Object.assign(
           {
             dataInicial: currentDate,
-            dataFinal: currentDate,
           },
           returnedFromService
         );
@@ -119,8 +119,10 @@ describe('Service Tests', () => {
             formaEnvio: 'BBBBBB',
             numeroAmostras: 1,
             especie: 'BBBBBB',
+            numeroAnimais: 1,
+            acometidos: 'BBBBBB',
+            pricipalSuspeita: 'BBBBBB',
             dataInicial: dayjs(currentDate).format(DATE_FORMAT),
-            dataFinal: dayjs(currentDate).format(DATE_FORMAT),
             materialRecebido: 'BBBBBB',
             acondicionamento: 'BBBBBB',
             condicaoMaterial: 'BBBBBB',
@@ -128,6 +130,7 @@ describe('Service Tests', () => {
             tipoMedVet: 'BBBBBB',
             valorTotal: 1,
             tipoPagamento: 'BBBBBB',
+            tipo: 'BBBBBB',
             situacao: 'BBBBBB',
           },
           elemDefault
@@ -136,7 +139,6 @@ describe('Service Tests', () => {
         const expected = Object.assign(
           {
             dataInicial: currentDate,
-            dataFinal: currentDate,
           },
           returnedFromService
         );
@@ -165,6 +167,7 @@ describe('Service Tests', () => {
             formaEnvio: 'BBBBBB',
             numeroAmostras: 1,
             especie: 'BBBBBB',
+            situacao: 'BBBBBB',
           },
           new Amostra()
         );
@@ -173,7 +176,6 @@ describe('Service Tests', () => {
         const expected = Object.assign(
           {
             dataInicial: currentDate,
-            dataFinal: currentDate,
           },
           returnedFromService
         );
@@ -202,8 +204,10 @@ describe('Service Tests', () => {
             formaEnvio: 'BBBBBB',
             numeroAmostras: 1,
             especie: 'BBBBBB',
+            numeroAnimais: 1,
+            acometidos: 'BBBBBB',
+            pricipalSuspeita: 'BBBBBB',
             dataInicial: dayjs(currentDate).format(DATE_FORMAT),
-            dataFinal: dayjs(currentDate).format(DATE_FORMAT),
             materialRecebido: 'BBBBBB',
             acondicionamento: 'BBBBBB',
             condicaoMaterial: 'BBBBBB',
@@ -211,6 +215,7 @@ describe('Service Tests', () => {
             tipoMedVet: 'BBBBBB',
             valorTotal: 1,
             tipoPagamento: 'BBBBBB',
+            tipo: 'BBBBBB',
             situacao: 'BBBBBB',
           },
           elemDefault
@@ -218,7 +223,6 @@ describe('Service Tests', () => {
         const expected = Object.assign(
           {
             dataInicial: currentDate,
-            dataFinal: currentDate,
           },
           returnedFromService
         );

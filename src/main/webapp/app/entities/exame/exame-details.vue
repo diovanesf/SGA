@@ -74,6 +74,16 @@
               }}</router-link>
             </div>
           </dd>
+          <dt>
+            <span>Subamostra</span>
+          </dt>
+          <dd>
+            <div v-if="exame.subamostra">
+              <router-link :to="{ name: 'SubamostraView', params: { subamostraId: exame.subamostra.id } }">{{
+                exame.subamostra.subamostra
+              }}</router-link>
+            </div>
+          </dd>
         </dl>
         <button type="submit" v-on:click.prevent="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
           <font-awesome-icon icon="arrow-left"></font-awesome-icon>&nbsp;<span> Back</span>

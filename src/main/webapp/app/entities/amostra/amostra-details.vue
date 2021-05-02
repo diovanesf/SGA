@@ -29,16 +29,28 @@
             <span>{{ amostra.especie }}</span>
           </dd>
           <dt>
+            <span>Numero Animais</span>
+          </dt>
+          <dd>
+            <span>{{ amostra.numeroAnimais }}</span>
+          </dd>
+          <dt>
+            <span>Acometidos</span>
+          </dt>
+          <dd>
+            <span>{{ amostra.acometidos }}</span>
+          </dd>
+          <dt>
+            <span>Pricipal Suspeita</span>
+          </dt>
+          <dd>
+            <span>{{ amostra.pricipalSuspeita }}</span>
+          </dd>
+          <dt>
             <span>Data Inicial</span>
           </dt>
           <dd>
             <span>{{ amostra.dataInicial }}</span>
-          </dd>
-          <dt>
-            <span>Data Final</span>
-          </dt>
-          <dd>
-            <span>{{ amostra.dataFinal }}</span>
           </dd>
           <dt>
             <span>Material Recebido</span>
@@ -83,13 +95,19 @@
             <span>{{ amostra.tipoPagamento }}</span>
           </dd>
           <dt>
-            <span>Situação</span>
+            <span>Tipo</span>
+          </dt>
+          <dd>
+            <span>{{ amostra.tipo }}</span>
+          </dd>
+          <dt>
+            <span>Situacao</span>
           </dt>
           <dd>
             <span>{{ amostra.situacao }}</span>
           </dd>
           <dt>
-            <span>Usuário</span>
+            <span>User</span>
           </dt>
           <dd>
             <span v-for="(user, i) in amostra.users" :key="user.id"
@@ -108,7 +126,7 @@
             </div>
           </dd>
           <dt>
-            <span>Medico Veterinário</span>
+            <span>Medicoveterinario</span>
           </dt>
           <dd>
             <div v-if="amostra.medicoveterinario">
@@ -117,13 +135,31 @@
               }}</router-link>
             </div>
           </dd>
+          <dt>
+            <span>Subamostra</span>
+          </dt>
+          <dd>
+            <div v-if="amostra.subamostra">
+              <router-link :to="{ name: 'SubamostraView', params: { subamostraId: amostra.subamostra.id } }">{{
+                amostra.subamostra.subamostra
+              }}</router-link>
+            </div>
+          </dd>
+          <dt>
+            <span>Vacina</span>
+          </dt>
+          <dd>
+            <div v-if="amostra.vacina">
+              <router-link :to="{ name: 'VacinaView', params: { vacinaId: amostra.vacina.id } }">{{ amostra.vacina.status }}</router-link>
+            </div>
+          </dd>
         </dl>
         <button type="submit" v-on:click.prevent="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
-          <font-awesome-icon icon="arrow-left"></font-awesome-icon>&nbsp;<span> Voltar</span>
+          <font-awesome-icon icon="arrow-left"></font-awesome-icon>&nbsp;<span> Back</span>
         </button>
         <router-link v-if="amostra.id" :to="{ name: 'AmostraEdit', params: { amostraId: amostra.id } }" custom v-slot="{ navigate }">
           <button @click="navigate" class="btn btn-primary">
-            <font-awesome-icon icon="pencil-alt"></font-awesome-icon>&nbsp;<span> Editar</span>
+            <font-awesome-icon icon="pencil-alt"></font-awesome-icon>&nbsp;<span> Edit</span>
           </button>
         </router-link>
       </div>

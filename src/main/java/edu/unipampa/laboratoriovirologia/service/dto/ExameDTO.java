@@ -37,6 +37,8 @@ public class ExameDTO implements Serializable {
 
     private AmostraDTO amostra;
 
+    private SubamostraDTO subamostra;
+
     public Long getId() {
         return id;
     }
@@ -133,6 +135,14 @@ public class ExameDTO implements Serializable {
         this.amostra = amostra;
     }
 
+    public SubamostraDTO getSubamostra() {
+        return subamostra;
+    }
+
+    public void setSubamostra(SubamostraDTO subamostra) {
+        this.subamostra = subamostra;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) {
@@ -170,6 +180,7 @@ public class ExameDTO implements Serializable {
             ", observacoes='" + getObservacoes() + "'" +
             ", valor=" + getValor() +
             ", amostra=" + getAmostra() +
+            ", subamostra=" + getSubamostra() +
             "}";
     }
 }

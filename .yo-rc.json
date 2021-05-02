@@ -42,7 +42,7 @@
     "jwtSecretKey": "MGZhNzUxYjUyZThkODZlZDE4YjAzNDJmZjg1ZDliY2NmMzI2NjFlODFiOTZmMzkwMjdmMmM4NjA1ZTRkMDZhODE1MzFkZDhmYzYyZjMxMDE0M2Q0Njg3MjVlNDZmODA3NWQzMGU3NTdkOGQwOTgyMDg2MGUzN2VhMWQ3M2FlYjU=",
     "clientPackageManager": "npm",
     "languages": ["en", "fr"],
-    "entities": ["Amostra", "Proprietario", "Propriedade", "Endereco", "Exame", "Midia", "Medicoveterinario"],
-    "lastLiquibaseTimestamp": 1618887219000
+    "entities": ["Amostra", "Proprietario", "Propriedade", "Endereco", "Exame", "Midia", "Medicoveterinario", "Subamostra", "Vacina"],
+    "lastLiquibaseTimestamp": 1619983037000
   }
 }

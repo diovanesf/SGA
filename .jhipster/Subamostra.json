@@ -1,0 +1,16 @@
+{
+  "fields": [
+    {
+      "fieldName": "subAmostra",
+      "fieldType": "String"
+    }
+  ],
+  "relationships": [],
+  "service": "serviceClass",
+  "dto": "mapstruct",
+  "jpaMetamodelFiltering": false,
+  "readOnly": false,
+  "pagination": "no",
+  "name": "Subamostra",
+  "changelogDate": "20210502191716"
+}

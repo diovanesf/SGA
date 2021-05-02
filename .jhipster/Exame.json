@@ -49,6 +49,12 @@
       "otherEntityName": "amostra",
       "relationshipType": "many-to-one",
       "otherEntityField": "protocolo"
+    },
+    {
+      "relationshipName": "subamostra",
+      "otherEntityName": "subamostra",
+      "relationshipType": "many-to-one",
+      "otherEntityField": "subamostra"
     }
   ],
   "service": "serviceClass",

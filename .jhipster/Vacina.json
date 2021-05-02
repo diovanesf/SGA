@@ -1,0 +1,33 @@
+{
+  "fields": [
+    {
+      "fieldName": "status",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "pesoMaterial",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "estimativaVacinas",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "dataConclusao",
+      "fieldType": "LocalDate"
+    },
+    {
+      "fieldName": "observacoes",
+      "fieldType": "byte[]",
+      "fieldTypeBlobContent": "text"
+    }
+  ],
+  "relationships": [],
+  "service": "serviceClass",
+  "dto": "mapstruct",
+  "jpaMetamodelFiltering": false,
+  "readOnly": false,
+  "pagination": "no",
+  "name": "Vacina",
+  "changelogDate": "20210502191717"
+}

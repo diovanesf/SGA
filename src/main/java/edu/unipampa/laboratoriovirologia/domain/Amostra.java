@@ -34,11 +34,17 @@ public class Amostra implements Serializable {
     @Column(name = "especie")
     private String especie;
 
+    @Column(name = "numero_animais")
+    private Integer numeroAnimais;
+
+    @Column(name = "acometidos")
+    private String acometidos;
+
+    @Column(name = "pricipal_suspeita")
+    private String pricipalSuspeita;
+
     @Column(name = "data_inicial")
     private LocalDate dataInicial;
-
-    @Column(name = "data_final")
-    private LocalDate dataFinal;
 
     @Column(name = "material_recebido")
     private String materialRecebido;
@@ -61,6 +67,9 @@ public class Amostra implements Serializable {
     @Column(name = "tipo_pagamento")
     private String tipoPagamento;
 
+    @Column(name = "tipo")
+    private String tipo;
+
     @Column(name = "situacao")
     private String situacao;
 
@@ -72,21 +81,27 @@ public class Amostra implements Serializable {
     )
     private Set<User> users = new HashSet<>();
 
-    @OneToMany(mappedBy = "amostra", cascade = CascadeType.REMOVE, orphanRemoval = true)
+    @OneToMany(mappedBy = "amostra")
     @JsonIgnoreProperties(value = { "amostra" }, allowSetters = true)
     private Set<Midia> midias = new HashSet<>();
 
-    @OneToMany(mappedBy = "amostra", cascade = CascadeType.REMOVE,orphanRemoval = true)
-    @JsonIgnoreProperties(value = { "amostra" }, allowSetters = true)
+    @OneToMany(mappedBy = "amostra")
+    @JsonIgnoreProperties(value = { "amostra", "subamostra" }, allowSetters = true)
     private Set<Exame> exames = new HashSet<>();
 
     @ManyToOne
-    @JsonIgnoreProperties(value = { "endereco" }, allowSetters = true)
+    @JsonIgnoreProperties(value = { "proprietario", "endereco" }, allowSetters = true)
     private Propriedade propriedade;
+
+    @ManyToOne
+    private Medicoveterinario medicoveterinario;
+
+    @ManyToOne
+    private Subamostra subamostra;
 
     @OneToOne
     @JoinColumn(unique = true)
-    private Medicoveterinario medicoveterinario;
+    private Vacina vacina;
 
     // jhipster-needle-entity-add-field - JHipster will add fields here
     public Long getId() {
@@ -154,6 +169,45 @@ public class Amostra implements Serializable {
         this.especie = especie;
     }
 
+    public Integer getNumeroAnimais() {
+        return this.numeroAnimais;
+    }
+
+    public Amostra numeroAnimais(Integer numeroAnimais) {
+        this.numeroAnimais = numeroAnimais;
+        return this;
+    }
+
+    public void setNumeroAnimais(Integer numeroAnimais) {
+        this.numeroAnimais = numeroAnimais;
+    }
+
+    public String getAcometidos() {
+        return this.acometidos;
+    }
+
+    public Amostra acometidos(String acometidos) {
+        this.acometidos = acometidos;
+        return this;
+    }
+
+    public void setAcometidos(String acometidos) {
+        this.acometidos = acometidos;
+    }
+
+    public String getPricipalSuspeita() {
+        return this.pricipalSuspeita;
+    }
+
+    public Amostra pricipalSuspeita(String pricipalSuspeita) {
+        this.pricipalSuspeita = pricipalSuspeita;
+        return this;
+    }
+
+    public void setPricipalSuspeita(String pricipalSuspeita) {
+        this.pricipalSuspeita = pricipalSuspeita;
+    }
+
     public LocalDate getDataInicial() {
         return this.dataInicial;
     }
@@ -165,19 +219,6 @@ public class Amostra implements Serializable {
 
     public void setDataInicial(LocalDate dataInicial) {
         this.dataInicial = dataInicial;
-    }
-
-    public LocalDate getDataFinal() {
-        return this.dataFinal;
-    }
-
-    public Amostra dataFinal(LocalDate dataFinal) {
-        this.dataFinal = dataFinal;
-        return this;
-    }
-
-    public void setDataFinal(LocalDate dataFinal) {
-        this.dataFinal = dataFinal;
     }
 
     public String getMaterialRecebido() {
@@ -269,6 +310,19 @@ public class Amostra implements Serializable {
 
     public void setTipoPagamento(String tipoPagamento) {
         this.tipoPagamento = tipoPagamento;
+    }
+
+    public String getTipo() {
+        return this.tipo;
+    }
+
+    public Amostra tipo(String tipo) {
+        this.tipo = tipo;
+        return this;
+    }
+
+    public void setTipo(String tipo) {
+        this.tipo = tipo;
     }
 
     public String getSituacao() {
@@ -395,6 +449,32 @@ public class Amostra implements Serializable {
         this.medicoveterinario = medicoveterinario;
     }
 
+    public Subamostra getSubamostra() {
+        return this.subamostra;
+    }
+
+    public Amostra subamostra(Subamostra subamostra) {
+        this.setSubamostra(subamostra);
+        return this;
+    }
+
+    public void setSubamostra(Subamostra subamostra) {
+        this.subamostra = subamostra;
+    }
+
+    public Vacina getVacina() {
+        return this.vacina;
+    }
+
+    public Amostra vacina(Vacina vacina) {
+        this.setVacina(vacina);
+        return this;
+    }
+
+    public void setVacina(Vacina vacina) {
+        this.vacina = vacina;
+    }
+
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here
 
     @Override
@@ -423,8 +503,10 @@ public class Amostra implements Serializable {
             ", formaEnvio='" + getFormaEnvio() + "'" +
             ", numeroAmostras=" + getNumeroAmostras() +
             ", especie='" + getEspecie() + "'" +
+            ", numeroAnimais=" + getNumeroAnimais() +
+            ", acometidos='" + getAcometidos() + "'" +
+            ", pricipalSuspeita='" + getPricipalSuspeita() + "'" +
             ", dataInicial='" + getDataInicial() + "'" +
-            ", dataFinal='" + getDataFinal() + "'" +
             ", materialRecebido='" + getMaterialRecebido() + "'" +
             ", acondicionamento='" + getAcondicionamento() + "'" +
             ", condicaoMaterial='" + getCondicaoMaterial() + "'" +
@@ -432,6 +514,7 @@ public class Amostra implements Serializable {
             ", tipoMedVet='" + getTipoMedVet() + "'" +
             ", valorTotal=" + getValorTotal() +
             ", tipoPagamento='" + getTipoPagamento() + "'" +
+            ", tipo='" + getTipo() + "'" +
             ", situacao='" + getSituacao() + "'" +
             "}";
     }

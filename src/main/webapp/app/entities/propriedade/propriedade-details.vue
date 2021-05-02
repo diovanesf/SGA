@@ -11,30 +11,6 @@
             <span>{{ propriedade.tipoPropriedade }}</span>
           </dd>
           <dt>
-            <span>Numero Animais</span>
-          </dt>
-          <dd>
-            <span>{{ propriedade.numeroAnimais }}</span>
-          </dd>
-          <dt>
-            <span>Acometidos</span>
-          </dt>
-          <dd>
-            <span>{{ propriedade.acometidos }}</span>
-          </dd>
-          <dt>
-            <span>Observacoes</span>
-          </dt>
-          <dd>
-            <span>{{ propriedade.observacoes }}</span>
-          </dd>
-          <dt>
-            <span>Pricipal Suspeita</span>
-          </dt>
-          <dd>
-            <span>{{ propriedade.pricipalSuspeita }}</span>
-          </dd>
-          <dt>
             <span>Tipo Criacao</span>
           </dt>
           <dd>

@@ -56,8 +56,14 @@ public class Exame implements Serializable {
     private BigDecimal valor;
 
     @ManyToOne
-    @JsonIgnoreProperties(value = { "users", "midias", "exames", "propriedade", "medicoveterinario" }, allowSetters = true)
+    @JsonIgnoreProperties(
+        value = { "users", "midias", "exames", "propriedade", "medicoveterinario", "subamostra", "vacina" },
+        allowSetters = true
+    )
     private Amostra amostra;
+
+    @ManyToOne
+    private Subamostra subamostra;
 
     // jhipster-needle-entity-add-field - JHipster will add fields here
     public Long getId() {
@@ -214,6 +220,19 @@ public class Exame implements Serializable {
 
     public void setAmostra(Amostra amostra) {
         this.amostra = amostra;
+    }
+
+    public Subamostra getSubamostra() {
+        return this.subamostra;
+    }
+
+    public Exame subamostra(Subamostra subamostra) {
+        this.setSubamostra(subamostra);
+        return this;
+    }
+
+    public void setSubamostra(Subamostra subamostra) {
+        this.subamostra = subamostra;
     }
 
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here

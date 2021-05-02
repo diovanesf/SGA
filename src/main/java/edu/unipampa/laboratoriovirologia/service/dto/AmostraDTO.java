@@ -22,9 +22,13 @@ public class AmostraDTO implements Serializable {
 
     private String especie;
 
-    private LocalDate dataInicial;
+    private Integer numeroAnimais;
 
-    private LocalDate dataFinal;
+    private String acometidos;
+
+    private String pricipalSuspeita;
+
+    private LocalDate dataInicial;
 
     private String materialRecebido;
 
@@ -40,6 +44,8 @@ public class AmostraDTO implements Serializable {
 
     private String tipoPagamento;
 
+    private String tipo;
+
     private String situacao;
 
     private Set<UserDTO> users = new HashSet<>();
@@ -47,6 +53,10 @@ public class AmostraDTO implements Serializable {
     private PropriedadeDTO propriedade;
 
     private MedicoveterinarioDTO medicoveterinario;
+
+    private SubamostraDTO subamostra;
+
+    private VacinaDTO vacina;
 
     public Long getId() {
         return id;
@@ -88,20 +98,36 @@ public class AmostraDTO implements Serializable {
         this.especie = especie;
     }
 
+    public Integer getNumeroAnimais() {
+        return numeroAnimais;
+    }
+
+    public void setNumeroAnimais(Integer numeroAnimais) {
+        this.numeroAnimais = numeroAnimais;
+    }
+
+    public String getAcometidos() {
+        return acometidos;
+    }
+
+    public void setAcometidos(String acometidos) {
+        this.acometidos = acometidos;
+    }
+
+    public String getPricipalSuspeita() {
+        return pricipalSuspeita;
+    }
+
+    public void setPricipalSuspeita(String pricipalSuspeita) {
+        this.pricipalSuspeita = pricipalSuspeita;
+    }
+
     public LocalDate getDataInicial() {
         return dataInicial;
     }
 
     public void setDataInicial(LocalDate dataInicial) {
         this.dataInicial = dataInicial;
-    }
-
-    public LocalDate getDataFinal() {
-        return dataFinal;
-    }
-
-    public void setDataFinal(LocalDate dataFinal) {
-        this.dataFinal = dataFinal;
     }
 
     public String getMaterialRecebido() {
@@ -160,6 +186,14 @@ public class AmostraDTO implements Serializable {
         this.tipoPagamento = tipoPagamento;
     }
 
+    public String getTipo() {
+        return tipo;
+    }
+
+    public void setTipo(String tipo) {
+        this.tipo = tipo;
+    }
+
     public String getSituacao() {
         return situacao;
     }
@@ -192,6 +226,22 @@ public class AmostraDTO implements Serializable {
         this.medicoveterinario = medicoveterinario;
     }
 
+    public SubamostraDTO getSubamostra() {
+        return subamostra;
+    }
+
+    public void setSubamostra(SubamostraDTO subamostra) {
+        this.subamostra = subamostra;
+    }
+
+    public VacinaDTO getVacina() {
+        return vacina;
+    }
+
+    public void setVacina(VacinaDTO vacina) {
+        this.vacina = vacina;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) {
@@ -222,8 +272,10 @@ public class AmostraDTO implements Serializable {
             ", formaEnvio='" + getFormaEnvio() + "'" +
             ", numeroAmostras=" + getNumeroAmostras() +
             ", especie='" + getEspecie() + "'" +
+            ", numeroAnimais=" + getNumeroAnimais() +
+            ", acometidos='" + getAcometidos() + "'" +
+            ", pricipalSuspeita='" + getPricipalSuspeita() + "'" +
             ", dataInicial='" + getDataInicial() + "'" +
-            ", dataFinal='" + getDataFinal() + "'" +
             ", materialRecebido='" + getMaterialRecebido() + "'" +
             ", acondicionamento='" + getAcondicionamento() + "'" +
             ", condicaoMaterial='" + getCondicaoMaterial() + "'" +
@@ -231,10 +283,13 @@ public class AmostraDTO implements Serializable {
             ", tipoMedVet='" + getTipoMedVet() + "'" +
             ", valorTotal=" + getValorTotal() +
             ", tipoPagamento='" + getTipoPagamento() + "'" +
+            ", tipo='" + getTipo() + "'" +
             ", situacao='" + getSituacao() + "'" +
             ", users=" + getUsers() +
             ", propriedade=" + getPropriedade() +
             ", medicoveterinario=" + getMedicoveterinario() +
+            ", subamostra=" + getSubamostra() +
+            ", vacina=" + getVacina() +
             "}";
     }
 }

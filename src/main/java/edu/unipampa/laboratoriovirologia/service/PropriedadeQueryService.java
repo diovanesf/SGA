@@ -89,15 +89,6 @@ public class PropriedadeQueryService extends QueryService<Propriedade> {
             if (criteria.getTipoPropriedade() != null) {
                 specification = specification.and(buildStringSpecification(criteria.getTipoPropriedade(), Propriedade_.tipoPropriedade));
             }
-            if (criteria.getNumeroAnimais() != null) {
-                specification = specification.and(buildRangeSpecification(criteria.getNumeroAnimais(), Propriedade_.numeroAnimais));
-            }
-            if (criteria.getAcometidos() != null) {
-                specification = specification.and(buildStringSpecification(criteria.getAcometidos(), Propriedade_.acometidos));
-            }
-            if (criteria.getPricipalSuspeita() != null) {
-                specification = specification.and(buildStringSpecification(criteria.getPricipalSuspeita(), Propriedade_.pricipalSuspeita));
-            }
             if (criteria.getTipoCriacao() != null) {
                 specification = specification.and(buildStringSpecification(criteria.getTipoCriacao(), Propriedade_.tipoCriacao));
             }

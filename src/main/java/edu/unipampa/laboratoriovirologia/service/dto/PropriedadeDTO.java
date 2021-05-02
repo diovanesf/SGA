@@ -2,7 +2,6 @@ package edu.unipampa.laboratoriovirologia.service.dto;
 
 import java.io.Serializable;
 import java.util.Objects;
-import javax.persistence.Lob;
 
 /**
  * A DTO for the {@link edu.unipampa.laboratoriovirologia.domain.Propriedade} entity.
@@ -12,15 +11,6 @@ public class PropriedadeDTO implements Serializable {
     private Long id;
 
     private String tipoPropriedade;
-
-    private Integer numeroAnimais;
-
-    private String acometidos;
-
-    @Lob
-    private String observacoes;
-
-    private String pricipalSuspeita;
 
     private String tipoCriacao;
 
@@ -42,38 +32,6 @@ public class PropriedadeDTO implements Serializable {
 
     public void setTipoPropriedade(String tipoPropriedade) {
         this.tipoPropriedade = tipoPropriedade;
-    }
-
-    public Integer getNumeroAnimais() {
-        return numeroAnimais;
-    }
-
-    public void setNumeroAnimais(Integer numeroAnimais) {
-        this.numeroAnimais = numeroAnimais;
-    }
-
-    public String getAcometidos() {
-        return acometidos;
-    }
-
-    public void setAcometidos(String acometidos) {
-        this.acometidos = acometidos;
-    }
-
-    public String getObservacoes() {
-        return observacoes;
-    }
-
-    public void setObservacoes(String observacoes) {
-        this.observacoes = observacoes;
-    }
-
-    public String getPricipalSuspeita() {
-        return pricipalSuspeita;
-    }
-
-    public void setPricipalSuspeita(String pricipalSuspeita) {
-        this.pricipalSuspeita = pricipalSuspeita;
     }
 
     public String getTipoCriacao() {
@@ -127,10 +85,6 @@ public class PropriedadeDTO implements Serializable {
         return "PropriedadeDTO{" +
             "id=" + getId() +
             ", tipoPropriedade='" + getTipoPropriedade() + "'" +
-            ", numeroAnimais=" + getNumeroAnimais() +
-            ", acometidos='" + getAcometidos() + "'" +
-            ", observacoes='" + getObservacoes() + "'" +
-            ", pricipalSuspeita='" + getPricipalSuspeita() + "'" +
             ", tipoCriacao='" + getTipoCriacao() + "'" +
             ", proprietario=" + getProprietario() +
             ", endereco=" + getEndereco() +

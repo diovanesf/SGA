@@ -3,7 +3,6 @@ package edu.unipampa.laboratoriovirologia.domain;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import java.io.Serializable;
 import javax.persistence.*;
-import org.hibernate.annotations.Type;
 
 /**
  * A Propriedade.
@@ -22,20 +21,6 @@ public class Propriedade implements Serializable {
     @Column(name = "tipo_propriedade")
     private String tipoPropriedade;
 
-    @Column(name = "numero_animais")
-    private Integer numeroAnimais;
-
-    @Column(name = "acometidos")
-    private String acometidos;
-
-    @Lob
-    @Type(type = "org.hibernate.type.TextType")
-    @Column(name = "observacoes")
-    private String observacoes;
-
-    @Column(name = "pricipal_suspeita")
-    private String pricipalSuspeita;
-
     @Column(name = "tipo_criacao")
     private String tipoCriacao;
 
@@ -43,7 +28,7 @@ public class Propriedade implements Serializable {
     @JsonIgnoreProperties(value = { "propriedades" }, allowSetters = true)
     private Proprietario proprietario;
 
-    @OneToOne(cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToOne
     @JoinColumn(unique = true)
     private Endereco endereco;
 
@@ -72,58 +57,6 @@ public class Propriedade implements Serializable {
 
     public void setTipoPropriedade(String tipoPropriedade) {
         this.tipoPropriedade = tipoPropriedade;
-    }
-
-    public Integer getNumeroAnimais() {
-        return this.numeroAnimais;
-    }
-
-    public Propriedade numeroAnimais(Integer numeroAnimais) {
-        this.numeroAnimais = numeroAnimais;
-        return this;
-    }
-
-    public void setNumeroAnimais(Integer numeroAnimais) {
-        this.numeroAnimais = numeroAnimais;
-    }
-
-    public String getAcometidos() {
-        return this.acometidos;
-    }
-
-    public Propriedade acometidos(String acometidos) {
-        this.acometidos = acometidos;
-        return this;
-    }
-
-    public void setAcometidos(String acometidos) {
-        this.acometidos = acometidos;
-    }
-
-    public String getObservacoes() {
-        return this.observacoes;
-    }
-
-    public Propriedade observacoes(String observacoes) {
-        this.observacoes = observacoes;
-        return this;
-    }
-
-    public void setObservacoes(String observacoes) {
-        this.observacoes = observacoes;
-    }
-
-    public String getPricipalSuspeita() {
-        return this.pricipalSuspeita;
-    }
-
-    public Propriedade pricipalSuspeita(String pricipalSuspeita) {
-        this.pricipalSuspeita = pricipalSuspeita;
-        return this;
-    }
-
-    public void setPricipalSuspeita(String pricipalSuspeita) {
-        this.pricipalSuspeita = pricipalSuspeita;
     }
 
     public String getTipoCriacao() {
@@ -190,10 +123,6 @@ public class Propriedade implements Serializable {
         return "Propriedade{" +
             "id=" + getId() +
             ", tipoPropriedade='" + getTipoPropriedade() + "'" +
-            ", numeroAnimais=" + getNumeroAnimais() +
-            ", acometidos='" + getAcometidos() + "'" +
-            ", observacoes='" + getObservacoes() + "'" +
-            ", pricipalSuspeita='" + getPricipalSuspeita() + "'" +
             ", tipoCriacao='" + getTipoCriacao() + "'" +
             "}";
     }

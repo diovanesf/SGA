@@ -3,6 +3,8 @@ import { IMidia } from '@/shared/model/midia.model';
 import { IExame } from '@/shared/model/exame.model';
 import { IPropriedade } from '@/shared/model/propriedade.model';
 import { IMedicoveterinario } from '@/shared/model/medicoveterinario.model';
+import { ISubamostra } from '@/shared/model/subamostra.model';
+import { IVacina } from '@/shared/model/vacina.model';
 
 export interface IAmostra {
   id?: number;
@@ -10,8 +12,10 @@ export interface IAmostra {
   formaEnvio?: string | null;
   numeroAmostras?: number | null;
   especie?: string | null;
+  numeroAnimais?: number | null;
+  acometidos?: string | null;
+  pricipalSuspeita?: string | null;
   dataInicial?: Date | null;
-  dataFinal?: Date | null;
   materialRecebido?: string | null;
   acondicionamento?: string | null;
   condicaoMaterial?: string | null;
@@ -19,12 +23,15 @@ export interface IAmostra {
   tipoMedVet?: string | null;
   valorTotal?: number | null;
   tipoPagamento?: string | null;
+  tipo?: string | null;
   situacao?: string | null;
   users?: IUser[] | null;
   midias?: IMidia[] | null;
   exames?: IExame[] | null;
   propriedade?: IPropriedade | null;
   medicoveterinario?: IMedicoveterinario | null;
+  subamostra?: ISubamostra | null;
+  vacina?: IVacina | null;
 }
 
 export class Amostra implements IAmostra {
@@ -34,8 +41,10 @@ export class Amostra implements IAmostra {
     public formaEnvio?: string | null,
     public numeroAmostras?: number | null,
     public especie?: string | null,
+    public numeroAnimais?: number | null,
+    public acometidos?: string | null,
+    public pricipalSuspeita?: string | null,
     public dataInicial?: Date | null,
-    public dataFinal?: Date | null,
     public materialRecebido?: string | null,
     public acondicionamento?: string | null,
     public condicaoMaterial?: string | null,
@@ -43,11 +52,14 @@ export class Amostra implements IAmostra {
     public tipoMedVet?: string | null,
     public valorTotal?: number | null,
     public tipoPagamento?: string | null,
+    public tipo?: string | null,
     public situacao?: string | null,
     public users?: IUser[] | null,
     public midias?: IMidia[] | null,
     public exames?: IExame[] | null,
     public propriedade?: IPropriedade | null,
-    public medicoveterinario?: IMedicoveterinario | null
+    public medicoveterinario?: IMedicoveterinario | null,
+    public subamostra?: ISubamostra | null,
+    public vacina?: IVacina | null
   ) {}
 }

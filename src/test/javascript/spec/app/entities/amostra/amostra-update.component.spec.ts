@@ -18,6 +18,10 @@ import PropriedadeService from '@/entities/propriedade/propriedade.service';
 
 import MedicoveterinarioService from '@/entities/medicoveterinario/medicoveterinario.service';
 
+import SubamostraService from '@/entities/subamostra/subamostra.service';
+
+import VacinaService from '@/entities/vacina/vacina.service';
+
 const localVue = createLocalVue();
 
 config.initVueApp(localVue);
@@ -55,6 +59,10 @@ describe('Component Tests', () => {
           propriedadeService: () => new PropriedadeService(),
 
           medicoveterinarioService: () => new MedicoveterinarioService(),
+
+          subamostraService: () => new SubamostraService(),
+
+          vacinaService: () => new VacinaService(),
         },
       });
       comp = wrapper.vm;
