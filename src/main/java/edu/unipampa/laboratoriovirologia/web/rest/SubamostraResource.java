@@ -142,6 +142,17 @@ public class SubamostraResource {
     }
 
     /**
+     * {@code GET  /subamostras} : get all the subamostras.
+     *
+     * @return the {@link ResponseEntity} with status {@code 200 (OK)} and the list of subamostras in body.
+     */
+    @GetMapping("amostra/{amostraId}/subamostras")
+    public List<SubamostraDTO> getSubamostrasByAmostra(@PathVariable Long amostraId) {
+        log.debug("REST request to get all Subamostras");
+        return subamostraService.findByAmostraId(amostraId);
+    }
+
+    /**
      * {@code GET  /subamostras/:id} : get the "id" subamostra.
      *
      * @param id the id of the subamostraDTO to retrieve.

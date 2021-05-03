@@ -5,8 +5,6 @@ export interface IExame {
   id?: number;
   nome?: string | null;
   tipo?: string | null;
-  pesoMaterial?: string | null;
-  estimativaVacinas?: string | null;
   resultado?: string | null;
   dataTeste?: Date | null;
   dataLeitura?: Date | null;
@@ -22,8 +20,6 @@ export class Exame implements IExame {
     public id?: number,
     public nome?: string | null,
     public tipo?: string | null,
-    public pesoMaterial?: string | null,
-    public estimativaVacinas?: string | null,
     public resultado?: string | null,
     public dataTeste?: Date | null,
     public dataLeitura?: Date | null,

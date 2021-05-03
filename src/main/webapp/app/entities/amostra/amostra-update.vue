@@ -23,13 +23,7 @@
           </div>
           <div class="form-group">
             <label class="form-control-label" for="amostra-formaEnvio">Forma Envio</label>
-            <select
-              class="form-control"
-              id="amostra-formaEnvio"
-              data-cy="formaEnvio"
-              name="formaEnvio"
-              v-model="amostra.formaEnvio"
-            >
+            <select class="form-control" id="amostra-formaEnvio" data-cy="formaEnvio" name="formaEnvio" v-model="amostra.formaEnvio">
               <option value="CORREIOS">Correios</option>
               <option value="RODOVIARIA">Rodoviária</option>
               <option value="TRANSPORTADORA">Transportadora</option>
@@ -50,13 +44,7 @@
           </div>
           <div class="form-group">
             <label class="form-control-label" for="amostra-especie">Especie</label>
-            <select
-              class="form-control"
-              id="amostra-especie-select"
-              data-cy="especie"
-              name="especie-select"
-              v-model="amostra.especie"
-            >
+            <select class="form-control" id="amostra-especie-select" data-cy="especie" name="especie-select" v-model="amostra.especie">
               <option value="BOVINA">Bovina</option>
               <option value="EQUINA">Equina</option>
               <option value="OVINA">Ovina</option>
@@ -93,35 +81,6 @@
                 name="dataInicial"
                 :class="{ valid: !$v.amostra.dataInicial.$invalid, invalid: $v.amostra.dataInicial.$invalid }"
                 v-model="$v.amostra.dataInicial.$model"
-                readonly
-              />
-            </b-input-group>
-          </div>
-          <div class="form-group" v-if="amostra.dataFinal">
-            <label class="form-control-label" for="amostra-dataFinal">Data Final</label>
-            <b-input-group class="mb-3">
-              <b-input-group-prepend>
-                <b-form-datepicker
-                  aria-controls="amostra-dataFinal"
-                  v-model="$v.amostra.dataFinal.$model"
-                  name="dataFinal"
-                  class="form-control"
-                  :locale="currentLanguage"
-                  button-only
-                  today-button
-                  reset-button
-                  close-button
-                >
-                </b-form-datepicker>
-              </b-input-group-prepend>
-              <b-form-input
-                id="amostra-dataFinal"
-                data-cy="dataFinal"
-                type="text"
-                class="form-control"
-                name="dataFinal"
-                :class="{ valid: !$v.amostra.dataFinal.$invalid, invalid: $v.amostra.dataFinal.$invalid }"
-                v-model="$v.amostra.dataFinal.$model"
                 readonly
               />
             </b-input-group>
@@ -179,15 +138,58 @@
               <option value="OUTRO">Outro</option>
             </select>
           </div>
+
+          <div class="form-group">
+            <label class="form-control-label" for="amostra-numeroAnimais">Numero Animais</label>
+            <input
+              type="number"
+              class="form-control"
+              name="numeroAnimais"
+              id="amostra-numeroAnimais"
+              data-cy="numeroAnimais"
+              :class="{ valid: !$v.amostra.numeroAnimais.$invalid, invalid: $v.amostra.numeroAnimais.$invalid }"
+              v-model.number="$v.amostra.numeroAnimais.$model"
+            />
+          </div>
+          <div class="form-group">
+            <label class="form-control-label" for="amostra-acometidos">Acometidos</label>
+            <input
+              type="text"
+              class="form-control"
+              name="acometidos"
+              id="amostra-acometidos"
+              data-cy="acometidos"
+              :class="{ valid: !$v.amostra.acometidos.$invalid, invalid: $v.amostra.acometidos.$invalid }"
+              v-model="$v.amostra.acometidos.$model"
+            />
+          </div>
+          <div class="form-group">
+            <label class="form-control-label" for="amostra-pricipalSuspeita">Pricipal Suspeita</label>
+            <input
+              type="text"
+              class="form-control"
+              name="pricipalSuspeita"
+              id="amostra-pricipalSuspeita"
+              data-cy="pricipalSuspeita"
+              :class="{ valid: !$v.amostra.pricipalSuspeita.$invalid, invalid: $v.amostra.pricipalSuspeita.$invalid }"
+              v-model="$v.amostra.pricipalSuspeita.$model"
+            />
+          </div>
+          <div class="form-group">
+            <label class="form-control-label" for="amostra-tipo">Tipo</label>
+            <input
+              type="text"
+              class="form-control"
+              name="tipo"
+              id="amostra-tipo"
+              data-cy="tipo"
+              :class="{ valid: !$v.amostra.tipo.$invalid, invalid: $v.amostra.tipo.$invalid }"
+              v-model="$v.amostra.tipo.$model"
+            />
+          </div>
           <div class="form-group">
             <label class="form-control-label" for="amostra-status">Status</label>
-            <select
-              class="form-control"
-              id="amostra-status"
-              data-cy="status"
-              name="status"
-              v-model="amostra.status"
-            >
+            <select class="form-control" id="amostra-status" data-cy="status" name="status" v-model="amostra.status">
               <option value="ACEITO">Aceito</option>
               <option value="RECUSADO">Recusado</option>
               <option value="AGUARDANDO_SOLICITACAO_HISTORICO">Aguardando solicitação/histórico</option>
@@ -237,13 +239,7 @@
           </div>
           <div class="form-group">
             <label class="form-control-label" for="amostra-situacao">Situacao</label>
-            <select
-              class="form-control"
-              id="amostra-situacao"
-              data-cy="situacao"
-              name="situacao"
-              v-model="amostra.situacao"
-            >
+            <select class="form-control" id="amostra-situacao" data-cy="situacao" name="situacao" v-model="amostra.situacao">
               <option value="PAGO">Pago</option>
               <option value="AGUARDANDO_PAGAMENTO">Aguardando pagamento</option>
             </select>
@@ -275,7 +271,7 @@
                 v-for="propriedadeOption in propriedades"
                 :key="propriedadeOption.id"
               >
-                {{ propriedadeOption.tipoPropriedade }}
+                {{ propriedadeOption.endereco.endereco }}
               </option>
             </select>
           </div>

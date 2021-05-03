@@ -4,9 +4,10 @@
       <span id="exame-heading">Exames</span>
       <div class="d-flex justify-content-end">
         <button class="btn btn-info mr-2" v-on:click="handleSyncList" :disabled="isFetching">
-          <font-awesome-icon icon="sync" :spin="isFetching"></font-awesome-icon> <span>Refresh List</span>
+          <font-awesome-icon icon="sync" :spin="isFetching"></font-awesome-icon>
+          <span>Refresh List</span>
         </button>
-        <router-link :to="{ name: 'ExameCreate' , params: { amostraId: amostra.id } } " custom v-slot="{ navigate }">
+        <router-link :to="{ name: 'ExameCreate', params: { amostraId: amostra.id } }" custom v-slot="{ navigate }">
           <button
             @click="navigate"
             id="jh-create-entity"
@@ -39,14 +40,15 @@
             <th scope="row"><span>Observacoes</span></th>
             <th scope="row"><span>Valor</span></th>
             <th scope="row"><span>Amostra</span></th>
+            <th scope="row"><span>Subamostra</span></th>
             <th scope="row"></th>
           </tr>
         </thead>
         <tbody>
           <tr v-for="exame in exames" :key="exame.id" data-cy="entityTable">
             <!-- <td>
-              <router-link :to="{ name: 'ExameView', params: { exameId: exame.id } }">{{ exame.id }}</router-link>
-            </td> -->
+            <router-link :to="{ name: 'ExameView', params: { exameId: exame.id } }">{{ exame.id }}</router-link>
+          </td> -->
             <td>{{ exame.nome }}</td>
             <td>{{ exame.tipo }}</td>
             <td>{{ exame.pesoMaterial }}</td>
@@ -59,9 +61,16 @@
             <td>{{ exame.valor }}</td>
             <td>
               <div v-if="exame.amostra">
-                <router-link :to="{ name: 'AmostraView', params: { amostraId: exame.amostra.id } }">{{
-                  exame.amostra.protocolo
-                }}</router-link>
+                <router-link :to="{ name: 'AmostraView', params: { amostraId: exame.amostra.id } }"
+                  >{{ exame.amostra.protocolo }}
+                </router-link>
+              </div>
+            </td>
+            <td>
+              <div v-if="exame.subamostra">
+                <router-link :to="{ name: 'SubamostraView', params: { subamostraId: exame.subamostra.id } }"
+                  >{{ exame.subamostra.subamostra }}
+                </router-link>
               </div>
             </td>
             <td class="text-right">
@@ -72,7 +81,7 @@
                     <span class="d-none d-md-inline">View</span>
                   </button>
                 </router-link>
-                <router-link :to="{ name: 'ExameEdit', params: { exameId: exame.id , amostraId: amostra.id} }" custom v-slot="{ navigate }">
+                <router-link :to="{ name: 'ExameEdit', params: { exameId: exame.id, amostraId: amostra.id } }" custom v-slot="{ navigate }">
                   <button @click="navigate" class="btn btn-primary btn-sm edit" data-cy="entityEditButton">
                     <font-awesome-icon icon="pencil-alt"></font-awesome-icon>
                     <span class="d-none d-md-inline">Edit</span>

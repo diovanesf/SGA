@@ -44,6 +44,18 @@ const Medicoveterinario = () => import('@/entities/medicoveterinario/medicoveter
 const MedicoveterinarioUpdate = () => import('@/entities/medicoveterinario/medicoveterinario-update.vue');
 // prettier-ignore
 const MedicoveterinarioDetails = () => import('@/entities/medicoveterinario/medicoveterinario-details.vue');
+// prettier-ignore
+const Vacina = () => import("@/entities/vacina/vacina.vue");
+// prettier-ignore
+const VacinaDetails = () => import("@/entities/vacina/vacina-details.vue");
+// prettier-ignore
+const VacinaUpdate = () => import("@/entities/vacina/vacina-update.vue");
+// prettier-ignore
+const Subamostra = () => import("@/entities/subamostra/subamostra.vue");
+// prettier-ignore
+const SubamostraDetails = () => import("@/entities/subamostra/subamostra-details.vue");
+// prettier-ignore
+const SubamostraUpdate = () => import("@/entities/subamostra/subamostra-update.vue");
 // jhipster-needle-add-entity-to-router-import - JHipster will import entities to the router here
 
 export default [
@@ -213,6 +225,54 @@ export default [
     path: '/medicoveterinario/:medicoveterinarioId/view',
     name: 'MedicoveterinarioView',
     component: MedicoveterinarioDetails,
+    meta: { authorities: [Authority.USER] },
+  },
+  {
+    path: '/subamostra',
+    name: 'Subamostra',
+    component: Subamostra,
+    meta: { authorities: [Authority.USER] },
+  },
+  {
+    path: '/subamostra/new',
+    name: 'SubamostraCreate',
+    component: SubamostraUpdate,
+    meta: { authorities: [Authority.USER] },
+  },
+  {
+    path: '/subamostra/:subamostraId/edit',
+    name: 'SubamostraEdit',
+    component: SubamostraUpdate,
+    meta: { authorities: [Authority.USER] },
+  },
+  {
+    path: '/subamostra/:subamostraId/view',
+    name: 'SubamostraView',
+    component: SubamostraDetails,
+    meta: { authorities: [Authority.USER] },
+  },
+  {
+    path: '/vacina',
+    name: 'Vacina',
+    component: Vacina,
+    meta: { authorities: [Authority.USER] },
+  },
+  {
+    path: '/vacina/new',
+    name: 'VacinaCreate',
+    component: VacinaUpdate,
+    meta: { authorities: [Authority.USER] },
+  },
+  {
+    path: '/vacina/:vacinaId/edit',
+    name: 'VacinaEdit',
+    component: VacinaUpdate,
+    meta: { authorities: [Authority.USER] },
+  },
+  {
+    path: '/vacina/:vacinaId/view',
+    name: 'VacinaView',
+    component: VacinaDetails,
     meta: { authorities: [Authority.USER] },
   },
   // jhipster-needle-add-entity-to-router - JHipster will add entities to the router here

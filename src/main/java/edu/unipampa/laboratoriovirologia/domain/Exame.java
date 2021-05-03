@@ -27,12 +27,6 @@ public class Exame implements Serializable {
     @Column(name = "tipo")
     private String tipo;
 
-    @Column(name = "peso_material")
-    private String pesoMaterial;
-
-    @Column(name = "estimativa_vacinas")
-    private String estimativaVacinas;
-
     @Column(name = "resultado")
     private String resultado;
 
@@ -103,32 +97,6 @@ public class Exame implements Serializable {
 
     public void setTipo(String tipo) {
         this.tipo = tipo;
-    }
-
-    public String getPesoMaterial() {
-        return this.pesoMaterial;
-    }
-
-    public Exame pesoMaterial(String pesoMaterial) {
-        this.pesoMaterial = pesoMaterial;
-        return this;
-    }
-
-    public void setPesoMaterial(String pesoMaterial) {
-        this.pesoMaterial = pesoMaterial;
-    }
-
-    public String getEstimativaVacinas() {
-        return this.estimativaVacinas;
-    }
-
-    public Exame estimativaVacinas(String estimativaVacinas) {
-        this.estimativaVacinas = estimativaVacinas;
-        return this;
-    }
-
-    public void setEstimativaVacinas(String estimativaVacinas) {
-        this.estimativaVacinas = estimativaVacinas;
     }
 
     public String getResultado() {
@@ -261,8 +229,6 @@ public class Exame implements Serializable {
             "id=" + getId() +
             ", nome='" + getNome() + "'" +
             ", tipo='" + getTipo() + "'" +
-            ", pesoMaterial='" + getPesoMaterial() + "'" +
-            ", estimativaVacinas='" + getEstimativaVacinas() + "'" +
             ", resultado='" + getResultado() + "'" +
             ", dataTeste='" + getDataTeste() + "'" +
             ", dataLeitura='" + getDataLeitura() + "'" +

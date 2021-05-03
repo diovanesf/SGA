@@ -107,7 +107,7 @@
     {
       "relationshipName": "subamostra",
       "otherEntityName": "subamostra",
-      "relationshipType": "many-to-one",
+      "relationshipType": "one-to-many",
       "otherEntityField": "subamostra"
     },
     {

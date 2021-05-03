@@ -81,11 +81,11 @@ public class Amostra implements Serializable {
     )
     private Set<User> users = new HashSet<>();
 
-    @OneToMany(mappedBy = "amostra")
+    @OneToMany(mappedBy = "amostra", cascade = CascadeType.REMOVE, orphanRemoval = true)
     @JsonIgnoreProperties(value = { "amostra" }, allowSetters = true)
     private Set<Midia> midias = new HashSet<>();
 
-    @OneToMany(mappedBy = "amostra")
+    @OneToMany(mappedBy = "amostra", cascade = CascadeType.REMOVE, orphanRemoval = true)
     @JsonIgnoreProperties(value = { "amostra", "subamostra" }, allowSetters = true)
     private Set<Exame> exames = new HashSet<>();
 
@@ -96,10 +96,10 @@ public class Amostra implements Serializable {
     @ManyToOne
     private Medicoveterinario medicoveterinario;
 
-    @ManyToOne
-    private Subamostra subamostra;
+    @OneToMany(mappedBy = "amostra", cascade = CascadeType.REMOVE, orphanRemoval = true)
+    private Set<Subamostra> subamostras;
 
-    @OneToOne
+    @OneToOne(mappedBy = "amostra", cascade = CascadeType.REMOVE, orphanRemoval = true)
     @JoinColumn(unique = true)
     private Vacina vacina;
 
