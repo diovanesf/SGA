@@ -9,14 +9,6 @@
       "fieldType": "String"
     },
     {
-      "fieldName": "pesoMaterial",
-      "fieldType": "String"
-    },
-    {
-      "fieldName": "estimativaVacinas",
-      "fieldType": "String"
-    },
-    {
       "fieldName": "resultado",
       "fieldType": "String"
     },

@@ -16,11 +16,11 @@ public abstract class Amostra_ {
 	public static volatile SingularAttribute<Amostra, String> situacao;
 	public static volatile SingularAttribute<Amostra, String> pricipalSuspeita;
 	public static volatile SingularAttribute<Amostra, Integer> numeroAnimais;
+	public static volatile SetAttribute<Amostra, Subamostra> subamostras;
 	public static volatile SingularAttribute<Amostra, Medicoveterinario> medicoveterinario;
 	public static volatile SingularAttribute<Amostra, String> acometidos;
 	public static volatile SingularAttribute<Amostra, String> protocolo;
 	public static volatile SingularAttribute<Amostra, String> especie;
-	public static volatile SingularAttribute<Amostra, Subamostra> subamostra;
 	public static volatile SingularAttribute<Amostra, BigDecimal> valorTotal;
 	public static volatile SingularAttribute<Amostra, Long> id;
 	public static volatile SingularAttribute<Amostra, String> acondicionamento;
@@ -42,11 +42,11 @@ public abstract class Amostra_ {
 	public static final String SITUACAO = "situacao";
 	public static final String PRICIPAL_SUSPEITA = "pricipalSuspeita";
 	public static final String NUMERO_ANIMAIS = "numeroAnimais";
+	public static final String SUBAMOSTRAS = "subamostras";
 	public static final String MEDICOVETERINARIO = "medicoveterinario";
 	public static final String ACOMETIDOS = "acometidos";
 	public static final String PROTOCOLO = "protocolo";
 	public static final String ESPECIE = "especie";
-	public static final String SUBAMOSTRA = "subamostra";
 	public static final String VALOR_TOTAL = "valorTotal";
 	public static final String ID = "id";
 	public static final String ACONDICIONAMENTO = "acondicionamento";

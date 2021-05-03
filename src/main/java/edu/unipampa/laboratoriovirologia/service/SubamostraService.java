@@ -76,6 +76,16 @@ public class SubamostraService {
         return subamostraRepository.findAll().stream().map(subamostraMapper::toDto).collect(Collectors.toCollection(LinkedList::new));
     }
 
+    @Transactional(readOnly = true)
+    public List<SubamostraDTO> findByAmostraId(Long amostraId) {
+        log.debug("Request to get all Subamostras");
+        return subamostraRepository
+            .findByAmostraId(amostraId)
+            .stream()
+            .map(subamostraMapper::toDto)
+            .collect(Collectors.toCollection(LinkedList::new));
+    }
+
     /**
      * Get one subamostra by id.
      *

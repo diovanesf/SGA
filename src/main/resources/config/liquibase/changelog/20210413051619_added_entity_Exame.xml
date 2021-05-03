@@ -20,12 +20,6 @@
             <column name="tipo" type="varchar(255)">
                 <constraints nullable="true" />
             </column>
-            <column name="peso_material" type="varchar(255)">
-                <constraints nullable="true" />
-            </column>
-            <column name="estimativa_vacinas" type="varchar(255)">
-                <constraints nullable="true" />
-            </column>
             <column name="resultado" type="varchar(255)">
                 <constraints nullable="true" />
             </column>

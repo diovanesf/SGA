@@ -28,7 +28,7 @@ public class Propriedade implements Serializable {
     @JsonIgnoreProperties(value = { "propriedades" }, allowSetters = true)
     private Proprietario proprietario;
 
-    @OneToOne
+    @OneToOne(cascade = CascadeType.ALL, orphanRemoval = true)
     @JoinColumn(unique = true)
     private Endereco endereco;
 

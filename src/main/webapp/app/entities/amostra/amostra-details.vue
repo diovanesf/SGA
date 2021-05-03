@@ -121,7 +121,7 @@
           <dd>
             <div v-if="amostra.propriedade">
               <router-link :to="{ name: 'PropriedadeView', params: { propriedadeId: amostra.propriedade.id } }">{{
-                amostra.propriedade.tipoPropriedade
+                amostra.propriedade.endereco.endereco
               }}</router-link>
             </div>
           </dd>
