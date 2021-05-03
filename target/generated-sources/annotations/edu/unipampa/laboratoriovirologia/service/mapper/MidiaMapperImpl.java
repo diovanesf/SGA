@@ -11,8 +11,8 @@ import org.springframework.stereotype.Component;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2021-05-02T17:06:31-0300",
-    comments = "version: 1.4.2.Final, compiler: Eclipse JDT (IDE) 1.3.1200.v20200916-0645, environment: Java 11.0.11 (Ubuntu)"
+    date = "2021-05-03T19:38:15-0300",
+    comments = "version: 1.4.2.Final, compiler: Eclipse JDT (IDE) 1.3.1300.v20210331-0708, environment: Java 11.0.11 (Ubuntu)"
 )
 @Component
 public class MidiaMapperImpl implements MidiaMapper {
@@ -21,40 +21,48 @@ public class MidiaMapperImpl implements MidiaMapper {
     private AmostraMapper amostraMapper;
 
     @Override
-    public void partialUpdate(Midia arg0, MidiaDTO arg1) {
-        if ( arg1 == null ) {
-            return;
-        }
-
-        if ( arg1.getId() != null ) {
-            arg0.id( arg1.getId() );
-        }
-        if ( arg1.getNome() != null ) {
-            arg0.setNome( arg1.getNome() );
-        }
-        if ( arg1.getDescricao() != null ) {
-            arg0.setDescricao( arg1.getDescricao() );
-        }
-        byte[] file = arg1.getFile();
-        if ( file != null ) {
-            arg0.setFile( Arrays.copyOf( file, file.length ) );
-        }
-        if ( arg1.getFileContentType() != null ) {
-            arg0.setFileContentType( arg1.getFileContentType() );
-        }
-        if ( arg1.getAmostra() != null ) {
-            arg0.setAmostra( amostraMapper.toEntity( arg1.getAmostra() ) );
-        }
-    }
-
-    @Override
-    public List<MidiaDTO> toDto(List<Midia> arg0) {
-        if ( arg0 == null ) {
+    public Midia toEntity(MidiaDTO dto) {
+        if ( dto == null ) {
             return null;
         }
 
-        List<MidiaDTO> list = new ArrayList<MidiaDTO>( arg0.size() );
-        for ( Midia midia : arg0 ) {
+        Midia midia = new Midia();
+
+        midia.id( dto.getId() );
+        midia.setNome( dto.getNome() );
+        midia.setDescricao( dto.getDescricao() );
+        byte[] file = dto.getFile();
+        if ( file != null ) {
+            midia.setFile( Arrays.copyOf( file, file.length ) );
+        }
+        midia.setFileContentType( dto.getFileContentType() );
+        midia.setAmostra( amostraMapper.toEntity( dto.getAmostra() ) );
+
+        return midia;
+    }
+
+    @Override
+    public List<Midia> toEntity(List<MidiaDTO> dtoList) {
+        if ( dtoList == null ) {
+            return null;
+        }
+
+        List<Midia> list = new ArrayList<Midia>( dtoList.size() );
+        for ( MidiaDTO midiaDTO : dtoList ) {
+            list.add( toEntity( midiaDTO ) );
+        }
+
+        return list;
+    }
+
+    @Override
+    public List<MidiaDTO> toDto(List<Midia> entityList) {
+        if ( entityList == null ) {
+            return null;
+        }
+
+        List<MidiaDTO> list = new ArrayList<MidiaDTO>( entityList.size() );
+        for ( Midia midia : entityList ) {
             list.add( toDto( midia ) );
         }
 
@@ -62,38 +70,30 @@ public class MidiaMapperImpl implements MidiaMapper {
     }
 
     @Override
-    public Midia toEntity(MidiaDTO arg0) {
-        if ( arg0 == null ) {
-            return null;
+    public void partialUpdate(Midia entity, MidiaDTO dto) {
+        if ( dto == null ) {
+            return;
         }
 
-        Midia midia = new Midia();
-
-        midia.id( arg0.getId() );
-        midia.setNome( arg0.getNome() );
-        midia.setDescricao( arg0.getDescricao() );
-        byte[] file = arg0.getFile();
+        if ( dto.getId() != null ) {
+            entity.id( dto.getId() );
+        }
+        if ( dto.getNome() != null ) {
+            entity.setNome( dto.getNome() );
+        }
+        if ( dto.getDescricao() != null ) {
+            entity.setDescricao( dto.getDescricao() );
+        }
+        byte[] file = dto.getFile();
         if ( file != null ) {
-            midia.setFile( Arrays.copyOf( file, file.length ) );
+            entity.setFile( Arrays.copyOf( file, file.length ) );
         }
-        midia.setFileContentType( arg0.getFileContentType() );
-        midia.setAmostra( amostraMapper.toEntity( arg0.getAmostra() ) );
-
-        return midia;
-    }
-
-    @Override
-    public List<Midia> toEntity(List<MidiaDTO> arg0) {
-        if ( arg0 == null ) {
-            return null;
+        if ( dto.getFileContentType() != null ) {
+            entity.setFileContentType( dto.getFileContentType() );
         }
-
-        List<Midia> list = new ArrayList<Midia>( arg0.size() );
-        for ( MidiaDTO midiaDTO : arg0 ) {
-            list.add( toEntity( midiaDTO ) );
+        if ( dto.getAmostra() != null ) {
+            entity.setAmostra( amostraMapper.toEntity( dto.getAmostra() ) );
         }
-
-        return list;
     }
 
     @Override

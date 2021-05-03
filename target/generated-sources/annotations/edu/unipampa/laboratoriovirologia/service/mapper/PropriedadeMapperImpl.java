@@ -10,8 +10,8 @@ import org.springframework.stereotype.Component;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2021-05-02T16:20:33-0300",
-    comments = "version: 1.4.2.Final, compiler: Eclipse JDT (IDE) 1.3.1200.v20200916-0645, environment: Java 11.0.11 (Ubuntu)"
+    date = "2021-05-03T19:38:14-0300",
+    comments = "version: 1.4.2.Final, compiler: Eclipse JDT (IDE) 1.3.1300.v20210331-0708, environment: Java 11.0.11 (Ubuntu)"
 )
 @Component
 public class PropriedadeMapperImpl implements PropriedadeMapper {
@@ -22,36 +22,44 @@ public class PropriedadeMapperImpl implements PropriedadeMapper {
     private EnderecoMapper enderecoMapper;
 
     @Override
-    public void partialUpdate(Propriedade arg0, PropriedadeDTO arg1) {
-        if ( arg1 == null ) {
-            return;
-        }
-
-        if ( arg1.getEndereco() != null ) {
-            arg0.setEndereco( enderecoMapper.toEntity( arg1.getEndereco() ) );
-        }
-        if ( arg1.getId() != null ) {
-            arg0.setId( arg1.getId() );
-        }
-        if ( arg1.getProprietario() != null ) {
-            arg0.setProprietario( proprietarioMapper.toEntity( arg1.getProprietario() ) );
-        }
-        if ( arg1.getTipoCriacao() != null ) {
-            arg0.tipoCriacao( arg1.getTipoCriacao() );
-        }
-        if ( arg1.getTipoPropriedade() != null ) {
-            arg0.tipoPropriedade( arg1.getTipoPropriedade() );
-        }
-    }
-
-    @Override
-    public List<PropriedadeDTO> toDto(List<Propriedade> arg0) {
-        if ( arg0 == null ) {
+    public Propriedade toEntity(PropriedadeDTO dto) {
+        if ( dto == null ) {
             return null;
         }
 
-        List<PropriedadeDTO> list = new ArrayList<PropriedadeDTO>( arg0.size() );
-        for ( Propriedade propriedade : arg0 ) {
+        Propriedade propriedade = new Propriedade();
+
+        propriedade.id( dto.getId() );
+        propriedade.setTipoPropriedade( dto.getTipoPropriedade() );
+        propriedade.setTipoCriacao( dto.getTipoCriacao() );
+        propriedade.setProprietario( proprietarioMapper.toEntity( dto.getProprietario() ) );
+        propriedade.setEndereco( enderecoMapper.toEntity( dto.getEndereco() ) );
+
+        return propriedade;
+    }
+
+    @Override
+    public List<Propriedade> toEntity(List<PropriedadeDTO> dtoList) {
+        if ( dtoList == null ) {
+            return null;
+        }
+
+        List<Propriedade> list = new ArrayList<Propriedade>( dtoList.size() );
+        for ( PropriedadeDTO propriedadeDTO : dtoList ) {
+            list.add( toEntity( propriedadeDTO ) );
+        }
+
+        return list;
+    }
+
+    @Override
+    public List<PropriedadeDTO> toDto(List<Propriedade> entityList) {
+        if ( entityList == null ) {
+            return null;
+        }
+
+        List<PropriedadeDTO> list = new ArrayList<PropriedadeDTO>( entityList.size() );
+        for ( Propriedade propriedade : entityList ) {
             list.add( toDto( propriedade ) );
         }
 
@@ -59,34 +67,26 @@ public class PropriedadeMapperImpl implements PropriedadeMapper {
     }
 
     @Override
-    public Propriedade toEntity(PropriedadeDTO arg0) {
-        if ( arg0 == null ) {
-            return null;
+    public void partialUpdate(Propriedade entity, PropriedadeDTO dto) {
+        if ( dto == null ) {
+            return;
         }
 
-        Propriedade propriedade = new Propriedade();
-
-        propriedade.setEndereco( enderecoMapper.toEntity( arg0.getEndereco() ) );
-        propriedade.setId( arg0.getId() );
-        propriedade.setProprietario( proprietarioMapper.toEntity( arg0.getProprietario() ) );
-        propriedade.tipoCriacao( arg0.getTipoCriacao() );
-        propriedade.tipoPropriedade( arg0.getTipoPropriedade() );
-
-        return propriedade;
-    }
-
-    @Override
-    public List<Propriedade> toEntity(List<PropriedadeDTO> arg0) {
-        if ( arg0 == null ) {
-            return null;
+        if ( dto.getId() != null ) {
+            entity.id( dto.getId() );
         }
-
-        List<Propriedade> list = new ArrayList<Propriedade>( arg0.size() );
-        for ( PropriedadeDTO propriedadeDTO : arg0 ) {
-            list.add( toEntity( propriedadeDTO ) );
+        if ( dto.getTipoPropriedade() != null ) {
+            entity.setTipoPropriedade( dto.getTipoPropriedade() );
         }
-
-        return list;
+        if ( dto.getTipoCriacao() != null ) {
+            entity.setTipoCriacao( dto.getTipoCriacao() );
+        }
+        if ( dto.getProprietario() != null ) {
+            entity.setProprietario( proprietarioMapper.toEntity( dto.getProprietario() ) );
+        }
+        if ( dto.getEndereco() != null ) {
+            entity.setEndereco( enderecoMapper.toEntity( dto.getEndereco() ) );
+        }
     }
 
     @Override
@@ -100,8 +100,8 @@ public class PropriedadeMapperImpl implements PropriedadeMapper {
         propriedadeDTO.setProprietario( proprietarioMapper.toDtoNome( s.getProprietario() ) );
         propriedadeDTO.setEndereco( enderecoMapper.toDtoEndereco( s.getEndereco() ) );
         propriedadeDTO.setId( s.getId() );
-        propriedadeDTO.setTipoCriacao( s.getTipoCriacao() );
         propriedadeDTO.setTipoPropriedade( s.getTipoPropriedade() );
+        propriedadeDTO.setTipoCriacao( s.getTipoCriacao() );
 
         return propriedadeDTO;
     }

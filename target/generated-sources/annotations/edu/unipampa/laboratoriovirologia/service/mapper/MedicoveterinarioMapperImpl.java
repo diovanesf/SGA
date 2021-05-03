@@ -9,8 +9,8 @@ import org.springframework.stereotype.Component;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2021-05-02T14:32:56-0300",
-    comments = "version: 1.4.2.Final, compiler: Eclipse JDT (IDE) 1.3.1200.v20200916-0645, environment: Java 11.0.11 (Ubuntu)"
+    date = "2021-05-03T19:38:14-0300",
+    comments = "version: 1.4.2.Final, compiler: Eclipse JDT (IDE) 1.3.1300.v20210331-0708, environment: Java 11.0.11 (Ubuntu)"
 )
 @Component
 public class MedicoveterinarioMapperImpl implements MedicoveterinarioMapper {
