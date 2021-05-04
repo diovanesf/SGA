@@ -20,6 +20,19 @@
               v-model="$v.subamostra.subAmostra.$model"
             />
           </div>
+          <div class="form-group">
+            <label class="form-control-label" for="subamostra-amostra">Amostra</label>
+            <select class="form-control" id="subamostra-amostra" data-cy="amostra" name="amostra" v-model="subamostra.amostra">
+              <option v-bind:value="null"></option>
+              <option
+                v-bind:value="subamostra.amostra && amostraOption.id === subamostra.amostra.id ? subamostra.amostra : amostraOption"
+                v-for="amostraOption in amostras"
+                :key="amostraOption.id"
+              >
+                {{ amostraOption.protocolo }}
+              </option>
+            </select>
+          </div>
         </div>
         <div>
           <button type="button" id="cancel-save" class="btn btn-secondary" v-on:click="previousState()">

@@ -17,18 +17,6 @@
             <span>{{ exame.tipo }}</span>
           </dd>
           <dt>
-            <span>Peso Material</span>
-          </dt>
-          <dd>
-            <span>{{ exame.pesoMaterial }}</span>
-          </dd>
-          <dt>
-            <span>Estimativa Vacinas</span>
-          </dt>
-          <dd>
-            <span>{{ exame.estimativaVacinas }}</span>
-          </dd>
-          <dt>
             <span>Resultado</span>
           </dt>
           <dd>

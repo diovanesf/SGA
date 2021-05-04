@@ -66,13 +66,13 @@ public class AmostraCriteria implements Serializable, Criteria {
 
     private LongFilter midiaId;
 
+    private LongFilter subamostraId;
+
     private LongFilter exameId;
 
     private LongFilter propriedadeId;
 
     private LongFilter medicoveterinarioId;
-
-    private LongFilter subamostraId;
 
     private LongFilter vacinaId;
 
@@ -99,10 +99,10 @@ public class AmostraCriteria implements Serializable, Criteria {
         this.situacao = other.situacao == null ? null : other.situacao.copy();
         this.userId = other.userId == null ? null : other.userId.copy();
         this.midiaId = other.midiaId == null ? null : other.midiaId.copy();
+        this.subamostraId = other.subamostraId == null ? null : other.subamostraId.copy();
         this.exameId = other.exameId == null ? null : other.exameId.copy();
         this.propriedadeId = other.propriedadeId == null ? null : other.propriedadeId.copy();
         this.medicoveterinarioId = other.medicoveterinarioId == null ? null : other.medicoveterinarioId.copy();
-        this.subamostraId = other.subamostraId == null ? null : other.subamostraId.copy();
         this.vacinaId = other.vacinaId == null ? null : other.vacinaId.copy();
     }
 
@@ -411,6 +411,21 @@ public class AmostraCriteria implements Serializable, Criteria {
         this.midiaId = midiaId;
     }
 
+    public LongFilter getSubamostraId() {
+        return subamostraId;
+    }
+
+    public LongFilter subamostraId() {
+        if (subamostraId == null) {
+            subamostraId = new LongFilter();
+        }
+        return subamostraId;
+    }
+
+    public void setSubamostraId(LongFilter subamostraId) {
+        this.subamostraId = subamostraId;
+    }
+
     public LongFilter getExameId() {
         return exameId;
     }
@@ -454,21 +469,6 @@ public class AmostraCriteria implements Serializable, Criteria {
 
     public void setMedicoveterinarioId(LongFilter medicoveterinarioId) {
         this.medicoveterinarioId = medicoveterinarioId;
-    }
-
-    public LongFilter getSubamostraId() {
-        return subamostraId;
-    }
-
-    public LongFilter subamostraId() {
-        if (subamostraId == null) {
-            subamostraId = new LongFilter();
-        }
-        return subamostraId;
-    }
-
-    public void setSubamostraId(LongFilter subamostraId) {
-        this.subamostraId = subamostraId;
     }
 
     public LongFilter getVacinaId() {
@@ -516,10 +516,10 @@ public class AmostraCriteria implements Serializable, Criteria {
             Objects.equals(situacao, that.situacao) &&
             Objects.equals(userId, that.userId) &&
             Objects.equals(midiaId, that.midiaId) &&
+            Objects.equals(subamostraId, that.subamostraId) &&
             Objects.equals(exameId, that.exameId) &&
             Objects.equals(propriedadeId, that.propriedadeId) &&
             Objects.equals(medicoveterinarioId, that.medicoveterinarioId) &&
-            Objects.equals(subamostraId, that.subamostraId) &&
             Objects.equals(vacinaId, that.vacinaId)
         );
     }
@@ -547,10 +547,10 @@ public class AmostraCriteria implements Serializable, Criteria {
             situacao,
             userId,
             midiaId,
+            subamostraId,
             exameId,
             propriedadeId,
             medicoveterinarioId,
-            subamostraId,
             vacinaId
         );
     }
@@ -579,10 +579,10 @@ public class AmostraCriteria implements Serializable, Criteria {
             (situacao != null ? "situacao=" + situacao + ", " : "") +
             (userId != null ? "userId=" + userId + ", " : "") +
             (midiaId != null ? "midiaId=" + midiaId + ", " : "") +
+            (subamostraId != null ? "subamostraId=" + subamostraId + ", " : "") +
             (exameId != null ? "exameId=" + exameId + ", " : "") +
             (propriedadeId != null ? "propriedadeId=" + propriedadeId + ", " : "") +
             (medicoveterinarioId != null ? "medicoveterinarioId=" + medicoveterinarioId + ", " : "") +
-            (subamostraId != null ? "subamostraId=" + subamostraId + ", " : "") +
             (vacinaId != null ? "vacinaId=" + vacinaId + ", " : "") +
             "}";
     }

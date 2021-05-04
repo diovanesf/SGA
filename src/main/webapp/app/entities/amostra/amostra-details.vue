@@ -136,16 +136,6 @@
             </div>
           </dd>
           <dt>
-            <span>Subamostra</span>
-          </dt>
-          <dd>
-            <div v-if="amostra.subamostra">
-              <router-link :to="{ name: 'SubamostraView', params: { subamostraId: amostra.subamostra.id } }">{{
-                amostra.subamostra.subamostra
-              }}</router-link>
-            </div>
-          </dd>
-          <dt>
             <span>Vacina</span>
           </dt>
           <dd>

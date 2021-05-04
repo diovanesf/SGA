@@ -54,7 +54,7 @@ public class AmostraDTO implements Serializable {
 
     private MedicoveterinarioDTO medicoveterinario;
 
-    private SubamostraDTO subamostra;
+    private Set<SubamostraDTO> subamostras;
 
     private VacinaDTO vacina;
 
@@ -226,12 +226,12 @@ public class AmostraDTO implements Serializable {
         this.medicoveterinario = medicoveterinario;
     }
 
-    public SubamostraDTO getSubamostra() {
-        return subamostra;
+    public Set<SubamostraDTO> getSubamostras() {
+        return subamostras;
     }
 
-    public void setSubamostra(SubamostraDTO subamostra) {
-        this.subamostra = subamostra;
+    public void setSubamostras(Set<SubamostraDTO> subamostras) {
+        this.subamostras = subamostras;
     }
 
     public VacinaDTO getVacina() {
@@ -288,7 +288,7 @@ public class AmostraDTO implements Serializable {
             ", users=" + getUsers() +
             ", propriedade=" + getPropriedade() +
             ", medicoveterinario=" + getMedicoveterinario() +
-            ", subamostra=" + getSubamostra() +
+            ", subamostra=" + getSubamostras() +
             ", vacina=" + getVacina() +
             "}";
     }

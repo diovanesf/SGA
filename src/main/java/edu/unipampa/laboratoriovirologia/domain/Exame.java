@@ -51,12 +51,13 @@ public class Exame implements Serializable {
 
     @ManyToOne
     @JsonIgnoreProperties(
-        value = { "users", "midias", "exames", "propriedade", "medicoveterinario", "subamostra", "vacina" },
+        value = { "users", "midias", "subamostras", "exames", "propriedade", "medicoveterinario", "vacina" },
         allowSetters = true
     )
     private Amostra amostra;
 
     @ManyToOne
+    @JsonIgnoreProperties(value = { "amostra" }, allowSetters = true)
     private Subamostra subamostra;
 
     // jhipster-needle-entity-add-field - JHipster will add fields here

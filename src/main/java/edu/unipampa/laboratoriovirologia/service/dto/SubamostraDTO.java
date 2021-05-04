@@ -12,6 +12,8 @@ public class SubamostraDTO implements Serializable {
 
     private String subAmostra;
 
+    private AmostraDTO amostra;
+
     public Long getId() {
         return id;
     }
@@ -26,6 +28,14 @@ public class SubamostraDTO implements Serializable {
 
     public void setSubAmostra(String subAmostra) {
         this.subAmostra = subAmostra;
+    }
+
+    public AmostraDTO getAmostra() {
+        return amostra;
+    }
+
+    public void setAmostra(AmostraDTO amostra) {
+        this.amostra = amostra;
     }
 
     @Override
@@ -55,6 +65,7 @@ public class SubamostraDTO implements Serializable {
         return "SubamostraDTO{" +
             "id=" + getId() +
             ", subAmostra='" + getSubAmostra() + "'" +
+            ", amostra=" + getAmostra() +
             "}";
     }
 }

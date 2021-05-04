@@ -31,8 +31,6 @@
             <!-- <th scope="row"><span>ID</span></th> -->
             <th scope="row"><span>Nome</span></th>
             <th scope="row"><span>Tipo</span></th>
-            <th scope="row"><span>Peso Material</span></th>
-            <th scope="row"><span>Estimativa Vacinas</span></th>
             <th scope="row"><span>Resultado</span></th>
             <th scope="row"><span>Data Teste</span></th>
             <th scope="row"><span>Data Leitura</span></th>
@@ -51,8 +49,6 @@
           </td> -->
             <td>{{ exame.nome }}</td>
             <td>{{ exame.tipo }}</td>
-            <td>{{ exame.pesoMaterial }}</td>
-            <td>{{ exame.estimativaVacinas }}</td>
             <td>{{ exame.resultado }}</td>
             <td>{{ exame.dataTeste }}</td>
             <td>{{ exame.dataLeitura }}</td>

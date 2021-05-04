@@ -1814,6 +1814,25 @@ class AmostraResourceIT {
 
     @Test
     @Transactional
+    void getAllAmostrasBySubamostraIsEqualToSomething() throws Exception {
+        // Initialize the database
+        amostraRepository.saveAndFlush(amostra);
+        Subamostra subamostra = SubamostraResourceIT.createEntity(em);
+        em.persist(subamostra);
+        em.flush();
+        amostra.addSubamostra(subamostra);
+        amostraRepository.saveAndFlush(amostra);
+        Long subamostraId = subamostra.getId();
+
+        // Get all the amostraList where subamostra equals to subamostraId
+        defaultAmostraShouldBeFound("subamostraId.equals=" + subamostraId);
+
+        // Get all the amostraList where subamostra equals to (subamostraId + 1)
+        defaultAmostraShouldNotBeFound("subamostraId.equals=" + (subamostraId + 1));
+    }
+
+    @Test
+    @Transactional
     void getAllAmostrasByExameIsEqualToSomething() throws Exception {
         // Initialize the database
         amostraRepository.saveAndFlush(amostra);
@@ -1867,25 +1886,6 @@ class AmostraResourceIT {
 
         // Get all the amostraList where medicoveterinario equals to (medicoveterinarioId + 1)
         defaultAmostraShouldNotBeFound("medicoveterinarioId.equals=" + (medicoveterinarioId + 1));
-    }
-
-    @Test
-    @Transactional
-    void getAllAmostrasBySubamostraIsEqualToSomething() throws Exception {
-        // Initialize the database
-        amostraRepository.saveAndFlush(amostra);
-        Subamostra subamostra = SubamostraResourceIT.createEntity(em);
-        em.persist(subamostra);
-        em.flush();
-        amostra.setSubamostra(subamostra);
-        amostraRepository.saveAndFlush(amostra);
-        Long subamostraId = subamostra.getId();
-
-        // Get all the amostraList where subamostra equals to subamostraId
-        defaultAmostraShouldBeFound("subamostraId.equals=" + subamostraId);
-
-        // Get all the amostraList where subamostra equals to (subamostraId + 1)
-        defaultAmostraShouldNotBeFound("subamostraId.equals=" + (subamostraId + 1));
     }
 
     @Test

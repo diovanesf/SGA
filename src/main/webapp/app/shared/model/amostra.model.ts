@@ -1,9 +1,9 @@
 import { IUser } from '@/shared/model/user.model';
 import { IMidia } from '@/shared/model/midia.model';
+import { ISubamostra } from '@/shared/model/subamostra.model';
 import { IExame } from '@/shared/model/exame.model';
 import { IPropriedade } from '@/shared/model/propriedade.model';
 import { IMedicoveterinario } from '@/shared/model/medicoveterinario.model';
-import { ISubamostra } from '@/shared/model/subamostra.model';
 import { IVacina } from '@/shared/model/vacina.model';
 
 export interface IAmostra {
@@ -27,10 +27,10 @@ export interface IAmostra {
   situacao?: string | null;
   users?: IUser[] | null;
   midias?: IMidia[] | null;
+  subamostras?: ISubamostra[] | null;
   exames?: IExame[] | null;
   propriedade?: IPropriedade | null;
   medicoveterinario?: IMedicoveterinario | null;
-  subamostra?: ISubamostra | null;
   vacina?: IVacina | null;
 }
 
@@ -56,10 +56,10 @@ export class Amostra implements IAmostra {
     public situacao?: string | null,
     public users?: IUser[] | null,
     public midias?: IMidia[] | null,
+    public subamostras?: ISubamostra[] | null,
     public exames?: IExame[] | null,
     public propriedade?: IPropriedade | null,
     public medicoveterinario?: IMedicoveterinario | null,
-    public subamostra?: ISubamostra | null,
     public vacina?: IVacina | null
   ) {}
 }

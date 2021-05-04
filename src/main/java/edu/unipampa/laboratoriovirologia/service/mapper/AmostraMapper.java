@@ -15,7 +15,7 @@ public interface AmostraMapper extends EntityMapper<AmostraDTO, Amostra> {
     @Mapping(target = "users", source = "users", qualifiedByName = "loginSet")
     @Mapping(target = "propriedade", source = "propriedade", qualifiedByName = "tipoPropriedade")
     @Mapping(target = "medicoveterinario", source = "medicoveterinario", qualifiedByName = "nome")
-    @Mapping(target = "subamostra", source = "subamostra", qualifiedByName = "subamostra")
+    @Mapping(target = "subamostras", source = "subamostras")
     @Mapping(target = "vacina", source = "vacina", qualifiedByName = "status")
     AmostraDTO toDto(Amostra s);
 

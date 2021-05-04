@@ -16,7 +16,6 @@ const validations: any = {
     numeroAmostras: {},
     especie: {},
     dataInicial: {},
-    dataFinal: {},
     materialRecebido: {},
     acondicionamento: {},
     condicaoMaterial: {},

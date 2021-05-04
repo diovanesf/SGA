@@ -32,12 +32,6 @@
                                  referencedColumnNames="id"
                                  referencedTableName="medicoveterinario"/>
 
-        <addForeignKeyConstraint baseColumnNames="subamostra_id"
-                                 baseTableName="amostra"
-                                 constraintName="fk_amostra__subamostra_id"
-                                 referencedColumnNames="id"
-                                 referencedTableName="subamostra"/>
-
         <addForeignKeyConstraint baseColumnNames="vacina_id"
                                  baseTableName="amostra"
                                  constraintName="fk_amostra__vacina_id"

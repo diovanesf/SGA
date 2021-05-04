@@ -51,10 +51,6 @@
               <span>Data Inicial</span>
               <jhi-sort-indicator :current-order="propOrder" :reverse="reverse" :field-name="'dataInicial'"></jhi-sort-indicator>
             </th>
-            <th scope="row" v-on:click="changeOrder('dataFinal')">
-              <span>Data Final</span>
-              <jhi-sort-indicator :current-order="propOrder" :reverse="reverse" :field-name="'dataFinal'"></jhi-sort-indicator>
-            </th>
             <th scope="row" v-on:click="changeOrder('materialRecebido')">
               <span>Material Recebido</span>
               <jhi-sort-indicator :current-order="propOrder" :reverse="reverse" :field-name="'materialRecebido'"></jhi-sort-indicator>
@@ -73,7 +69,7 @@
             </th>
             <th scope="row" v-on:click="changeOrder('acometidos')">
               <span>Acometidos</span>
-              <jhi-sort-indicator :current-order="propOrder" :reverse="reverse" :field- name="'acometidos'"></jhi-sort-indicator>
+              <jhi-sort-indicator :current-order="propOrder" :reverse="reverse" :field-name="'acometidos'"></jhi-sort-indicator>
             </th>
             <th scope="row" v-on:click="changeOrder('pricipalSuspeita')">
               <span>Pricipal Suspeita</span>

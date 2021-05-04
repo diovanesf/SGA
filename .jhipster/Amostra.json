@@ -87,6 +87,13 @@
     },
     {
       "relationshipType": "one-to-many",
+      "otherEntityName": "subamostra",
+      "otherEntityRelationshipName": "amostra",
+      "relationshipName": "subamostra",
+      "otherEntityField": "subamostra"
+    },
+    {
+      "relationshipType": "one-to-many",
       "otherEntityName": "exame",
       "otherEntityRelationshipName": "amostra",
       "relationshipName": "exame",
@@ -103,12 +110,6 @@
       "otherEntityName": "medicoveterinario",
       "relationshipType": "many-to-one",
       "otherEntityField": "nome"
-    },
-    {
-      "relationshipName": "subamostra",
-      "otherEntityName": "subamostra",
-      "relationshipType": "one-to-many",
-      "otherEntityField": "subamostra"
     },
     {
       "relationshipName": "vacina",

@@ -5,7 +5,14 @@
       "fieldType": "String"
     }
   ],
-  "relationships": [],
+  "relationships": [
+    {
+      "relationshipName": "amostra",
+      "otherEntityName": "amostra",
+      "relationshipType": "many-to-one",
+      "otherEntityField": "protocolo"
+    }
+  ],
   "service": "serviceClass",
   "dto": "mapstruct",
   "jpaMetamodelFiltering": false,

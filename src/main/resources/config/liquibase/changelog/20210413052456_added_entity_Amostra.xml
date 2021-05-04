@@ -71,9 +71,6 @@
             <column name="medicoveterinario_id" type="bigint">
                 <constraints nullable="true" />
             </column>
-            <column name="subamostra_id" type="bigint">
-                <constraints nullable="true" />
-            </column>
             <column name="vacina_id" type="bigint">
                 <constraints nullable="true" unique="true" uniqueConstraintName="ux_amostra__vacina_id" />
             </column>

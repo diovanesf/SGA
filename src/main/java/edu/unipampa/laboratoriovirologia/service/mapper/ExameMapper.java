@@ -10,6 +10,6 @@ import org.mapstruct.*;
 @Mapper(componentModel = "spring", uses = { AmostraMapper.class, SubamostraMapper.class })
 public interface ExameMapper extends EntityMapper<ExameDTO, Exame> {
     @Mapping(target = "amostra", source = "amostra", qualifiedByName = "protocolo")
-    @Mapping(target = "subamostra", source = "subamostra", qualifiedByName = "subamostra")
+    @Mapping(target = "subamostra", source = "subamostra")
     ExameDTO toDto(Exame s);
 }

@@ -66,8 +66,6 @@
             <column name="id" type="numeric"/>
             <column name="nome" type="string"/>
             <column name="tipo" type="string"/>
-            <column name="peso_material" type="string"/>
-            <column name="estimativa_vacinas" type="string"/>
             <column name="resultado" type="string"/>
             <column name="data_teste" type="date"/>
             <column name="data_leitura" type="date"/>

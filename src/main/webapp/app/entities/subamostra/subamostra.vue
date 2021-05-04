@@ -29,6 +29,7 @@
           <tr>
             <th scope="row"><span>ID</span></th>
             <th scope="row"><span>Sub Amostra</span></th>
+            <th scope="row"><span>Amostra</span></th>
             <th scope="row"></th>
           </tr>
         </thead>
@@ -38,6 +39,13 @@
               <router-link :to="{ name: 'SubamostraView', params: { subamostraId: subamostra.id } }">{{ subamostra.id }}</router-link>
             </td>
             <td>{{ subamostra.subAmostra }}</td>
+            <td>
+              <div v-if="subamostra.amostra">
+                <router-link :to="{ name: 'AmostraView', params: { amostraId: subamostra.amostra.id } }">{{
+                  subamostra.amostra.protocolo
+                }}</router-link>
+              </div>
+            </td>
             <td class="text-right">
               <div class="btn-group">
                 <router-link :to="{ name: 'SubamostraView', params: { subamostraId: subamostra.id } }" custom v-slot="{ navigate }">

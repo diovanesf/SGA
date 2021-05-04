@@ -1,5 +1,8 @@
 import { Component, Vue, Inject } from 'vue-property-decorator';
 
+import AmostraService from '@/entities/amostra/amostra.service';
+import { IAmostra } from '@/shared/model/amostra.model';
+
 import { ISubamostra, Subamostra } from '@/shared/model/subamostra.model';
 import SubamostraService from './subamostra.service';
 
@@ -15,6 +18,10 @@ const validations: any = {
 export default class SubamostraUpdate extends Vue {
   @Inject('subamostraService') private subamostraService: () => SubamostraService;
   public subamostra: ISubamostra = new Subamostra();
+
+  @Inject('amostraService') private amostraService: () => AmostraService;
+
+  public amostras: IAmostra[] = [];
   public isSaving = false;
   public currentLanguage = '';
 
@@ -23,6 +30,7 @@ export default class SubamostraUpdate extends Vue {
       if (to.params.subamostraId) {
         vm.retrieveSubamostra(to.params.subamostraId);
       }
+      vm.initRelationships();
     });
   }
 
@@ -83,5 +91,11 @@ export default class SubamostraUpdate extends Vue {
     this.$router.go(-1);
   }
 
-  public initRelationships(): void {}
+  public initRelationships(): void {
+    this.amostraService()
+      .retrieve()
+      .then(res => {
+        this.amostras = res.data;
+      });
+  }
 }

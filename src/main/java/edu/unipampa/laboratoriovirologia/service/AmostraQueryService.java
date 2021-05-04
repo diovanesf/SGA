@@ -149,6 +149,15 @@ public class AmostraQueryService extends QueryService<Amostra> {
                         buildSpecification(criteria.getMidiaId(), root -> root.join(Amostra_.midias, JoinType.LEFT).get(Midia_.id))
                     );
             }
+            if (criteria.getSubamostraId() != null) {
+                specification =
+                    specification.and(
+                        buildSpecification(
+                            criteria.getSubamostraId(),
+                            root -> root.join(Amostra_.subamostras, JoinType.LEFT).get(Subamostra_.id)
+                        )
+                    );
+            }
             if (criteria.getExameId() != null) {
                 specification =
                     specification.and(
@@ -170,15 +179,6 @@ public class AmostraQueryService extends QueryService<Amostra> {
                         buildSpecification(
                             criteria.getMedicoveterinarioId(),
                             root -> root.join(Amostra_.medicoveterinario, JoinType.LEFT).get(Medicoveterinario_.id)
-                        )
-                    );
-            }
-            if (criteria.getSubamostraId() != null) {
-                specification =
-                    specification.and(
-                        buildSpecification(
-                            criteria.getSubamostraId(),
-                            root -> root.join(Amostra_.subamostra, JoinType.LEFT).get(Subamostra_.id)
                         )
                     );
             }

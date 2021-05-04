@@ -8,6 +8,8 @@ import SubamostraUpdateComponent from '@/entities/subamostra/subamostra-update.v
 import SubamostraClass from '@/entities/subamostra/subamostra-update.component';
 import SubamostraService from '@/entities/subamostra/subamostra.service';
 
+import AmostraService from '@/entities/amostra/amostra.service';
+
 const localVue = createLocalVue();
 
 config.initVueApp(localVue);
@@ -35,6 +37,8 @@ describe('Component Tests', () => {
         router,
         provide: {
           subamostraService: () => subamostraServiceStub,
+
+          amostraService: () => new AmostraService(),
         },
       });
       comp = wrapper.vm;

@@ -85,6 +85,10 @@ public class Amostra implements Serializable {
     @JsonIgnoreProperties(value = { "amostra" }, allowSetters = true)
     private Set<Midia> midias = new HashSet<>();
 
+    @OneToMany(mappedBy = "amostra", cascade = CascadeType.ALL, orphanRemoval = true)
+    @JsonIgnoreProperties(value = { "amostra" }, allowSetters = true)
+    private Set<Subamostra> subamostras = new HashSet<>();
+
     @OneToMany(mappedBy = "amostra", cascade = CascadeType.REMOVE, orphanRemoval = true)
     @JsonIgnoreProperties(value = { "amostra", "subamostra" }, allowSetters = true)
     private Set<Exame> exames = new HashSet<>();
@@ -96,10 +100,7 @@ public class Amostra implements Serializable {
     @ManyToOne
     private Medicoveterinario medicoveterinario;
 
-    @OneToMany(mappedBy = "amostra", cascade = CascadeType.REMOVE, orphanRemoval = true)
-    private Set<Subamostra> subamostras;
-
-    @OneToOne(mappedBy = "amostra", cascade = CascadeType.REMOVE, orphanRemoval = true)
+    @OneToOne(cascade = CascadeType.REMOVE, orphanRemoval = true)
     @JoinColumn(unique = true)
     private Vacina vacina;
 
@@ -392,6 +393,37 @@ public class Amostra implements Serializable {
         this.midias = midias;
     }
 
+    public Set<Subamostra> getSubamostras() {
+        return this.subamostras;
+    }
+
+    public Amostra subamostras(Set<Subamostra> subamostras) {
+        this.setSubamostras(subamostras);
+        return this;
+    }
+
+    public Amostra addSubamostra(Subamostra subamostra) {
+        this.subamostras.add(subamostra);
+        subamostra.setAmostra(this);
+        return this;
+    }
+
+    public Amostra removeSubamostra(Subamostra subamostra) {
+        this.subamostras.remove(subamostra);
+        subamostra.setAmostra(null);
+        return this;
+    }
+
+    public void setSubamostras(Set<Subamostra> subamostras) {
+        if (this.subamostras != null) {
+            this.subamostras.forEach(i -> i.setAmostra(null));
+        }
+        if (subamostras != null) {
+            subamostras.forEach(i -> i.setAmostra(this));
+        }
+        this.subamostras = subamostras;
+    }
+
     public Set<Exame> getExames() {
         return this.exames;
     }
@@ -447,19 +479,6 @@ public class Amostra implements Serializable {
 
     public void setMedicoveterinario(Medicoveterinario medicoveterinario) {
         this.medicoveterinario = medicoveterinario;
-    }
-
-    public Subamostra getSubamostra() {
-        return this.subamostra;
-    }
-
-    public Amostra subamostra(Subamostra subamostra) {
-        this.setSubamostra(subamostra);
-        return this;
-    }
-
-    public void setSubamostra(Subamostra subamostra) {
-        this.subamostra = subamostra;
     }
 
     public Vacina getVacina() {
