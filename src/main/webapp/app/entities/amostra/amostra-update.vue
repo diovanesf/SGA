@@ -1,7 +1,7 @@
 <template>
   <div class="row justify-content-center">
     <div class="col-8">
-      <form name="editForm" role="form" novalidate v-on:submit.prevent="save()">
+      <form name="editForm" role="form" validate v-on:submit.prevent="save()">
         <h2 id="rp6App.amostra.home.createOrEditLabel" data-cy="AmostraCreateUpdateHeading">Criar ou editar uma Amostra</h2>
         <div>
           <!-- <div class="form-group" v-if="amostra.id">
@@ -23,7 +23,7 @@
           </div>
           <div class="form-group">
             <label class="form-control-label" for="amostra-formaEnvio">Forma de envio</label>
-            <select class="form-control" id="amostra-formaEnvio" data-cy="formaEnvio" name="formaEnvio" v-model="amostra.formaEnvio">
+            <select class="form-control" id="amostra-formaEnvio" data-cy="formaEnvio" name="formaEnvio" v-model="amostra.formaEnvio" required="true">
               <option value="CORREIOS">Correios</option>
               <option value="RODOVIARIA">Rodoviária</option>
               <option value="TRANSPORTADORA">Transportadora</option>
@@ -40,11 +40,12 @@
               data-cy="numeroAmostras"
               :class="{ valid: !$v.amostra.numeroAmostras.$invalid, invalid: $v.amostra.numeroAmostras.$invalid }"
               v-model.number="$v.amostra.numeroAmostras.$model"
+              required="true"
             />
           </div>
           <div class="form-group">
             <label class="form-control-label" for="amostra-especie">Espécie</label>
-            <select class="form-control" id="amostra-especie-select" data-cy="especie" name="especie-select" v-model="amostra.especie">
+            <select class="form-control" id="amostra-especie-select" data-cy="especie" name="especie-select" v-model="amostra.especie" required="true">
               <option value="BOVINA">Bovina</option>
               <option value="EQUINA">Equina</option>
               <option value="OVINA">Ovina</option>
@@ -93,6 +94,7 @@
               data-cy="materialRecebido"
               name="materialRecebido"
               v-model="amostra.materialRecebido"
+              required="true"
             >
               <option value="SANGUE_TOTAL">Sangue total</option>
               <option value="SORO">Soro</option>
@@ -112,6 +114,7 @@
               data-cy="acondicionamento"
               name="acondicionamento"
               v-model="amostra.acondicionamento"
+              required="true"
             >
               <option value="REFRIGERADA">Refrigerada</option>
               <option value="CONGELADA">Congelada</option>
@@ -128,6 +131,7 @@
               data-cy="condicaoMaterial"
               name="condicaoMaterial"
               v-model="amostra.condicaoMaterial"
+              required="true"
             >
               <option value="BOM">Bom</option>
               <option value="HEMOLISADO">Hemolisado</option>
@@ -149,6 +153,7 @@
               data-cy="numeroAnimais"
               :class="{ valid: !$v.amostra.numeroAnimais.$invalid, invalid: $v.amostra.numeroAnimais.$invalid }"
               v-model.number="$v.amostra.numeroAnimais.$model"
+              required="true"
             />
           </div>
           <div class="form-group">
@@ -161,6 +166,7 @@
               data-cy="acometidos"
               :class="{ valid: !$v.amostra.acometidos.$invalid, invalid: $v.amostra.acometidos.$invalid }"
               v-model="$v.amostra.acometidos.$model"
+              required="true"
             />
           </div>
           <div class="form-group">
@@ -173,6 +179,7 @@
               data-cy="pricipalSuspeita"
               :class="{ valid: !$v.amostra.pricipalSuspeita.$invalid, invalid: $v.amostra.pricipalSuspeita.$invalid }"
               v-model="$v.amostra.pricipalSuspeita.$model"
+              required="true"
             />
           </div>
           <div class="form-group">
@@ -185,11 +192,12 @@
               data-cy="tipo"
               :class="{ valid: !$v.amostra.tipo.$invalid, invalid: $v.amostra.tipo.$invalid }"
               v-model="$v.amostra.tipo.$model"
+              required="true"
             />
           </div>
           <div class="form-group">
             <label class="form-control-label" for="amostra-status">Status</label>
-            <select class="form-control" id="amostra-status" data-cy="status" name="status" v-model="amostra.status">
+            <select class="form-control" id="amostra-status" data-cy="status" name="status" v-model="amostra.status" required="true">
               <option value="ACEITO">Aceito</option>
               <option value="RECUSADO">Recusado</option>
               <option value="AGUARDANDO_SOLICITACAO_HISTORICO">Aguardando solicitação/histórico</option>
@@ -204,6 +212,7 @@
               name="tipoMedVet"
               v-model="amostra.tipoMedVet"
               v-on:click="setMedVet()"
+              required="true"
             >
               <option value="MESMO_PROPRIETARIO">Mesmo do proprietário</option>
               <option value="SEM_MED_VET">Não há veterinário responsavel</option>
@@ -262,7 +271,7 @@
           </div> -->
           <div class="form-group">
             <label class="form-control-label" for="amostra-propriedade">Propriedade</label>
-            <select class="form-control" id="amostra-propriedade" data-cy="propriedade" name="propriedade" v-model="amostra.propriedade">
+            <select class="form-control" id="amostra-propriedade" data-cy="propriedade" name="propriedade" v-model="amostra.propriedade" required="true">
               <option v-bind:value="null"></option>
               <option
                 v-bind:value="
@@ -284,6 +293,7 @@
               data-cy="medicoveterinario"
               name="medicoveterinario"
               v-model="amostra.medicoveterinario"
+              required="true"
             >
               <option v-bind:value="null"></option>
               <option

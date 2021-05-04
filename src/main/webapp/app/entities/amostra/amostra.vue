@@ -35,10 +35,7 @@
               <span>Protocolo</span>
               <jhi-sort-indicator :current-order="propOrder" :reverse="reverse" :field-name="'protocolo'"></jhi-sort-indicator>
             </th>
-            <th scope="row" v-on:click="changeOrder('formaEnvio')">
-              <span>Forma de envio</span>
-              <jhi-sort-indicator :current-order="propOrder" :reverse="reverse" :field-name="'formaEnvio'"></jhi-sort-indicator>
-            </th>
+           
             <th scope="row" v-on:click="changeOrder('numeroAmostras')">
               <span>Número de amostras</span>
               <jhi-sort-indicator :current-order="propOrder" :reverse="reverse" :field-name="'numeroAmostras'"></jhi-sort-indicator>
@@ -55,63 +52,13 @@
               <span>Material recebido</span>
               <jhi-sort-indicator :current-order="propOrder" :reverse="reverse" :field-name="'materialRecebido'"></jhi-sort-indicator>
             </th>
-            <th scope="row" v-on:click="changeOrder('acondicionamento')">
-              <span>Acondicionamento</span>
-              <jhi-sort-indicator :current-order="propOrder" :reverse="reverse" :field-name="'acondicionamento'"></jhi-sort-indicator>
-            </th>
-            <th scope="row" v-on:click="changeOrder('condicaoMaterial')">
-              <span>Condição do material</span>
-              <jhi-sort-indicator :current-order="propOrder" :reverse="reverse" :field-name="'condicaoMaterial'"></jhi-sort-indicator>
-            </th>
-            <th scope="row" v-on:click="changeOrder('numeroAnimais')">
-              <span>Numero Animais</span>
-              <jhi-sort-indicator :current-order="propOrder" :reverse="reverse" :field-name="'numeroAnimais'"></jhi-sort-indicator>
-            </th>
-            <th scope="row" v-on:click="changeOrder('acometidos')">
-              <span>Acometidos</span>
-              <jhi-sort-indicator :current-order="propOrder" :reverse="reverse" :field-name="'acometidos'"></jhi-sort-indicator>
-            </th>
-            <th scope="row" v-on:click="changeOrder('pricipalSuspeita')">
-              <span>Pricipal Suspeita</span>
-              <jhi-sort-indicator :current-order="propOrder" :reverse="reverse" :field-name="'pricipalSuspeita'"></jhi-sort-indicator>
-            </th>
-
-            <th scope="row" v-on:click="changeOrder('tipo')">
-              <span>Tipo</span>
-              <jhi-sort-indicator :current-order="propOrder" :reverse="reverse" :field-name="'tipo'"></jhi-sort-indicator>
-            </th>
+           
+           
             <th scope="row" v-on:click="changeOrder('status')">
               <span>Status</span>
               <jhi-sort-indicator :current-order="propOrder" :reverse="reverse" :field-name="'status'"></jhi-sort-indicator>
             </th>
-            <th scope="row" v-on:click="changeOrder('tipoMedVet')">
-              <span>Tipo Med. Vet.</span>
-              <jhi-sort-indicator :current-order="propOrder" :reverse="reverse" :field-name="'tipoMedVet'"></jhi-sort-indicator>
-            </th>
-            <th scope="row" v-on:click="changeOrder('valorTotal')">
-              <span>Valor total</span>
-              <jhi-sort-indicator :current-order="propOrder" :reverse="reverse" :field-name="'valorTotal'"></jhi-sort-indicator>
-            </th>
-            <th scope="row" v-on:click="changeOrder('tipoPagamento')">
-              <span>Tipo do pagamento</span>
-              <jhi-sort-indicator :current-order="propOrder" :reverse="reverse" :field-name="'tipoPagamento'"></jhi-sort-indicator>
-            </th>
-            <th scope="row" v-on:click="changeOrder('situacao')">
-              <span>Situação</span>
-              <jhi-sort-indicator :current-order="propOrder" :reverse="reverse" :field-name="'situacao'"></jhi-sort-indicator>
-            </th>
-            <th scope="row" v-on:click="changeOrder('propriedade.tipoPropriedade')">
-              <span>Propriedade</span>
-              <jhi-sort-indicator
-                :current-order="propOrder"
-                :reverse="reverse"
-                :field-name="'propriedade.tipoPropriedade'"
-              ></jhi-sort-indicator>
-            </th>
-            <th scope="row" v-on:click="changeOrder('medicoveterinario.nome')">
-              <span>Médico veterinário</span>
-              <jhi-sort-indicator :current-order="propOrder" :reverse="reverse" :field-name="'medicoveterinario.nome'"></jhi-sort-indicator>
-            </th>
+        
             <th scope="row"><span>Usuário</span></th>
             <th scope="row"></th>
           </tr>
@@ -122,37 +69,15 @@
             <router-link :to="{ name: 'AmostraView', params: { amostraId: amostra.id } }">{{ amostra.id }}</router-link>
           </td> -->
             <td>{{ amostra.protocolo }}</td>
-            <td>{{ amostra.formaEnvio }}</td>
+         
             <td>{{ amostra.numeroAmostras }}</td>
             <td>{{ amostra.especie }}</td>
             <td>{{ amostra.dataInicial }}</td>
-            <td>{{ amostra.dataFinal }}</td>
             <td>{{ amostra.materialRecebido }}</td>
-            <td>{{ amostra.acondicionamento }}</td>
-            <td>{{ amostra.condicaoMaterial }}</td>
-            <td>{{ amostra.numeroAnimais }}</td>
-            <td>{{ amostra.acometidos }}</td>
-            <td>{{ amostra.pricipalSuspeita }}</td>
-            <td>{{ amostra.tipo }}</td>
             <td>{{ amostra.status }}</td>
-            <td>{{ amostra.tipoMedVet }}</td>
-            <td>{{ amostra.valorTotal }}</td>
-            <td>{{ amostra.tipoPagamento }}</td>
-            <td>{{ amostra.situacao }}</td>
-            <td>
-              <div v-if="amostra.propriedade">
-                <router-link :to="{ name: 'PropriedadeView', params: { propriedadeId: amostra.propriedade.id } }"
-                  >{{ amostra.propriedade.endereco.endereco }}
-                </router-link>
-              </div>
-            </td>
-            <td>
-              <div v-if="amostra.medicoveterinario">
-                <router-link :to="{ name: 'MedicoveterinarioView', params: { medicoveterinarioId: amostra.medicoveterinario.id } }">
-                  {{ amostra.medicoveterinario.nome }}
-                </router-link>
-              </div>
-            </td>
+          
+           
+            
             <td>
               <span v-for="(user, i) in amostra.users" :key="user.id">{{ i > 0 ? ', ' : '' }}{{ user.login }}</span>
             </td>
