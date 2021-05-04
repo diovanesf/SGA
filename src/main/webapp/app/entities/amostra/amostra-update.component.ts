@@ -16,10 +16,13 @@ const validations: any = {
     numeroAmostras: {},
     especie: {},
     dataInicial: {},
-    dataFinal: {},
     materialRecebido: {},
     acondicionamento: {},
     condicaoMaterial: {},
+    numeroAnimais: {},
+    acometidos: {},
+    pricipalSuspeita: {},
+    tipo: {},
     status: {},
     tipoMedVet: {},
     valorTotal: {},
@@ -84,7 +87,6 @@ export default class AmostraUpdate extends Vue {
     } else {
       this.setUser();
       this.setDataInicial();
-      this.setDataFinal();
       this.amostraService()
         .create(this.amostra)
         .then(param => {
@@ -102,25 +104,25 @@ export default class AmostraUpdate extends Vue {
     }
   }
 
-  setMedVet(){
-    switch (this.amostra.tipoMedVet){
-    case 'SEM_MED_VET':
-    case 'MESMO_PROPRIETARIO':
-      this.amostra.medicoveterinario = null;
-      break;
+  setMedVet() {
+    switch (this.amostra.tipoMedVet) {
+      case 'SEM_MED_VET':
+      case 'MESMO_PROPRIETARIO':
+        this.amostra.medicoveterinario = null;
+        break;
     }
   }
 
-  setDataInicial(){
+  setDataInicial() {
     let dataInicial = new Date();
     this.amostra.dataInicial = dataInicial;
   }
 
-  setDataFinal(){
-    let dataFinal = new Date();
-    dataFinal.setDate(dataFinal.getDate() + 15);
-    this.amostra.dataFinal = dataFinal;
-  }
+  // setDataFinal(){
+  //   let dataFinal = new Date();
+  //   dataFinal.setDate(dataFinal.getDate() + 15);
+  //   this.amostra.dataFinal = dataFinal;
+  // }
 
   public setUser() {
     this.amostra.users = [];
@@ -133,6 +135,7 @@ export default class AmostraUpdate extends Vue {
       .find(amostraId)
       .then(res => {
         this.amostra = res;
+        this.amostra.subamostras = [];
       });
   }
 

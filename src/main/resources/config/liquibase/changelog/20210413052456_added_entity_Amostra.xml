@@ -26,10 +26,16 @@
             <column name="especie" type="varchar(255)">
                 <constraints nullable="true" />
             </column>
-            <column name="data_inicial" type="date">
+            <column name="numero_animais" type="integer">
                 <constraints nullable="true" />
             </column>
-            <column name="data_final" type="date">
+            <column name="acometidos" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+            <column name="pricipal_suspeita" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+            <column name="data_inicial" type="date">
                 <constraints nullable="true" />
             </column>
             <column name="material_recebido" type="varchar(255)">
@@ -53,6 +59,9 @@
             <column name="tipo_pagamento" type="varchar(255)">
                 <constraints nullable="true" />
             </column>
+            <column name="tipo" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
             <column name="situacao" type="varchar(255)">
                 <constraints nullable="true" />
             </column>
@@ -60,7 +69,10 @@
                 <constraints nullable="true" />
             </column>
             <column name="medicoveterinario_id" type="bigint">
-                <constraints nullable="true" unique="true" uniqueConstraintName="ux_amostra__medicoveterinario_id" />
+                <constraints nullable="true" />
+            </column>
+            <column name="vacina_id" type="bigint">
+                <constraints nullable="true" unique="true" uniqueConstraintName="ux_amostra__vacina_id" />
             </column>
             <!-- jhipster-needle-liquibase-add-column - JHipster will add columns here -->
         </createTable>
@@ -100,8 +112,10 @@
             <column name="forma_envio" type="string"/>
             <column name="numero_amostras" type="numeric"/>
             <column name="especie" type="string"/>
+            <column name="numero_animais" type="numeric"/>
+            <column name="acometidos" type="string"/>
+            <column name="pricipal_suspeita" type="string"/>
             <column name="data_inicial" type="date"/>
-            <column name="data_final" type="date"/>
             <column name="material_recebido" type="string"/>
             <column name="acondicionamento" type="string"/>
             <column name="condicao_material" type="string"/>
@@ -109,6 +123,7 @@
             <column name="tipo_med_vet" type="string"/>
             <column name="valor_total" type="numeric"/>
             <column name="tipo_pagamento" type="string"/>
+            <column name="tipo" type="string"/>
             <column name="situacao" type="string"/>
             <!-- jhipster-needle-liquibase-add-loadcolumn - JHipster (and/or extensions) can add load columns here -->
         </loadData>

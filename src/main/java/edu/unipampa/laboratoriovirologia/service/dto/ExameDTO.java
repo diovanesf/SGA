@@ -17,10 +17,6 @@ public class ExameDTO implements Serializable {
 
     private String tipo;
 
-    private String pesoMaterial;
-
-    private String estimativaVacinas;
-
     private String resultado;
 
     private LocalDate dataTeste;
@@ -36,6 +32,8 @@ public class ExameDTO implements Serializable {
     private BigDecimal valor;
 
     private AmostraDTO amostra;
+
+    private SubamostraDTO subamostra;
 
     public Long getId() {
         return id;
@@ -59,22 +57,6 @@ public class ExameDTO implements Serializable {
 
     public void setTipo(String tipo) {
         this.tipo = tipo;
-    }
-
-    public String getPesoMaterial() {
-        return pesoMaterial;
-    }
-
-    public void setPesoMaterial(String pesoMaterial) {
-        this.pesoMaterial = pesoMaterial;
-    }
-
-    public String getEstimativaVacinas() {
-        return estimativaVacinas;
-    }
-
-    public void setEstimativaVacinas(String estimativaVacinas) {
-        this.estimativaVacinas = estimativaVacinas;
     }
 
     public String getResultado() {
@@ -133,6 +115,14 @@ public class ExameDTO implements Serializable {
         this.amostra = amostra;
     }
 
+    public SubamostraDTO getSubamostra() {
+        return subamostra;
+    }
+
+    public void setSubamostra(SubamostraDTO subamostra) {
+        this.subamostra = subamostra;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) {
@@ -161,8 +151,6 @@ public class ExameDTO implements Serializable {
             "id=" + getId() +
             ", nome='" + getNome() + "'" +
             ", tipo='" + getTipo() + "'" +
-            ", pesoMaterial='" + getPesoMaterial() + "'" +
-            ", estimativaVacinas='" + getEstimativaVacinas() + "'" +
             ", resultado='" + getResultado() + "'" +
             ", dataTeste='" + getDataTeste() + "'" +
             ", dataLeitura='" + getDataLeitura() + "'" +
@@ -170,6 +158,7 @@ public class ExameDTO implements Serializable {
             ", observacoes='" + getObservacoes() + "'" +
             ", valor=" + getValor() +
             ", amostra=" + getAmostra() +
+            ", subamostra=" + getSubamostra() +
             "}";
     }
 }

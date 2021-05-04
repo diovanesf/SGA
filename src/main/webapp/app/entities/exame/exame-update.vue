@@ -25,12 +25,11 @@
               <option value="IMUNOFLUORESCENCIA">Imunofluorescência</option>
               <option value="INIBICAO_HEMAGLUTINACAO">Inibição da Hemaglutinação</option>
               <option value="ISOLAMENTO_VIRAL">Isolamento Viral</option>
-              <option value="IMUNODIFUSAO_GEL_AGAR">Imunodifusão em Gel de Agar</option>
-              <option value="MICROSCOPIA_ELETRONICA">Microscopia Eletrônica</option>
-              <option value="VACINA_AUTOGENA">Vacina Autógena</option>
+              <option value="IMUNODIFUSAO_GEL_AGAR">Imunodifusao em Gel de Agar</option>
+              <option value="MICROSCOPIA_ELETRONICA">Microscopia Eletronica</option>
             </select>
           </div>
-          <div class="form-group" v-if="exame.nome !== 'VACINA_AUTOGENA'">
+          <div class="form-group">
             <label class="form-control-label" for="exame-tipo">Tipo</label>
             <select class="form-control" id="exame-tipo" data-cy="tipo" name="tipo" v-model="exame.tipo">
               <option
@@ -42,32 +41,32 @@
               </option>
             </select>
           </div>
-          <div v-if="exame.nome === 'VACINA_AUTOGENA'">
-            <div class="form-group">
-              <label class="form-control-label" for="exame-pesoMaterial">Peso Material</label>
-              <input
-                type="text"
-                class="form-control"
-                name="pesoMaterial"
-                id="exame-pesoMaterial"
-                data-cy="pesoMaterial"
-                :class="{ valid: !$v.exame.pesoMaterial.$invalid, invalid: $v.exame.pesoMaterial.$invalid }"
-                v-model="$v.exame.pesoMaterial.$model"
-              />
-            </div>
-            <div class="form-group">
-              <label class="form-control-label" for="exame-estimativaVacinas">Estimativa Vacinas</label>
-              <input
-                type="text"
-                class="form-control"
-                name="estimativaVacinas"
-                id="exame-estimativaVacinas"
-                data-cy="estimativaVacinas"
-                :class="{ valid: !$v.exame.estimativaVacinas.$invalid, invalid: $v.exame.estimativaVacinas.$invalid }"
-                v-model="$v.exame.estimativaVacinas.$model"
-              />
-            </div>
-          </div>
+          <!--          <div v-if="exame.nome === 'VACINA_AUTOGENA'">-->
+          <!--            <div class="form-group">-->
+          <!--              <label class="form-control-label" for="exame-pesoMaterial">Peso Material</label>-->
+          <!--              <input-->
+          <!--                type="text"-->
+          <!--                class="form-control"-->
+          <!--                name="pesoMaterial"-->
+          <!--                id="exame-pesoMaterial"-->
+          <!--                data-cy="pesoMaterial"-->
+          <!--                :class="{ valid: !$v.exame.pesoMaterial.$invalid, invalid: $v.exame.pesoMaterial.$invalid }"-->
+          <!--                v-model="$v.exame.pesoMaterial.$model"-->
+          <!--              />-->
+          <!--            </div>-->
+          <!--            <div class="form-group">-->
+          <!--              <label class="form-control-label" for="exame-estimativaVacinas">Estimativa Vacinas</label>-->
+          <!--              <input-->
+          <!--                type="text"-->
+          <!--                class="form-control"-->
+          <!--                name="estimativaVacinas"-->
+          <!--                id="exame-estimativaVacinas"-->
+          <!--                data-cy="estimativaVacinas"-->
+          <!--                :class="{ valid: !$v.exame.estimativaVacinas.$invalid, invalid: $v.exame.estimativaVacinas.$invalid }"-->
+          <!--                v-model="$v.exame.estimativaVacinas.$model"-->
+          <!--              />-->
+          <!--            </div>-->
+          <!--          </div>-->
           <div class="form-group">
             <label class="form-control-label" for="exame-resultado">Resultado</label>
             <input
@@ -169,6 +168,19 @@
               :class="{ valid: !$v.exame.valor.$invalid, invalid: $v.exame.valor.$invalid }"
               v-model.number="$v.exame.valor.$model"
             />
+          </div>
+          <div class="form-group">
+            <label class="form-control-label" for="exame-subamostra">Sub Amostra</label>
+            <select class="form-control" id="exame-subamostra" data-cy="subamostra" name="subamostra" v-model="exame.subamostra">
+              <option v-bind:value="null"></option>
+              <option
+                v-bind:value="exame.subamostra && subamostraOption.id === exame.subamostra.id ? exame.subamostra : subamostraOption"
+                v-for="subamostraOption in subamostras"
+                :key="subamostraOption.id"
+              >
+                {{ subamostraOption.subamostra }}
+              </option>
+            </select>
           </div>
           <!-- <div class="form-group">
             <label class="form-control-label" for="exame-amostra">Amostra</label>

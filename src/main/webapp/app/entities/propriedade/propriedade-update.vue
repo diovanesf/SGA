@@ -39,53 +39,6 @@
               <option value="FECHADA">Fechada</option>
             </select>
           </div>
-          <div class="form-group" v-if="propriedade.tipoPropriedade !== 'OUTRO'">
-            <label class="form-control-label" for="propriedade-numeroAnimais">Numero de Animais</label>
-            <input
-              type="number"
-              class="form-control"
-              name="numeroAnimais"
-              id="propriedade-numeroAnimais"
-              data-cy="numeroAnimais"
-              :class="{ valid: !$v.propriedade.numeroAnimais.$invalid, invalid: $v.propriedade.numeroAnimais.$invalid }"
-              v-model.number="$v.propriedade.numeroAnimais.$model"
-            />
-          </div>
-          <div class="form-group" v-if="propriedade.tipoPropriedade !== 'OUTRO'">
-            <label class="form-control-label" for="propriedade-acometidos">Acometidos</label>
-            <input
-              type="text"
-              class="form-control"
-              name="acometidos"
-              id="propriedade-acometidos"
-              data-cy="acometidos"
-              :class="{ valid: !$v.propriedade.acometidos.$invalid, invalid: $v.propriedade.acometidos.$invalid }"
-              v-model="$v.propriedade.acometidos.$model"
-            />
-          </div>
-          <div class="form-group">
-            <label class="form-control-label" for="propriedade-observacoes">Observações</label>
-            <textarea
-              class="form-control"
-              name="observacoes"
-              id="propriedade-observacoes"
-              data-cy="observacoes"
-              :class="{ valid: !$v.propriedade.observacoes.$invalid, invalid: $v.propriedade.observacoes.$invalid }"
-              v-model="$v.propriedade.observacoes.$model"
-            ></textarea>
-          </div>
-          <div class="form-group">
-            <label class="form-control-label" for="propriedade-pricipalSuspeita">Principal Suspeita</label>
-            <input
-              type="text"
-              class="form-control"
-              name="pricipalSuspeita"
-              id="propriedade-pricipalSuspeita"
-              data-cy="pricipalSuspeita"
-              :class="{ valid: !$v.propriedade.pricipalSuspeita.$invalid, invalid: $v.propriedade.pricipalSuspeita.$invalid }"
-              v-model="$v.propriedade.pricipalSuspeita.$model"
-            />
-          </div>
           <div class="form-group">
             <label class="form-control-label" for="propriedade-proprietario">Proprietário</label>
             <select

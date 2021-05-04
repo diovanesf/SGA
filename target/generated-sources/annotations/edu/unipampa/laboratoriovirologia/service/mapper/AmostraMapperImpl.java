@@ -1,8 +1,10 @@
 package edu.unipampa.laboratoriovirologia.service.mapper;
 
 import edu.unipampa.laboratoriovirologia.domain.Amostra;
+import edu.unipampa.laboratoriovirologia.domain.Subamostra;
 import edu.unipampa.laboratoriovirologia.domain.User;
 import edu.unipampa.laboratoriovirologia.service.dto.AmostraDTO;
+import edu.unipampa.laboratoriovirologia.service.dto.SubamostraDTO;
 import edu.unipampa.laboratoriovirologia.service.dto.UserDTO;
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -14,13 +16,8 @@ import org.springframework.stereotype.Component;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-<<<<<<< Updated upstream
-    date = "2021-04-27T00:18:03-0300",
-    comments = "version: 1.4.2.Final, compiler: javac, environment: Java 11.0.10 (Ubuntu)"
-=======
-    date = "2021-04-26T22:57:32-0300",
-    comments = "version: 1.4.2.Final, compiler: javac, environment: Java 11.0.10 (AdoptOpenJDK)"
->>>>>>> Stashed changes
+    date = "2021-05-03T22:04:02-0300",
+    comments = "version: 1.4.2.Final, compiler: javac, environment: Java 11.0.11 (Ubuntu)"
 )
 @Component
 public class AmostraMapperImpl implements AmostraMapper {
@@ -31,6 +28,10 @@ public class AmostraMapperImpl implements AmostraMapper {
     private PropriedadeMapper propriedadeMapper;
     @Autowired
     private MedicoveterinarioMapper medicoveterinarioMapper;
+    @Autowired
+    private SubamostraMapper subamostraMapper;
+    @Autowired
+    private VacinaMapper vacinaMapper;
 
     @Override
     public List<Amostra> toEntity(List<AmostraDTO> dtoList) {
@@ -81,11 +82,17 @@ public class AmostraMapperImpl implements AmostraMapper {
         if ( dto.getEspecie() != null ) {
             entity.setEspecie( dto.getEspecie() );
         }
+        if ( dto.getNumeroAnimais() != null ) {
+            entity.setNumeroAnimais( dto.getNumeroAnimais() );
+        }
+        if ( dto.getAcometidos() != null ) {
+            entity.setAcometidos( dto.getAcometidos() );
+        }
+        if ( dto.getPricipalSuspeita() != null ) {
+            entity.setPricipalSuspeita( dto.getPricipalSuspeita() );
+        }
         if ( dto.getDataInicial() != null ) {
             entity.setDataInicial( dto.getDataInicial() );
-        }
-        if ( dto.getDataFinal() != null ) {
-            entity.setDataFinal( dto.getDataFinal() );
         }
         if ( dto.getMaterialRecebido() != null ) {
             entity.setMaterialRecebido( dto.getMaterialRecebido() );
@@ -108,6 +115,9 @@ public class AmostraMapperImpl implements AmostraMapper {
         if ( dto.getTipoPagamento() != null ) {
             entity.setTipoPagamento( dto.getTipoPagamento() );
         }
+        if ( dto.getTipo() != null ) {
+            entity.setTipo( dto.getTipo() );
+        }
         if ( dto.getSituacao() != null ) {
             entity.setSituacao( dto.getSituacao() );
         }
@@ -124,11 +134,27 @@ public class AmostraMapperImpl implements AmostraMapper {
                 entity.setUsers( set );
             }
         }
+        if ( entity.getSubamostras() != null ) {
+            Set<Subamostra> set1 = subamostraDTOSetToSubamostraSet( dto.getSubamostras() );
+            if ( set1 != null ) {
+                entity.getSubamostras().clear();
+                entity.getSubamostras().addAll( set1 );
+            }
+        }
+        else {
+            Set<Subamostra> set1 = subamostraDTOSetToSubamostraSet( dto.getSubamostras() );
+            if ( set1 != null ) {
+                entity.setSubamostras( set1 );
+            }
+        }
         if ( dto.getPropriedade() != null ) {
             entity.setPropriedade( propriedadeMapper.toEntity( dto.getPropriedade() ) );
         }
         if ( dto.getMedicoveterinario() != null ) {
             entity.setMedicoveterinario( medicoveterinarioMapper.toEntity( dto.getMedicoveterinario() ) );
+        }
+        if ( dto.getVacina() != null ) {
+            entity.setVacina( vacinaMapper.toEntity( dto.getVacina() ) );
         }
     }
 
@@ -143,13 +169,17 @@ public class AmostraMapperImpl implements AmostraMapper {
         amostraDTO.setUsers( userMapper.toDtoLoginSet( s.getUsers() ) );
         amostraDTO.setPropriedade( propriedadeMapper.toDtoTipoPropriedade( s.getPropriedade() ) );
         amostraDTO.setMedicoveterinario( medicoveterinarioMapper.toDtoNome( s.getMedicoveterinario() ) );
+        amostraDTO.setSubamostras( subamostraSetToSubamostraDTOSet( s.getSubamostras() ) );
+        amostraDTO.setVacina( vacinaMapper.toDtoStatus( s.getVacina() ) );
         amostraDTO.setId( s.getId() );
         amostraDTO.setProtocolo( s.getProtocolo() );
         amostraDTO.setFormaEnvio( s.getFormaEnvio() );
         amostraDTO.setNumeroAmostras( s.getNumeroAmostras() );
         amostraDTO.setEspecie( s.getEspecie() );
+        amostraDTO.setNumeroAnimais( s.getNumeroAnimais() );
+        amostraDTO.setAcometidos( s.getAcometidos() );
+        amostraDTO.setPricipalSuspeita( s.getPricipalSuspeita() );
         amostraDTO.setDataInicial( s.getDataInicial() );
-        amostraDTO.setDataFinal( s.getDataFinal() );
         amostraDTO.setMaterialRecebido( s.getMaterialRecebido() );
         amostraDTO.setAcondicionamento( s.getAcondicionamento() );
         amostraDTO.setCondicaoMaterial( s.getCondicaoMaterial() );
@@ -157,6 +187,7 @@ public class AmostraMapperImpl implements AmostraMapper {
         amostraDTO.setTipoMedVet( s.getTipoMedVet() );
         amostraDTO.setValorTotal( s.getValorTotal() );
         amostraDTO.setTipoPagamento( s.getTipoPagamento() );
+        amostraDTO.setTipo( s.getTipo() );
         amostraDTO.setSituacao( s.getSituacao() );
 
         return amostraDTO;
@@ -175,8 +206,10 @@ public class AmostraMapperImpl implements AmostraMapper {
         amostra.setFormaEnvio( amostraDTO.getFormaEnvio() );
         amostra.setNumeroAmostras( amostraDTO.getNumeroAmostras() );
         amostra.setEspecie( amostraDTO.getEspecie() );
+        amostra.setNumeroAnimais( amostraDTO.getNumeroAnimais() );
+        amostra.setAcometidos( amostraDTO.getAcometidos() );
+        amostra.setPricipalSuspeita( amostraDTO.getPricipalSuspeita() );
         amostra.setDataInicial( amostraDTO.getDataInicial() );
-        amostra.setDataFinal( amostraDTO.getDataFinal() );
         amostra.setMaterialRecebido( amostraDTO.getMaterialRecebido() );
         amostra.setAcondicionamento( amostraDTO.getAcondicionamento() );
         amostra.setCondicaoMaterial( amostraDTO.getCondicaoMaterial() );
@@ -184,10 +217,13 @@ public class AmostraMapperImpl implements AmostraMapper {
         amostra.setTipoMedVet( amostraDTO.getTipoMedVet() );
         amostra.setValorTotal( amostraDTO.getValorTotal() );
         amostra.setTipoPagamento( amostraDTO.getTipoPagamento() );
+        amostra.setTipo( amostraDTO.getTipo() );
         amostra.setSituacao( amostraDTO.getSituacao() );
         amostra.setUsers( userDTOSetToUserSet( amostraDTO.getUsers() ) );
+        amostra.setSubamostras( subamostraDTOSetToSubamostraSet( amostraDTO.getSubamostras() ) );
         amostra.setPropriedade( propriedadeMapper.toEntity( amostraDTO.getPropriedade() ) );
         amostra.setMedicoveterinario( medicoveterinarioMapper.toEntity( amostraDTO.getMedicoveterinario() ) );
+        amostra.setVacina( vacinaMapper.toEntity( amostraDTO.getVacina() ) );
 
         return amostra;
     }
@@ -227,6 +263,32 @@ public class AmostraMapperImpl implements AmostraMapper {
         Set<User> set1 = new HashSet<User>( Math.max( (int) ( set.size() / .75f ) + 1, 16 ) );
         for ( UserDTO userDTO : set ) {
             set1.add( userDTOToUser( userDTO ) );
+        }
+
+        return set1;
+    }
+
+    protected Set<Subamostra> subamostraDTOSetToSubamostraSet(Set<SubamostraDTO> set) {
+        if ( set == null ) {
+            return null;
+        }
+
+        Set<Subamostra> set1 = new HashSet<Subamostra>( Math.max( (int) ( set.size() / .75f ) + 1, 16 ) );
+        for ( SubamostraDTO subamostraDTO : set ) {
+            set1.add( subamostraMapper.toEntity( subamostraDTO ) );
+        }
+
+        return set1;
+    }
+
+    protected Set<SubamostraDTO> subamostraSetToSubamostraDTOSet(Set<Subamostra> set) {
+        if ( set == null ) {
+            return null;
+        }
+
+        Set<SubamostraDTO> set1 = new HashSet<SubamostraDTO>( Math.max( (int) ( set.size() / .75f ) + 1, 16 ) );
+        for ( Subamostra subamostra : set ) {
+            set1.add( subamostraMapper.toDto( subamostra ) );
         }
 
         return set1;

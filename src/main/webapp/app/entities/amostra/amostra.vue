@@ -3,8 +3,9 @@
     <h2 id="page-heading" data-cy="AmostraHeading">
       <span id="amostra-heading">Amostras</span>
       <div class="d-flex justify-content-end">
-        <button class="btn btn-outline-success mr-2" v-on:click="handleSyncList" :disabled="isFetching">
-          <font-awesome-icon icon="sync" :spin="isFetching"></font-awesome-icon> <span>Atualizar Lista</span>
+        <button class="btn btn-info mr-2" v-on:click="handleSyncList" :disabled="isFetching">
+          <font-awesome-icon icon="sync" :spin="isFetching"></font-awesome-icon>
+          <span>Atualizar Lista</span>
         </button>
         <router-link :to="{ name: 'AmostraCreate' }" custom v-slot="{ navigate }">
           <button
@@ -50,10 +51,6 @@
               <span>Data inicial</span>
               <jhi-sort-indicator :current-order="propOrder" :reverse="reverse" :field-name="'dataInicial'"></jhi-sort-indicator>
             </th>
-            <th scope="row" v-on:click="changeOrder('dataFinal')">
-              <span>Data final</span>
-              <jhi-sort-indicator :current-order="propOrder" :reverse="reverse" :field-name="'dataFinal'"></jhi-sort-indicator>
-            </th>
             <th scope="row" v-on:click="changeOrder('materialRecebido')">
               <span>Material recebido</span>
               <jhi-sort-indicator :current-order="propOrder" :reverse="reverse" :field-name="'materialRecebido'"></jhi-sort-indicator>
@@ -65,6 +62,23 @@
             <th scope="row" v-on:click="changeOrder('condicaoMaterial')">
               <span>Condição do material</span>
               <jhi-sort-indicator :current-order="propOrder" :reverse="reverse" :field-name="'condicaoMaterial'"></jhi-sort-indicator>
+            </th>
+            <th scope="row" v-on:click="changeOrder('numeroAnimais')">
+              <span>Numero Animais</span>
+              <jhi-sort-indicator :current-order="propOrder" :reverse="reverse" :field-name="'numeroAnimais'"></jhi-sort-indicator>
+            </th>
+            <th scope="row" v-on:click="changeOrder('acometidos')">
+              <span>Acometidos</span>
+              <jhi-sort-indicator :current-order="propOrder" :reverse="reverse" :field-name="'acometidos'"></jhi-sort-indicator>
+            </th>
+            <th scope="row" v-on:click="changeOrder('pricipalSuspeita')">
+              <span>Pricipal Suspeita</span>
+              <jhi-sort-indicator :current-order="propOrder" :reverse="reverse" :field-name="'pricipalSuspeita'"></jhi-sort-indicator>
+            </th>
+
+            <th scope="row" v-on:click="changeOrder('tipo')">
+              <span>Tipo</span>
+              <jhi-sort-indicator :current-order="propOrder" :reverse="reverse" :field-name="'tipo'"></jhi-sort-indicator>
             </th>
             <th scope="row" v-on:click="changeOrder('status')">
               <span>Status</span>
@@ -116,6 +130,10 @@
             <td>{{ amostra.materialRecebido }}</td>
             <td>{{ amostra.acondicionamento }}</td>
             <td>{{ amostra.condicaoMaterial }}</td>
+            <td>{{ amostra.numeroAnimais }}</td>
+            <td>{{ amostra.acometidos }}</td>
+            <td>{{ amostra.pricipalSuspeita }}</td>
+            <td>{{ amostra.tipo }}</td>
             <td>{{ amostra.status }}</td>
             <td>{{ amostra.tipoMedVet }}</td>
             <td>{{ amostra.valorTotal }}</td>
@@ -124,7 +142,7 @@
             <td>
               <div v-if="amostra.propriedade">
                 <router-link :to="{ name: 'PropriedadeView', params: { propriedadeId: amostra.propriedade.id } }"
-                  >{{ amostra.propriedade.tipoPropriedade }}
+                  >{{ amostra.propriedade.endereco.endereco }}
                 </router-link>
               </div>
             </td>

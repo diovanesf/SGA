@@ -9,14 +9,6 @@
       "fieldType": "String"
     },
     {
-      "fieldName": "pesoMaterial",
-      "fieldType": "String"
-    },
-    {
-      "fieldName": "estimativaVacinas",
-      "fieldType": "String"
-    },
-    {
       "fieldName": "resultado",
       "fieldType": "String"
     },
@@ -49,6 +41,12 @@
       "otherEntityName": "amostra",
       "relationshipType": "many-to-one",
       "otherEntityField": "protocolo"
+    },
+    {
+      "relationshipName": "subamostra",
+      "otherEntityName": "subamostra",
+      "relationshipType": "many-to-one",
+      "otherEntityField": "subamostra"
     }
   ],
   "service": "serviceClass",

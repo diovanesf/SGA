@@ -20,12 +20,6 @@
             <column name="tipo" type="varchar(255)">
                 <constraints nullable="true" />
             </column>
-            <column name="peso_material" type="varchar(255)">
-                <constraints nullable="true" />
-            </column>
-            <column name="estimativa_vacinas" type="varchar(255)">
-                <constraints nullable="true" />
-            </column>
             <column name="resultado" type="varchar(255)">
                 <constraints nullable="true" />
             </column>
@@ -45,6 +39,9 @@
                 <constraints nullable="true" />
             </column>
             <column name="amostra_id" type="bigint">
+                <constraints nullable="true" />
+            </column>
+            <column name="subamostra_id" type="bigint">
                 <constraints nullable="true" />
             </column>
             <!-- jhipster-needle-liquibase-add-column - JHipster will add columns here -->
@@ -69,8 +66,6 @@
             <column name="id" type="numeric"/>
             <column name="nome" type="string"/>
             <column name="tipo" type="string"/>
-            <column name="peso_material" type="string"/>
-            <column name="estimativa_vacinas" type="string"/>
             <column name="resultado" type="string"/>
             <column name="data_teste" type="date"/>
             <column name="data_leitura" type="date"/>

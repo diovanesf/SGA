@@ -10,19 +10,16 @@ import org.springframework.stereotype.Component;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-<<<<<<< Updated upstream
-    date = "2021-04-27T00:18:04-0300",
-    comments = "version: 1.4.2.Final, compiler: javac, environment: Java 11.0.10 (Ubuntu)"
-=======
-    date = "2021-04-26T22:57:31-0300",
-    comments = "version: 1.4.2.Final, compiler: javac, environment: Java 11.0.10 (AdoptOpenJDK)"
->>>>>>> Stashed changes
+    date = "2021-05-03T22:04:01-0300",
+    comments = "version: 1.4.2.Final, compiler: javac, environment: Java 11.0.11 (Ubuntu)"
 )
 @Component
 public class ExameMapperImpl implements ExameMapper {
 
     @Autowired
     private AmostraMapper amostraMapper;
+    @Autowired
+    private SubamostraMapper subamostraMapper;
 
     @Override
     public Exame toEntity(ExameDTO dto) {
@@ -35,8 +32,6 @@ public class ExameMapperImpl implements ExameMapper {
         exame.id( dto.getId() );
         exame.setNome( dto.getNome() );
         exame.setTipo( dto.getTipo() );
-        exame.setPesoMaterial( dto.getPesoMaterial() );
-        exame.setEstimativaVacinas( dto.getEstimativaVacinas() );
         exame.setResultado( dto.getResultado() );
         exame.setDataTeste( dto.getDataTeste() );
         exame.setDataLeitura( dto.getDataLeitura() );
@@ -44,6 +39,7 @@ public class ExameMapperImpl implements ExameMapper {
         exame.setObservacoes( dto.getObservacoes() );
         exame.setValor( dto.getValor() );
         exame.setAmostra( amostraMapper.toEntity( dto.getAmostra() ) );
+        exame.setSubamostra( subamostraMapper.toEntity( dto.getSubamostra() ) );
 
         return exame;
     }
@@ -91,12 +87,6 @@ public class ExameMapperImpl implements ExameMapper {
         if ( dto.getTipo() != null ) {
             entity.setTipo( dto.getTipo() );
         }
-        if ( dto.getPesoMaterial() != null ) {
-            entity.setPesoMaterial( dto.getPesoMaterial() );
-        }
-        if ( dto.getEstimativaVacinas() != null ) {
-            entity.setEstimativaVacinas( dto.getEstimativaVacinas() );
-        }
         if ( dto.getResultado() != null ) {
             entity.setResultado( dto.getResultado() );
         }
@@ -118,6 +108,9 @@ public class ExameMapperImpl implements ExameMapper {
         if ( dto.getAmostra() != null ) {
             entity.setAmostra( amostraMapper.toEntity( dto.getAmostra() ) );
         }
+        if ( dto.getSubamostra() != null ) {
+            entity.setSubamostra( subamostraMapper.toEntity( dto.getSubamostra() ) );
+        }
     }
 
     @Override
@@ -129,11 +122,10 @@ public class ExameMapperImpl implements ExameMapper {
         ExameDTO exameDTO = new ExameDTO();
 
         exameDTO.setAmostra( amostraMapper.toDtoProtocolo( s.getAmostra() ) );
+        exameDTO.setSubamostra( subamostraMapper.toDto( s.getSubamostra() ) );
         exameDTO.setId( s.getId() );
         exameDTO.setNome( s.getNome() );
         exameDTO.setTipo( s.getTipo() );
-        exameDTO.setPesoMaterial( s.getPesoMaterial() );
-        exameDTO.setEstimativaVacinas( s.getEstimativaVacinas() );
         exameDTO.setResultado( s.getResultado() );
         exameDTO.setDataTeste( s.getDataTeste() );
         exameDTO.setDataLeitura( s.getDataLeitura() );

@@ -98,11 +98,17 @@ public class AmostraQueryService extends QueryService<Amostra> {
             if (criteria.getEspecie() != null) {
                 specification = specification.and(buildStringSpecification(criteria.getEspecie(), Amostra_.especie));
             }
+            if (criteria.getNumeroAnimais() != null) {
+                specification = specification.and(buildRangeSpecification(criteria.getNumeroAnimais(), Amostra_.numeroAnimais));
+            }
+            if (criteria.getAcometidos() != null) {
+                specification = specification.and(buildStringSpecification(criteria.getAcometidos(), Amostra_.acometidos));
+            }
+            if (criteria.getPricipalSuspeita() != null) {
+                specification = specification.and(buildStringSpecification(criteria.getPricipalSuspeita(), Amostra_.pricipalSuspeita));
+            }
             if (criteria.getDataInicial() != null) {
                 specification = specification.and(buildRangeSpecification(criteria.getDataInicial(), Amostra_.dataInicial));
-            }
-            if (criteria.getDataFinal() != null) {
-                specification = specification.and(buildRangeSpecification(criteria.getDataFinal(), Amostra_.dataFinal));
             }
             if (criteria.getMaterialRecebido() != null) {
                 specification = specification.and(buildStringSpecification(criteria.getMaterialRecebido(), Amostra_.materialRecebido));
@@ -125,6 +131,9 @@ public class AmostraQueryService extends QueryService<Amostra> {
             if (criteria.getTipoPagamento() != null) {
                 specification = specification.and(buildStringSpecification(criteria.getTipoPagamento(), Amostra_.tipoPagamento));
             }
+            if (criteria.getTipo() != null) {
+                specification = specification.and(buildStringSpecification(criteria.getTipo(), Amostra_.tipo));
+            }
             if (criteria.getSituacao() != null) {
                 specification = specification.and(buildStringSpecification(criteria.getSituacao(), Amostra_.situacao));
             }
@@ -138,6 +147,15 @@ public class AmostraQueryService extends QueryService<Amostra> {
                 specification =
                     specification.and(
                         buildSpecification(criteria.getMidiaId(), root -> root.join(Amostra_.midias, JoinType.LEFT).get(Midia_.id))
+                    );
+            }
+            if (criteria.getSubamostraId() != null) {
+                specification =
+                    specification.and(
+                        buildSpecification(
+                            criteria.getSubamostraId(),
+                            root -> root.join(Amostra_.subamostras, JoinType.LEFT).get(Subamostra_.id)
+                        )
                     );
             }
             if (criteria.getExameId() != null) {
@@ -162,6 +180,12 @@ public class AmostraQueryService extends QueryService<Amostra> {
                             criteria.getMedicoveterinarioId(),
                             root -> root.join(Amostra_.medicoveterinario, JoinType.LEFT).get(Medicoveterinario_.id)
                         )
+                    );
+            }
+            if (criteria.getVacinaId() != null) {
+                specification =
+                    specification.and(
+                        buildSpecification(criteria.getVacinaId(), root -> root.join(Amostra_.vacina, JoinType.LEFT).get(Vacina_.id))
                     );
             }
         }

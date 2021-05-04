@@ -31,5 +31,11 @@
                                  constraintName="fk_amostra__medicoveterinario_id"
                                  referencedColumnNames="id"
                                  referencedTableName="medicoveterinario"/>
+
+        <addForeignKeyConstraint baseColumnNames="vacina_id"
+                                 baseTableName="amostra"
+                                 constraintName="fk_amostra__vacina_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="vacina"/>
     </changeSet>
 </databaseChangeLog>

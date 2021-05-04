@@ -1,7 +1,4 @@
-import { Component, Inject } from 'vue-property-decorator';
-
-import { mixins } from 'vue-class-component';
-import JhiDataUtils from '@/shared/data/data-utils.service';
+import { Component, Vue, Inject } from 'vue-property-decorator';
 
 import ProprietarioService from '@/entities/proprietario/proprietario.service';
 import { IProprietario } from '@/shared/model/proprietario.model';
@@ -15,10 +12,6 @@ import PropriedadeService from './propriedade.service';
 const validations: any = {
   propriedade: {
     tipoPropriedade: {},
-    numeroAnimais: {},
-    acometidos: {},
-    observacoes: {},
-    pricipalSuspeita: {},
     tipoCriacao: {},
   },
 };
@@ -26,7 +19,7 @@ const validations: any = {
 @Component({
   validations,
 })
-export default class PropriedadeUpdate extends mixins(JhiDataUtils) {
+export default class PropriedadeUpdate extends Vue {
   @Inject('propriedadeService') private propriedadeService: () => PropriedadeService;
   public propriedade: IPropriedade = new Propriedade();
 
@@ -36,7 +29,9 @@ export default class PropriedadeUpdate extends mixins(JhiDataUtils) {
 
   @Inject('enderecoService') private enderecoService: () => EnderecoService;
 
+  // public enderecos: IEndereco[] = [];
   public endereco: IEndereco = {};
+
   public isSaving = false;
   public currentLanguage = '';
 
@@ -74,7 +69,6 @@ export default class PropriedadeUpdate extends mixins(JhiDataUtils) {
   public save(): void {
     this.isSaving = true;
     if (this.propriedade.id) {
-      this.setEnderecoPropriedade();
       this.propriedadeService()
         .update(this.propriedade)
         .then(param => {
@@ -90,7 +84,6 @@ export default class PropriedadeUpdate extends mixins(JhiDataUtils) {
           });
         });
     } else {
-      this.setEnderecoPropriedade();
       this.propriedadeService()
         .create(this.propriedade)
         .then(param => {
@@ -138,5 +131,10 @@ export default class PropriedadeUpdate extends mixins(JhiDataUtils) {
       .then(res => {
         this.proprietarios = res.data;
       });
+    // this.enderecoService()
+    //   .retrieve()
+    //   .then(res => {
+    //     this.enderecos = res.data;
+    //   });
   }
 }

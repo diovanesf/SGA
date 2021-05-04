@@ -10,6 +10,8 @@ import ExameService from '@/entities/exame/exame.service';
 
 import AmostraService from '@/entities/amostra/amostra.service';
 
+import SubamostraService from '@/entities/subamostra/subamostra.service';
+
 const localVue = createLocalVue();
 
 config.initVueApp(localVue);
@@ -39,6 +41,8 @@ describe('Component Tests', () => {
           exameService: () => exameServiceStub,
 
           amostraService: () => new AmostraService(),
+
+          subamostraService: () => new SubamostraService(),
         },
       });
       comp = wrapper.vm;

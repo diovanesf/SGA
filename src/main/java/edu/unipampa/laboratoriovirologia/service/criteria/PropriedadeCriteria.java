@@ -28,12 +28,6 @@ public class PropriedadeCriteria implements Serializable, Criteria {
 
     private StringFilter tipoPropriedade;
 
-    private IntegerFilter numeroAnimais;
-
-    private StringFilter acometidos;
-
-    private StringFilter pricipalSuspeita;
-
     private StringFilter tipoCriacao;
 
     private LongFilter proprietarioId;
@@ -45,9 +39,6 @@ public class PropriedadeCriteria implements Serializable, Criteria {
     public PropriedadeCriteria(PropriedadeCriteria other) {
         this.id = other.id == null ? null : other.id.copy();
         this.tipoPropriedade = other.tipoPropriedade == null ? null : other.tipoPropriedade.copy();
-        this.numeroAnimais = other.numeroAnimais == null ? null : other.numeroAnimais.copy();
-        this.acometidos = other.acometidos == null ? null : other.acometidos.copy();
-        this.pricipalSuspeita = other.pricipalSuspeita == null ? null : other.pricipalSuspeita.copy();
         this.tipoCriacao = other.tipoCriacao == null ? null : other.tipoCriacao.copy();
         this.proprietarioId = other.proprietarioId == null ? null : other.proprietarioId.copy();
         this.enderecoId = other.enderecoId == null ? null : other.enderecoId.copy();
@@ -86,51 +77,6 @@ public class PropriedadeCriteria implements Serializable, Criteria {
 
     public void setTipoPropriedade(StringFilter tipoPropriedade) {
         this.tipoPropriedade = tipoPropriedade;
-    }
-
-    public IntegerFilter getNumeroAnimais() {
-        return numeroAnimais;
-    }
-
-    public IntegerFilter numeroAnimais() {
-        if (numeroAnimais == null) {
-            numeroAnimais = new IntegerFilter();
-        }
-        return numeroAnimais;
-    }
-
-    public void setNumeroAnimais(IntegerFilter numeroAnimais) {
-        this.numeroAnimais = numeroAnimais;
-    }
-
-    public StringFilter getAcometidos() {
-        return acometidos;
-    }
-
-    public StringFilter acometidos() {
-        if (acometidos == null) {
-            acometidos = new StringFilter();
-        }
-        return acometidos;
-    }
-
-    public void setAcometidos(StringFilter acometidos) {
-        this.acometidos = acometidos;
-    }
-
-    public StringFilter getPricipalSuspeita() {
-        return pricipalSuspeita;
-    }
-
-    public StringFilter pricipalSuspeita() {
-        if (pricipalSuspeita == null) {
-            pricipalSuspeita = new StringFilter();
-        }
-        return pricipalSuspeita;
-    }
-
-    public void setPricipalSuspeita(StringFilter pricipalSuspeita) {
-        this.pricipalSuspeita = pricipalSuspeita;
     }
 
     public StringFilter getTipoCriacao() {
@@ -190,9 +136,6 @@ public class PropriedadeCriteria implements Serializable, Criteria {
         return (
             Objects.equals(id, that.id) &&
             Objects.equals(tipoPropriedade, that.tipoPropriedade) &&
-            Objects.equals(numeroAnimais, that.numeroAnimais) &&
-            Objects.equals(acometidos, that.acometidos) &&
-            Objects.equals(pricipalSuspeita, that.pricipalSuspeita) &&
             Objects.equals(tipoCriacao, that.tipoCriacao) &&
             Objects.equals(proprietarioId, that.proprietarioId) &&
             Objects.equals(enderecoId, that.enderecoId)
@@ -201,7 +144,7 @@ public class PropriedadeCriteria implements Serializable, Criteria {
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, tipoPropriedade, numeroAnimais, acometidos, pricipalSuspeita, tipoCriacao, proprietarioId, enderecoId);
+        return Objects.hash(id, tipoPropriedade, tipoCriacao, proprietarioId, enderecoId);
     }
 
     // prettier-ignore
@@ -210,9 +153,6 @@ public class PropriedadeCriteria implements Serializable, Criteria {
         return "PropriedadeCriteria{" +
             (id != null ? "id=" + id + ", " : "") +
             (tipoPropriedade != null ? "tipoPropriedade=" + tipoPropriedade + ", " : "") +
-            (numeroAnimais != null ? "numeroAnimais=" + numeroAnimais + ", " : "") +
-            (acometidos != null ? "acometidos=" + acometidos + ", " : "") +
-            (pricipalSuspeita != null ? "pricipalSuspeita=" + pricipalSuspeita + ", " : "") +
             (tipoCriacao != null ? "tipoCriacao=" + tipoCriacao + ", " : "") +
             (proprietarioId != null ? "proprietarioId=" + proprietarioId + ", " : "") +
             (enderecoId != null ? "enderecoId=" + enderecoId + ", " : "") +

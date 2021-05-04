@@ -12,11 +12,15 @@ import UserService from '@/admin/user-management/user-management.service';
 
 import MidiaService from '@/entities/midia/midia.service';
 
+import SubamostraService from '@/entities/subamostra/subamostra.service';
+
 import ExameService from '@/entities/exame/exame.service';
 
 import PropriedadeService from '@/entities/propriedade/propriedade.service';
 
 import MedicoveterinarioService from '@/entities/medicoveterinario/medicoveterinario.service';
+
+import VacinaService from '@/entities/vacina/vacina.service';
 
 const localVue = createLocalVue();
 
@@ -50,11 +54,15 @@ describe('Component Tests', () => {
 
           midiaService: () => new MidiaService(),
 
+          subamostraService: () => new SubamostraService(),
+
           exameService: () => new ExameService(),
 
           propriedadeService: () => new PropriedadeService(),
 
           medicoveterinarioService: () => new MedicoveterinarioService(),
+
+          vacinaService: () => new VacinaService(),
         },
       });
       comp = wrapper.vm;

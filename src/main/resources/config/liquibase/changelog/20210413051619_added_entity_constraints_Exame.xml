@@ -13,5 +13,11 @@
                                  constraintName="fk_exame__amostra_id"
                                  referencedColumnNames="id"
                                  referencedTableName="amostra"/>
+
+        <addForeignKeyConstraint baseColumnNames="subamostra_id"
+                                 baseTableName="exame"
+                                 constraintName="fk_exame__subamostra_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="subamostra"/>
     </changeSet>
 </databaseChangeLog>

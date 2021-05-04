@@ -17,18 +17,6 @@
             <span>{{ exame.tipo }}</span>
           </dd>
           <dt>
-            <span>Peso Material</span>
-          </dt>
-          <dd>
-            <span>{{ exame.pesoMaterial }}</span>
-          </dd>
-          <dt>
-            <span>Estimativa Vacinas</span>
-          </dt>
-          <dd>
-            <span>{{ exame.estimativaVacinas }}</span>
-          </dd>
-          <dt>
             <span>Resultado</span>
           </dt>
           <dd>
@@ -71,6 +59,16 @@
             <div v-if="exame.amostra">
               <router-link :to="{ name: 'AmostraView', params: { amostraId: exame.amostra.id } }">{{
                 exame.amostra.protocolo
+              }}</router-link>
+            </div>
+          </dd>
+          <dt>
+            <span>Subamostra</span>
+          </dt>
+          <dd>
+            <div v-if="exame.subamostra">
+              <router-link :to="{ name: 'SubamostraView', params: { subamostraId: exame.subamostra.id } }">{{
+                exame.subamostra.subamostra
               }}</router-link>
             </div>
           </dd>

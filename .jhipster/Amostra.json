@@ -17,11 +17,19 @@
       "fieldType": "String"
     },
     {
-      "fieldName": "dataInicial",
-      "fieldType": "LocalDate"
+      "fieldName": "numeroAnimais",
+      "fieldType": "Integer"
     },
     {
-      "fieldName": "dataFinal",
+      "fieldName": "acometidos",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "pricipalSuspeita",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "dataInicial",
       "fieldType": "LocalDate"
     },
     {
@@ -53,6 +61,10 @@
       "fieldType": "String"
     },
     {
+      "fieldName": "tipo",
+      "fieldType": "String"
+    },
+    {
       "fieldName": "situacao",
       "fieldType": "String"
     }
@@ -75,6 +87,13 @@
     },
     {
       "relationshipType": "one-to-many",
+      "otherEntityName": "subamostra",
+      "otherEntityRelationshipName": "amostra",
+      "relationshipName": "subamostra",
+      "otherEntityField": "subamostra"
+    },
+    {
+      "relationshipType": "one-to-many",
       "otherEntityName": "exame",
       "otherEntityRelationshipName": "amostra",
       "relationshipName": "exame",
@@ -89,8 +108,14 @@
     {
       "relationshipName": "medicoveterinario",
       "otherEntityName": "medicoveterinario",
+      "relationshipType": "many-to-one",
+      "otherEntityField": "nome"
+    },
+    {
+      "relationshipName": "vacina",
+      "otherEntityName": "vacina",
       "relationshipType": "one-to-one",
-      "otherEntityField": "nome",
+      "otherEntityField": "status",
       "ownerSide": true,
       "id": false,
       "otherEntityRelationshipName": "amostra"

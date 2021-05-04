@@ -36,9 +36,13 @@ public class AmostraCriteria implements Serializable, Criteria {
 
     private StringFilter especie;
 
-    private LocalDateFilter dataInicial;
+    private IntegerFilter numeroAnimais;
 
-    private LocalDateFilter dataFinal;
+    private StringFilter acometidos;
+
+    private StringFilter pricipalSuspeita;
+
+    private LocalDateFilter dataInicial;
 
     private StringFilter materialRecebido;
 
@@ -54,17 +58,23 @@ public class AmostraCriteria implements Serializable, Criteria {
 
     private StringFilter tipoPagamento;
 
+    private StringFilter tipo;
+
     private StringFilter situacao;
 
     private LongFilter userId;
 
     private LongFilter midiaId;
 
+    private LongFilter subamostraId;
+
     private LongFilter exameId;
 
     private LongFilter propriedadeId;
 
     private LongFilter medicoveterinarioId;
+
+    private LongFilter vacinaId;
 
     public AmostraCriteria() {}
 
@@ -74,8 +84,10 @@ public class AmostraCriteria implements Serializable, Criteria {
         this.formaEnvio = other.formaEnvio == null ? null : other.formaEnvio.copy();
         this.numeroAmostras = other.numeroAmostras == null ? null : other.numeroAmostras.copy();
         this.especie = other.especie == null ? null : other.especie.copy();
+        this.numeroAnimais = other.numeroAnimais == null ? null : other.numeroAnimais.copy();
+        this.acometidos = other.acometidos == null ? null : other.acometidos.copy();
+        this.pricipalSuspeita = other.pricipalSuspeita == null ? null : other.pricipalSuspeita.copy();
         this.dataInicial = other.dataInicial == null ? null : other.dataInicial.copy();
-        this.dataFinal = other.dataFinal == null ? null : other.dataFinal.copy();
         this.materialRecebido = other.materialRecebido == null ? null : other.materialRecebido.copy();
         this.acondicionamento = other.acondicionamento == null ? null : other.acondicionamento.copy();
         this.condicaoMaterial = other.condicaoMaterial == null ? null : other.condicaoMaterial.copy();
@@ -83,12 +95,15 @@ public class AmostraCriteria implements Serializable, Criteria {
         this.tipoMedVet = other.tipoMedVet == null ? null : other.tipoMedVet.copy();
         this.valorTotal = other.valorTotal == null ? null : other.valorTotal.copy();
         this.tipoPagamento = other.tipoPagamento == null ? null : other.tipoPagamento.copy();
+        this.tipo = other.tipo == null ? null : other.tipo.copy();
         this.situacao = other.situacao == null ? null : other.situacao.copy();
         this.userId = other.userId == null ? null : other.userId.copy();
         this.midiaId = other.midiaId == null ? null : other.midiaId.copy();
+        this.subamostraId = other.subamostraId == null ? null : other.subamostraId.copy();
         this.exameId = other.exameId == null ? null : other.exameId.copy();
         this.propriedadeId = other.propriedadeId == null ? null : other.propriedadeId.copy();
         this.medicoveterinarioId = other.medicoveterinarioId == null ? null : other.medicoveterinarioId.copy();
+        this.vacinaId = other.vacinaId == null ? null : other.vacinaId.copy();
     }
 
     @Override
@@ -171,6 +186,51 @@ public class AmostraCriteria implements Serializable, Criteria {
         this.especie = especie;
     }
 
+    public IntegerFilter getNumeroAnimais() {
+        return numeroAnimais;
+    }
+
+    public IntegerFilter numeroAnimais() {
+        if (numeroAnimais == null) {
+            numeroAnimais = new IntegerFilter();
+        }
+        return numeroAnimais;
+    }
+
+    public void setNumeroAnimais(IntegerFilter numeroAnimais) {
+        this.numeroAnimais = numeroAnimais;
+    }
+
+    public StringFilter getAcometidos() {
+        return acometidos;
+    }
+
+    public StringFilter acometidos() {
+        if (acometidos == null) {
+            acometidos = new StringFilter();
+        }
+        return acometidos;
+    }
+
+    public void setAcometidos(StringFilter acometidos) {
+        this.acometidos = acometidos;
+    }
+
+    public StringFilter getPricipalSuspeita() {
+        return pricipalSuspeita;
+    }
+
+    public StringFilter pricipalSuspeita() {
+        if (pricipalSuspeita == null) {
+            pricipalSuspeita = new StringFilter();
+        }
+        return pricipalSuspeita;
+    }
+
+    public void setPricipalSuspeita(StringFilter pricipalSuspeita) {
+        this.pricipalSuspeita = pricipalSuspeita;
+    }
+
     public LocalDateFilter getDataInicial() {
         return dataInicial;
     }
@@ -184,21 +244,6 @@ public class AmostraCriteria implements Serializable, Criteria {
 
     public void setDataInicial(LocalDateFilter dataInicial) {
         this.dataInicial = dataInicial;
-    }
-
-    public LocalDateFilter getDataFinal() {
-        return dataFinal;
-    }
-
-    public LocalDateFilter dataFinal() {
-        if (dataFinal == null) {
-            dataFinal = new LocalDateFilter();
-        }
-        return dataFinal;
-    }
-
-    public void setDataFinal(LocalDateFilter dataFinal) {
-        this.dataFinal = dataFinal;
     }
 
     public StringFilter getMaterialRecebido() {
@@ -306,6 +351,21 @@ public class AmostraCriteria implements Serializable, Criteria {
         this.tipoPagamento = tipoPagamento;
     }
 
+    public StringFilter getTipo() {
+        return tipo;
+    }
+
+    public StringFilter tipo() {
+        if (tipo == null) {
+            tipo = new StringFilter();
+        }
+        return tipo;
+    }
+
+    public void setTipo(StringFilter tipo) {
+        this.tipo = tipo;
+    }
+
     public StringFilter getSituacao() {
         return situacao;
     }
@@ -349,6 +409,21 @@ public class AmostraCriteria implements Serializable, Criteria {
 
     public void setMidiaId(LongFilter midiaId) {
         this.midiaId = midiaId;
+    }
+
+    public LongFilter getSubamostraId() {
+        return subamostraId;
+    }
+
+    public LongFilter subamostraId() {
+        if (subamostraId == null) {
+            subamostraId = new LongFilter();
+        }
+        return subamostraId;
+    }
+
+    public void setSubamostraId(LongFilter subamostraId) {
+        this.subamostraId = subamostraId;
     }
 
     public LongFilter getExameId() {
@@ -396,6 +471,21 @@ public class AmostraCriteria implements Serializable, Criteria {
         this.medicoveterinarioId = medicoveterinarioId;
     }
 
+    public LongFilter getVacinaId() {
+        return vacinaId;
+    }
+
+    public LongFilter vacinaId() {
+        if (vacinaId == null) {
+            vacinaId = new LongFilter();
+        }
+        return vacinaId;
+    }
+
+    public void setVacinaId(LongFilter vacinaId) {
+        this.vacinaId = vacinaId;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) {
@@ -411,8 +501,10 @@ public class AmostraCriteria implements Serializable, Criteria {
             Objects.equals(formaEnvio, that.formaEnvio) &&
             Objects.equals(numeroAmostras, that.numeroAmostras) &&
             Objects.equals(especie, that.especie) &&
+            Objects.equals(numeroAnimais, that.numeroAnimais) &&
+            Objects.equals(acometidos, that.acometidos) &&
+            Objects.equals(pricipalSuspeita, that.pricipalSuspeita) &&
             Objects.equals(dataInicial, that.dataInicial) &&
-            Objects.equals(dataFinal, that.dataFinal) &&
             Objects.equals(materialRecebido, that.materialRecebido) &&
             Objects.equals(acondicionamento, that.acondicionamento) &&
             Objects.equals(condicaoMaterial, that.condicaoMaterial) &&
@@ -420,12 +512,15 @@ public class AmostraCriteria implements Serializable, Criteria {
             Objects.equals(tipoMedVet, that.tipoMedVet) &&
             Objects.equals(valorTotal, that.valorTotal) &&
             Objects.equals(tipoPagamento, that.tipoPagamento) &&
+            Objects.equals(tipo, that.tipo) &&
             Objects.equals(situacao, that.situacao) &&
             Objects.equals(userId, that.userId) &&
             Objects.equals(midiaId, that.midiaId) &&
+            Objects.equals(subamostraId, that.subamostraId) &&
             Objects.equals(exameId, that.exameId) &&
             Objects.equals(propriedadeId, that.propriedadeId) &&
-            Objects.equals(medicoveterinarioId, that.medicoveterinarioId)
+            Objects.equals(medicoveterinarioId, that.medicoveterinarioId) &&
+            Objects.equals(vacinaId, that.vacinaId)
         );
     }
 
@@ -437,8 +532,10 @@ public class AmostraCriteria implements Serializable, Criteria {
             formaEnvio,
             numeroAmostras,
             especie,
+            numeroAnimais,
+            acometidos,
+            pricipalSuspeita,
             dataInicial,
-            dataFinal,
             materialRecebido,
             acondicionamento,
             condicaoMaterial,
@@ -446,12 +543,15 @@ public class AmostraCriteria implements Serializable, Criteria {
             tipoMedVet,
             valorTotal,
             tipoPagamento,
+            tipo,
             situacao,
             userId,
             midiaId,
+            subamostraId,
             exameId,
             propriedadeId,
-            medicoveterinarioId
+            medicoveterinarioId,
+            vacinaId
         );
     }
 
@@ -464,8 +564,10 @@ public class AmostraCriteria implements Serializable, Criteria {
             (formaEnvio != null ? "formaEnvio=" + formaEnvio + ", " : "") +
             (numeroAmostras != null ? "numeroAmostras=" + numeroAmostras + ", " : "") +
             (especie != null ? "especie=" + especie + ", " : "") +
+            (numeroAnimais != null ? "numeroAnimais=" + numeroAnimais + ", " : "") +
+            (acometidos != null ? "acometidos=" + acometidos + ", " : "") +
+            (pricipalSuspeita != null ? "pricipalSuspeita=" + pricipalSuspeita + ", " : "") +
             (dataInicial != null ? "dataInicial=" + dataInicial + ", " : "") +
-            (dataFinal != null ? "dataFinal=" + dataFinal + ", " : "") +
             (materialRecebido != null ? "materialRecebido=" + materialRecebido + ", " : "") +
             (acondicionamento != null ? "acondicionamento=" + acondicionamento + ", " : "") +
             (condicaoMaterial != null ? "condicaoMaterial=" + condicaoMaterial + ", " : "") +
@@ -473,12 +575,15 @@ public class AmostraCriteria implements Serializable, Criteria {
             (tipoMedVet != null ? "tipoMedVet=" + tipoMedVet + ", " : "") +
             (valorTotal != null ? "valorTotal=" + valorTotal + ", " : "") +
             (tipoPagamento != null ? "tipoPagamento=" + tipoPagamento + ", " : "") +
+            (tipo != null ? "tipo=" + tipo + ", " : "") +
             (situacao != null ? "situacao=" + situacao + ", " : "") +
             (userId != null ? "userId=" + userId + ", " : "") +
             (midiaId != null ? "midiaId=" + midiaId + ", " : "") +
+            (subamostraId != null ? "subamostraId=" + subamostraId + ", " : "") +
             (exameId != null ? "exameId=" + exameId + ", " : "") +
             (propriedadeId != null ? "propriedadeId=" + propriedadeId + ", " : "") +
             (medicoveterinarioId != null ? "medicoveterinarioId=" + medicoveterinarioId + ", " : "") +
+            (vacinaId != null ? "vacinaId=" + vacinaId + ", " : "") +
             "}";
     }
 }
