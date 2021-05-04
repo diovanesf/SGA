@@ -2,7 +2,7 @@
   <div class="row justify-content-center">
     <div class="col-8">
       <form name="editForm" role="form" novalidate v-on:submit.prevent="save()">
-        <h2 id="rp6App.exame.home.createOrEditLabel" data-cy="ExameCreateUpdateHeading">Create or edit a Exame</h2>
+        <h2 id="rp6App.exame.home.createOrEditLabel" data-cy="ExameCreateUpdateHeading">Criar ou editar um exame</h2>
         <div>
           <!-- <div class="form-group" v-if="exame.id">
             <label for="id">ID</label>
@@ -18,12 +18,12 @@
               v-model="exame.nome"
               v-on:click="filtraTipoVirusPorTipoExame()"
             >
-              <option value="SORONEUTRALIZACAO">Soroneutralizacao</option>
-              <option value="ENSAIO_IMUNOABSORCAO_ENZIMATICA">Ensaio de Imunoabsorcao Enzimatica</option>
-              <option value="REACAO_CADEIA_POLIMERASE">Reacao em Cadeia de Polimerase</option>
+              <option value="SORONEUTRALIZACAO">Soroneutralização</option>
+              <option value="ENSAIO_IMUNOABSORCAO_ENZIMATICA">Ensaio de Imunoabsorção Enzimática</option>
+              <option value="REACAO_CADEIA_POLIMERASE">Reação em Cadeia de Polimerase</option>
               <option value="IMUNOCROMATOGRAFIA">Imunocromatografia</option>
-              <option value="IMUNOFLUORESCENCIA">Imunofluorescencia</option>
-              <option value="INIBICAO_HEMAGLUTINACAO">Inibicao da Hemaglutinacao</option>
+              <option value="IMUNOFLUORESCENCIA">Imunofluorescência</option>
+              <option value="INIBICAO_HEMAGLUTINACAO">Inibição da Hemaglutinação</option>
               <option value="ISOLAMENTO_VIRAL">Isolamento Viral</option>
               <option value="IMUNODIFUSAO_GEL_AGAR">Imunodifusao em Gel de Agar</option>
               <option value="MICROSCOPIA_ELETRONICA">Microscopia Eletronica</option>
@@ -147,7 +147,7 @@
             ></textarea>
           </div>
           <div class="form-group">
-            <label class="form-control-label" for="exame-observacoes">Observacoes</label>
+            <label class="form-control-label" for="exame-observacoes">Observações</label>
             <textarea
               class="form-control"
               name="observacoes"
@@ -197,17 +197,17 @@
           </div> -->
         </div>
         <div>
-          <button type="button" id="cancel-save" class="btn btn-secondary" v-on:click="previousState()">
-            <font-awesome-icon icon="ban"></font-awesome-icon>&nbsp;<span>Cancel</span>
+          <button type="button" id="cancel-save" class="btn btn-outline-danger" v-on:click="previousState()">
+            <font-awesome-icon icon="ban"></font-awesome-icon>&nbsp;<span>Cancelar</span>
           </button>
           <button
             type="submit"
             id="save-entity"
             data-cy="entityCreateSaveButton"
             :disabled="$v.exame.$invalid || isSaving"
-            class="btn btn-primary"
+            class="btn btn-success"
           >
-            <font-awesome-icon icon="save"></font-awesome-icon>&nbsp;<span>Save</span>
+            <font-awesome-icon icon="save"></font-awesome-icon>&nbsp;<span>Salvar</span>
           </button>
         </div>
       </form>

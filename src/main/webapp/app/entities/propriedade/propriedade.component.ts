@@ -33,6 +33,10 @@ export default class Propriedade extends Vue {
     this.retrieveAllPropriedades();
   }
 
+  public verificaUsuario(): boolean {
+    return this.$store.getters.account.authorities.find(elen => elen === 'ROLE_PROFESSOR');
+  }
+
   public retrieveAllPropriedades(): void {
     this.isFetching = true;
 

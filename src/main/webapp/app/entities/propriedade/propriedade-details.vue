@@ -5,19 +5,43 @@
         <h2 class="jh-entity-heading" data-cy="propriedadeDetailsHeading"><span>Propriedade</span> {{ propriedade.id }}</h2>
         <dl class="row jh-entity-details">
           <dt>
-            <span>Tipo Propriedade</span>
+            <span>Tipo de Propriedade</span>
           </dt>
           <dd>
             <span>{{ propriedade.tipoPropriedade }}</span>
           </dd>
           <dt>
-            <span>Tipo Criacao</span>
+            <span>Número de Animais</span>
+          </dt>
+          <dd>
+            <span>{{ propriedade.numeroAnimais }}</span>
+          </dd>
+          <dt>
+            <span>Acometidos</span>
+          </dt>
+          <dd>
+            <span>{{ propriedade.acometidos }}</span>
+          </dd>
+          <dt>
+            <span>Observações</span>
+          </dt>
+          <dd>
+            <span>{{ propriedade.observacoes }}</span>
+          </dd>
+          <dt>
+            <span>Principal Suspeita</span>
+          </dt>
+          <dd>
+            <span>{{ propriedade.pricipalSuspeita }}</span>
+          </dd>
+          <dt>
+            <span>Tipo de Criação</span>
           </dt>
           <dd>
             <span>{{ propriedade.tipoCriacao }}</span>
           </dd>
           <dt>
-            <span>Proprietario</span>
+            <span>Proprietário</span>
           </dt>
           <dd>
             <div v-if="propriedade.proprietario">
@@ -27,7 +51,7 @@
             </div>
           </dd>
           <dt>
-            <span>Endereco</span>
+            <span>Endereço</span>
           </dt>
           <dd>
             <div v-if="propriedade.endereco">
@@ -37,8 +61,8 @@
             </div>
           </dd>
         </dl>
-        <button type="submit" v-on:click.prevent="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
-          <font-awesome-icon icon="arrow-left"></font-awesome-icon>&nbsp;<span> Back</span>
+        <button type="submit" v-on:click.prevent="previousState()" class="btn btn-outline-success" data-cy="entityDetailsBackButton">
+          <font-awesome-icon icon="arrow-left"></font-awesome-icon>&nbsp;<span> Voltar</span>
         </button>
         <router-link
           v-if="propriedade.id"
@@ -46,8 +70,8 @@
           custom
           v-slot="{ navigate }"
         >
-          <button @click="navigate" class="btn btn-primary">
-            <font-awesome-icon icon="pencil-alt"></font-awesome-icon>&nbsp;<span> Edit</span>
+          <button @click="navigate" class="btn btn-success">
+            <font-awesome-icon icon="pencil-alt"></font-awesome-icon>&nbsp;<span> Editar</span>
           </button>
         </router-link>
       </div>

@@ -29,7 +29,9 @@ export default class PropriedadeUpdate extends Vue {
 
   @Inject('enderecoService') private enderecoService: () => EnderecoService;
 
-  public enderecos: IEndereco[] = [];
+  // public enderecos: IEndereco[] = [];
+  public endereco: IEndereco = {};
+
   public isSaving = false;
   public currentLanguage = '';
 
@@ -37,6 +39,9 @@ export default class PropriedadeUpdate extends Vue {
     next(vm => {
       if (to.params.propriedadeId) {
         vm.retrievePropriedade(to.params.propriedadeId);
+      }
+      if (to.params.enderecoId) {
+        vm.retrieveEnderecoPropriedade(to.params.enderecoId);
       }
       vm.initRelationships();
     });
@@ -50,6 +55,15 @@ export default class PropriedadeUpdate extends Vue {
         this.currentLanguage = this.$store.getters.currentLanguage;
       }
     );
+  }
+
+  setTipoPropriedade() {
+    switch (this.propriedade.tipoPropriedade) {
+      case 'OUTRO':
+      case 'CANIL_GATIL':
+        this.propriedade.tipoCriacao = null;
+        break;
+    }
   }
 
   public save(): void {
@@ -87,6 +101,18 @@ export default class PropriedadeUpdate extends Vue {
     }
   }
 
+  public setEnderecoPropriedade() {
+    this.propriedade.endereco = this.endereco;
+  }
+
+  public retrieveEnderecoPropriedade(enderecoId: number): void {
+    this.enderecoService()
+      .find(enderecoId)
+      .then(res => {
+        this.endereco = res;
+      });
+  }
+
   public retrievePropriedade(propriedadeId): void {
     this.propriedadeService()
       .find(propriedadeId)
@@ -105,10 +131,10 @@ export default class PropriedadeUpdate extends Vue {
       .then(res => {
         this.proprietarios = res.data;
       });
-    this.enderecoService()
-      .retrieve()
-      .then(res => {
-        this.enderecos = res.data;
-      });
+    // this.enderecoService()
+    //   .retrieve()
+    //   .then(res => {
+    //     this.enderecos = res.data;
+    //   });
   }
 }

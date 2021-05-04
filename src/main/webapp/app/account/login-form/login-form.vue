@@ -9,15 +9,7 @@
       <div class="col-md-8">
         <b-form role="form" v-on:submit.prevent="doLogin()">
           <b-form-group label="Usuário" label-for="username">
-            <b-form-input
-              id="username"
-              type="text"
-              name="username"
-              autofocus
-              placeholder="Seu usuário"
-              v-model="login"
-              data-cy="username"
-            >
+            <b-form-input id="username" type="text" name="username" autofocus placeholder="Seu usuário" v-model="login" data-cy="username">
             </b-form-input>
           </b-form-group>
           <b-form-group label="Senha" label-for="password">
@@ -36,23 +28,19 @@
             <span>Lembrar-me</span>
           </b-form-checkbox>
           <div>
-            <b-button data-cy="submit" type="submit" variant="primary">Entrar</b-button>
+            <b-button class="btn btn-success" data-cy="submit" type="submit" variant="primary">Entrar</b-button>
           </div>
         </b-form>
         <p></p>
         <div>
-          <b-alert show variant="warning">
-            <b-link :to="'/account/reset/request'" class="alert-link" data-cy="forgetYourPasswordSelector"
-              >Esqueceu sua senha?</b-link
-            >
-          </b-alert>
+          <b-link :to="'/account/reset/request'" class="alert-link" data-cy="forgetYourPasswordSelector">Esqueceu sua senha?</b-link>
         </div>
-        <div>
-          <b-alert show variant="warning">
-            <span>Não possui uma conta ainda?</span>
-            <b-link :to="'/register'" class="alert-link">Crie uma nova conta</b-link>
-          </b-alert>
-        </div>
+        <!--        <div>-->
+        <!--          <b-alert show variant="warning">-->
+        <!--            <span>Não possui uma conta ainda?</span>-->
+        <!--            <b-link :to="'/register'" class="alert-link">Crie uma nova conta</b-link>-->
+        <!--          </b-alert>-->
+        <!--        </div>-->
       </div>
     </div>
   </div>

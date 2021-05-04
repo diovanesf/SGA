@@ -33,6 +33,10 @@ export default class Medicoveterinario extends Vue {
     this.retrieveAllMedicoveterinarios();
   }
 
+  public verificaUsuario(): boolean {
+    return this.$store.getters.account.authorities.find(elen => elen === 'ROLE_PROFESSOR');
+  }
+
   public retrieveAllMedicoveterinarios(): void {
     this.isFetching = true;
 

@@ -98,7 +98,7 @@
               <option v-for="(language, key) in languages" :value="key" :key="`lang-${key}`">{{ language.name }}</option>
             </select>
           </div>
-          <button type="submit" :disabled="$v.settingsAccount.$invalid" class="btn btn-primary" data-cy="submit">Salvar</button>
+          <button type="submit" :disabled="$v.settingsAccount.$invalid" class="btn btn-success" data-cy="submit">Salvar</button>
         </form>
       </div>
     </div>

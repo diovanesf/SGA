@@ -1,27 +1,27 @@
 <template>
   <div>
     <h2 id="page-heading" data-cy="MedicoveterinarioHeading">
-      <span id="medicoveterinario-heading">Medicoveterinarios</span>
+      <span id="medicoveterinario-heading">Médico Veterinário</span>
       <div class="d-flex justify-content-end">
-        <button class="btn btn-info mr-2" v-on:click="handleSyncList" :disabled="isFetching">
-          <font-awesome-icon icon="sync" :spin="isFetching"></font-awesome-icon> <span>Refresh List</span>
+        <button class="btn btn-outline-success mr-2" v-on:click="handleSyncList" :disabled="isFetching">
+          <font-awesome-icon icon="sync" :spin="isFetching"></font-awesome-icon> <span>Atualizar lista</span>
         </button>
         <router-link :to="{ name: 'MedicoveterinarioCreate' }" custom v-slot="{ navigate }">
           <button
             @click="navigate"
             id="jh-create-entity"
             data-cy="entityCreateButton"
-            class="btn btn-primary jh-create-entity create-medicoveterinario"
+            class="btn btn-outline-success jh-create-entity create-medicoveterinario"
           >
             <font-awesome-icon icon="plus"></font-awesome-icon>
-            <span> Create a new Medicoveterinario </span>
+            <span> Criar um novo Médico Veterinário </span>
           </button>
         </router-link>
       </div>
     </h2>
     <br />
     <div class="alert alert-warning" v-if="!isFetching && medicoveterinarios && medicoveterinarios.length === 0">
-      <span>No medicoveterinarios found</span>
+      <span>Nenhum Médico Veterinário encontrado</span>
     </div>
     <div class="table-responsive" v-if="medicoveterinarios && medicoveterinarios.length > 0">
       <table class="table table-striped" aria-describedby="medicoveterinarios">
@@ -38,7 +38,7 @@
               <jhi-sort-indicator :current-order="propOrder" :reverse="reverse" :field-name="'telefone'"></jhi-sort-indicator>
             </th>
             <th scope="row" v-on:click="changeOrder('email')">
-              <span>Email</span>
+              <span>E-mail</span>
               <jhi-sort-indicator :current-order="propOrder" :reverse="reverse" :field-name="'email'"></jhi-sort-indicator>
             </th>
             <th scope="row" v-on:click="changeOrder('crmv')">
@@ -70,9 +70,9 @@
                   custom
                   v-slot="{ navigate }"
                 >
-                  <button @click="navigate" class="btn btn-info btn-sm details" data-cy="entityDetailsButton">
+                  <button @click="navigate" class="btn btn-success btn-sm details" data-cy="entityDetailsButton">
                     <font-awesome-icon icon="eye"></font-awesome-icon>
-                    <span class="d-none d-md-inline">View</span>
+                    <span class="d-none d-md-inline">Ver</span>
                   </button>
                 </router-link>
                 <router-link
@@ -82,10 +82,11 @@
                 >
                   <button @click="navigate" class="btn btn-primary btn-sm edit" data-cy="entityEditButton">
                     <font-awesome-icon icon="pencil-alt"></font-awesome-icon>
-                    <span class="d-none d-md-inline">Edit</span>
+                    <span class="d-none d-md-inline">Editar</span>
                   </button>
                 </router-link>
                 <b-button
+                  v-if="verificaUsuario()"
                   v-on:click="prepareRemove(medicoveterinario)"
                   variant="danger"
                   class="btn btn-sm"
@@ -93,7 +94,7 @@
                   v-b-modal.removeEntity
                 >
                   <font-awesome-icon icon="times"></font-awesome-icon>
-                  <span class="d-none d-md-inline">Delete</span>
+                  <span class="d-none d-md-inline">Deletar</span>
                 </b-button>
               </div>
             </td>
@@ -104,17 +105,17 @@
     <b-modal ref="removeEntity" id="removeEntity">
       <span slot="modal-title"
         ><span id="rp6App.medicoveterinario.delete.question" data-cy="medicoveterinarioDeleteDialogHeading"
-          >Confirm delete operation</span
+          >Confirmação de exclusão</span
         ></span
       >
       <div class="modal-body">
-        <p id="jhi-delete-medicoveterinario-heading">Are you sure you want to delete this Medicoveterinario?</p>
+        <p id="jhi-delete-medicoveterinario-heading">Você tem certeza que deseja deletar este Médico Veterinário?</p>
       </div>
       <div slot="modal-footer">
-        <button type="button" class="btn btn-secondary" v-on:click="closeDialog()">Cancel</button>
+        <button type="button" class="btn btn-secondary" v-on:click="closeDialog()">Cancelar</button>
         <button
           type="button"
-          class="btn btn-primary"
+          class="btn btn-danger"
           id="jhi-confirm-delete-medicoveterinario"
           data-cy="entityConfirmDeleteButton"
           v-on:click="removeMedicoveterinario()"

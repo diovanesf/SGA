@@ -1,11 +1,11 @@
-id;tipo_propriedade;tipo_criacao
-1;invoice invoice;Internal
-2;Santa;Finlândia
-3;Ceará;Jogos copy
-4;Granito;Tanzânia
-5;Mercearia;Avenida
-6;benchmark visionary roxo;mission-critical Suazilândia sexy
-7;compressing Account;alarm do withdrawal
-8;Mercearia bus;Implementation
-9;TCP port models;Borracha
-10;Rua Monitored Metal;matrices Plástico
+id;tipo_propriedade;tipo_criacao;endereco_id
+1;invoice invoice;Internal;1
+2;Santa;Finlândia;2
+3;Ceará;Jogos copy;3
+4;Granito;Tanzânia;4
+5;Mercearia;Avenida;5
+6;benchmark visionary roxo;mission-critical Suazilândia sexy;6
+7;compressing Account;alarm do withdrawal;7
+8;Mercearia bus;Implementation;8
+9;TCP port models;Borracha;9
+10;Rua Monitored Metal;matrices Plástico;10

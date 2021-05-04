@@ -135,6 +135,7 @@ export default class AmostraUpdate extends Vue {
       .find(amostraId)
       .then(res => {
         this.amostra = res;
+        this.amostra.subamostras = [];
       });
   }
 

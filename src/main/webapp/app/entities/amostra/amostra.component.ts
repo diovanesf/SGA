@@ -3,13 +3,18 @@ import { mixins } from 'vue-class-component';
 import { Component, Vue, Inject } from 'vue-property-decorator';
 import Vue2Filters from 'vue2-filters';
 import { IAmostra } from '@/shared/model/amostra.model';
+import { IExame } from '@/shared/model/exame.model';
+import ExameService from '@/entities/exame/exame.service';
 
 import AmostraService from './amostra.service';
+import { Authority } from '@/shared/security/authority';
 
 @Component({
   mixins: [Vue2Filters.mixin],
 })
 export default class Amostra extends Vue {
+  @Inject('exameService') private exameService: () => ExameService;
+  public exames: IExame[] = [];
   @Inject('amostraService') private amostraService: () => AmostraService;
   private removeId: number = null;
   public itemsPerPage = 20;
@@ -26,6 +31,7 @@ export default class Amostra extends Vue {
 
   public mounted(): void {
     this.retrieveAllAmostras();
+    this.retrieveExames();
   }
 
   public clear(): void {
@@ -67,6 +73,11 @@ export default class Amostra extends Vue {
     }
   }
 
+  public verificaUsuario(): boolean {
+    // console.log(this.$store.getters.account);
+    return this.$store.getters.account.authorities.find(elen => elen === 'ROLE_PROFESSOR');
+  }
+
   public removeAmostra(): void {
     this.amostraService()
       .delete(this.removeId)
@@ -83,6 +94,50 @@ export default class Amostra extends Vue {
         this.retrieveAllAmostras();
         this.closeDialog();
       });
+  }
+
+  // return !amostra.exames.find(elen => elen.resultado === null );
+  public verificaExames(amostra: IAmostra): boolean {
+    this.retrieveExamesByAmostra(amostra);
+    // console.log(amostra.exames);
+    let bool = true;
+    if (amostra.exames.length > 0) {
+      amostra.exames.forEach(function (item, indice, array) {
+        if (item.resultado === null) {
+          bool = false;
+        }
+      });
+    } else {
+      bool = false;
+    }
+    return bool;
+  }
+
+  public retrieveExamesByAmostra(amostra: IAmostra): void {
+    this.exames.forEach(function (item, indice, array) {
+      // console.log(item);
+      amostra.exames = [];
+      if (item.amostra !== null) {
+        if (item.amostra.id === amostra.id) {
+          amostra.exames.push(item);
+        }
+      }
+    });
+  }
+
+  public retrieveExames(): void {
+    this.isFetching = true;
+    this.exameService()
+      .retrieve()
+      .then(
+        res => {
+          this.exames = res.data;
+          this.isFetching = false;
+        },
+        err => {
+          this.isFetching = false;
+        }
+      );
   }
 
   public sort(): Array<any> {

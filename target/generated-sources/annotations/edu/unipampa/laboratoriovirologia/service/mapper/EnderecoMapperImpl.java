@@ -9,7 +9,7 @@ import org.springframework.stereotype.Component;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2021-05-03T21:07:03-0300",
+    date = "2021-05-03T22:04:03-0300",
     comments = "version: 1.4.2.Final, compiler: javac, environment: Java 11.0.11 (Ubuntu)"
 )
 @Component
@@ -115,6 +115,7 @@ public class EnderecoMapperImpl implements EnderecoMapper {
 
         enderecoDTO.setId( endereco.getId() );
         enderecoDTO.setEndereco( endereco.getEndereco() );
+        enderecoDTO.setCidade( endereco.getCidade() );
 
         return enderecoDTO;
     }

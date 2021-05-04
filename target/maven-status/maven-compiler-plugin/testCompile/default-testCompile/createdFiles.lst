@@ -14,6 +14,7 @@ edu/unipampa/laboratoriovirologia/web/rest/TestUtil$ZonedDateTimeMatcher.class
 edu/unipampa/laboratoriovirologia/service/dto/EnderecoDTOTest.class
 edu/unipampa/laboratoriovirologia/repository/timezone/DateTimeWrapperRepository.class
 edu/unipampa/laboratoriovirologia/security/jwt/TokenProviderTest.class
+edu/unipampa/laboratoriovirologia/service/dto/VacinaDTOTest.class
 edu/unipampa/laboratoriovirologia/web/rest/AccountResourceIT.class
 edu/unipampa/laboratoriovirologia/web/rest/UserResourceIT.class
 edu/unipampa/laboratoriovirologia/domain/AmostraTest.class
@@ -22,9 +23,11 @@ edu/unipampa/laboratoriovirologia/service/UserServiceIT.class
 edu/unipampa/laboratoriovirologia/config/timezone/HibernateTimeZoneIT.class
 edu/unipampa/laboratoriovirologia/repository/timezone/DateTimeWrapper.class
 edu/unipampa/laboratoriovirologia/web/rest/ExameResourceIT.class
+edu/unipampa/laboratoriovirologia/web/rest/SubamostraResourceIT.class
 edu/unipampa/laboratoriovirologia/config/StaticResourcesWebConfigurerTest.class
 edu/unipampa/laboratoriovirologia/web/rest/ClientForwardControllerTest.class
 edu/unipampa/laboratoriovirologia/service/dto/ExameDTOTest.class
+edu/unipampa/laboratoriovirologia/domain/VacinaTest.class
 edu/unipampa/laboratoriovirologia/web/rest/PublicUserResourceIT.class
 edu/unipampa/laboratoriovirologia/domain/PropriedadeTest.class
 edu/unipampa/laboratoriovirologia/web/rest/WithUnauthenticatedMockUser$Factory.class
@@ -36,12 +39,15 @@ edu/unipampa/laboratoriovirologia/service/dto/PropriedadeDTOTest.class
 edu/unipampa/laboratoriovirologia/web/rest/errors/ExceptionTranslatorIT.class
 edu/unipampa/laboratoriovirologia/web/rest/TestUtil.class
 edu/unipampa/laboratoriovirologia/service/dto/MedicoveterinarioDTOTest.class
+edu/unipampa/laboratoriovirologia/domain/SubamostraTest.class
 edu/unipampa/laboratoriovirologia/web/rest/UserJWTControllerIT.class
 edu/unipampa/laboratoriovirologia/domain/ProprietarioTest.class
+edu/unipampa/laboratoriovirologia/web/rest/VacinaResourceIT.class
 edu/unipampa/laboratoriovirologia/config/NoOpMailConfiguration.class
 edu/unipampa/laboratoriovirologia/web/rest/errors/ExceptionTranslatorTestController$TestResponseStatusException.class
 edu/unipampa/laboratoriovirologia/web/rest/errors/ExceptionTranslatorTestController$TestDTO.class
 edu/unipampa/laboratoriovirologia/service/mapper/UserMapperTest.class
+edu/unipampa/laboratoriovirologia/service/dto/SubamostraDTOTest.class
 edu/unipampa/laboratoriovirologia/repository/timezone/DateTimeWrapper_.class
 edu/unipampa/laboratoriovirologia/service/dto/ProprietarioDTOTest.class
 edu/unipampa/laboratoriovirologia/web/rest/TestUtil$NumberMatcher.class

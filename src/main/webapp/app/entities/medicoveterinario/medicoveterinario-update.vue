@@ -1,9 +1,9 @@
 <template>
   <div class="row justify-content-center">
     <div class="col-8">
-      <form name="editForm" role="form" novalidate v-on:submit.prevent="save()">
+      <form name="editForm" role="form" validate v-on:submit.prevent="save()">
         <h2 id="rp6App.medicoveterinario.home.createOrEditLabel" data-cy="MedicoveterinarioCreateUpdateHeading">
-          Create or edit a Medicoveterinario
+          Criar ou editar um Médico Veterinário
         </h2>
         <div>
           <!-- <div class="form-group" v-if="medicoveterinario.id">
@@ -35,13 +35,14 @@
             />
           </div>
           <div class="form-group">
-            <label class="form-control-label" for="medicoveterinario-email">Email</label>
+            <label class="form-control-label" for="medicoveterinario-email">E-mail</label>
             <input
-              type="text"
+              type="email"
               class="form-control"
               name="email"
               id="medicoveterinario-email"
               data-cy="email"
+              required
               :class="{ valid: !$v.medicoveterinario.email.$invalid, invalid: $v.medicoveterinario.email.$invalid }"
               v-model="$v.medicoveterinario.email.$model"
             />
@@ -72,17 +73,17 @@
           </div>
         </div>
         <div>
-          <button type="button" id="cancel-save" class="btn btn-secondary" v-on:click="previousState()">
-            <font-awesome-icon icon="ban"></font-awesome-icon>&nbsp;<span>Cancel</span>
+          <button type="button" id="cancel-save" class="btn btn-outline-danger" v-on:click="previousState()">
+            <font-awesome-icon icon="ban"></font-awesome-icon>&nbsp;<span>Cancelar</span>
           </button>
           <button
             type="submit"
             id="save-entity"
             data-cy="entityCreateSaveButton"
             :disabled="$v.medicoveterinario.$invalid || isSaving"
-            class="btn btn-primary"
+            class="btn btn-success"
           >
-            <font-awesome-icon icon="save"></font-awesome-icon>&nbsp;<span>Save</span>
+            <font-awesome-icon icon="save"></font-awesome-icon>&nbsp;<span>Salvar</span>
           </button>
         </div>
       </form>

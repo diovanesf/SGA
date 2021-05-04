@@ -2,7 +2,7 @@
   <b-navbar data-cy="navbar" toggleable="md" type="dark" class="header_style b-nav-bar">
     <b-navbar-brand class="logo" b-link to="/">
       <span class="logo-img"></span>
-      <span class="navbar-title">Laboratório de Virologia</span> <span class="navbar-version"></span>
+      <span class="navbar-title">Sistema de Gerenciamento de Amostras</span> <span class="navbar-version"></span>
     </b-navbar-brand>
     <b-navbar-toggle
       right
@@ -27,8 +27,12 @@
         <b-nav-item-dropdown right id="entity-menu" v-if="authenticated" active-class="active" class="pointer" data-cy="entity">
           <span slot="button-content" class="navbar-dropdown-menu">
             <font-awesome-icon icon="th-list" />
-            <span class="no-bold">Entities</span>
+            <span class="no-bold">Menu</span>
           </span>
+          <b-dropdown-item to="/admin/user-management" active-class="active">
+            <font-awesome-icon icon="users" />
+            <span>User management</span>
+          </b-dropdown-item>
           <b-dropdown-item to="/amostra">
             <font-awesome-icon icon="asterisk" />
             <span>Amostra</span>
@@ -41,17 +45,17 @@
             <font-awesome-icon icon="asterisk" />
             <span>Propriedade</span>
           </b-dropdown-item>
-          <b-dropdown-item to="/endereco">
-            <font-awesome-icon icon="asterisk" />
-            <span>Endereço</span>
-          </b-dropdown-item>
+          <!--          <b-dropdown-item to="/endereco">-->
+          <!--            <font-awesome-icon icon="asterisk" />-->
+          <!--            <span>Endereço</span>-->
+          <!--          </b-dropdown-item>-->
           <b-dropdown-item to="/midia">
             <font-awesome-icon icon="asterisk" />
-            <span>Midia</span>
+            <span>Mídia</span>
           </b-dropdown-item>
           <b-dropdown-item to="/medicoveterinario">
             <font-awesome-icon icon="asterisk" />
-            <span>Medicoveterinario</span>
+            <span>Medico Veterinário</span>
           </b-dropdown-item>
           <b-dropdown-item to="/subamostra">
             <font-awesome-icon icon="asterisk" />
@@ -77,10 +81,6 @@
             <font-awesome-icon icon="users-cog" />
             <span class="no-bold">Administration</span>
           </span>
-          <b-dropdown-item to="/admin/user-management" active-class="active">
-            <font-awesome-icon icon="users" />
-            <span>User management</span>
-          </b-dropdown-item>
           <b-dropdown-item to="/admin/metrics" active-class="active">
             <font-awesome-icon icon="tachometer-alt" />
             <span>Metrics</span>
@@ -129,23 +129,23 @@
           </b-dropdown-item>
           <b-dropdown-item data-cy="logout" v-if="authenticated" v-on:click="logout()" id="logout" active-class="active">
             <font-awesome-icon icon="sign-out-alt" />
-            <span>Log out</span>
+            <span>Sair</span>
           </b-dropdown-item>
           <b-dropdown-item data-cy="login" v-if="!authenticated" v-on:click="openLogin()" id="login" active-class="active">
             <font-awesome-icon icon="sign-in-alt" />
-            <span>Log in</span>
+            <span>Entrar</span>
           </b-dropdown-item>
-          <b-dropdown-item
-            data-cy="register"
-            to="/register"
-            tag="b-dropdown-item"
-            id="register"
-            v-if="!authenticated"
-            active-class="active"
-          >
-            <font-awesome-icon icon="user-plus" />
-            <span>Registro</span>
-          </b-dropdown-item>
+          <!--          <b-dropdown-item-->
+          <!--            data-cy="register"-->
+          <!--            to="/register"-->
+          <!--            tag="b-dropdown-item"-->
+          <!--            id="register"-->
+          <!--            v-if="!authenticated"-->
+          <!--            active-class="active"-->
+          <!--          >-->
+          <!--            <font-awesome-icon icon="user-plus" />-->
+          <!--            <span>Registro</span>-->
+          <!--          </b-dropdown-item>-->
         </b-nav-item-dropdown>
       </b-navbar-nav>
     </b-collapse>

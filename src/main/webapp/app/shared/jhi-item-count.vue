@@ -3,9 +3,9 @@
     <!-- eslint-disable vue/no-parsing-error -->
     <span v-if="i18nEnabled">Showing {{ first }} - {{ second }} of {{ total }} items.</span>
     <span v-if="!i18nEnabled">
-      Showing {{ (page - 1) * itemsPerPage === 0 ? 1 : (page - 1) * itemsPerPage + 1 }} -
+      Mostrando {{ (page - 1) * itemsPerPage === 0 ? 1 : (page - 1) * itemsPerPage + 1 }} -
       {{ page * itemsPerPage < total ? page * itemsPerPage : total }}
-      of {{ total }} items.
+      de {{ total }} itens.
     </span>
     <!--eslint-enable-->
   </div>
