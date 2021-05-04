@@ -37,7 +37,7 @@
           </dd>
         </dl>
         <router-link custom v-slot="{ navigate }" :to="{ name: 'JhiUser' }">
-          <button @click="navigate" class="btn btn-info">
+          <button @click="navigate" class="btn btn-success">
             <font-awesome-icon icon="arrow-left"></font-awesome-icon>&nbsp;<span> Voltar</span>
           </button>
         </router-link>

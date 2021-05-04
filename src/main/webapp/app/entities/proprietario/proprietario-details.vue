@@ -26,7 +26,7 @@
             <span>Enviar Laudo</span>
           </dt>
           <dd>
-            <span>{{ proprietario.enviarLaudo }}</span>
+            <span>{{true == proprietario.enviarLaudo ? 'Sim' : 'Não'}}</span>
           </dd>
         </dl>
         <button type="submit" v-on:click.prevent="previousState()" class="btn btn-outline-success" data-cy="entityDetailsBackButton">

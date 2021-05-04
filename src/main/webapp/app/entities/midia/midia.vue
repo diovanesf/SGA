@@ -56,8 +56,10 @@
             <td>{{ midia.nome }}</td>
             <td>{{ midia.descricao }}</td>
             <td>
-              <a v-if="midia.file" v-on:click="openFile(midia.fileContentType, midia.file)">abrir: </a>
-              <span v-if="midia.file">{{ midia.fileContentType }}, {{ byteSize(midia.file) }}</span>
+              <span v-if="midia.file">Arquivo: {{ midia.fileContentType }}<br>
+              Tamanho: {{ byteSize(midia.file) }}
+              <button class= "btn btn-outline-success"><a v-if="midia.file" v-on:click="openFile(midia.fileContentType, midia.file)">Abrir</a></button></span>
+              
             </td>
             <td>
               <div v-if="midia.amostra">
@@ -69,13 +71,13 @@
             <td class="text-right">
               <div class="btn-group">
                 <router-link :to="{ name: 'MidiaView', params: { midiaId: midia.id } }" custom v-slot="{ navigate }">
-                  <button @click="navigate" class="btn btn-success btn-sm details" data-cy="entityDetailsButton">
+                  <button @click="navigate" class="btn btn-outline-success btn-sm details" data-cy="entityDetailsButton">
                     <font-awesome-icon icon="eye"></font-awesome-icon>
                     <span class="d-none d-md-inline">Ver</span>
                   </button>
                 </router-link>
                 <router-link :to="{ name: 'MidiaEdit', params: { midiaId: midia.id } }" custom v-slot="{ navigate }">
-                  <button @click="navigate" class="btn btn-primary btn-sm edit" data-cy="entityEditButton">
+                  <button @click="navigate" class="btn btn-warning btn-sm edit" data-cy="entityEditButton">
                     <font-awesome-icon icon="pencil-alt"></font-awesome-icon>
                     <span class="d-none d-md-inline">Editar</span>
                   </button>

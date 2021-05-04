@@ -78,13 +78,13 @@
             <td class="text-right">
               <div class="btn-group">
                 <router-link :to="{ name: 'JhiUserView', params: { userId: user.login } }" custom v-slot="{ navigate }">
-                  <button @click="navigate" class="btn btn-info btn-sm details">
+                  <button @click="navigate" class="btn btn-outline-success btn-sm details">
                     <font-awesome-icon icon="eye"></font-awesome-icon>
                     <span class="d-none d-md-inline">Ver</span>
                   </button>
                 </router-link>
                 <router-link :to="{ name: 'JhiUserEdit', params: { userId: user.login } }" custom v-slot="{ navigate }">
-                  <button @click="navigate" class="btn btn-primary btn-sm edit">
+                  <button @click="navigate" class="btn btn-warning btn-sm edit">
                     <font-awesome-icon icon="pencil-alt"></font-awesome-icon>
                     <span class="d-none d-md-inline">Editar</span>
                   </button>
@@ -104,7 +104,7 @@
         </div>
         <div slot="modal-footer">
           <button type="button" class="btn btn-secondary" v-on:click="closeDialog()">Cancelar</button>
-          <button type="button" class="btn btn-primary" id="confirm-delete-user" v-on:click="deleteUser()">Deletar</button>
+          <button type="button" class="btn btn-danger" id="confirm-delete-user" v-on:click="deleteUser()">Deletar</button>
         </div>
       </b-modal>
     </div>

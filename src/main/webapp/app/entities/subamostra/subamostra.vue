@@ -3,32 +3,32 @@
     <h2 id="page-heading" data-cy="SubamostraHeading">
       <span id="subamostra-heading">Subamostras</span>
       <div class="d-flex justify-content-end">
-        <button class="btn btn-info mr-2" v-on:click="handleSyncList" :disabled="isFetching">
-          <font-awesome-icon icon="sync" :spin="isFetching"></font-awesome-icon> <span>Refresh List</span>
+        <button class="btn btn-outline-success mr-2" v-on:click="handleSyncList" :disabled="isFetching">
+          <font-awesome-icon icon="sync" :spin="isFetching"></font-awesome-icon> <span>Atualizar Lista</span>
         </button>
         <router-link :to="{ name: 'SubamostraCreate' }" custom v-slot="{ navigate }">
           <button
             @click="navigate"
             id="jh-create-entity"
             data-cy="entityCreateButton"
-            class="btn btn-primary jh-create-entity create-subamostra"
+            class="btn btn-outline-success jh-create-entity create-subamostra"
           >
             <font-awesome-icon icon="plus"></font-awesome-icon>
-            <span> Create a new Subamostra </span>
+            <span> Criar nova Subamostra </span>
           </button>
         </router-link>
       </div>
     </h2>
     <br />
     <div class="alert alert-warning" v-if="!isFetching && subamostras && subamostras.length === 0">
-      <span>No subamostras found</span>
+      <span>Nenhuma subamostra encontrada</span>
     </div>
     <div class="table-responsive" v-if="subamostras && subamostras.length > 0">
       <table class="table table-striped" aria-describedby="subamostras">
         <thead>
           <tr>
             <th scope="row"><span>ID</span></th>
-            <th scope="row"><span>Sub Amostra</span></th>
+            <th scope="row"><span>Subamostra</span></th>
             <th scope="row"><span>Amostra</span></th>
             <th scope="row"></th>
           </tr>
@@ -49,15 +49,15 @@
             <td class="text-right">
               <div class="btn-group">
                 <router-link :to="{ name: 'SubamostraView', params: { subamostraId: subamostra.id } }" custom v-slot="{ navigate }">
-                  <button @click="navigate" class="btn btn-info btn-sm details" data-cy="entityDetailsButton">
+                  <button @click="navigate" class="btn btn-outline-success btn-sm details" data-cy="entityDetailsButton">
                     <font-awesome-icon icon="eye"></font-awesome-icon>
-                    <span class="d-none d-md-inline">View</span>
+                    <span class="d-none d-md-inline">Ver</span>
                   </button>
                 </router-link>
                 <router-link :to="{ name: 'SubamostraEdit', params: { subamostraId: subamostra.id } }" custom v-slot="{ navigate }">
-                  <button @click="navigate" class="btn btn-primary btn-sm edit" data-cy="entityEditButton">
+                  <button @click="navigate" class="btn btn-warning btn-sm edit" data-cy="entityEditButton">
                     <font-awesome-icon icon="pencil-alt"></font-awesome-icon>
-                    <span class="d-none d-md-inline">Edit</span>
+                    <span class="d-none d-md-inline">Editar</span>
                   </button>
                 </router-link>
                 <b-button
@@ -68,7 +68,7 @@
                   v-b-modal.removeEntity
                 >
                   <font-awesome-icon icon="times"></font-awesome-icon>
-                  <span class="d-none d-md-inline">Delete</span>
+                  <span class="d-none d-md-inline">Deletar</span>
                 </b-button>
               </div>
             </td>
@@ -78,21 +78,21 @@
     </div>
     <b-modal ref="removeEntity" id="removeEntity">
       <span slot="modal-title"
-        ><span id="rp6App.subamostra.delete.question" data-cy="subamostraDeleteDialogHeading">Confirm delete operation</span></span
+        ><span id="rp6App.subamostra.delete.question" data-cy="subamostraDeleteDialogHeading">Confirmação de exclusão</span></span
       >
       <div class="modal-body">
-        <p id="jhi-delete-subamostra-heading">Are you sure you want to delete this Subamostra?</p>
+        <p id="jhi-delete-subamostra-heading">Você tem certeza que deseja deletar esta Subamostra?</p>
       </div>
       <div slot="modal-footer">
-        <button type="button" class="btn btn-secondary" v-on:click="closeDialog()">Cancel</button>
+        <button type="button" class="btn btn-secondary" v-on:click="closeDialog()">Cancelar</button>
         <button
           type="button"
-          class="btn btn-primary"
+          class="btn btn-danger"
           id="jhi-confirm-delete-subamostra"
           data-cy="entityConfirmDeleteButton"
           v-on:click="removeSubamostra()"
         >
-          Delete
+          Deletar
         </button>
       </div>
     </b-modal>

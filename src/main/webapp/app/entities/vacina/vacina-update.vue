@@ -2,7 +2,7 @@
   <div class="row justify-content-center">
     <div class="col-8">
       <form name="editForm" role="form" novalidate v-on:submit.prevent="save()">
-        <h2 id="rp6App.vacina.home.createOrEditLabel" data-cy="VacinaCreateUpdateHeading">Create or edit a Vacina</h2>
+        <h2 id="rp6App.vacina.home.createOrEditLabel" data-cy="VacinaCreateUpdateHeading">Criar ou editar uma Vacina</h2>
         <div>
           <div class="form-group" v-if="vacina.id">
             <label for="id">ID</label>
@@ -21,7 +21,7 @@
             />
           </div>
           <div class="form-group">
-            <label class="form-control-label" for="vacina-pesoMaterial">Peso Material</label>
+            <label class="form-control-label" for="vacina-pesoMaterial">Peso do Material</label>
             <input
               type="text"
               class="form-control"
@@ -45,7 +45,7 @@
             />
           </div>
           <div class="form-group">
-            <label class="form-control-label" for="vacina-dataConclusao">Data Conclusao</label>
+            <label class="form-control-label" for="vacina-dataConclusao">Data de Conclusão</label>
             <b-input-group class="mb-3">
               <b-input-group-prepend>
                 <b-form-datepicker
@@ -73,7 +73,7 @@
             </b-input-group>
           </div>
           <div class="form-group">
-            <label class="form-control-label" for="vacina-observacoes">Observacoes</label>
+            <label class="form-control-label" for="vacina-observacoes">Observações</label>
             <textarea
               class="form-control"
               name="observacoes"
@@ -85,17 +85,17 @@
           </div>
         </div>
         <div>
-          <button type="button" id="cancel-save" class="btn btn-secondary" v-on:click="previousState()">
-            <font-awesome-icon icon="ban"></font-awesome-icon>&nbsp;<span>Cancel</span>
+          <button type="button" id="cancel-save" class="btn btn-outline-danger" v-on:click="previousState()">
+            <font-awesome-icon icon="ban"></font-awesome-icon>&nbsp;<span>Cancelar</span>
           </button>
           <button
             type="submit"
             id="save-entity"
             data-cy="entityCreateSaveButton"
             :disabled="$v.vacina.$invalid || isSaving"
-            class="btn btn-primary"
+            class="btn btn-success"
           >
-            <font-awesome-icon icon="save"></font-awesome-icon>&nbsp;<span>Save</span>
+            <font-awesome-icon icon="save"></font-awesome-icon>&nbsp;<span>Salvar</span>
           </button>
         </div>
       </form>

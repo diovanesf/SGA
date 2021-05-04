@@ -21,8 +21,8 @@
           </dt>
           <dd>
             <div v-if="midia.file">
-              <a v-on:click="openFile(midia.fileContentType, midia.file)">abrir: </a>
-              {{ midia.fileContentType }}, {{ byteSize(midia.file) }}
+              Arquivo: {{ midia.fileContentType }} <br> Tamanho: {{ byteSize(midia.file) }} <br>
+              <button class = "btn btn-outline-success"><a v-on:click="openFile(midia.fileContentType, midia.file)">Abrir</a></button>
             </div>
           </dd>
           <dt>

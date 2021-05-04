@@ -3,7 +3,7 @@
     <h2 id="page-heading" data-cy="AmostraHeading">
       <span id="amostra-heading">Amostras</span>
       <div class="d-flex justify-content-end">
-        <button class="btn btn-info mr-2" v-on:click="handleSyncList" :disabled="isFetching">
+        <button class="btn btn-outline-success mr-2" v-on:click="handleSyncList" :disabled="isFetching">
           <font-awesome-icon icon="sync" :spin="isFetching"></font-awesome-icon>
           <span>Atualizar Lista</span>
         </button>
@@ -96,19 +96,19 @@
                   </button>
                 </router-link>
                 <router-link :to="{ name: 'Exame', params: { amostraId: amostra.id } }" custom v-slot="{ navigate }">
-                  <button @click="navigate" class="btn btn-warning btn-sm details" data- cy="entityDetailsButton">
+                  <button @click="navigate" class="btn btn-outline-success btn-sm details" data- cy="entityDetailsButton">
                     <font-awesome-icon icon="tasks"></font-awesome-icon>
                     <span class="d-none d-md-inline">Exames</span>
                   </button>
                 </router-link>
                 <router-link :to="{ name: 'AmostraView', params: { amostraId: amostra.id } }" custom v-slot="{ navigate }">
-                  <button @click="navigate" class="btn btn-success btn-sm details" data-cy="entityDetailsButton">
+                  <button @click="navigate" class="btn btn-outline-success btn-sm details" data-cy="entityDetailsButton">
                     <font-awesome-icon icon="eye"></font-awesome-icon>
                     <span class="d-none d-md-inline">Ver</span>
                   </button>
                 </router-link>
                 <router-link :to="{ name: 'AmostraEdit', params: { amostraId: amostra.id } }" custom v-slot="{ navigate }">
-                  <button @click="navigate" class="btn btn-primary btn-sm edit" data-cy="entityEditButton">
+                  <button @click="navigate" class="btn btn-warning btn-sm edit" data-cy="entityEditButton">
                     <font-awesome-icon icon="pencil-alt"></font-awesome-icon>
                     <span class="d-none d-md-inline">Editar</span>
                   </button>

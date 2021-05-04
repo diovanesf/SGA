@@ -66,7 +66,7 @@
             <td>{{ proprietario.nome }}</td>
             <td>{{ proprietario.telefone }}</td>
             <td>{{ proprietario.email }}</td>
-            <td>{{ proprietario.enviarLaudo }}</td>
+            <td>{{true == proprietario.enviarLaudo ? 'Sim' : 'Não'}}</td>
             <td>
               <div v-if="proprietario.propriedade">
                 <router-link :to="{ name: 'PropriedadeView', params: { propriedadeId: proprietario.propriedade.id } }">{{
@@ -77,13 +77,13 @@
             <td class="text-right">
               <div class="btn-group">
                 <router-link :to="{ name: 'ProprietarioView', params: { proprietarioId: proprietario.id } }" custom v-slot="{ navigate }">
-                  <button @click="navigate" class="btn btn-success btn-sm details" data-cy="entityDetailsButton">
+                  <button @click="navigate" class="btn btn-outline-success btn-sm details" data-cy="entityDetailsButton">
                     <font-awesome-icon icon="eye"></font-awesome-icon>
                     <span class="d-none d-md-inline">Ver</span>
                   </button>
                 </router-link>
                 <router-link :to="{ name: 'ProprietarioEdit', params: { proprietarioId: proprietario.id } }" custom v-slot="{ navigate }">
-                  <button @click="navigate" class="btn btn-primary btn-sm edit" data-cy="entityEditButton">
+                  <button @click="navigate" class="btn btn-warning btn-sm edit" data-cy="entityEditButton">
                     <font-awesome-icon icon="pencil-alt"></font-awesome-icon>
                     <span class="d-none d-md-inline">Editar</span>
                   </button>

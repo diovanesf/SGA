@@ -31,7 +31,7 @@
           </span>
           <b-dropdown-item to="/admin/user-management" active-class="active">
             <font-awesome-icon icon="users" />
-            <span>User management</span>
+            <span>Gerenciamento de Usuários</span>
           </b-dropdown-item>
           <b-dropdown-item to="/amostra">
             <font-awesome-icon icon="asterisk" />
@@ -55,7 +55,7 @@
           </b-dropdown-item>
           <b-dropdown-item to="/medicoveterinario">
             <font-awesome-icon icon="asterisk" />
-            <span>Medico Veterinário</span>
+            <span>Médico Veterinário</span>
           </b-dropdown-item>
           <b-dropdown-item to="/subamostra">
             <font-awesome-icon icon="asterisk" />
@@ -79,7 +79,7 @@
         >
           <span slot="button-content" class="navbar-dropdown-menu">
             <font-awesome-icon icon="users-cog" />
-            <span class="no-bold">Administration</span>
+            <span class="no-bold">Administração</span>
           </span>
           <b-dropdown-item to="/admin/metrics" active-class="active">
             <font-awesome-icon icon="tachometer-alt" />

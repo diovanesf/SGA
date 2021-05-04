@@ -51,7 +51,7 @@
             <!--              <jhi-sort-indicator :current-order="propOrder" :reverse="reverse" :field-name="'pricipalSuspeita'"></jhi-sort-indicator>-->
             <!--            </th>-->
             <th scope="row" v-on:click="changeOrder('tipoCriacao')">
-              <span>Tipo Criação</span>
+              <span>Tipo de Criação</span>
               <jhi-sort-indicator :current-order="propOrder" :reverse="reverse" :field-name="'tipoCriacao'"></jhi-sort-indicator>
             </th>
             <th scope="row" v-on:click="changeOrder('proprietario.nome')">
@@ -93,7 +93,7 @@
             <td class="text-right">
               <div class="btn-group">
                 <router-link :to="{ name: 'PropriedadeView', params: { propriedadeId: propriedade.id } }" custom v-slot="{ navigate }">
-                  <button @click="navigate" class="btn btn-success btn-sm details" data-cy="entityDetailsButton">
+                  <button @click="navigate" class="btn btn-outline-success btn-sm details" data-cy="entityDetailsButton">
                     <font-awesome-icon icon="eye"></font-awesome-icon>
                     <span class="d-none d-md-inline">Ver</span>
                   </button>
@@ -103,7 +103,7 @@
                   custom
                   v-slot="{ navigate }"
                 >
-                  <button @click="navigate" class="btn btn-primary btn-sm edit" data-cy="entityEditButton">
+                  <button @click="navigate" class="btn btn-warning btn-sm edit" data-cy="entityEditButton">
                     <font-awesome-icon icon="pencil-alt"></font-awesome-icon>
                     <span class="d-none d-md-inline">Editar</span>
                   </button>

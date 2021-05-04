@@ -34,7 +34,7 @@
             <span>Enviar Laudo</span>
           </dt>
           <dd>
-            <span>{{ medicoveterinario.enviarLaudo }}</span>
+            <span>{{true == medicoveterinario.enviarLaudo ? 'Sim' : 'Não'}}</span>
           </dd>
         </dl>
         <button type="submit" v-on:click.prevent="previousState()" class="btn btn-outline-success" data-cy="entityDetailsBackButton">

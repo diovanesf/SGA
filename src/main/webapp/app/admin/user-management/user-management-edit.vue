@@ -96,7 +96,7 @@
                 name="activated"
                 v-model="userAccount.activated"
               />
-              <span>Activated</span>
+              <span>Ativado</span>
             </label>
           </div>
 
@@ -108,10 +108,10 @@
           </div>
         </div>
         <div>
-          <button type="button" class="btn btn-secondary" v-on:click="previousState()">
+          <button type="button" class="btn btn-outline-danger" v-on:click="previousState()">
             <font-awesome-icon icon="ban"></font-awesome-icon>&nbsp;<span>Cancelar</span>
           </button>
-          <button type="submit" :disabled="$v.userAccount.$invalid || isSaving" class="btn btn-primary">
+          <button type="submit" :disabled="$v.userAccount.$invalid || isSaving" class="btn btn-success">
             <font-awesome-icon icon="save"></font-awesome-icon>&nbsp;<span>Salvar</span>
           </button>
         </div>

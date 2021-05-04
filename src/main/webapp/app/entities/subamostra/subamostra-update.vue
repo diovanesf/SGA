@@ -2,14 +2,14 @@
   <div class="row justify-content-center">
     <div class="col-8">
       <form name="editForm" role="form" novalidate v-on:submit.prevent="save()">
-        <h2 id="rp6App.subamostra.home.createOrEditLabel" data-cy="SubamostraCreateUpdateHeading">Create or edit a Subamostra</h2>
+        <h2 id="rp6App.subamostra.home.createOrEditLabel" data-cy="SubamostraCreateUpdateHeading">Criar ou editar uma Subamostra</h2>
         <div>
           <div class="form-group" v-if="subamostra.id">
             <label for="id">ID</label>
             <input type="text" class="form-control" id="id" name="id" v-model="subamostra.id" readonly />
           </div>
           <div class="form-group">
-            <label class="form-control-label" for="subamostra-subAmostra">Sub Amostra</label>
+            <label class="form-control-label" for="subamostra-subAmostra">Subamostra</label>
             <input
               type="text"
               class="form-control"
@@ -35,17 +35,17 @@
           </div>
         </div>
         <div>
-          <button type="button" id="cancel-save" class="btn btn-secondary" v-on:click="previousState()">
-            <font-awesome-icon icon="ban"></font-awesome-icon>&nbsp;<span>Cancel</span>
+          <button type="button" id="cancel-save" class="btn btn-outline-danger" v-on:click="previousState()">
+            <font-awesome-icon icon="ban"></font-awesome-icon>&nbsp;<span>Cancelar</span>
           </button>
           <button
             type="submit"
             id="save-entity"
             data-cy="entityCreateSaveButton"
             :disabled="$v.subamostra.$invalid || isSaving"
-            class="btn btn-primary"
+            class="btn btn-success"
           >
-            <font-awesome-icon icon="save"></font-awesome-icon>&nbsp;<span>Save</span>
+            <font-awesome-icon icon="save"></font-awesome-icon>&nbsp;<span>Salvar</span>
           </button>
         </div>
       </form>

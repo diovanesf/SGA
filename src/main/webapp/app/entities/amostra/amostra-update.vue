@@ -144,7 +144,7 @@
           </div>
 
           <div class="form-group">
-            <label class="form-control-label" for="amostra-numeroAnimais">Numero Animais</label>
+            <label class="form-control-label" for="amostra-numeroAnimais">Número de Animais</label>
             <input
               type="number"
               class="form-control"
@@ -170,7 +170,7 @@
             />
           </div>
           <div class="form-group">
-            <label class="form-control-label" for="amostra-pricipalSuspeita">Pricipal Suspeita</label>
+            <label class="form-control-label" for="amostra-pricipalSuspeita">Principal Suspeita</label>
             <input
               type="text"
               class="form-control"

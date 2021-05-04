@@ -35,20 +35,21 @@
           <div class="form-group">
             <label class="form-control-label" for="midia-file">Mídia</label>
             <div>
-              <div v-if="midia.file" class="form-text text-danger clearfix">
-                <a class="pull-left" v-on:click="openFile(midia.fileContentType, midia.file)">abrir: </a><br />
-                <span class="pull-left">{{ midia.fileContentType }}, {{ byteSize(midia.file) }}</span>
+              <div v-if="midia.file" class="form-text clearfix">
+                <span class="pull-left">Arquivo: {{ midia.fileContentType }} <br> Tamanho: {{ byteSize(midia.file) }}</span>
+                <br>
+                <button class = "btn btn-outline-success"><a v-on:click="openFile(midia.fileContentType, midia.file)">Abrir</a></button>
                 <button
                   type="button"
                   v-on:click="
                     midia.file = null;
                     midia.fileContentType = null;
                   "
-                  class="btn btn-secondary btn-xs pull-right"
-                >
-                  <font-awesome-icon icon="times"></font-awesome-icon>
+                  class="btn btn-outline-warning btn-xs pull-right"
+                >Remover
                 </button>
               </div>
+              <br>
               <input type="file" ref="file_file" id="file_file" data-cy="file" v-on:change="setFileData($event, midia, 'file', false)" />
             </div>
             <input
