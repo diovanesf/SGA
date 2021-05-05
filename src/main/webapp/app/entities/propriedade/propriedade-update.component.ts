@@ -4,7 +4,6 @@ import ProprietarioService from '@/entities/proprietario/proprietario.service';
 import { IProprietario } from '@/shared/model/proprietario.model';
 
 import EnderecoService from '@/entities/endereco/endereco.service';
-import { IEndereco } from '@/shared/model/endereco.model';
 
 import { IPropriedade, Propriedade } from '@/shared/model/propriedade.model';
 import PropriedadeService from './propriedade.service';
@@ -29,9 +28,6 @@ export default class PropriedadeUpdate extends Vue {
 
   @Inject('enderecoService') private enderecoService: () => EnderecoService;
 
-  // public enderecos: IEndereco[] = [];
-  public endereco: IEndereco = {};
-
   public isSaving = false;
   public currentLanguage = '';
 
@@ -42,6 +38,8 @@ export default class PropriedadeUpdate extends Vue {
       }
       if (to.params.enderecoId) {
         vm.retrieveEnderecoPropriedade(to.params.enderecoId);
+      }else {
+        vm.propriedade.endereco = {};
       }
       vm.initRelationships();
     });
@@ -101,15 +99,11 @@ export default class PropriedadeUpdate extends Vue {
     }
   }
 
-  public setEnderecoPropriedade() {
-    this.propriedade.endereco = this.endereco;
-  }
-
   public retrieveEnderecoPropriedade(enderecoId: number): void {
     this.enderecoService()
       .find(enderecoId)
       .then(res => {
-        this.endereco = res;
+        this.propriedade.endereco = res;
       });
   }
 
@@ -131,10 +125,5 @@ export default class PropriedadeUpdate extends Vue {
       .then(res => {
         this.proprietarios = res.data;
       });
-    // this.enderecoService()
-    //   .retrieve()
-    //   .then(res => {
-    //     this.enderecos = res.data;
-    //   });
   }
 }

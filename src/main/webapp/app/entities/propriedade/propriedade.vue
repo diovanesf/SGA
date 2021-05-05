@@ -34,22 +34,6 @@
               <span>Tipo de Propriedade</span>
               <jhi-sort-indicator :current-order="propOrder" :reverse="reverse" :field-name="'tipoPropriedade'"></jhi-sort-indicator>
             </th>
-            <!--            <th scope="row" v-on:click="changeOrder('numeroAnimais')">-->
-            <!--              <span>Numero Animais</span>-->
-            <!--              <jhi-sort-indicator :current-order="propOrder" :reverse="reverse" :field-name="'numeroAnimais'"></jhi-sort-indicator>-->
-            <!--            </th>-->
-            <!--            <th scope="row" v-on:click="changeOrder('acometidos')">-->
-            <!--              <span>Acometidos</span>-->
-            <!--              <jhi-sort-indicator :current-order="propOrder" :reverse="reverse" :field-name="'acometidos'"></jhi-sort-indicator>-->
-            <!--            </th>-->
-            <!--            <th scope="row" v-on:click="changeOrder('observacoes')">-->
-            <!--              <span>Observacoes</span>-->
-            <!--              <jhi-sort-indicator :current-order="propOrder" :reverse="reverse" :field-name="'observacoes'"></jhi-sort-indicator>-->
-            <!--            </th>-->
-            <!--            <th scope="row" v-on:click="changeOrder('pricipalSuspeita')">-->
-            <!--              <span>Pricipal Suspeita</span>-->
-            <!--              <jhi-sort-indicator :current-order="propOrder" :reverse="reverse" :field-name="'pricipalSuspeita'"></jhi-sort-indicator>-->
-            <!--            </th>-->
             <th scope="row" v-on:click="changeOrder('tipoCriacao')">
               <span>Tipo de Criação</span>
               <jhi-sort-indicator :current-order="propOrder" :reverse="reverse" :field-name="'tipoCriacao'"></jhi-sort-indicator>

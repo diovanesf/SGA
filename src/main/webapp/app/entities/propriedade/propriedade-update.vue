@@ -77,19 +77,19 @@
           </div> -->
           <div class="form-group">
             <label class="form-control-label" for="endereco-endereco">Endereço</label>
-            <input type="text" class="form-control" name="endereco" id="endereco-endereco" data-cy="endereco" v-model="endereco.endereco" />
+            <input type="text" class="form-control" name="endereco" id="endereco-endereco" data-cy="endereco" v-model="propriedade.endereco.endereco" />
           </div>
           <div class="form-group">
             <label class="form-control-label" for="endereco-cep">CEP</label>
-            <input type="text" class="form-control" name="cep" id="endereco-cep" data-cy="cep" v-model="endereco.cep" />
+            <input type="text" class="form-control" name="cep" id="endereco-cep" data-cy="cep" v-model="propriedade.endereco.cep" />
           </div>
           <div class="form-group">
             <label class="form-control-label" for="endereco-cidade">Cidade</label>
-            <input type="text" class="form-control" name="cidade" id="endereco-cidade" data-cy="cidade" v-model="endereco.cidade" />
+            <input type="text" class="form-control" name="cidade" id="endereco-cidade" data-cy="cidade" v-model="propriedade.endereco.cidade" />
           </div>
           <div class="form-group">
             <label class="form-control-label" for="endereco-estado">Estado</label>
-            <input type="text" class="form-control" name="estado" id="endereco-estado" data-cy="estado" v-model="endereco.estado" />
+            <input type="text" class="form-control" name="estado" id="endereco-estado" data-cy="estado" v-model="propriedade.endereco.estado" />
           </div>
           <div class="form-group">
             <label class="form-control-label" for="endereco-coordenadasGps">Coordenadas Gps</label>
@@ -99,7 +99,7 @@
               name="coordenadasGps"
               id="endereco-coordenadasGps"
               data-cy="coordenadasGps"
-              v-model="endereco.coordenadasGps"
+              v-model="propriedade.endereco.coordenadasGps"
             />
           </div>
         </div>
