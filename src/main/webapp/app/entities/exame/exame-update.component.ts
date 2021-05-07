@@ -9,7 +9,7 @@ import { IAmostra } from '@/shared/model/amostra.model';
 import { IExame, Exame } from '@/shared/model/exame.model';
 import ExameService from './exame.service';
 import { ISubamostra } from '@/shared/model/subamostra.model';
-import SubAmostraService from '@/entities/subamostra/subamostra.service';
+import SubamostraService from '@/entities/subamostra/subamostra.service';
 
 const validations: any = {
   exame: {
@@ -34,8 +34,8 @@ export default class ExameUpdate extends mixins(JhiDataUtils) {
   @Inject('amostraService') private amostraService: () => AmostraService;
   public amostra: IAmostra = {};
 
-  @Inject('subAmostraService') private subAmostraService: () => SubAmostraService;
-  public subAmostras: ISubamostra[] = [];
+  @Inject('subamostraService') private subamostraService: () => SubamostraService;
+  public subamostras: ISubamostra[] = [];
 
   public isSaving = false;
   public currentLanguage = '';
@@ -123,17 +123,16 @@ export default class ExameUpdate extends mixins(JhiDataUtils) {
   }
 
   public retrieveSubAmostras(amostraId: number): void {
-    this.subAmostraService()
+    this.subamostraService()
       .retrieveByAmostra(amostraId)
       .then(res => {
-        this.subAmostras = res;
+        this.subamostras = res.data;
       });
   }
 
   public addTodosTipoVirus() {
     this.addBvdvTipoVirus();
     this.addIbrTipoVirus();
-    this.addEhvTipoVirus();
     this.addLebTipoVirus();
     this.addCdvTipoVirus();
     this.addEhvTipoVirus();

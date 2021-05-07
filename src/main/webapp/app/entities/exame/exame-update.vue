@@ -171,14 +171,14 @@
           </div>
           <div class="form-group">
             <label class="form-control-label" for="exame-subamostra">Sub Amostra</label>
-            <select class="form-control" id="exame-subamostra" data-cy="subamostra" name="subamostra" v-model="exame.subamostra">
+            <select class="form-control" id="exame-subamostra" data-cy="subamostra" name="subamostra" v-model="exame.subamostra" required>
               <option v-bind:value="null"></option>
               <option
                 v-bind:value="exame.subamostra && subamostraOption.id === exame.subamostra.id ? exame.subamostra : subamostraOption"
                 v-for="subamostraOption in subamostras"
                 :key="subamostraOption.id"
               >
-                {{ subamostraOption.subamostra }}
+                {{ subamostraOption.subAmostra }}
               </option>
             </select>
           </div>

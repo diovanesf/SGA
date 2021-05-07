@@ -12,6 +12,7 @@ export default class AmostraService {
       axios
         .get(`${baseApiUrl}/${id}`)
         .then(res => {
+          console.log(res.data);
           resolve(res.data);
         })
         .catch(err => {

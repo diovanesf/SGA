@@ -3,15 +3,15 @@
     <div class="col-8">
       <form name="viewForm" role="form">
         <h2>
-          Laudo de Exame Virológico <br /><br />
+          Laudo de Exame Virológico <br/><br/>
           {{ amostra.protocolo }}
         </h2>
         <div>
-          <hr />
+          <hr/>
           <div class="form-group">
             <b>Dados do cliente</b>
           </div>
-          <hr />
+          <hr/>
           <div class="form-group">
             <label class="form-control-label" for="proprietario-nome">Nome</label>
             <input
@@ -72,11 +72,11 @@
               readonly
             />
           </div>
-          <hr />
+          <hr/>
           <div class="form-group">
             <b>Identificação da Amostra</b>
           </div>
-          <hr />
+          <hr/>
           <div class="form-group">
             <label class="form-control-label" for="amostra-materialRecebido">Material Recebido:</label>
             <input
@@ -150,33 +150,42 @@
             </b-input-group>
           </div>
         </div>
-        <hr />
+        <hr/>
         <div class="form-group">
           <b>Exames e seus resultados</b>
         </div>
         <div class="table-responsive">
           <table class="table table-striped" aria-describedby="exames">
             <thead>
-              <tr>
-                <th scope="row"><span>Nome</span></th>
-                <th scope="row"><span>Tipo</span></th>
-                <th scope="row"><span>Resultado</span></th>
-                <th scope="row"><span>Observacoes</span></th>
-              </tr>
+            <tr>
+              <th scope="row"><span>Nome</span></th>
+              <th scope="row"><span>Tipo</span></th>
+              <th scope="row"><span>Resultado</span></th>
+              <th scope="row"><span>Amostra</span></th>
+              <th scope="row"><span>Observacoes</span></th>
+            </tr>
             </thead>
             <tbody>
-              <tr v-for="exame in exames" :key="exame.id" data-cy="entityTable">
-                <td>{{ exame.nome }}</td>
-                <td>{{ exame.tipo }}</td>
-                <td>{{ exame.resultado }}</td>
-                <td>{{ exame.observacoes }}</td>
-              </tr>
+            <tr v-for="exame in exames" :key="exame.id" data-cy="entityTable">
+              <td>{{ exame.nome }}</td>
+              <td>{{ exame.tipo }}</td>
+              <td>{{ exame.resultado }}</td>
+              <td>{{ exame.subamostra.subAmostra }}</td>
+              <td>{{ exame.observacoes }}</td>
+            </tr>
             </tbody>
           </table>
         </div>
         <div>
           <button type="button" id="cancel-save" class="btn btn-secondary" v-on:click="previousState()">
             <font-awesome-icon icon="ban"></font-awesome-icon>&nbsp;<span>Back</span>
+          </button>
+        </div>
+        <div>
+          <button class="btn btn-success" v-on:click="downloadPDF()">
+                    <span>
+                        Download PDF
+                    </span>
           </button>
         </div>
       </form>

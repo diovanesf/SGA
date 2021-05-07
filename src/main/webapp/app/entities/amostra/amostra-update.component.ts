@@ -9,6 +9,8 @@ import { IMedicoveterinario } from '@/shared/model/medicoveterinario.model';
 import { IAmostra, Amostra } from '@/shared/model/amostra.model';
 import AmostraService from './amostra.service';
 
+import SubamostraService from '@/entities/subamostra/subamostra.service';
+
 const validations: any = {
   amostra: {
     protocolo: {},
@@ -35,6 +37,9 @@ const validations: any = {
   validations,
 })
 export default class AmostraUpdate extends Vue {
+
+  @Inject('subamostraService') private subamostraService: () => SubamostraService;
+
   @Inject('amostraService') private amostraService: () => AmostraService;
   public amostra: IAmostra = new Amostra();
 
@@ -52,6 +57,9 @@ export default class AmostraUpdate extends Vue {
     next(vm => {
       if (to.params.amostraId) {
         vm.retrieveAmostra(to.params.amostraId);
+        vm.retrieveSubAmostrasByAmostra(to.params.amostraId);
+      }else{
+        vm.amostra.numeroAmostras = 0;
       }
       vm.initRelationships();
     });
@@ -106,6 +114,9 @@ export default class AmostraUpdate extends Vue {
 
   setMedVet() {
     switch (this.amostra.tipoMedVet) {
+      case 'COM_MED_VET':
+        this.amostra.tipoMedVet = 'COM_MED_VET';
+        break;
       case 'SEM_MED_VET':
       case 'MESMO_PROPRIETARIO':
         this.amostra.medicoveterinario = null;
@@ -118,12 +129,6 @@ export default class AmostraUpdate extends Vue {
     this.amostra.dataInicial = dataInicial;
   }
 
-  // setDataFinal(){
-  //   let dataFinal = new Date();
-  //   dataFinal.setDate(dataFinal.getDate() + 15);
-  //   this.amostra.dataFinal = dataFinal;
-  // }
-
   public setUser() {
     this.amostra.users = [];
     console.log(this.amostra.users);
@@ -135,7 +140,14 @@ export default class AmostraUpdate extends Vue {
       .find(amostraId)
       .then(res => {
         this.amostra = res;
-        this.amostra.subamostras = [];
+      });
+  }
+
+  public retrieveSubAmostrasByAmostra(amostraId: number){
+    this.subamostraService()
+      .retrieveByAmostra(amostraId)
+      .then(res => {
+        this.amostra.subamostras = res.data;
       });
   }
 
@@ -155,4 +167,18 @@ export default class AmostraUpdate extends Vue {
         this.medicoveterinarios = res.data;
       });
   }
+
+  public addSubAmostra(){
+    if (!this.amostra.subamostras) {
+      this.amostra.subamostras = []
+    }
+    this.amostra.subamostras.push({});
+    this.amostra.numeroAmostras = this.amostra.numeroAmostras + 1;
+  }
+
+  public removeSubAmostra(index: number){
+    this.amostra.subamostras.splice(index, 1);
+    this.amostra.numeroAmostras = this.amostra.numeroAmostras - 1;
+  }
+
 }

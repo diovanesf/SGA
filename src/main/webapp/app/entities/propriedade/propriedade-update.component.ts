@@ -57,7 +57,6 @@ export default class PropriedadeUpdate extends Vue {
 
   setTipoPropriedade() {
     switch (this.propriedade.tipoPropriedade) {
-      case 'OUTRO':
       case 'CANIL_GATIL':
         this.propriedade.tipoCriacao = null;
         break;

@@ -20,7 +20,6 @@
             >
               <option value="RURAL_HARAS_GRANJA">Rural/Haras/Granja</option>
               <option value="CANIL_GATIL">Canil/Gatil</option>
-              <option value="OUTRO">Não se aplica</option>
             </select>
           </div>
           <div class="form-group" v-if="propriedade.tipoPropriedade === 'RURAL_HARAS_GRANJA'">

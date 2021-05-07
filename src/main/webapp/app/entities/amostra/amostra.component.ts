@@ -96,23 +96,6 @@ export default class Amostra extends Vue {
       });
   }
 
-  // return !amostra.exames.find(elen => elen.resultado === null );
-  public verificaExames(amostra: IAmostra): boolean {
-    this.retrieveExamesByAmostra(amostra);
-    // console.log(amostra.exames);
-    let bool = true;
-    if (amostra.exames.length > 0) {
-      amostra.exames.forEach(function (item, indice, array) {
-        if (item.resultado === null) {
-          bool = false;
-        }
-      });
-    } else {
-      bool = false;
-    }
-    return bool;
-  }
-
   public retrieveExamesByAmostra(amostra: IAmostra): void {
     this.exames.forEach(function (item, indice, array) {
       // console.log(item);

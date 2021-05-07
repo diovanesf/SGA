@@ -33,11 +33,11 @@
             <th scope="row"><span>Resultado</span></th>
             <th scope="row"><span>Data Teste</span></th>
             <th scope="row"><span>Data Leitura</span></th>
-            <th scope="row"><span>Preenchimento Espelho</span></th>
-            <th scope="row"><span>Observacoes</span></th>
+<!--            <th scope="row"><span>Preenchimento Espelho</span></th>-->
+<!--            <th scope="row"><span>Observacoes</span></th>-->
             <th scope="row"><span>Valor</span></th>
+            <th scope="row"><span>Protocolo</span></th>
             <th scope="row"><span>Amostra</span></th>
-            <th scope="row"><span>Subamostra</span></th>
             <th scope="row"></th>
           </tr>
         </thead>
@@ -51,8 +51,8 @@
             <td>{{ exame.resultado }}</td>
             <td>{{ exame.dataTeste }}</td>
             <td>{{ exame.dataLeitura }}</td>
-            <td>{{ exame.preenchimentoEspelho }}</td>
-            <td>{{ exame.observacoes }}</td>
+<!--            <td>{{ exame.preenchimentoEspelho }}</td>-->
+<!--            <td>{{ exame.observacoes }}</td>-->
             <td>{{ exame.valor }}</td>
             <td>
               <div v-if="exame.amostra">
@@ -64,7 +64,7 @@
             <td>
               <div v-if="exame.subamostra">
                 <router-link :to="{ name: 'SubamostraView', params: { subamostraId: exame.subamostra.id } }"
-                  >{{ exame.subamostra.subamostra }}
+                  >{{ exame.subamostra.subAmostra }}
                 </router-link>
               </div>
             </td>

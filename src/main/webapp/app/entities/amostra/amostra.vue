@@ -35,7 +35,7 @@
               <span>Protocolo</span>
               <jhi-sort-indicator :current-order="propOrder" :reverse="reverse" :field-name="'protocolo'"></jhi-sort-indicator>
             </th>
-           
+
             <th scope="row" v-on:click="changeOrder('numeroAmostras')">
               <span>Número de amostras</span>
               <jhi-sort-indicator :current-order="propOrder" :reverse="reverse" :field-name="'numeroAmostras'"></jhi-sort-indicator>
@@ -52,13 +52,13 @@
               <span>Material recebido</span>
               <jhi-sort-indicator :current-order="propOrder" :reverse="reverse" :field-name="'materialRecebido'"></jhi-sort-indicator>
             </th>
-           
-           
+
+
             <th scope="row" v-on:click="changeOrder('status')">
               <span>Status</span>
               <jhi-sort-indicator :current-order="propOrder" :reverse="reverse" :field-name="'status'"></jhi-sort-indicator>
             </th>
-        
+
             <th scope="row"><span>Usuário</span></th>
             <th scope="row"></th>
           </tr>
@@ -69,15 +69,15 @@
             <router-link :to="{ name: 'AmostraView', params: { amostraId: amostra.id } }">{{ amostra.id }}</router-link>
           </td> -->
             <td>{{ amostra.protocolo }}</td>
-         
+
             <td>{{ amostra.numeroAmostras }}</td>
             <td>{{ amostra.especie }}</td>
             <td>{{ amostra.dataInicial }}</td>
             <td>{{ amostra.materialRecebido }}</td>
             <td>{{ amostra.status }}</td>
-          
-           
-            
+
+
+
             <td>
               <span v-for="(user, i) in amostra.users" :key="user.id">{{ i > 0 ? ', ' : '' }}{{ user.login }}</span>
             </td>
@@ -85,7 +85,7 @@
             <td class="text-right">
               <div class="btn-group">
                 <router-link
-                  v-if="verificaExames(amostra) && verificaUsuario()"
+                  v-if="amostra.status === 'CONCLUIDO' && verificaUsuario()"
                   :to="{ name: 'Laudo', params: { amostraId: amostra.id } }"
                   custom
                   v-slot="{ navigate }"
@@ -95,10 +95,28 @@
                     <span class="d-none d-md-inline">Gerar Laudo</span>
                   </button>
                 </router-link>
-                <router-link :to="{ name: 'Exame', params: { amostraId: amostra.id } }" custom v-slot="{ navigate }">
+                <router-link
+                  v-if="amostra.tipo === 'EXAME'"
+                  :to="{ name: 'Exame', params: { amostraId: amostra.id } }" custom v-slot="{ navigate }">
                   <button @click="navigate" class="btn btn-outline-success btn-sm details" data- cy="entityDetailsButton">
                     <font-awesome-icon icon="tasks"></font-awesome-icon>
                     <span class="d-none d-md-inline">Exames</span>
+                  </button>
+                </router-link>
+                <router-link
+                  v-if="amostra.tipo === 'VACINA' && amostra.vacina === null"
+                  :to="{ name: 'VacinaCreate', params: { amostraId: amostra.id } }" custom v-slot="{ navigate }">
+                  <button @click="navigate" class="btn btn-outline-success btn-sm details" data- cy="entityDetailsButton">
+                    <font-awesome-icon icon="tasks"></font-awesome-icon>
+                    <span class="d-none d-md-inline">Criar Vacina</span>
+                  </button>
+                </router-link>
+                <router-link
+                  v-if="amostra.tipo === 'VACINA' && amostra.vacina !== null"
+                  :to="{ name: 'VacinaEdit', params: { amostraId: amostra.id, vacinaId: amostra.vacina.id} }" custom v-slot="{ navigate }">
+                  <button @click="navigate" class="btn btn-outline-success btn-sm details" data- cy="entityDetailsButton">
+                    <font-awesome-icon icon="tasks"></font-awesome-icon>
+                    <span class="d-none d-md-inline">Editar Vacina</span>
                   </button>
                 </router-link>
                 <router-link :to="{ name: 'AmostraView', params: { amostraId: amostra.id } }" custom v-slot="{ navigate }">

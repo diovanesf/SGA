@@ -1,61 +1,61 @@
-/var/lib/docker/overlay2/59ea2fa78ed385e4570ec82f87f1a67134bab6c5d605e79f81e2bb00a1a2ae3c/merged/home/jhipster/grupo-03/src/test/java/edu/unipampa/laboratoriovirologia/web/rest/UserJWTControllerIT.java
-/var/lib/docker/overlay2/59ea2fa78ed385e4570ec82f87f1a67134bab6c5d605e79f81e2bb00a1a2ae3c/merged/home/jhipster/grupo-03/src/test/java/edu/unipampa/laboratoriovirologia/service/mapper/MedicoveterinarioMapperTest.java
-/var/lib/docker/overlay2/59ea2fa78ed385e4570ec82f87f1a67134bab6c5d605e79f81e2bb00a1a2ae3c/merged/home/jhipster/grupo-03/src/test/java/edu/unipampa/laboratoriovirologia/config/WebConfigurerTestController.java
-/var/lib/docker/overlay2/59ea2fa78ed385e4570ec82f87f1a67134bab6c5d605e79f81e2bb00a1a2ae3c/merged/home/jhipster/grupo-03/src/test/java/edu/unipampa/laboratoriovirologia/service/dto/AmostraDTOTest.java
-/var/lib/docker/overlay2/59ea2fa78ed385e4570ec82f87f1a67134bab6c5d605e79f81e2bb00a1a2ae3c/merged/home/jhipster/grupo-03/src/test/java/edu/unipampa/laboratoriovirologia/service/mapper/SubamostraMapperTest.java
-/var/lib/docker/overlay2/59ea2fa78ed385e4570ec82f87f1a67134bab6c5d605e79f81e2bb00a1a2ae3c/merged/home/jhipster/grupo-03/src/test/java/edu/unipampa/laboratoriovirologia/domain/ProprietarioTest.java
-/var/lib/docker/overlay2/59ea2fa78ed385e4570ec82f87f1a67134bab6c5d605e79f81e2bb00a1a2ae3c/merged/home/jhipster/grupo-03/src/test/java/edu/unipampa/laboratoriovirologia/service/mapper/AmostraMapperTest.java
-/var/lib/docker/overlay2/59ea2fa78ed385e4570ec82f87f1a67134bab6c5d605e79f81e2bb00a1a2ae3c/merged/home/jhipster/grupo-03/src/test/java/edu/unipampa/laboratoriovirologia/service/mapper/PropriedadeMapperTest.java
-/var/lib/docker/overlay2/59ea2fa78ed385e4570ec82f87f1a67134bab6c5d605e79f81e2bb00a1a2ae3c/merged/home/jhipster/grupo-03/src/test/java/edu/unipampa/laboratoriovirologia/domain/AmostraTest.java
-/var/lib/docker/overlay2/59ea2fa78ed385e4570ec82f87f1a67134bab6c5d605e79f81e2bb00a1a2ae3c/merged/home/jhipster/grupo-03/src/test/java/edu/unipampa/laboratoriovirologia/service/mapper/ExameMapperTest.java
-/var/lib/docker/overlay2/59ea2fa78ed385e4570ec82f87f1a67134bab6c5d605e79f81e2bb00a1a2ae3c/merged/home/jhipster/grupo-03/src/test/java/edu/unipampa/laboratoriovirologia/domain/PropriedadeTest.java
-/var/lib/docker/overlay2/59ea2fa78ed385e4570ec82f87f1a67134bab6c5d605e79f81e2bb00a1a2ae3c/merged/home/jhipster/grupo-03/src/test/java/edu/unipampa/laboratoriovirologia/domain/MedicoveterinarioTest.java
-/var/lib/docker/overlay2/59ea2fa78ed385e4570ec82f87f1a67134bab6c5d605e79f81e2bb00a1a2ae3c/merged/home/jhipster/grupo-03/src/test/java/edu/unipampa/laboratoriovirologia/web/rest/ClientForwardControllerTest.java
-/var/lib/docker/overlay2/59ea2fa78ed385e4570ec82f87f1a67134bab6c5d605e79f81e2bb00a1a2ae3c/merged/home/jhipster/grupo-03/src/test/java/edu/unipampa/laboratoriovirologia/config/StaticResourcesWebConfigurerTest.java
-/var/lib/docker/overlay2/59ea2fa78ed385e4570ec82f87f1a67134bab6c5d605e79f81e2bb00a1a2ae3c/merged/home/jhipster/grupo-03/src/test/java/edu/unipampa/laboratoriovirologia/web/rest/MedicoveterinarioResourceIT.java
-/var/lib/docker/overlay2/59ea2fa78ed385e4570ec82f87f1a67134bab6c5d605e79f81e2bb00a1a2ae3c/merged/home/jhipster/grupo-03/src/test/java/edu/unipampa/laboratoriovirologia/service/dto/SubamostraDTOTest.java
-/var/lib/docker/overlay2/59ea2fa78ed385e4570ec82f87f1a67134bab6c5d605e79f81e2bb00a1a2ae3c/merged/home/jhipster/grupo-03/src/test/java/edu/unipampa/laboratoriovirologia/security/jwt/TokenProviderTest.java
-/var/lib/docker/overlay2/59ea2fa78ed385e4570ec82f87f1a67134bab6c5d605e79f81e2bb00a1a2ae3c/merged/home/jhipster/grupo-03/src/test/java/edu/unipampa/laboratoriovirologia/web/rest/ProprietarioResourceIT.java
-/var/lib/docker/overlay2/59ea2fa78ed385e4570ec82f87f1a67134bab6c5d605e79f81e2bb00a1a2ae3c/merged/home/jhipster/grupo-03/src/test/java/edu/unipampa/laboratoriovirologia/web/rest/UserResourceIT.java
-/var/lib/docker/overlay2/59ea2fa78ed385e4570ec82f87f1a67134bab6c5d605e79f81e2bb00a1a2ae3c/merged/home/jhipster/grupo-03/src/test/java/edu/unipampa/laboratoriovirologia/domain/EnderecoTest.java
-/var/lib/docker/overlay2/59ea2fa78ed385e4570ec82f87f1a67134bab6c5d605e79f81e2bb00a1a2ae3c/merged/home/jhipster/grupo-03/src/test/java/edu/unipampa/laboratoriovirologia/web/rest/SubamostraResourceIT.java
-/var/lib/docker/overlay2/59ea2fa78ed385e4570ec82f87f1a67134bab6c5d605e79f81e2bb00a1a2ae3c/merged/home/jhipster/grupo-03/src/test/java/edu/unipampa/laboratoriovirologia/web/rest/VacinaResourceIT.java
-/var/lib/docker/overlay2/59ea2fa78ed385e4570ec82f87f1a67134bab6c5d605e79f81e2bb00a1a2ae3c/merged/home/jhipster/grupo-03/src/test/java/edu/unipampa/laboratoriovirologia/web/rest/errors/ExceptionTranslatorIT.java
-/var/lib/docker/overlay2/59ea2fa78ed385e4570ec82f87f1a67134bab6c5d605e79f81e2bb00a1a2ae3c/merged/home/jhipster/grupo-03/src/test/java/edu/unipampa/laboratoriovirologia/service/mapper/VacinaMapperTest.java
-/var/lib/docker/overlay2/59ea2fa78ed385e4570ec82f87f1a67134bab6c5d605e79f81e2bb00a1a2ae3c/merged/home/jhipster/grupo-03/src/test/java/edu/unipampa/laboratoriovirologia/web/rest/WithUnauthenticatedMockUser.java
-/var/lib/docker/overlay2/59ea2fa78ed385e4570ec82f87f1a67134bab6c5d605e79f81e2bb00a1a2ae3c/merged/home/jhipster/grupo-03/src/test/java/edu/unipampa/laboratoriovirologia/service/dto/MidiaDTOTest.java
-/var/lib/docker/overlay2/59ea2fa78ed385e4570ec82f87f1a67134bab6c5d605e79f81e2bb00a1a2ae3c/merged/home/jhipster/grupo-03/src/test/java/edu/unipampa/laboratoriovirologia/service/dto/ExameDTOTest.java
-/var/lib/docker/overlay2/59ea2fa78ed385e4570ec82f87f1a67134bab6c5d605e79f81e2bb00a1a2ae3c/merged/home/jhipster/grupo-03/src/test/java/edu/unipampa/laboratoriovirologia/security/DomainUserDetailsServiceIT.java
-/var/lib/docker/overlay2/59ea2fa78ed385e4570ec82f87f1a67134bab6c5d605e79f81e2bb00a1a2ae3c/merged/home/jhipster/grupo-03/src/test/java/edu/unipampa/laboratoriovirologia/service/dto/MedicoveterinarioDTOTest.java
-/var/lib/docker/overlay2/59ea2fa78ed385e4570ec82f87f1a67134bab6c5d605e79f81e2bb00a1a2ae3c/merged/home/jhipster/grupo-03/src/test/java/edu/unipampa/laboratoriovirologia/service/dto/PropriedadeDTOTest.java
-/var/lib/docker/overlay2/59ea2fa78ed385e4570ec82f87f1a67134bab6c5d605e79f81e2bb00a1a2ae3c/merged/home/jhipster/grupo-03/src/test/java/edu/unipampa/laboratoriovirologia/IntegrationTest.java
-/var/lib/docker/overlay2/59ea2fa78ed385e4570ec82f87f1a67134bab6c5d605e79f81e2bb00a1a2ae3c/merged/home/jhipster/grupo-03/src/test/java/edu/unipampa/laboratoriovirologia/service/dto/ProprietarioDTOTest.java
-/var/lib/docker/overlay2/59ea2fa78ed385e4570ec82f87f1a67134bab6c5d605e79f81e2bb00a1a2ae3c/merged/home/jhipster/grupo-03/src/test/java/edu/unipampa/laboratoriovirologia/repository/timezone/DateTimeWrapper.java
-/var/lib/docker/overlay2/59ea2fa78ed385e4570ec82f87f1a67134bab6c5d605e79f81e2bb00a1a2ae3c/merged/home/jhipster/grupo-03/src/test/java/edu/unipampa/laboratoriovirologia/web/rest/EnderecoResourceIT.java
-/var/lib/docker/overlay2/59ea2fa78ed385e4570ec82f87f1a67134bab6c5d605e79f81e2bb00a1a2ae3c/merged/home/jhipster/grupo-03/src/test/java/edu/unipampa/laboratoriovirologia/service/mapper/MidiaMapperTest.java
-/var/lib/docker/overlay2/59ea2fa78ed385e4570ec82f87f1a67134bab6c5d605e79f81e2bb00a1a2ae3c/merged/home/jhipster/grupo-03/src/test/java/edu/unipampa/laboratoriovirologia/config/NoOpMailConfiguration.java
-/var/lib/docker/overlay2/59ea2fa78ed385e4570ec82f87f1a67134bab6c5d605e79f81e2bb00a1a2ae3c/merged/home/jhipster/grupo-03/src/test/java/edu/unipampa/laboratoriovirologia/web/rest/TestUtil.java
-/var/lib/docker/overlay2/59ea2fa78ed385e4570ec82f87f1a67134bab6c5d605e79f81e2bb00a1a2ae3c/merged/home/jhipster/grupo-03/src/test/java/edu/unipampa/laboratoriovirologia/service/mapper/UserMapperTest.java
-/var/lib/docker/overlay2/59ea2fa78ed385e4570ec82f87f1a67134bab6c5d605e79f81e2bb00a1a2ae3c/merged/home/jhipster/grupo-03/src/test/java/edu/unipampa/laboratoriovirologia/ArchTest.java
-/var/lib/docker/overlay2/59ea2fa78ed385e4570ec82f87f1a67134bab6c5d605e79f81e2bb00a1a2ae3c/merged/home/jhipster/grupo-03/src/test/java/edu/unipampa/laboratoriovirologia/web/rest/AmostraResourceIT.java
-/var/lib/docker/overlay2/59ea2fa78ed385e4570ec82f87f1a67134bab6c5d605e79f81e2bb00a1a2ae3c/merged/home/jhipster/grupo-03/src/test/java/edu/unipampa/laboratoriovirologia/security/SecurityUtilsUnitTest.java
-/var/lib/docker/overlay2/59ea2fa78ed385e4570ec82f87f1a67134bab6c5d605e79f81e2bb00a1a2ae3c/merged/home/jhipster/grupo-03/src/test/java/edu/unipampa/laboratoriovirologia/web/rest/PublicUserResourceIT.java
-/var/lib/docker/overlay2/59ea2fa78ed385e4570ec82f87f1a67134bab6c5d605e79f81e2bb00a1a2ae3c/merged/home/jhipster/grupo-03/src/test/java/edu/unipampa/laboratoriovirologia/service/dto/VacinaDTOTest.java
-/var/lib/docker/overlay2/59ea2fa78ed385e4570ec82f87f1a67134bab6c5d605e79f81e2bb00a1a2ae3c/merged/home/jhipster/grupo-03/src/test/java/edu/unipampa/laboratoriovirologia/web/rest/MidiaResourceIT.java
-/var/lib/docker/overlay2/59ea2fa78ed385e4570ec82f87f1a67134bab6c5d605e79f81e2bb00a1a2ae3c/merged/home/jhipster/grupo-03/src/test/java/edu/unipampa/laboratoriovirologia/service/mapper/ProprietarioMapperTest.java
-/var/lib/docker/overlay2/59ea2fa78ed385e4570ec82f87f1a67134bab6c5d605e79f81e2bb00a1a2ae3c/merged/home/jhipster/grupo-03/src/test/java/edu/unipampa/laboratoriovirologia/domain/MidiaTest.java
-/var/lib/docker/overlay2/59ea2fa78ed385e4570ec82f87f1a67134bab6c5d605e79f81e2bb00a1a2ae3c/merged/home/jhipster/grupo-03/src/test/java/edu/unipampa/laboratoriovirologia/web/rest/PropriedadeResourceIT.java
-/var/lib/docker/overlay2/59ea2fa78ed385e4570ec82f87f1a67134bab6c5d605e79f81e2bb00a1a2ae3c/merged/home/jhipster/grupo-03/src/test/java/edu/unipampa/laboratoriovirologia/config/timezone/HibernateTimeZoneIT.java
-/var/lib/docker/overlay2/59ea2fa78ed385e4570ec82f87f1a67134bab6c5d605e79f81e2bb00a1a2ae3c/merged/home/jhipster/grupo-03/src/test/java/edu/unipampa/laboratoriovirologia/config/WebConfigurerTest.java
-/var/lib/docker/overlay2/59ea2fa78ed385e4570ec82f87f1a67134bab6c5d605e79f81e2bb00a1a2ae3c/merged/home/jhipster/grupo-03/src/test/java/edu/unipampa/laboratoriovirologia/domain/ExameTest.java
-/var/lib/docker/overlay2/59ea2fa78ed385e4570ec82f87f1a67134bab6c5d605e79f81e2bb00a1a2ae3c/merged/home/jhipster/grupo-03/src/test/java/edu/unipampa/laboratoriovirologia/repository/timezone/DateTimeWrapperRepository.java
-/var/lib/docker/overlay2/59ea2fa78ed385e4570ec82f87f1a67134bab6c5d605e79f81e2bb00a1a2ae3c/merged/home/jhipster/grupo-03/src/test/java/edu/unipampa/laboratoriovirologia/service/mapper/EnderecoMapperTest.java
-/var/lib/docker/overlay2/59ea2fa78ed385e4570ec82f87f1a67134bab6c5d605e79f81e2bb00a1a2ae3c/merged/home/jhipster/grupo-03/src/test/java/edu/unipampa/laboratoriovirologia/service/UserServiceIT.java
-/var/lib/docker/overlay2/59ea2fa78ed385e4570ec82f87f1a67134bab6c5d605e79f81e2bb00a1a2ae3c/merged/home/jhipster/grupo-03/src/test/java/edu/unipampa/laboratoriovirologia/web/rest/errors/ExceptionTranslatorTestController.java
-/var/lib/docker/overlay2/59ea2fa78ed385e4570ec82f87f1a67134bab6c5d605e79f81e2bb00a1a2ae3c/merged/home/jhipster/grupo-03/src/test/java/edu/unipampa/laboratoriovirologia/domain/VacinaTest.java
-/var/lib/docker/overlay2/59ea2fa78ed385e4570ec82f87f1a67134bab6c5d605e79f81e2bb00a1a2ae3c/merged/home/jhipster/grupo-03/src/test/java/edu/unipampa/laboratoriovirologia/security/jwt/JWTFilterTest.java
-/var/lib/docker/overlay2/59ea2fa78ed385e4570ec82f87f1a67134bab6c5d605e79f81e2bb00a1a2ae3c/merged/home/jhipster/grupo-03/src/test/java/edu/unipampa/laboratoriovirologia/web/rest/AccountResourceIT.java
-/var/lib/docker/overlay2/59ea2fa78ed385e4570ec82f87f1a67134bab6c5d605e79f81e2bb00a1a2ae3c/merged/home/jhipster/grupo-03/src/test/java/edu/unipampa/laboratoriovirologia/service/MailServiceIT.java
-/var/lib/docker/overlay2/59ea2fa78ed385e4570ec82f87f1a67134bab6c5d605e79f81e2bb00a1a2ae3c/merged/home/jhipster/grupo-03/src/test/java/edu/unipampa/laboratoriovirologia/web/rest/ExameResourceIT.java
-/var/lib/docker/overlay2/59ea2fa78ed385e4570ec82f87f1a67134bab6c5d605e79f81e2bb00a1a2ae3c/merged/home/jhipster/grupo-03/src/test/java/edu/unipampa/laboratoriovirologia/domain/SubamostraTest.java
-/var/lib/docker/overlay2/59ea2fa78ed385e4570ec82f87f1a67134bab6c5d605e79f81e2bb00a1a2ae3c/merged/home/jhipster/grupo-03/src/test/java/edu/unipampa/laboratoriovirologia/service/dto/EnderecoDTOTest.java
+/home/taciomarques/Área de Trabalho/grupo-03/src/test/java/edu/unipampa/laboratoriovirologia/domain/PropriedadeTest.java
+/home/taciomarques/Área de Trabalho/grupo-03/src/test/java/edu/unipampa/laboratoriovirologia/web/rest/SubamostraResourceIT.java
+/home/taciomarques/Área de Trabalho/grupo-03/src/test/java/edu/unipampa/laboratoriovirologia/web/rest/AmostraResourceIT.java
+/home/taciomarques/Área de Trabalho/grupo-03/src/test/java/edu/unipampa/laboratoriovirologia/web/rest/PropriedadeResourceIT.java
+/home/taciomarques/Área de Trabalho/grupo-03/src/test/java/edu/unipampa/laboratoriovirologia/service/mapper/UserMapperTest.java
+/home/taciomarques/Área de Trabalho/grupo-03/src/test/java/edu/unipampa/laboratoriovirologia/web/rest/ExameResourceIT.java
+/home/taciomarques/Área de Trabalho/grupo-03/src/test/java/edu/unipampa/laboratoriovirologia/domain/VacinaTest.java
+/home/taciomarques/Área de Trabalho/grupo-03/src/test/java/edu/unipampa/laboratoriovirologia/web/rest/errors/ExceptionTranslatorIT.java
+/home/taciomarques/Área de Trabalho/grupo-03/src/test/java/edu/unipampa/laboratoriovirologia/domain/AmostraTest.java
+/home/taciomarques/Área de Trabalho/grupo-03/src/test/java/edu/unipampa/laboratoriovirologia/web/rest/ProprietarioResourceIT.java
+/home/taciomarques/Área de Trabalho/grupo-03/src/test/java/edu/unipampa/laboratoriovirologia/web/rest/MedicoveterinarioResourceIT.java
+/home/taciomarques/Área de Trabalho/grupo-03/src/test/java/edu/unipampa/laboratoriovirologia/web/rest/ClientForwardControllerTest.java
+/home/taciomarques/Área de Trabalho/grupo-03/src/test/java/edu/unipampa/laboratoriovirologia/repository/timezone/DateTimeWrapperRepository.java
+/home/taciomarques/Área de Trabalho/grupo-03/src/test/java/edu/unipampa/laboratoriovirologia/config/WebConfigurerTestController.java
+/home/taciomarques/Área de Trabalho/grupo-03/src/test/java/edu/unipampa/laboratoriovirologia/config/StaticResourcesWebConfigurerTest.java
+/home/taciomarques/Área de Trabalho/grupo-03/src/test/java/edu/unipampa/laboratoriovirologia/service/mapper/ExameMapperTest.java
+/home/taciomarques/Área de Trabalho/grupo-03/src/test/java/edu/unipampa/laboratoriovirologia/service/mapper/SubamostraMapperTest.java
+/home/taciomarques/Área de Trabalho/grupo-03/src/test/java/edu/unipampa/laboratoriovirologia/service/mapper/PropriedadeMapperTest.java
+/home/taciomarques/Área de Trabalho/grupo-03/src/test/java/edu/unipampa/laboratoriovirologia/web/rest/MidiaResourceIT.java
+/home/taciomarques/Área de Trabalho/grupo-03/src/test/java/edu/unipampa/laboratoriovirologia/web/rest/VacinaResourceIT.java
+/home/taciomarques/Área de Trabalho/grupo-03/src/test/java/edu/unipampa/laboratoriovirologia/web/rest/errors/ExceptionTranslatorTestController.java
+/home/taciomarques/Área de Trabalho/grupo-03/src/test/java/edu/unipampa/laboratoriovirologia/security/DomainUserDetailsServiceIT.java
+/home/taciomarques/Área de Trabalho/grupo-03/src/test/java/edu/unipampa/laboratoriovirologia/domain/ExameTest.java
+/home/taciomarques/Área de Trabalho/grupo-03/src/test/java/edu/unipampa/laboratoriovirologia/web/rest/TestUtil.java
+/home/taciomarques/Área de Trabalho/grupo-03/src/test/java/edu/unipampa/laboratoriovirologia/service/mapper/EnderecoMapperTest.java
+/home/taciomarques/Área de Trabalho/grupo-03/src/test/java/edu/unipampa/laboratoriovirologia/IntegrationTest.java
+/home/taciomarques/Área de Trabalho/grupo-03/src/test/java/edu/unipampa/laboratoriovirologia/web/rest/EnderecoResourceIT.java
+/home/taciomarques/Área de Trabalho/grupo-03/src/test/java/edu/unipampa/laboratoriovirologia/service/dto/MidiaDTOTest.java
+/home/taciomarques/Área de Trabalho/grupo-03/src/test/java/edu/unipampa/laboratoriovirologia/service/mapper/VacinaMapperTest.java
+/home/taciomarques/Área de Trabalho/grupo-03/src/test/java/edu/unipampa/laboratoriovirologia/domain/MedicoveterinarioTest.java
+/home/taciomarques/Área de Trabalho/grupo-03/src/test/java/edu/unipampa/laboratoriovirologia/domain/EnderecoTest.java
+/home/taciomarques/Área de Trabalho/grupo-03/src/test/java/edu/unipampa/laboratoriovirologia/security/jwt/TokenProviderTest.java
+/home/taciomarques/Área de Trabalho/grupo-03/src/test/java/edu/unipampa/laboratoriovirologia/service/mapper/MedicoveterinarioMapperTest.java
+/home/taciomarques/Área de Trabalho/grupo-03/src/test/java/edu/unipampa/laboratoriovirologia/config/NoOpMailConfiguration.java
+/home/taciomarques/Área de Trabalho/grupo-03/src/test/java/edu/unipampa/laboratoriovirologia/config/timezone/HibernateTimeZoneIT.java
+/home/taciomarques/Área de Trabalho/grupo-03/src/test/java/edu/unipampa/laboratoriovirologia/service/mapper/AmostraMapperTest.java
+/home/taciomarques/Área de Trabalho/grupo-03/src/test/java/edu/unipampa/laboratoriovirologia/service/dto/AmostraDTOTest.java
+/home/taciomarques/Área de Trabalho/grupo-03/src/test/java/edu/unipampa/laboratoriovirologia/service/MailServiceIT.java
+/home/taciomarques/Área de Trabalho/grupo-03/src/test/java/edu/unipampa/laboratoriovirologia/domain/SubamostraTest.java
+/home/taciomarques/Área de Trabalho/grupo-03/src/test/java/edu/unipampa/laboratoriovirologia/service/dto/ExameDTOTest.java
+/home/taciomarques/Área de Trabalho/grupo-03/src/test/java/edu/unipampa/laboratoriovirologia/web/rest/PublicUserResourceIT.java
+/home/taciomarques/Área de Trabalho/grupo-03/src/test/java/edu/unipampa/laboratoriovirologia/ArchTest.java
+/home/taciomarques/Área de Trabalho/grupo-03/src/test/java/edu/unipampa/laboratoriovirologia/domain/MidiaTest.java
+/home/taciomarques/Área de Trabalho/grupo-03/src/test/java/edu/unipampa/laboratoriovirologia/service/dto/VacinaDTOTest.java
+/home/taciomarques/Área de Trabalho/grupo-03/src/test/java/edu/unipampa/laboratoriovirologia/web/rest/AccountResourceIT.java
+/home/taciomarques/Área de Trabalho/grupo-03/src/test/java/edu/unipampa/laboratoriovirologia/service/mapper/MidiaMapperTest.java
+/home/taciomarques/Área de Trabalho/grupo-03/src/test/java/edu/unipampa/laboratoriovirologia/service/UserServiceIT.java
+/home/taciomarques/Área de Trabalho/grupo-03/src/test/java/edu/unipampa/laboratoriovirologia/web/rest/UserResourceIT.java
+/home/taciomarques/Área de Trabalho/grupo-03/src/test/java/edu/unipampa/laboratoriovirologia/domain/ProprietarioTest.java
+/home/taciomarques/Área de Trabalho/grupo-03/src/test/java/edu/unipampa/laboratoriovirologia/security/SecurityUtilsUnitTest.java
+/home/taciomarques/Área de Trabalho/grupo-03/src/test/java/edu/unipampa/laboratoriovirologia/service/dto/ProprietarioDTOTest.java
+/home/taciomarques/Área de Trabalho/grupo-03/src/test/java/edu/unipampa/laboratoriovirologia/service/mapper/ProprietarioMapperTest.java
+/home/taciomarques/Área de Trabalho/grupo-03/src/test/java/edu/unipampa/laboratoriovirologia/service/dto/PropriedadeDTOTest.java
+/home/taciomarques/Área de Trabalho/grupo-03/src/test/java/edu/unipampa/laboratoriovirologia/web/rest/UserJWTControllerIT.java
+/home/taciomarques/Área de Trabalho/grupo-03/src/test/java/edu/unipampa/laboratoriovirologia/service/dto/MedicoveterinarioDTOTest.java
+/home/taciomarques/Área de Trabalho/grupo-03/src/test/java/edu/unipampa/laboratoriovirologia/security/jwt/JWTFilterTest.java
+/home/taciomarques/Área de Trabalho/grupo-03/src/test/java/edu/unipampa/laboratoriovirologia/service/dto/SubamostraDTOTest.java
+/home/taciomarques/Área de Trabalho/grupo-03/src/test/java/edu/unipampa/laboratoriovirologia/service/dto/EnderecoDTOTest.java
+/home/taciomarques/Área de Trabalho/grupo-03/src/test/java/edu/unipampa/laboratoriovirologia/config/WebConfigurerTest.java
+/home/taciomarques/Área de Trabalho/grupo-03/src/test/java/edu/unipampa/laboratoriovirologia/web/rest/WithUnauthenticatedMockUser.java
+/home/taciomarques/Área de Trabalho/grupo-03/src/test/java/edu/unipampa/laboratoriovirologia/repository/timezone/DateTimeWrapper.java

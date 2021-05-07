@@ -41,8 +41,78 @@
               :class="{ valid: !$v.amostra.numeroAmostras.$invalid, invalid: $v.amostra.numeroAmostras.$invalid }"
               v-model.number="$v.amostra.numeroAmostras.$model"
               required="true"
+              readonly
             />
           </div>
+          <!--          Card SubAmostras         -->
+
+          <div class="form-group">
+            <div class="card">
+              <div class="card-header">
+                Amostra
+              </div>
+              <div class="card-body">
+                <h5 class="card-title">
+                  <button
+                    type="button" id="new-sub-amostra" class="btn btn-outline-success"
+                    v-on:click="addSubAmostra()"
+                  ><span>Nova</span>
+                  </button>
+                </h5>
+                <ul class="list-group list-group-flush">
+                  <li class="list-group-item">
+                    <div class="table-responsive">
+                      <table class="table table-striped" aria-describedby="subAmostras">
+                        <thead>
+                        <tr v-if="amostra.subamostras != null">
+<!--                          <th scope="row"><span>ID</span></th>-->
+                          <th scope="row"><span>Amostra</span></th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr v-for="(subAmostra, index) in amostra.subamostras"
+                            :key="subAmostra.id"
+                            data-cy="entityTable">
+<!--                          <td>-->
+<!--                            {{ index + 1 }}-->
+<!--                          </td>-->
+                          <td>
+                            <div class="form-group">
+                              <input
+                                type="text"
+                                class="form-control"
+                                name="subAmostra-subAmostra"
+                                id="amostra-subAmostra-subAmostra"
+                                data-cy="subAmostra-subAmostra"
+                                v-model="subAmostra.subAmostra"
+                              />
+                            </div>
+                          </td>
+                          <td class="text-right">
+                            <div class="btn-group">
+                              <b-button
+                                type="button"
+                                variant="danger"
+                                class="btn btn-sm"
+                                v-on:click="removeSubAmostra(index)"
+                              >
+                                <font-awesome-icon icon="times"></font-awesome-icon>
+                                <span class="d-none d-md-inline">Remover</span>
+                              </b-button>
+                            </div>
+                          </td>
+                        </tr>
+                        </tbody>
+                      </table>
+                    </div>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+
+          <!--          Card SubAMostras         -->
           <div class="form-group">
             <label class="form-control-label" for="amostra-especie">Espécie</label>
             <select class="form-control" id="amostra-especie-select" data-cy="especie" name="especie-select" v-model="amostra.especie" required="true">
@@ -184,23 +254,18 @@
           </div>
           <div class="form-group">
             <label class="form-control-label" for="amostra-tipo">Tipo</label>
-            <input
-              type="text"
-              class="form-control"
-              name="tipo"
-              id="amostra-tipo"
-              data-cy="tipo"
-              :class="{ valid: !$v.amostra.tipo.$invalid, invalid: $v.amostra.tipo.$invalid }"
-              v-model="$v.amostra.tipo.$model"
-              required="true"
-            />
+            <select :disabled="amostra.id != null ? true : false" class="form-control" id="amostra-tipo" data-cy="tipo" name="tipo" v-model="amostra.tipo" required="true">
+              <option value="VACINA">Vacina</option>
+              <option value="EXAME">Exame</option>
+            </select>
           </div>
           <div class="form-group">
             <label class="form-control-label" for="amostra-status">Status</label>
             <select class="form-control" id="amostra-status" data-cy="status" name="status" v-model="amostra.status" required="true">
-              <option value="ACEITO">Aceito</option>
               <option value="RECUSADO">Recusado</option>
               <option value="AGUARDANDO_SOLICITACAO_HISTORICO">Aguardando solicitação/histórico</option>
+              <option value="EM_ANDAMENTO">Em Andamento</option>
+              <option value="CONCLUIDO">Concluído</option>
             </select>
           </div>
           <div class="form-group">
@@ -272,11 +337,9 @@
           <div class="form-group">
             <label class="form-control-label" for="amostra-propriedade">Propriedade</label>
             <select class="form-control" id="amostra-propriedade" data-cy="propriedade" name="propriedade" v-model="amostra.propriedade" required="true">
-              <option v-bind:value="null"></option>
+<!--              <option v-bind:value="OUTRO">Não se aplica</option>-->
               <option
-                v-bind:value="
-                  amostra.propriedade && propriedadeOption.id === amostra.propriedade.id ? amostra.propriedade : propriedadeOption
-                "
+                v-bind:value="amostra.propriedade && propriedadeOption.id === amostra.propriedade.id ? amostra.propriedade : propriedadeOption"
                 v-for="propriedadeOption in propriedades"
                 :key="propriedadeOption.id"
               >

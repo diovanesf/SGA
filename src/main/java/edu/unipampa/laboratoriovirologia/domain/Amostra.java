@@ -100,7 +100,7 @@ public class Amostra implements Serializable {
     @ManyToOne
     private Medicoveterinario medicoveterinario;
 
-    @OneToOne(cascade = CascadeType.REMOVE, orphanRemoval = true)
+    @OneToOne(cascade = CascadeType.ALL, orphanRemoval = true)
     @JoinColumn(unique = true)
     private Vacina vacina;
 

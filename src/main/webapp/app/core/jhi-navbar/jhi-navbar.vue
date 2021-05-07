@@ -57,15 +57,6 @@
             <font-awesome-icon icon="asterisk" />
             <span>Médico Veterinário</span>
           </b-dropdown-item>
-          <b-dropdown-item to="/subamostra">
-            <font-awesome-icon icon="asterisk" />
-            <span>Subamostra</span>
-          </b-dropdown-item>
-
-          <b-dropdown-item to="/vacina">
-            <font-awesome-icon icon="asterisk" />
-            <span>Vacina</span>
-          </b-dropdown-item>
           <!-- jhipster-needle-add-entity-to-menu - JHipster will add entities to the menu here -->
         </b-nav-item-dropdown>
         <b-nav-item-dropdown
