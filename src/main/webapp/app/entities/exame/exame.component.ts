@@ -101,4 +101,7 @@ export default class Exame extends mixins(JhiDataUtils) {
   public closeDialog(): void {
     (<any>this.$refs.removeEntity).hide();
   }
+  public previousState(): void{
+    this.$router.go(-1);
+  }
 }
