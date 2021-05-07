@@ -1,5 +1,7 @@
+
 <template>
   <div>
+      
     <h2 id="page-heading" data-cy="AmostraHeading">
       <span id="amostra-heading">Amostras</span>
       <div class="d-flex justify-content-end">
@@ -46,7 +48,7 @@
             </th>
             <th scope="row" v-on:click="changeOrder('dataInicial')">
               <span>Data inicial</span>
-              <jhi-sort-indicator :current-order="propOrder" :reverse="reverse" :field-name="'dataInicial'"></jhi-sort-indicator>
+            <jhi-sort-indicator :current-order="propOrder" :reverse="reverse" :field-name="'dataInicial'"></jhi-sort-indicator>
             </th>
             <th scope="row" v-on:click="changeOrder('materialRecebido')">
               <span>Material recebido</span>

@@ -71,27 +71,27 @@
             <td class="text-right">
               <div class="btn-group">
                 <router-link :to="{ name: 'ExameView', params: { exameId: exame.id } }" custom v-slot="{ navigate }">
-                  <button @click="navigate" class="btn btn-info btn-sm details" data-cy="entityDetailsButton">
+                  <button @click="navigate" class="btn btn-outline-success btn-sm details" data-cy="entityDetailsButton">
                     <font-awesome-icon icon="eye"></font-awesome-icon>
-                    <span class="d-none d-md-inline">View</span>
+                    <span class="d-none d-md-inline">Ver</span>
                   </button>
                 </router-link>
                 <router-link :to="{ name: 'ExameEdit', params: { exameId: exame.id, amostraId: amostra.id } }" custom v-slot="{ navigate }">
-                  <button @click="navigate" class="btn btn-primary btn-sm edit" data-cy="entityEditButton">
+                  <button @click="navigate" class="btn btn-warning btn-sm edit" data-cy="entityEditButton">
                     <font-awesome-icon icon="pencil-alt"></font-awesome-icon>
-                    <span class="d-none d-md-inline">Edit</span>
+                    <span class="d-none d-md-inline">Editar</span>
                   </button>
                 </router-link>
                 <b-button
                   v-if="verificaUsuario()"
                   v-on:click="prepareRemove(exame)"
                   variant="danger"
-                  class="btn btn-sm"
+                  class="btn btn-danger"
                   data-cy="entityDeleteButton"
                   v-b-modal.removeEntity
                 >
                   <font-awesome-icon icon="times"></font-awesome-icon>
-                  <span class="d-none d-md-inline">Delete</span>
+                  <span class="d-none d-md-inline">Deletar</span>
                 </b-button>
               </div>
             </td>
@@ -99,23 +99,27 @@
         </tbody>
       </table>
     </div>
+    <router-link :to="{ name: 'Amostra' }" custom v-slot="{ navigate }">
+      <button type="submit" v-on:click.prevent="previousState()" class="btn btn-outline-success" data-cy="entityDetailsBackButton">
+          <font-awesome-icon icon="arrow-left"></font-awesome-icon>&nbsp;<span> Voltar</span>
+        </button></router-link>
     <b-modal ref="removeEntity" id="removeEntity">
       <span slot="modal-title"
-        ><span id="rp6App.exame.delete.question" data-cy="exameDeleteDialogHeading">Confirm delete operation</span></span
+        ><span id="rp6App.exame.delete.question" data-cy="exameDeleteDialogHeading">Confirmação de exclusão</span></span
       >
       <div class="modal-body">
-        <p id="jhi-delete-exame-heading">Are you sure you want to delete this Exame?</p>
+        <p id="jhi-delete-exame-heading">Você tem certeza que deseja deletar este Exame?</p>
       </div>
       <div slot="modal-footer">
-        <button type="button" class="btn btn-secondary" v-on:click="closeDialog()">Cancel</button>
+        <button type="button" class="btn btn-secondary" v-on:click="closeDialog()">Cancelar</button>
         <button
           type="button"
-          class="btn btn-primary"
+          class="btn btn-danger"
           id="jhi-confirm-delete-exame"
           data-cy="entityConfirmDeleteButton"
           v-on:click="removeExame()"
         >
-          Delete
+          Deletar
         </button>
       </div>
     </b-modal>

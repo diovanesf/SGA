@@ -25,8 +25,8 @@
               <option value="IMUNOFLUORESCENCIA">Imunofluorescência</option>
               <option value="INIBICAO_HEMAGLUTINACAO">Inibição da Hemaglutinação</option>
               <option value="ISOLAMENTO_VIRAL">Isolamento Viral</option>
-              <option value="IMUNODIFUSAO_GEL_AGAR">Imunodifusao em Gel de Agar</option>
-              <option value="MICROSCOPIA_ELETRONICA">Microscopia Eletronica</option>
+              <option value="IMUNODIFUSAO_GEL_AGAR">Imunodifusão em Gel de Agar</option>
+              <option value="MICROSCOPIA_ELETRONICA">Microscopia Eletrônica</option>
             </select>
           </div>
           <div class="form-group">

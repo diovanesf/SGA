@@ -29,7 +29,7 @@
             <font-awesome-icon icon="th-list" />
             <span class="no-bold">Menu</span>
           </span>
-          <b-dropdown-item to="/admin/user-management" active-class="active">
+          <b-dropdown-item to="/admin/user-management" active-class="active" v-if="hasAnyAuthority('ROLE_ADMIN') && authenticated">
             <font-awesome-icon icon="users" />
             <span>Gerenciamento de Usuários</span>
           </b-dropdown-item>

@@ -41,7 +41,7 @@
             <span>{{ exame.preenchimentoEspelho }}</span>
           </dd>
           <dt>
-            <span>Observacoes</span>
+            <span>Observações</span>
           </dt>
           <dd>
             <span>{{ exame.observacoes }}</span>
@@ -73,12 +73,12 @@
             </div>
           </dd>
         </dl>
-        <button type="submit" v-on:click.prevent="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
-          <font-awesome-icon icon="arrow-left"></font-awesome-icon>&nbsp;<span> Back</span>
+        <button type="submit" v-on:click.prevent="previousState()" class="btn btn-outline-success" data-cy="entityDetailsBackButton">
+          <font-awesome-icon icon="arrow-left"></font-awesome-icon>&nbsp;<span> Voltar</span>
         </button>
         <router-link v-if="exame.id" :to="{ name: 'ExameEdit', params: { exameId: exame.id } }" custom v-slot="{ navigate }">
-          <button @click="navigate" class="btn btn-primary">
-            <font-awesome-icon icon="pencil-alt"></font-awesome-icon>&nbsp;<span> Edit</span>
+          <button @click="navigate" class="btn btn-success">
+            <font-awesome-icon icon="pencil-alt"></font-awesome-icon>&nbsp;<span> Editar</span>
           </button>
         </router-link>
       </div>
