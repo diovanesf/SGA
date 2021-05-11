@@ -170,7 +170,7 @@
             />
           </div>
           <div class="form-group">
-            <label class="form-control-label" for="exame-subamostra">Sub Amostra</label>
+            <label class="form-control-label" for="exame-subamostra">Amostra</label>
             <select class="form-control" id="exame-subamostra" data-cy="subamostra" name="subamostra" v-model="exame.subamostra" required>
               <option v-bind:value="null"></option>
               <option

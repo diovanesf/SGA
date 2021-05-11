@@ -10,7 +10,6 @@
           <dd>
             <span>{{ propriedade.tipoPropriedade }}</span>
           </dd>
-          </dd>
           <dt>
             <span>Tipo de Criação</span>
           </dt>
