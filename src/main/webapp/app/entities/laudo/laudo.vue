@@ -6,6 +6,13 @@
           Laudo de Exame Virológico <br/><br/>
           {{ amostra.protocolo }}
         </h2>
+        <div class="text-right">
+          <button class="btn btn-success" v-on:click="downloadPDF()">
+                    <span>
+                        Download PDF
+                    </span>
+          </button>
+        </div>
         <div>
           <hr/>
           <div class="form-group">
@@ -179,13 +186,6 @@
         <div>
           <button type="button" id="cancel-save" class="btn btn-secondary" v-on:click="previousState()">
             <font-awesome-icon icon="ban"></font-awesome-icon>&nbsp;<span>Back</span>
-          </button>
-        </div>
-        <div>
-          <button class="btn btn-success" v-on:click="downloadPDF()">
-                    <span>
-                        Download PDF
-                    </span>
           </button>
         </div>
       </form>

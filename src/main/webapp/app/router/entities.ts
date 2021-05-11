@@ -236,30 +236,6 @@ export default [
     meta: { authorities: [Authority.USER, Authority.ALUNO, Authority.PROFESSOR] },
   },
   {
-    path: '/subamostra',
-    name: 'Subamostra',
-    component: Subamostra,
-    meta: { authorities: [Authority.USER, Authority.ALUNO, Authority.PROFESSOR] },
-  },
-  {
-    path: '/subamostra/new',
-    name: 'SubamostraCreate',
-    component: SubamostraUpdate,
-    meta: { authorities: [Authority.USER, Authority.ALUNO, Authority.PROFESSOR] },
-  },
-  {
-    path: '/subamostra/:subamostraId/edit',
-    name: 'SubamostraEdit',
-    component: SubamostraUpdate,
-    meta: { authorities: [Authority.USER, Authority.ALUNO, Authority.PROFESSOR] },
-  },
-  {
-    path: '/subamostra/:subamostraId/view',
-    name: 'SubamostraView',
-    component: SubamostraDetails,
-    meta: { authorities: [Authority.USER, Authority.ALUNO, Authority.PROFESSOR] },
-  },
-  {
     path: 'amostra/:amostraId/vacina',
     name: 'Vacina',
     component: Vacina,

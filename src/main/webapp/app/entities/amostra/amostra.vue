@@ -1,7 +1,7 @@
 
 <template>
   <div>
-      
+
     <h2 id="page-heading" data-cy="AmostraHeading">
       <span id="amostra-heading">Amostras</span>
       <div class="d-flex justify-content-end">
@@ -87,7 +87,7 @@
             <td class="text-right">
               <div class="btn-group">
                 <router-link
-                  v-if="amostra.status === 'CONCLUIDO' && verificaUsuario()"
+                  v-if="amostra.status === 'CONCLUIDO' && verificaUsuario() && amostra.tipo === 'EXAME'"
                   :to="{ name: 'Laudo', params: { amostraId: amostra.id } }"
                   custom
                   v-slot="{ navigate }"

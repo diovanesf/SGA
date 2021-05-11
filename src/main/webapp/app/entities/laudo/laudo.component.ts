@@ -10,6 +10,7 @@ import PropriedadeService from '@/entities/propriedade/propriedade.service';
 import ProprietarioService from '@/entities/proprietario/proprietario.service';
 import {IExame} from '@/shared/model/exame.model';
 import jsPDF from 'jspdf';
+import "jspdf-autotable";
 
 @Component({
   mixins: [Vue2Filters.mixin],
@@ -28,7 +29,7 @@ export default class Laudo extends Vue {
   public enderecoId: number = null;
   public amostraId: number = null;
   public isFetching = false;
-  public cont: number = 180;
+  public cont: number = 240;
 
   beforeRouteEnter(to, from, next) {
     next(vm => {
@@ -83,101 +84,111 @@ export default class Laudo extends Vue {
   }
 
   public downloadPDF(): void {
+
+    let dataAtual = new Date();
+
     const doc = new jsPDF();
     // doc.setLineWidth(20);
     // doc.lines([[20,20],[-2,2],[1,1,2,2,3,3,4,4,5,5,6,6,7,7,8,8,9,9],[2,1]], 212,110, 20);
     doc.setFont("times", "normal");
-    doc.setFontSize(20);
-    doc.text('Laudo de Exame Virológico '+ this.amostra.protocolo, 105, 10, null, null, "center");
-    doc.setFontSize(16);
-    doc.text('Dados do cliente:  '+ this.amostra.propriedade.proprietario.nome,10,30);
-    doc.setFontSize(16);
-    doc.text('Endereço: '+ this.amostra.propriedade.endereco.endereco,15,40);
-    doc.setFontSize(16);
-    doc.text('Cidade: '+ this.amostra.propriedade.endereco.cidade,15,50);
-    doc.setFontSize(16);
-    doc.text('Email: '+ this.amostra.propriedade.proprietario.email,15,60);
-    doc.setFontSize(16);
-    doc.text('Fone: '+ this.amostra.propriedade.proprietario.telefone,15,70);
-    doc.setFontSize(20);
-    doc.text('Identificação da Amostra',10,85);
-    doc.setFontSize(16);
-    doc.text('Material Recebido: '+ this.amostra.materialRecebido,15,95);
-    doc.setFontSize(16);
-    doc.text('Espécie: '+ this.amostra.especie,15,105);
-    doc.setFontSize(16);
-    doc.text('Acondicionamento: '+ this.amostra.acondicionamento,15,115);
-    doc.setFontSize(16);
-    doc.text('Condição do Material: '+ this.amostra.condicaoMaterial,15,125);
-    doc.setFontSize(16);
-    doc.text('Data: '+ this.amostra.dataInicial,15,135);
-    doc.setFontSize(20);
-    doc.text('Exames e seus resultados',10,150);
+    doc.setFontSize(18);
+    doc.text('Laboratório de Virologia', 105, 10, null, null, "center");
+    doc.setFontSize(14);
+    doc.setFont("times", "normal");
+    doc.text('Curso de Medicina Veterinária',105, 15, null, null, "center");
+    doc.setFont("times", "normal");
+    doc.text('Casa 4, Campus Uruguaiana, UNIPAMPA',105, 20, null, null, "center");
+    doc.setFont("times", "normal");
+    doc.text('BR 472, km 592, CEP 97.500-008. Uruguaiana, RS',105, 25, null, null, "center");
+    doc.setFont("times", "normal");
+    doc.text('email para contato: mario.brum@uniapampa.edu.br',105, 30, null, null, "center");
 
-    // var headers = createHeaders([
-    //   "Nome",
-    //   "Tipo",
-    //   "Resultado",
-    //   "Amostra"
-    // ]);
-    //
-    // var generateData = function(exames) {
-    //   var result = [];
-    //   exames.forEach(value => {
-    //   var data = {
-    //     Nome: value.nome,
-    //     Tipo: value.tipo,
-    //     Resultado: value.resultado,
-    //     Amostra: value.subamostra.subAmostra
-    //   };
-    //   result.push(Object.assign({}, data));
-    //   console.log("Aqui");
-    //   });
-    //   return result;
-    // };
-    //
-    // function createHeaders(keys) {
-    //   var result = [];
-    //   for (var i = 0; i < keys.length; i += 1) {
-    //     result.push({
-    //       id: keys[i],
-    //       name: keys[i],
-    //       prompt: keys[i],
-    //       width: 65,
-    //       align: "center",
-    //       padding: 0
-    //     });
-    //   }
-    //   return result;
-    // }
-    //
-    // doc.table(20, 180, generateData(this.amostra.exames), headers, { autoSize: true });
 
-    // var doc = new jsPDF({ putOnlyUsedFonts: true, orientation: "landscape" });
+    doc.setFont("times", "normal");
+    doc.setFontSize(18);
+    doc.text('Laudo de Exame Virológico '+ this.amostra.protocolo, 105, 50, null, null, "center");
+    doc.setFontSize(16);
+    doc.setFont("helvetica", "bold");
+    doc.text('Dados do cliente:  '+ this.amostra.propriedade.proprietario.nome,10,80);
+    doc.setFontSize(16);
+    doc.setFont("times", "normal");
+    doc.text('Endereço: '+ this.amostra.propriedade.endereco.endereco,15,90);
+    doc.setFontSize(16);
+    doc.setFont("times", "normal");
+    doc.text('Cidade: '+ this.amostra.propriedade.endereco.cidade,15,100);
+    doc.setFontSize(16);
+    doc.setFont("times", "normal");
+    doc.text('Email: '+ this.amostra.propriedade.proprietario.email,15,110);
+    doc.setFontSize(16);
+    doc.setFont("times", "normal");
+    doc.text('Fone: '+ this.amostra.propriedade.proprietario.telefone,15,120);
+    doc.setFontSize(18);
+    doc.setFont("helvetica", "bold");
+    doc.text('Identificação da Amostra',10,135);
+    doc.setFontSize(16);
+    doc.setFont("times", "normal");
+    doc.text('Material Recebido: '+ this.amostra.materialRecebido,15,145);
+    doc.setFontSize(16);
+    doc.setFont("times", "normal");
+    doc.text('Espécie: '+ this.amostra.especie,15,155);
+    doc.setFontSize(16);
+    doc.setFont("times", "normal");
+    doc.text('Acondicionamento: '+ this.amostra.acondicionamento,15,165);
+    doc.setFontSize(16);
+    doc.setFont("times", "normal");
+    doc.text('Condição do Material: '+ this.amostra.condicaoMaterial,15,175);
+    doc.setFontSize(16);
+    doc.setFont("times", "normal");
+    doc.text('Data de Recebimento: '+ this.amostra.dataInicial,15,185);
+    doc.setFontSize(16);
+    doc.setFont("times", "normal");
+    doc.text('Data de Emissão do Laudo: '+ dataAtual.getFullYear() + '-' + dataAtual.getMonth() + '-' + dataAtual.getDate(),110,185);
+    doc.setFontSize(16);
+    doc.setFont("times", "normal");
+    doc.text('Suspeita: '+ this.amostra.pricipalSuspeita,15,195);
 
     doc.setFontSize(18);
-    doc.text('Nome', 20, 165);
-    doc.setFontSize(18);
-    doc.text('Tipo', 70, 165);
-    doc.setFontSize(18);
-    doc.text('Resultado', 120, 165);
-    doc.setFontSize(18);
-    doc.text('Amostra', 170, 165);
+    doc.setFont("helvetica", "bold");
+    doc.text('Exames e seus resultados',10,210);
 
-    // this.amostra.exames.forEach(value => {
-    //   doc.setFontSize(16);
-    //   doc.text(value.nome, 20, this.cont);
-    //   doc.setFontSize(16);
-    //   doc.text(value.tipo, 70, this.cont);
-    //   doc.setFontSize(16);
-    //   doc.text(value.resultado, 120, this.cont);
-    //   doc.setFontSize(16);
-    //   doc.text(value.subamostra.subAmostra, 170, this.cont);
-    //   this.cont = this.cont + 10;
-    //   console.log("Passou aqui");
-    // });
+    doc.setFontSize(14);
+    doc.setFont("times", "bold");
+    doc.text('Nome', 10, 225);
+    doc.setFontSize(14);
+    doc.setFont("times", "bold");
+    doc.text('Tipo', 110, 225);
+    doc.setFontSize(14);
+    doc.setFont("times", "bold");
+    doc.text('Resultado', 140, 225);
+    doc.setFontSize(14);
+    doc.setFont("times", "bold");
+    doc.text('Amostra', 180, 225);
+    doc.setFont("times", "bold");
+
+      for(let i = 0; i < this.exames.length; i++){
+
+      doc.setFontSize(12);
+      doc.text(this.exames[i].nome, 10, this.cont);
+      doc.setFontSize(12);
+      doc.text(this.exames[i].tipo, 110, this.cont);
+      doc.setFontSize(12);
+      doc.text(this.exames[i].resultado, 140, this.cont);
+      doc.setFontSize(12);
+      doc.text(this.exames[i].subamostra.subAmostra, 180, this.cont);
+      this.cont = this.cont + 10;
+      }
+
+    doc.setFont("times", "bold");
+    doc.text("Responsável:", 20, 290);
+
+    doc.setFont("times", "bold");
+    doc.text("CRMV:", 140, 290);
+
+
+    doc.line(55, 290, 130, 290); // horizontal line
 
     doc.save("Laudo_"+this.amostra.protocolo+".pdf");
+
     this.$router.go(0);
   }
 }

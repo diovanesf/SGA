@@ -1,7 +1,7 @@
 <template>
   <div class="row justify-content-center">
     <div class="col-8">
-      <form name="editForm" role="form" novalidate v-on:submit.prevent="save()">
+      <form name="editForm" role="form" validate v-on:submit.prevent="save()">
         <h2 id="rp6App.propriedade.home.createOrEditLabel" data-cy="PropriedadeCreateUpdateHeading">Criar ou editar uma Propriedade</h2>
         <div>
           <div class="form-group" v-if="propriedade.id">
@@ -46,8 +46,9 @@
               data-cy="proprietario"
               name="proprietario"
               v-model="propriedade.proprietario"
+              required="required"
             >
-              <option v-bind:value="null"></option>
+<!--              <option v-bind:value="null"></option>-->
               <option
                 v-bind:value="
                   propriedade.proprietario && proprietarioOption.id === propriedade.proprietario.id
