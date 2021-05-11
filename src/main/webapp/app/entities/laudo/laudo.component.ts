@@ -29,7 +29,7 @@ export default class Laudo extends Vue {
   public enderecoId: number = null;
   public amostraId: number = null;
   public isFetching = false;
-  public cont: number = 240;
+  public cont: number = 250;
 
   beforeRouteEnter(to, from, next) {
     next(vm => {
@@ -109,60 +109,63 @@ export default class Laudo extends Vue {
     doc.text('Laudo de Exame Virológico '+ this.amostra.protocolo, 105, 50, null, null, "center");
     doc.setFontSize(16);
     doc.setFont("helvetica", "bold");
-    doc.text('Dados do cliente:  '+ this.amostra.propriedade.proprietario.nome,10,80);
+    doc.text('Dados do cliente:'+ this.amostra.propriedade.proprietario.nome,10,80);
     doc.setFontSize(16);
     doc.setFont("times", "normal");
-    doc.text('Endereço: '+ this.amostra.propriedade.endereco.endereco,15,90);
+    doc.text('Nome: '+ this.amostra.propriedade.proprietario.nome,15,90);
     doc.setFontSize(16);
     doc.setFont("times", "normal");
-    doc.text('Cidade: '+ this.amostra.propriedade.endereco.cidade,15,100);
+    doc.text('Endereço: '+ this.amostra.propriedade.endereco.endereco,15,100);
     doc.setFontSize(16);
     doc.setFont("times", "normal");
-    doc.text('Email: '+ this.amostra.propriedade.proprietario.email,15,110);
+    doc.text('Cidade: '+ this.amostra.propriedade.endereco.cidade,15,110);
     doc.setFontSize(16);
     doc.setFont("times", "normal");
-    doc.text('Fone: '+ this.amostra.propriedade.proprietario.telefone,15,120);
+    doc.text('Email: '+ this.amostra.propriedade.proprietario.email,15,120);
+    doc.setFontSize(16);
+    doc.setFont("times", "normal");
+    doc.text('Fone: '+ this.amostra.propriedade.proprietario.telefone,15,130);
     doc.setFontSize(18);
     doc.setFont("helvetica", "bold");
-    doc.text('Identificação da Amostra',10,135);
+    doc.text('Identificação da Amostra',10,145);
     doc.setFontSize(16);
     doc.setFont("times", "normal");
-    doc.text('Material Recebido: '+ this.amostra.materialRecebido,15,145);
+    doc.text('Material Recebido: '+ this.amostra.materialRecebido,15,155);
     doc.setFontSize(16);
     doc.setFont("times", "normal");
-    doc.text('Espécie: '+ this.amostra.especie,15,155);
+    doc.text('Espécie: '+ this.amostra.especie,15,165);
     doc.setFontSize(16);
     doc.setFont("times", "normal");
-    doc.text('Acondicionamento: '+ this.amostra.acondicionamento,15,165);
+    doc.text('Acondicionamento: '+ this.amostra.acondicionamento,15,175);
     doc.setFontSize(16);
     doc.setFont("times", "normal");
-    doc.text('Condição do Material: '+ this.amostra.condicaoMaterial,15,175);
+    doc.text('Condição do Material: '+ this.amostra.condicaoMaterial,15,185);
     doc.setFontSize(16);
     doc.setFont("times", "normal");
-    doc.text('Data de Recebimento: '+ this.amostra.dataInicial,15,185);
+    doc.text('Data de Recebimento: '+ this.amostra.dataInicial,15,195);
     doc.setFontSize(16);
     doc.setFont("times", "normal");
-    doc.text('Data de Emissão do Laudo: '+ dataAtual.getFullYear() + '-' + dataAtual.getMonth() + '-' + dataAtual.getDate(),110,185);
+    doc.text('Data de Emissão do Laudo: '+ dataAtual.getFullYear() + '-' + dataAtual.getMonth() + '-' + dataAtual.getDate(),110,195);
     doc.setFontSize(16);
     doc.setFont("times", "normal");
-    doc.text('Suspeita: '+ this.amostra.pricipalSuspeita,15,195);
+    doc.text('Suspeita: '+ this.amostra.pricipalSuspeita,15,205);
 
     doc.setFontSize(18);
     doc.setFont("helvetica", "bold");
-    doc.text('Exames e seus resultados',10,210);
+    doc.text('Exames e seus resultados',10,220);
 
     doc.setFontSize(14);
     doc.setFont("times", "bold");
-    doc.text('Nome', 10, 225);
+    doc.text('Nome', 10, 235);
     doc.setFontSize(14);
     doc.setFont("times", "bold");
-    doc.text('Tipo', 110, 225);
+    doc.text('Tipo', 110, 235);
     doc.setFontSize(14);
     doc.setFont("times", "bold");
-    doc.text('Resultado', 140, 225);
+    doc.text('Resultado', 140, 235);
     doc.setFontSize(14);
     doc.setFont("times", "bold");
-    doc.text('Amostra', 180, 225);
+    doc.text('Amostra', 180, 235);
     doc.setFont("times", "bold");
 
       for(let i = 0; i < this.exames.length; i++){
