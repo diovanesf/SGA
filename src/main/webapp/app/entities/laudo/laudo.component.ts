@@ -80,7 +80,7 @@ export default class Laudo extends Vue {
   }
 
   public previousState(): void {
-    this.$router.go(-1);
+    this.$router.push('/Amostra');
   }
 
   public downloadPDF(): void {
@@ -195,6 +195,6 @@ export default class Laudo extends Vue {
 
     doc.save("Laudo_"+this.amostra.protocolo+".pdf");
 
-    this.$router.go(0);
+    this.$router.push('/Amostra');
   }
 }

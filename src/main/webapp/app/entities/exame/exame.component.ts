@@ -102,6 +102,6 @@ export default class Exame extends mixins(JhiDataUtils) {
     (<any>this.$refs.removeEntity).hide();
   }
   public previousState(): void{
-    this.$router.go(-1);
+    this.$router.push('/Amostra');
   }
 }
