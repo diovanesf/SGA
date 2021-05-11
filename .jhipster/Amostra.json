@@ -1,0 +1,131 @@
+{
+  "fields": [
+    {
+      "fieldName": "protocolo",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "formaEnvio",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "numeroAmostras",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "especie",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "numeroAnimais",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "acometidos",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "pricipalSuspeita",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "dataInicial",
+      "fieldType": "LocalDate"
+    },
+    {
+      "fieldName": "materialRecebido",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "acondicionamento",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "condicaoMaterial",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "status",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "tipoMedVet",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "valorTotal",
+      "fieldType": "BigDecimal"
+    },
+    {
+      "fieldName": "tipoPagamento",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "tipo",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "situacao",
+      "fieldType": "String"
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipName": "user",
+      "otherEntityName": "user",
+      "relationshipType": "many-to-many",
+      "otherEntityField": "login",
+      "ownerSide": true,
+      "otherEntityRelationshipName": "amostra"
+    },
+    {
+      "relationshipType": "one-to-many",
+      "otherEntityName": "midia",
+      "otherEntityRelationshipName": "amostra",
+      "relationshipName": "midia",
+      "otherEntityField": "nome"
+    },
+    {
+      "relationshipType": "one-to-many",
+      "otherEntityName": "subamostra",
+      "otherEntityRelationshipName": "amostra",
+      "relationshipName": "subamostra",
+      "otherEntityField": "subamostra"
+    },
+    {
+      "relationshipType": "one-to-many",
+      "otherEntityName": "exame",
+      "otherEntityRelationshipName": "amostra",
+      "relationshipName": "exame",
+      "otherEntityField": "nome"
+    },
+    {
+      "relationshipName": "propriedade",
+      "otherEntityName": "propriedade",
+      "relationshipType": "many-to-one",
+      "otherEntityField": "tipoPropriedade"
+    },
+    {
+      "relationshipName": "medicoveterinario",
+      "otherEntityName": "medicoveterinario",
+      "relationshipType": "many-to-one",
+      "otherEntityField": "nome"
+    },
+    {
+      "relationshipName": "vacina",
+      "otherEntityName": "vacina",
+      "relationshipType": "one-to-one",
+      "otherEntityField": "status",
+      "ownerSide": true,
+      "id": false,
+      "otherEntityRelationshipName": "amostra"
+    }
+  ],
+  "service": "serviceClass",
+  "dto": "mapstruct",
+  "jpaMetamodelFiltering": true,
+  "readOnly": false,
+  "pagination": "pagination",
+  "name": "Amostra",
+  "changelogDate": "20210413052456"
+}

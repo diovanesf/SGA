@@ -1,0 +1,59 @@
+{
+  "fields": [
+    {
+      "fieldName": "nome",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "tipo",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "resultado",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "dataTeste",
+      "fieldType": "LocalDate"
+    },
+    {
+      "fieldName": "dataLeitura",
+      "fieldType": "LocalDate"
+    },
+    {
+      "fieldName": "preenchimentoEspelho",
+      "fieldType": "byte[]",
+      "fieldTypeBlobContent": "text"
+    },
+    {
+      "fieldName": "observacoes",
+      "fieldType": "byte[]",
+      "fieldTypeBlobContent": "text"
+    },
+    {
+      "fieldName": "valor",
+      "fieldType": "BigDecimal"
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipName": "amostra",
+      "otherEntityName": "amostra",
+      "relationshipType": "many-to-one",
+      "otherEntityField": "protocolo"
+    },
+    {
+      "relationshipName": "subamostra",
+      "otherEntityName": "subamostra",
+      "relationshipType": "many-to-one",
+      "otherEntityField": "subamostra"
+    }
+  ],
+  "service": "serviceClass",
+  "dto": "mapstruct",
+  "jpaMetamodelFiltering": false,
+  "readOnly": false,
+  "pagination": "no",
+  "name": "Exame",
+  "changelogDate": "20210413051619"
+}

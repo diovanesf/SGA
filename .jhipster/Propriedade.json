@@ -1,0 +1,36 @@
+{
+  "fields": [
+    {
+      "fieldName": "tipoPropriedade",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "tipoCriacao",
+      "fieldType": "String"
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipName": "proprietario",
+      "otherEntityName": "proprietario",
+      "relationshipType": "many-to-one",
+      "otherEntityField": "nome"
+    },
+    {
+      "relationshipName": "endereco",
+      "otherEntityName": "endereco",
+      "relationshipType": "one-to-one",
+      "otherEntityField": "endereco",
+      "ownerSide": true,
+      "id": false,
+      "otherEntityRelationshipName": "propriedade"
+    }
+  ],
+  "service": "serviceClass",
+  "dto": "mapstruct",
+  "jpaMetamodelFiltering": true,
+  "readOnly": false,
+  "pagination": "pagination",
+  "name": "Propriedade",
+  "changelogDate": "20210413050900"
+}
