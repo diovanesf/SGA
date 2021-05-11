@@ -143,12 +143,9 @@ export default class Laudo extends Vue {
     doc.setFontSize(16);
     doc.setFont("times", "normal");
     doc.text('Data de Recebimento: '+ this.amostra.dataInicial,15,195);
-    doc.setFontSize(16);
-    doc.setFont("times", "normal");
-    doc.text('Data de Emissão do Laudo: '+ dataAtual.getFullYear() + '-' + dataAtual.getMonth() + '-' + dataAtual.getDate(),110,195);
-    doc.setFontSize(16);
-    doc.setFont("times", "normal");
-    doc.text('Suspeita: '+ this.amostra.pricipalSuspeita,15,205);
+    // doc.setFontSize(16);
+    // doc.setFont("times", "normal");
+    // doc.text('Data de Emissão do Laudo: '+ dataAtual.getFullYear() + '-' + dataAtual.getMonth() + '-' + dataAtual.getDate(),110,195);
 
     doc.setFontSize(18);
     doc.setFont("helvetica", "bold");
@@ -159,7 +156,7 @@ export default class Laudo extends Vue {
     doc.text('Nome', 10, 235);
     doc.setFontSize(14);
     doc.setFont("times", "bold");
-    doc.text('Tipo', 110, 235);
+    doc.text('Suspeita', 110, 235);
     doc.setFontSize(14);
     doc.setFont("times", "bold");
     doc.text('Resultado', 140, 235);
@@ -179,6 +176,12 @@ export default class Laudo extends Vue {
       doc.setFontSize(12);
       doc.text(this.exames[i].subamostra.subAmostra, 180, this.cont);
       this.cont = this.cont + 10;
+
+      if(i/3 == 0){
+        doc.addPage( "landscape");
+        this.cont = 20;
+      }
+
       }
 
     doc.setFont("times", "bold");
