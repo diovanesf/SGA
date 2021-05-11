@@ -9,6 +9,8 @@ import { IMedicoveterinario } from '@/shared/model/medicoveterinario.model';
 import { IAmostra, Amostra } from '@/shared/model/amostra.model';
 import AmostraService from './amostra.service';
 
+import VacinaService from '@/entities/vacina/vacina.service';
+
 import SubamostraService from '@/entities/subamostra/subamostra.service';
 
 const validations: any = {
@@ -37,6 +39,8 @@ const validations: any = {
   validations,
 })
 export default class AmostraUpdate extends Vue {
+
+  @Inject('vacinaService') private vacinaService: () => VacinaService;
 
   @Inject('subamostraService') private subamostraService: () => SubamostraService;
 
@@ -135,11 +139,22 @@ export default class AmostraUpdate extends Vue {
     this.amostra.users.push(this.$store.getters.account);
   }
 
+  public retrieveVacina(vacinaId: number) : void{
+    this.vacinaService()
+      .find(vacinaId)
+      .then(res => {
+        this.amostra.vacina = res;
+      });
+  }
+
   public retrieveAmostra(amostraId): void {
     this.amostraService()
       .find(amostraId)
       .then(res => {
         this.amostra = res;
+        if(this.amostra.vacina.id != null){
+          this.retrieveVacina(this.amostra.vacina.id)
+        }
       });
   }
 
